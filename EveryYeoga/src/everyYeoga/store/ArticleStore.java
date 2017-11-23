@@ -2,12 +2,14 @@ package everyYeoga.store;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import everyYeoga.domain.Article;
 import everyYeoga.domain.Attachment;
 
 public interface ArticleStore {
 	public boolean createArticle(String groupId, Article article);
-	public boolean createAttachment(Attachment attachment);
+	public boolean createAttachment(String groupId, String articleId, Attachment attachment); //2017.11.23 선빈 수정
 	public Attachment retreiveAttachmentByArticleId(String articleId); 
 	public boolean deleteAttachment(String articleId);
 	public void deleteAttachmentBygroupId(String groupId);
