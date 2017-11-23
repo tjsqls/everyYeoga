@@ -13,7 +13,7 @@ public class UserStoreLogic implements UserStore{
 
 	@Override
 	public boolean createUser(User user) {
-		//�꽑鍮� 
+		//선빈
 		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
 		try {
 		UserMapper mapper = session.getMapper(UserMapper.class);
@@ -27,7 +27,7 @@ public class UserStoreLogic implements UserStore{
 
 	@Override
 	public User retrieveByUserId(String userId) {
-		//�꽑鍮�
+		//선빈
 		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
 		User user = null;
 		try {
@@ -41,7 +41,7 @@ public class UserStoreLogic implements UserStore{
 
 	@Override
 	public boolean updateUser(User user) {
-		//�꽑鍮�
+		//선빈
 		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
 		try {
 			UserMapper mapper = session.getMapper(UserMapper.class);
@@ -55,7 +55,7 @@ public class UserStoreLogic implements UserStore{
 
 	@Override
 	public boolean deleteUser(String UserId) {
-		//�꽑鍮�
+		//선빈
 		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
 		try {
 			UserMapper mapper = session.getMapper(UserMapper.class);
@@ -69,7 +69,7 @@ public class UserStoreLogic implements UserStore{
 
 	@Override
 	public User retrieveBlockedUser(String email) {
-		//�꽑鍮�
+		//선빈
 		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
 		User user = null;
 		try {
@@ -84,7 +84,7 @@ public class UserStoreLogic implements UserStore{
 
 	@Override
 	public boolean BlockedUser(User user) {
-		//�꽑鍮�
+		//선빈
 		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
 		try {
 			UserMapper mapper = session.getMapper(UserMapper.class);
