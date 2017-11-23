@@ -3,7 +3,52 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="everyYeoga.store.mapper.HistoryMapper">
-  
-  
-  
+  	
+ 
+  	<select id="retrieveTravelerHistory" parameterType="String" resultType="TravelerHistory">
+  		SELECT travelerHistoryId, travelArea, startDate, endDate, theme, guideName, traveledUserId
+  		FROM travelerHistory_tb
+  		WHERE traveledUserId = #{travelerId}
+  	</select>
+  	
+  	<insert id="createTravelerHistory" parameterType="TravelerHistory">
+  		INSERT INTO travelerHistory_tb(travelerHistoryId, travelArea, startDate, endDate, theme, guideName, traveledUserId)
+  		VALUES(travelerHistory_seq.NEXTVAL, #{travelArea}, #{startDate}, #{endDate}, #{theme}, #{guideName}, #{traveler.name})
+  	</insert>
+  	
+  	<delete id="deleteTravelerHistory" parameterType="String">
+  		DELETE FROM travelerHistory_tb
+  		WHERE travelerHistoryId = #{travelerHistoryId}
+  	</delete>
+  	
+  	
+  	<insert id="createGuideHistory" parameterType="GuideHistory">
+  		INSERT INTO guideHistory_tb(guideHistoryId, travelEndStatus, travelerName, travelArea, startDate, endDate, theme, guideId)
+  		VALUES(guideHistory_seq.NEXTVAL,#{travelEndStatus}, #{travelerName}, #{travelArea}, #{startDate}, #{endDate}, #{theme}, #{guide.name})
+  	</insert>
+  	
+  	<update id="updateGuideHistory" parameterType="GuideHistory">
+  		UPDATE guideHistory_tb
+  		SET travelEndStatus = #{travelEndStatus}
+  		WHERE guideHistoryId = #{guideHistoryId}
+  	</update>
+  	
+  	<select id="retrieveByGuideHistoryId" parameterType="String" resultType="GuideHistory">
+  		SELECT guideHistoryId, travelEndStatus, travelerName, travelArea, startDate, endDate, theme, guideId
+  		FROM guideHistory_tb 
+  		WHERE guideHistoryId = #{guideHistoryId}
+  	</select>
+  	
+  	<select id="retrieveUncheckedGuideHistory" parameterType="map" resultType="GuideHistory">
+  		SELECT guideHistoryId, travelEndStatus, travelerName, travelArea, startDate, endDate, theme, guideId
+  		FROM guideHistory_tb 
+  		WHERE guideId = #{guideId} AND travelEndStatus = #{travelEndStatus}
+  	</select>
+  	
+  	<select id="retrieveCheckedGuideHistory" parameterType="map" resultType="GuideHistory">
+  		SELECT guideHistoryId, travelEndStatus, travelerName, travelArea, startDate, endDate, theme, guideId
+  		FROM guideHistory_tb 
+  		WHERE guideId = #{guideId} AND travelEndStatus = #{travelEndStatus}
+  	</select>
+  	
   </mapper>
