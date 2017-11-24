@@ -3,8 +3,8 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="everyYeoga.store.mapper.ArticleMapper">
+  	
   	<resultMap type="Article" id="articleMap">
-
       <association property="user" column="writer" select="everyYeoga.store.mapper.UserMapper.retrieveByUserId" javaType="User" jdbcType="VARCHAR"/>
       <collection property="comments" column="articleId" select="everyYeoga.store.mapper.CommentMapper.retrieveComment" javaType="ArrayList" jdbcType="NUMERIC"/>
       <collection property="attachments" column="articleId" select="everyYeoga.store.mapper.ArticleMapper.retreiveAttachmentByArticleId" javaType="ArrayList" jdbcType="NUMERIC"/>
@@ -43,11 +43,7 @@
   	WHERE articleId = #{articleId}
   </update>
   
-  <select id="retreiveArticleByArticleId" parameterType="String" resultType="Article">
-  	SELECT articleId, title, content, writer, regDate, groupId
-  	FROM article_tb
-  	WHERE articleId = #{articleId}
-  </select>
+
   
   <delete id="deleteArticle" parameterType="String">
   	DELETE FROM article_tb
@@ -64,5 +60,15 @@
   	FROM article_tb
   	WHERE articleId = #{articleId}
   </select>
+  <select id="retreiveAll" parameterType="String" resultMap="articleMap">
+  	SELECT articleId, title, content, writer, regDate, groupId
+  	FROM article_tb
+  	WHERE groupId = #{groupId}
   
+  </select>
+  
+  <insert id="createReport" parameterType="map">
+  	INSERT INTO article_report_tb(classifyReport, articleId)
+  	VALUES(#{classifyReport}, #{articleId})
+  </insert>
   </mapper>

@@ -1,12 +1,11 @@
 package everyYeoga.store.logic;
 
-import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import everyYeoga.domain.Join;
 import everyYeoga.domain.TravelPlan;
 import everyYeoga.store.TravelStore;
 import everyYeoga.store.factory.EveryYeogaSqlSessionFactory;
@@ -23,17 +22,17 @@ public class TravelStoreLogic implements TravelStore {
 	
 
 	@Override
-	public boolean createTavelPlan(TravelPlan travelPlan) {
+	public boolean createTravelPlan(TravelPlan travelPlan) {
 		//진휘
 		SqlSession session = factory.getSession();
 		try {
 		TravelMapper mapper = session.getMapper(TravelMapper.class);
-		mapper.createTavelPlan(travelPlan);
+		mapper.createTravelPlan(travelPlan);
 		session.commit();
 		}finally {
 			session.close();
 		}
-		return false;
+		return true;
 	}
 
 
@@ -52,7 +51,7 @@ public class TravelStoreLogic implements TravelStore {
 	}
 
 	@Override
-	public List<TravelPlan> retrieveTravelPlanByTravelAreaAndStartDate(String travelArea, Date startDate) {
+	public List<TravelPlan> retrieveTravelPlanByTravelAreaAndStartDate(String travelArea, String startDate) {
 		//진휘
 		SqlSession session = factory.getSession();
 		List<TravelPlan> list = null;
@@ -67,14 +66,13 @@ public class TravelStoreLogic implements TravelStore {
 	}
 
 	@Override
-	public List<TravelPlan> retrieveTravelPlanByTravelAreaAndSpeakingAbility(String travelArea,
-			String speakingAbility) {
+	public List<TravelPlan> retrieveTravelPlanByTravelAreaAndSpeakingAbility(Map<String, String> travelPlanMap) {
 		//진휘
 		SqlSession session = factory.getSession();
 		List<TravelPlan> list = null;
 		try {
 			TravelMapper mapper = session.getMapper(TravelMapper.class);
-			list = mapper.retrieveTravelPlanByTravelAreaAndSpeakingAbility(travelArea, speakingAbility);
+			list = mapper.retrieveTravelPlanByTravelAreaAndSpeakingAbility(travelPlanMap);
 			
 		}finally {
 			session.close();
@@ -85,7 +83,7 @@ public class TravelStoreLogic implements TravelStore {
 
 	@Override
 	public List<TravelPlan> retrieveTravelPlanByTravelAreaAndSpeakingAbilityAndStartDate(String travelArea,
-			String speakingAbility, Date startDate) {
+			String speakingAbility, String startDate) {
 		//진휘
 		SqlSession session = factory.getSession();
 		List<TravelPlan> list = null;
@@ -115,7 +113,7 @@ public class TravelStoreLogic implements TravelStore {
 	}
 
 	@Override
-	public boolean updateTravelPlan(String travelPlanId) {
+	public boolean updateTravelPlan(TravelPlan travelPlanId) {
 		//진휘
 		SqlSession session = factory.getSession();
 		try {
@@ -125,7 +123,7 @@ public class TravelStoreLogic implements TravelStore {
 		}finally {
 			session.close();
 		}
-		return false;
+		return true;
 	}
 
 	@Override
@@ -139,7 +137,7 @@ public class TravelStoreLogic implements TravelStore {
 		}finally {
 			session.close();
 		}
-		return false;
+		return true;
 	}
 
 }

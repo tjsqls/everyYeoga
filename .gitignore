@@ -1,5 +1,6 @@
-/EveryYeoga/
+
 /.settings/
 /.git/
+/target/
 .classpath
 .project
