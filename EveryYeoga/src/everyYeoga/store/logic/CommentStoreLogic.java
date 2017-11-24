@@ -2,54 +2,113 @@ package everyYeoga.store.logic;
 
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import everyYeoga.domain.Comment;
 import everyYeoga.store.CommentStore;
+import everyYeoga.store.factory.EveryYeogaSqlSessionFactory;
+import everyYeoga.store.mapper.CommentMapper;
 
 @Repository
-public class CommentStoreLogic implements CommentStore{
+public class CommentStoreLogic implements CommentStore {
 
 	@Override
 	public boolean createComment(String groupId, String articleId, Comment comment) {
-		// TODO Auto-generated method stub
+		// 인애
+		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
+		try {
+			CommentMapper mapper = session.getMapper(CommentMapper.class);
+			System.out.println("llll");
+			mapper.createComment(groupId, articleId, comment);
+			session.commit();
+		} finally {
+			session.close();
+		}
 		return false;
 	}
 
 	@Override
 	public boolean updateComment(Comment comment) {
-		// TODO Auto-generated method stub
+		// 인애
+		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
+		try {
+			CommentMapper mapper = session.getMapper(CommentMapper.class);
+			mapper.updateComment(comment);
+			session.commit();
+		} finally {
+			session.close();
+		}
 		return false;
 	}
 
 	@Override
 	public boolean deleteComment(String commentId) {
-		// TODO Auto-generated method stub
+		// 인애
+		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
+		try {
+			CommentMapper mapper = session.getMapper(CommentMapper.class);
+			mapper.deleteComment(commentId);
+			session.commit();
+		} finally {
+			session.close();
+		}
 		return false;
 	}
 
 	@Override
 	public boolean deleteCommentByArticleId(String articleId) {
-		// TODO Auto-generated method stub
+		// 인애
+		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
+		try {
+			CommentMapper mapper = session.getMapper(CommentMapper.class);
+			mapper.deleteCommentByArticleId(articleId);
+			session.commit();
+		} finally {
+			session.close();
+		}
 		return false;
 	}
 
 	@Override
 	public void deleteCommentByGroupId(String groupId) {
-		// TODO Auto-generated method stub
-		
+		// 인애
+		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
+		try {
+			CommentMapper mapper = session.getMapper(CommentMapper.class);
+			mapper.deleteCommentByGroupId(groupId);
+			session.commit();
+		} finally {
+			session.close();
+		}
 	}
 
 	@Override
 	public List<Comment> retrieveComment(String articleId) {
-		// TODO Auto-generated method stub
-		return null;
+		// 인애
+		List<Comment> list = null;
+		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
+		try {
+			CommentMapper mapper = session.getMapper(CommentMapper.class);
+			list = mapper.retrieveComment(articleId);
+			session.commit();
+		} finally {
+			session.close();
+		}
+		return list;
 	}
 
 	@Override
 	public boolean createReport(String classifyReport, String commentId) {
-		// TODO Auto-generated method stub
+		// 인애
+		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
+		try {
+			CommentMapper mapper = session.getMapper(CommentMapper.class);
+			mapper.createReport(classifyReport, commentId);
+			session.commit();
+		} finally {
+			session.close();
+		}
 		return false;
 	}
-
 }
