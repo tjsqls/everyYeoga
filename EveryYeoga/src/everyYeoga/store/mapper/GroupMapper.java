@@ -11,4 +11,5 @@ public interface GroupMapper {
 	public Group retreiveJoiningGroup(String travelPlanId);
 	public boolean createGroup(Group group); 
 	public boolean createUserInGroup(@Param("groupId")String groupId, @Param("userId")String userId);
+	public void deleteUserInGroup(@Param("groupId")String groupId, @Param("userId")String userId); //2017.11.24 메소드 추가 선빈
 }

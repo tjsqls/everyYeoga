@@ -37,4 +37,9 @@
   	FROM group_tb
   	WHERE travelPlanId = #{travelPlanId}
   </select>
+  
+  <delete id="deleteUserInGroup" parameterType="map">
+  	DELETE FROM group_user_tb 
+  	WHERE groupId = #{groupId} AND userId = #{userId}
+  </delete>
   </mapper>

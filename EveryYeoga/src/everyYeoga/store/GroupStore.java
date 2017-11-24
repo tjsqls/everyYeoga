@@ -9,5 +9,5 @@ public interface GroupStore {
 	public Group retreiveJoiningGroup(String travelPlanId);
 	public boolean createGroup(Group group); 
 	public boolean createUserInGroup(String groupId, String userId);
-
+	public void deleteUserInGroup(String groupId, String userId); //2017.11.24 메소드 추가 선빈
 }
