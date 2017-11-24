@@ -2,8 +2,27 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  <mapper namespace="everyYeoga.store.mapper.GuideMapper">
-  
-  
-  
-  </mapper>
+<mapper namespace="everyYeoga.store.mapper.GuideMapper">
+	<resultMap type="Join" id="JoinMap">
+
+		<id property="joinId" column="joinid"></id>
+		<result property="travelArea" column="travelArea"></result>
+		<result property="speakingAbility" column="speakingAbility"></result>
+		<result property="guideExperience" column="guideExperience"></result>
+		<result property="selfInfroduction" column="selfInfroduction"></result>
+		<result property="joinReason" column="joinReason"></result>
+		<result property="guideGrade" column="travelArea"></result>
+		<association column="guideId" property="guide" jdbcType="VARCHAR"
+			javaType="User" select="everyYeoga.store.mapper.UserMapper.retrieveByUserId" />
+			
+	</resultMap>
+	
+	<select id="retrieveGuide" parameterType="String" resultType="Join">
+	SELECT 
+	
+	
+	
+	</select>
+
+
+</mapper>
