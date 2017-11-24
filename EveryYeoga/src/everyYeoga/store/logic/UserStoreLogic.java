@@ -1,5 +1,7 @@
 package everyYeoga.store.logic;
 
+import java.util.Date;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
@@ -54,12 +56,12 @@ public class UserStoreLogic implements UserStore{
 	}
 
 	@Override
-	public boolean deleteUser(String UserId) {
+	public boolean deleteUser(String userId) {
 		//선빈
 		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
 		try {
 			UserMapper mapper = session.getMapper(UserMapper.class);
-			mapper.deleteUser(UserId);
+			mapper.deleteUser(userId);
 			session.commit();
 		}finally {
 			session.close();
@@ -83,17 +85,32 @@ public class UserStoreLogic implements UserStore{
 	}
 
 	@Override
-	public boolean BlockedUser(User user) {
+	public boolean BlockUser(User user, Date accessBlockedDate) {  // 회원 정지 등록 메소드
 		//선빈
 		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
 		try {
 			UserMapper mapper = session.getMapper(UserMapper.class);
-			mapper.BlockedUser(user);
+			mapper.BlockUser(user, accessBlockedDate);
 			session.commit();
 		}finally {
 			session.close();
 		}
 		return false;
+	}
+
+	@Override
+	public User checkBlockedUser(String userId) {
+		// 인애 +
+		User user = null;
+		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
+		try {
+			UserMapper mapper = session.getMapper(UserMapper.class);
+			user = mapper.checkBlockedUser(userId);
+			session.commit();
+		}finally {
+			session.close();
+		}
+		return user;
 	}
 
 }

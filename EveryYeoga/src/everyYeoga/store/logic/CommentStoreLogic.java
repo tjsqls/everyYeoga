@@ -19,7 +19,6 @@ public class CommentStoreLogic implements CommentStore {
 		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
 		try {
 			CommentMapper mapper = session.getMapper(CommentMapper.class);
-			System.out.println("llll");
 			mapper.createComment(groupId, articleId, comment);
 			session.commit();
 		} finally {

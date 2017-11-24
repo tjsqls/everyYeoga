@@ -44,7 +44,7 @@ public class ReportStoreLogic implements ReportStore {
 	}
 
 	@Override
-	public List<Report> retrieveReport(String reportedUserId) {
+	public List<Report> retrieveReport(String reportedUserId) {   // 회원의 신고내역 목록을 가져옴
 		// 인애
 		List<Report> list = null;
 		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
@@ -59,7 +59,7 @@ public class ReportStoreLogic implements ReportStore {
 	}
 
 	@Override
-	public List<Report> retrieveAllReport() {
+	public List<Report> retrieveAllReport() {                    // 관리자가 보는 전체 신고내역
 		// 인애
 		List<Report> list = null;
 		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
