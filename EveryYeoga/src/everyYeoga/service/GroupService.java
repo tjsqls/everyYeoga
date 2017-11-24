@@ -19,6 +19,6 @@ public interface GroupService {
 	public boolean registComment(String groupId, String articleId, Comment comment);
 	public boolean modifyComment(Comment comment);
 	public boolean removeComment(String commentId);
-	public void registUserInGroup(String groupId, String userId);
+	public void registUserInGroup(String groupId, List<String> userIds); //2017.11.24 파라미터변경 String userId-> List<String> userIds 
 
 }

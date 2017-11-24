@@ -13,18 +13,21 @@ import everyYeoga.service.GroupService;
 import everyYeoga.store.ArticleStore;
 import everyYeoga.store.CommentStore;
 import everyYeoga.store.GroupStore;
+import everyYeoga.store.HistoryStore;
+
 
 @Service
 public class GroupServiceLogic implements GroupService{
 	
 	@Autowired
 	private ArticleStore articleStore;
-	
 	@Autowired
 	private CommentStore commentStore;
-	
 	@Autowired
 	private GroupStore groupStore;
+	@Autowired
+	private HistoryStore historyStore;
+
 	
 	@Override
 	public boolean modifyGroupStatus(String travelPlanId, String gatheringStatus) {
@@ -44,6 +47,7 @@ public class GroupServiceLogic implements GroupService{
 		groupStore.deleteGroup(groupId);
 		articleStore.deleteArticleBygroupId(groupId);
 		commentStore.deleteCommentByGroupId(groupId);
+		
 		return false;
 	}
 
@@ -56,50 +60,61 @@ public class GroupServiceLogic implements GroupService{
 
 	@Override
 	public boolean registArticle(Article article, String groupId, List<Attachment> attachments) {
-		// TODO Auto-generated method stub
+		// 선빈
+		articleStore.createArticle(groupId, article);
+		for(int i=0; i<attachments.size(); i++) {
+			articleStore.createAttachment(groupId, article.getArticleId(), attachments.get(i));	
+		}
+		
 		return false;
 	}
 
 	@Override
 	public boolean modifyArticle(Article article) {
-		// TODO Auto-generated method stub
-		return false;
+		// 선빈
+		return articleStore.updateArticle(article);
 	}
 
 	@Override
 	public boolean removeArticle(String articleId) {
-		// TODO Auto-generated method stub
+		// 선빈
+		articleStore.deleteArticle(articleId);
+		commentStore.deleteCommentByArticleId(articleId);
+		articleStore.deleteAttachment(articleId);
+		
 		return false;
 	}
 
 	@Override
 	public Article retreiveArticleByArticleId(String articleId) {
-		// TODO Auto-generated method stub
-		return null;
+		// 선빈
+		return articleStore.retreiveArticleByArticleId(articleId);
 	}
 
 	@Override
 	public boolean registComment(String groupId, String articleId, Comment comment) {
-		// TODO Auto-generated method stub
-		return false;
+		// 선빈
+		return commentStore.createComment(groupId, articleId, comment);
 	}
 
 	@Override
 	public boolean modifyComment(Comment comment) {
-		// TODO Auto-generated method stub
-		return false;
+		// 선빈
+		return commentStore.updateComment(comment);
 	}
 
 	@Override
 	public boolean removeComment(String commentId) {
-		// TODO Auto-generated method stub
-		return false;
+		// 선빈
+		return commentStore.deleteComment(commentId);
 	}
 
 	@Override
-	public void registUserInGroup(String groupId, String userId) {
-		// TODO Auto-generated method stub
-		
+	public void registUserInGroup(String groupId, List<String> userIds) {
+		// 선빈
+		for(int i=0; i<userIds.size(); i++) {
+		groupStore.createUserInGroup(groupId, userIds.get(i));
+		}
 	}
 
 }
