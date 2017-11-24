@@ -4,6 +4,54 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="everyYeoga.store.mapper.CommentMapper">
   
-  
-  
-  </mapper>
+  <resultMap type="Comment" id="commentMap">
+		<result property="commentId" column="commentId" />
+		<result property="content" column="content" />
+		<result property="regDate" column="regDate" />
+
+		<association property="user" column="writer"
+			select="everyYeoga.store.mapper.UserMapper.retrieveByUserId" javaType="User"
+			jdbcType="VARCHAR">
+		</association>
+	</resultMap>
+
+<!-- 인애 : store 에 있는 CommentMapper 에 @Param 을 주었음. -->
+	<insert id="createComment" parameterType="map">  
+		INSERT INTO comment_tb
+		(commentId, content, regDate, writer, articleId, groupId)
+		VALUES(comment_seq.NEXTVAL, #{comment.content}, #{comment.regDate}, #{comment.user.name}, #{articleId}, #{groupId})
+	</insert> 
+
+	<delete id="deleteComment" parameterType="String">
+		DELETE FROM comment_tb
+		WHERE commentId = #{commentId}
+	</delete>
+
+	<update id="updateComment" parameterType="Comment">
+		UPDATE comment_tb
+		SET content = #{content},
+		WHERE commentId= #{commentId}
+	</update>
+
+	<delete id="deleteCommentByArticleId" parameterType="String">
+		DELETE FROM comment_tb
+		WHERE articleId = #{articleId}
+	</delete>
+
+	<select id="retrieveComment" parameterType="String" resultMap="commentMap">
+		SELECT content, regDate, writer
+		FROM comment_tb
+		WHERE articleId = #{articleId}
+	</select>
+
+	<delete id="deleteCommentByGroupId" parameterType="String">
+		DELETE FROM comment_tb
+		WHERE groupId = #{groupId}
+	</delete>
+
+	<insert id="createReport" parameterType="map">
+		INSERT INTO report_tb
+		(classifyReport, commentId)
+		VALUES(#{classifyReport}, #{commentId})
+	</insert> 
+</mapper>
