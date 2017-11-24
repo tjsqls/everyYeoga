@@ -52,7 +52,7 @@ public class GuideStoreLogic implements GuideStore {
 	}
 
 	@Override
-	public boolean createUserInGroup(String groupId, String UserId) {
+	public boolean createUserInGroup(String groupId, String userId) {
 		//진휘
 		SqlSession session = factory.getSession();
 		try {
@@ -70,6 +70,7 @@ public class GuideStoreLogic implements GuideStore {
 		SqlSession session = factory.getSession();
 		try {
 			GuideMapper mapper = session.getMapper(GuideMapper.class);
+			mapper.createEvaluation(evaluation);
 			session.commit();
 		}finally {
 			session.close();
@@ -92,12 +93,12 @@ public class GuideStoreLogic implements GuideStore {
 	}
 
 	@Override
-	public boolean createJoin(Join join) {
+	public boolean createJoin(Join join, String travelPlanId) {
 		//진휘
 		SqlSession session = factory.getSession();
 		try {
 			GuideMapper mapper = session.getMapper(GuideMapper.class);
-			mapper.createJoin(join);
+			mapper.createJoin(join, travelPlanId);
 		}finally {
 			session.close();
 		}
