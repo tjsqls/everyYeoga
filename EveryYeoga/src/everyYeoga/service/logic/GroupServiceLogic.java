@@ -2,6 +2,7 @@ package everyYeoga.service.logic;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import everyYeoga.domain.Article;
@@ -9,32 +10,48 @@ import everyYeoga.domain.Attachment;
 import everyYeoga.domain.Comment;
 import everyYeoga.domain.Group;
 import everyYeoga.service.GroupService;
+import everyYeoga.store.ArticleStore;
+import everyYeoga.store.CommentStore;
+import everyYeoga.store.GroupStore;
 
 @Service
 public class GroupServiceLogic implements GroupService{
-
+	
+	@Autowired
+	private ArticleStore articleStore;
+	
+	@Autowired
+	private CommentStore commentStore;
+	
+	@Autowired
+	private GroupStore groupStore;
+	
 	@Override
-	public boolean modifyGroupStatus(String travelPlanId) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean modifyGroupStatus(String travelPlanId, String gatheringStatus) {
+		// 선빈
+		return groupStore.updateGroupStatus(travelPlanId, gatheringStatus);
 	}
 
 	@Override
 	public boolean groupOut(String groupId, String userId) {
-		// TODO Auto-generated method stub
-		return false;
+		// 선빈
+		return groupStore.groupOut(groupId, userId);
 	}
 
 	@Override
 	public boolean removeGroup(String groupId) {
-		// TODO Auto-generated method stub
+		// 선빈
+		groupStore.deleteGroup(groupId);
+		articleStore.deleteArticleBygroupId(groupId);
+		commentStore.deleteCommentByGroupId(groupId);
 		return false;
 	}
 
 	@Override
 	public Group retreiveJoiningGroup(String travelPlanId) {
-		// TODO Auto-generated method stub
-		return null;
+		// 선빈
+		Group group = groupStore.retreiveJoiningGroup(travelPlanId);
+		return group;
 	}
 
 	@Override

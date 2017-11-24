@@ -8,7 +8,7 @@ import everyYeoga.domain.Comment;
 import everyYeoga.domain.Group;
 
 public interface GroupService {
-	public boolean modifyGroupStatus(String travelPlanId);
+	public boolean modifyGroupStatus(String travelPlanId, String gatheringStatus); //2017.11.24 gatheringStatus 파라미터추가 선빈
 	public boolean groupOut(String groupId, String userId);
 	public boolean removeGroup(String groupId);
 	public Group retreiveJoiningGroup(String travelPlanId);
