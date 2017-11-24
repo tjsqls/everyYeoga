@@ -9,6 +9,6 @@ public interface ReportService {
 	public Report searchCommentReport(String reportedCommentId);
 	public List<Report> searchReport(String reportedUserId);
 	public List<Report> searchAllReport();
-	public boolean registReport(String classifyReport, String classifyId);
-
+	public boolean registMidReportTable(String classifyReport, String classifyId);
+	public boolean registReport(Report report); // 2017.11.24 인애 추가 for 신고 생성
 }

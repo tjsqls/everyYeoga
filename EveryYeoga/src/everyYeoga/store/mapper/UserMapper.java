@@ -9,7 +9,5 @@ public interface UserMapper {
 	public User retrieveByUserId(String userId);
 	public boolean updateUser(User user); // 파라미터 수정 String userId -> User user 선빈
 	public boolean deleteUser(String userId);
-	public User retrieveBlockedUser(String email);
-	public boolean BlockUser(User user, Date accessBlockedDate);
-	public User checkBlockedUser(String userId);
+
 }
