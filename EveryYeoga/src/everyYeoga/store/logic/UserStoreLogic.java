@@ -69,48 +69,5 @@ public class UserStoreLogic implements UserStore{
 		return false;
 	}
 
-	@Override
-	public User retrieveBlockedUser(String email) {
-		//선빈
-		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
-		User user = null;
-		try {
-			UserMapper mapper = session.getMapper(UserMapper.class);
-			user = mapper.retrieveBlockedUser(email);
-			
-		}finally {
-			session.close();
-		}
-		return user;
-	}
-
-	@Override
-	public boolean BlockUser(User user, Date accessBlockedDate) {  // 회원 정지 등록 메소드
-		//선빈
-		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
-		try {
-			UserMapper mapper = session.getMapper(UserMapper.class);
-			mapper.BlockUser(user, accessBlockedDate);
-			session.commit();
-		}finally {
-			session.close();
-		}
-		return false;
-	}
-
-	@Override
-	public User checkBlockedUser(String userId) {
-		// 인애 +
-		User user = null;
-		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
-		try {
-			UserMapper mapper = session.getMapper(UserMapper.class);
-			user = mapper.checkBlockedUser(userId);
-			session.commit();
-		}finally {
-			session.close();
-		}
-		return user;
-	}
 
 }

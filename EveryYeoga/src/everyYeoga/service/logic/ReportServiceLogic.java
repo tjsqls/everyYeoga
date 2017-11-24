@@ -2,6 +2,7 @@ package everyYeoga.service.logic;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import everyYeoga.domain.Report;
@@ -16,13 +17,9 @@ import everyYeoga.store.logic.ReportStoreLogic;
 @Service
 public class ReportServiceLogic implements ReportService {
 	
+	@Autowired
 	private ReportStore reportStore;
 	
-	public ReportServiceLogic() {
-		reportStore = new ReportStoreLogic();
-	}
-	
-
 	@Override
 	public Report searchArticleReport(String reportedArticleId) {
 		// 인애
@@ -34,24 +31,6 @@ public class ReportServiceLogic implements ReportService {
 		// 인애
 		return reportStore.retrieveCommentReport(reportedCommentId);
 	}
-
-
-	@Override
-	public boolean registReport(String classifyReport, String classifyId) {
-		// 인애
-		CommentStore commentStore = new CommentStoreLogic();
-		ArticleStore articleStore = new ArticleStoreLogic();
-		
-		if (classifyId.equals("comment")) {
-			String commentId = classifyId;
-			return commentStore.createReport(classifyReport, commentId);
-		}else if (classifyId.equals("article")) {
-			String articleId = classifyId;
-			return articleStore.createReport(classifyReport, articleId);
-		}
-		return false;		
-	}
-
 
 	@Override
 	public List<Report> searchReport(String reportedUserId) {
@@ -66,4 +45,26 @@ public class ReportServiceLogic implements ReportService {
 		return reportStore.retrieveAllReport();
 	}
 
+	@Override
+	public boolean registMidReportTable(String classifyReport, String classifyId) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean registReport(Report report) {
+//		// 인애
+//		CommentStore commentStore = new CommentStoreLogic();
+//		ArticleStore articleStore = new ArticleStoreLogic();
+//		
+//		if (classifyId.equals("comment")) {
+//			String commentId = classifyId;
+//			return commentStore.createReport(classifyReport, commentId);
+//		}else if (classifyId.equals("article")) {
+//			String articleId = classifyId;
+//			return articleStore.createReport(classifyReport, articleId);
+//		}
+		return false;	
+
+}
 }

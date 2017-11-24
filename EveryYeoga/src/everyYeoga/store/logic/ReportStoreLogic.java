@@ -44,7 +44,7 @@ public class ReportStoreLogic implements ReportStore {
 	}
 
 	@Override
-	public List<Report> retrieveReport(String reportedUserId) {   // 회원의 신고내역 목록을 가져옴
+	public List<Report> retrieveReport(String reportedUserId) { // 회원의 신고내역 목록을 가져옴
 		// 인애
 		List<Report> list = null;
 		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
@@ -59,7 +59,7 @@ public class ReportStoreLogic implements ReportStore {
 	}
 
 	@Override
-	public List<Report> retrieveAllReport() {                    // 관리자가 보는 전체 신고내역
+	public List<Report> retrieveAllReport() { // 관리자가 보는 전체 신고내역
 		// 인애
 		List<Report> list = null;
 		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
@@ -71,5 +71,33 @@ public class ReportStoreLogic implements ReportStore {
 			session.close();
 		}
 		return list;
+	}
+
+	@Override
+	public boolean createReport(Report report) { // 2017.11.24 인애 추가 for 신고 생성
+		// 인애
+		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
+		try {
+			ReportMapper mapper = session.getMapper(ReportMapper.class);
+			mapper.createReport(report);
+			session.commit();
+		} finally {
+			session.close();
+		}
+		return false;
+	}
+
+	@Override
+	public boolean createMidReportTable(String classifyReport, String classifyId) {   // 2017.11.24 인애 추가 for 신고 중간테이블 
+		// 인애
+		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
+		try {
+			ReportMapper mapper = session.getMapper(ReportMapper.class);
+			mapper.createMidReportTable(classifyReport, classifyId);
+			session.commit();
+		} finally {
+			session.close();
+		}
+		return false;
 	}
 }
