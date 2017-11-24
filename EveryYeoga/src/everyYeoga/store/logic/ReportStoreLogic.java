@@ -87,17 +87,4 @@ public class ReportStoreLogic implements ReportStore {
 		return false;
 	}
 
-	@Override
-	public boolean createMidReportTable(String classifyReport, String classifyId) {   // 2017.11.24 인애 추가 for 신고 중간테이블 
-		// 인애
-		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
-		try {
-			ReportMapper mapper = session.getMapper(ReportMapper.class);
-			mapper.createMidReportTable(classifyReport, classifyId);
-			session.commit();
-		} finally {
-			session.close();
-		}
-		return false;
-	}
 }

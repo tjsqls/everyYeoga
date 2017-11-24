@@ -67,4 +67,9 @@
 		FROM report_tb
 	</select>
 
+  	  	<insert id="createReport" parameterType="Report">
+  		INSERT INTO report_tb(reportId, classifyReport, reportType, reportReason, reportDate, reportUserId, reportedUserId)
+		VALUES(report_seq.NEXTVAL, #{classifyReport}, #{reportType}, #{reportReason}, #{regDate}, #{reportUser.id}, #{reportedUser.id})
+  	</insert>
+
 </mapper>
