@@ -2,49 +2,54 @@ package everyYeoga.service.logic;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import everyYeoga.domain.GuideHistory;
 import everyYeoga.domain.TravelerHistory;
 import everyYeoga.service.HistoryService;
+import everyYeoga.store.HistoryStore;
 
 @Service
 public class HistoryServiceLogic implements HistoryService {
 
+	@Autowired
+	private HistoryStore historyStore;
+	
 	@Override
 	public List<TravelerHistory> searchTravelerHistory(String travelerId) {
-		// TODO Auto-generated method stub
-		return null;
+		// 선빈
+		return historyStore.retrieveTravelerHistory(travelerId);
 	}
 
 	@Override
 	public void registTravelerHistory(TravelerHistory travelerHistory) {
-		// TODO Auto-generated method stub
-		
+		// 선빈
+		historyStore.createTravelerHistory(travelerHistory);
 	}
 
 	@Override
 	public boolean removeTravelerHistory(String travelerHistoryId) {
-		// TODO Auto-generated method stub
-		return false;
+		// 선빈
+		return historyStore.deleteTravelerHistory(travelerHistoryId);
 	}
 
 	@Override
-	public List<GuideHistory> searchGuideHistory(String guideId) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<GuideHistory> searchGuideHistory(String guideId, String travelEndStatus) {
+		// 선빈
+		return historyStore.retrieveCheckedGuideHistory(guideId, travelEndStatus);
 	}
 
 	@Override
 	public void registGuideHistory(GuideHistory guideHistory) {
-		// TODO Auto-generated method stub
-		
+		// 선빈
+		historyStore.createGuideHistory(guideHistory);
 	}
 
 	@Override
-	public void modifyGuideHistory(String guideHistoryId) {
-		// TODO Auto-generated method stub
-		
+	public void modifyGuideHistory(GuideHistory guideHistory) {
+		// 선빈
+		historyStore.updateGuideHistory(guideHistory);
 	}
 
 }

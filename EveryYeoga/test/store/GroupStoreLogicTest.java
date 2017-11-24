@@ -32,11 +32,11 @@ public class GroupStoreLogicTest {
 //		fail("Not yet implemented");
 //	}
 //
-	@Test
-	public void testRetreiveJoiningGroup() {
-		Group group = store.retreiveJoiningGroup("1");
-		assertEquals("1", group.getGroupId());
-	}
+//	@Test
+//	public void testRetreiveJoiningGroup() {
+//		Group group = store.retreiveJoiningGroup("1");
+//		assertEquals("1", group.getGroupId());
+//	}
 //
 //	@Test
 //	public void testCreateGroup() {
@@ -45,7 +45,10 @@ public class GroupStoreLogicTest {
 //
 //	@Test
 //	public void testCreateUserInGroup() {
-//		fail("Not yet implemented");
+//		store.createUserInGroup("1", "선빈");
 //	}
-
+//	@Test
+//	public void testDeleteUserInGroup() {
+//		store.deleteUserInGroup("1", "선빈");
+//	}
 }

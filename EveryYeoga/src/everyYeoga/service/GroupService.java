@@ -8,10 +8,10 @@ import everyYeoga.domain.Comment;
 import everyYeoga.domain.Group;
 
 public interface GroupService {
-	public boolean modifyGroupStatus(String travelPlanId);
+	public boolean modifyGroupStatus(String travelPlanId, String gatheringStatus); //2017.11.24 gatheringStatus 파라미터추가 선빈
 	public boolean groupOut(String groupId, String userId);
-	public boolean removeGroup(String groupId);
-	public Group retreiveJoiningGroup(String travelPlanId);
+	public boolean removeGroup(String userId, String groupId); //2017.11.24 파라미터추가 String userId 선빈
+	public Group retreiveJoiningGroup(String travelerId,String travelPlanId); //2017.11.24 파라미터추가 String travelerId 선빈
 	public boolean registArticle(Article article, String groupId, List<Attachment> attachments);
 	public boolean modifyArticle(Article article);
 	public boolean removeArticle(String articleId);
@@ -19,6 +19,6 @@ public interface GroupService {
 	public boolean registComment(String groupId, String articleId, Comment comment);
 	public boolean modifyComment(Comment comment);
 	public boolean removeComment(String commentId);
-	public void registUserInGroup(String groupId, String userId);
-
+	public void registUserInGroup(String groupId, List<String> userIds); //2017.11.24 파라미터변경 String userId-> List<String> userIds 선빈
+	public void registGroup(Group group); //2017.11.24 메소드 추가 선빈
 }
