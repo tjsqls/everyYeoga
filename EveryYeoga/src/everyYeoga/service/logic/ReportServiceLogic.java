@@ -10,16 +10,15 @@ import everyYeoga.service.ReportService;
 import everyYeoga.store.ArticleStore;
 import everyYeoga.store.CommentStore;
 import everyYeoga.store.ReportStore;
-import everyYeoga.store.logic.ArticleStoreLogic;
-import everyYeoga.store.logic.CommentStoreLogic;
-import everyYeoga.store.logic.ReportStoreLogic;
 
 @Service
 public class ReportServiceLogic implements ReportService {
-	
+
 	@Autowired
 	private ReportStore reportStore;
-	
+	private CommentStore commentStore;
+	private ArticleStore articleStore;
+
 	@Override
 	public Report searchArticleReport(String reportedArticleId) {
 		// 인애
@@ -38,7 +37,6 @@ public class ReportServiceLogic implements ReportService {
 		return reportStore.retrieveReport(reportedUserId);
 	}
 
-
 	@Override
 	public List<Report> searchAllReport() {
 		// 인애
@@ -46,25 +44,14 @@ public class ReportServiceLogic implements ReportService {
 	}
 
 	@Override
-	public boolean registMidReportTable(String classifyReport, String classifyId) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean registReport(Report report, String classifyId) {   // classifyId is wether articleId or commentId. 
+		// 인애	
+		if (report.getClassifyReport().equals("comment")) {
+		commentStore.createReport(report.getClassifyReport(), classifyId);
+		
+		}else if (report.getClassifyReport().equals("article")) {
+			articleStore.createReport(report.getClassifyReport(), classifyId);
+		}		
+		return reportStore.createReport(report);
 	}
-
-	@Override
-	public boolean registReport(Report report) {
-//		// 인애
-//		CommentStore commentStore = new CommentStoreLogic();
-//		ArticleStore articleStore = new ArticleStoreLogic();
-//		
-//		if (classifyId.equals("comment")) {
-//			String commentId = classifyId;
-//			return commentStore.createReport(classifyReport, commentId);
-//		}else if (classifyId.equals("article")) {
-//			String articleId = classifyId;
-//			return articleStore.createReport(classifyReport, articleId);
-//		}
-		return false;	
-
-}
 }
