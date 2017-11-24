@@ -9,20 +9,63 @@
 		<result property="travelArea" column="travelArea"></result>
 		<result property="speakingAbility" column="speakingAbility"></result>
 		<result property="guideExperience" column="guideExperience"></result>
-		<result property="selfInfroduction" column="selfInfroduction"></result>
+		<result property="selfIntroduction" column="selfIntroduction"></result>
 		<result property="joinReason" column="joinReason"></result>
-		<result property="guideGrade" column="travelArea"></result>
+		<result property="guideGrade" column="guideGrade"></result>
 		<association column="guideId" property="guide" jdbcType="VARCHAR"
 			javaType="User" select="everyYeoga.store.mapper.UserMapper.retrieveByUserId" />
-			
 	</resultMap>
-	
+
+
+
 	<select id="retrieveGuide" parameterType="String" resultType="Join">
-	SELECT 
-	
-	
-	
+		SELECT joinId, travelArea, speakingAbility, guideExperience,
+		selfIntroduction,
+		joinReason, guideId
+		FROM join_tb
+		WHERE
+		travelPlanId = #{travelPlanId}
 	</select>
+
+	<select id="retrieveJoinDetail" parameterType="String"
+		resultType="Join">
+		SELECT joinId, travelArea, speakingAbility, guideExperience,
+		selfIntroduction,
+		joinReason, guideId
+		FROM join_tb
+		WHERE
+		joinId = #{joinId}
+	</select>
+
+	<insert id="createEvaluation" parameterType="Evaluation">
+		INSERT INTO evaluation_tb(evaluationId, pros, cons, stars, travelerId,
+		guideId)
+		VALUES(#{evaluationId}, #{pros}, #{cons}, #{stars}, #{traveler.id}, #{guide.id})
+	</insert>
+
+	<select id="retrieveEvaluation" parameterType="String"
+		resultType="Evaluation">
+		SELECT evaluationId, pros, cons, stars, travelerId, guideId
+		FROM
+		evaluation_tb
+		WHERE guideId = #{guideId}
+	</select>
+
+
+	<insert id="createJoin" parameterType="map">
+		INSERT INTO join_tb(
+		joinId, guideId, 
+		travelArea, speakingAbility,
+		guideExperience,selfIntroduction, 
+		joinReason, travelPlanId)
+		VALUES(
+		#{join.joinId}, #{join.guide.id}, 
+		#{join.travelArea}, #{join.speakingAbility}, 
+		#{join.guideExperience},#{join.selfIntroduction}, 
+		#{join.joinReason}, #{travelPlanId}) 
+	</insert>
+
+
 
 
 </mapper>
