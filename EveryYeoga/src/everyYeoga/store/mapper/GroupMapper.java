@@ -1,5 +1,7 @@
 package everyYeoga.store.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 import everyYeoga.domain.Group;
@@ -12,4 +14,5 @@ public interface GroupMapper {
 	public boolean createGroup(Group group); 
 	public boolean createUserInGroup(@Param("groupId")String groupId, @Param("userId")String userId);
 	public void deleteUserInGroup(@Param("groupId")String groupId, @Param("userId")String userId); //2017.11.24 메소드 추가 선빈
+	public List<String> retrieveJoiningUserId(String groupId); //2017.11.24 메소드 추가 선빈
 }

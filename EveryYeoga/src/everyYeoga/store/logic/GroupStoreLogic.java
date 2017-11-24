@@ -1,5 +1,7 @@
 package everyYeoga.store.logic;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
@@ -109,6 +111,20 @@ public class GroupStoreLogic implements GroupStore{
 			session.close();
 		}
 		
+	}
+
+	@Override
+	public List<String> retrieveJoiningUserId(String groupId) {
+		// 선빈
+		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
+		List<String> list = null;
+		try {
+			GroupMapper mapper = session.getMapper(GroupMapper.class);
+			list = mapper.retrieveJoiningUserId(groupId);
+		}finally {
+			session.close();
+		}
+		return list;
 	}
 
 }

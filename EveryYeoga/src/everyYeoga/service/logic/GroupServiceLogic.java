@@ -38,7 +38,10 @@ public class GroupServiceLogic implements GroupService{
 	@Override
 	public boolean groupOut(String groupId, String userId) {
 		// 선빈
-		return groupStore.groupOut(groupId, userId);
+		groupStore.groupOut(groupId, userId);
+		groupStore.deleteUserInGroup(groupId, userId);
+		
+		return false;
 	}
 
 	@Override
@@ -47,6 +50,7 @@ public class GroupServiceLogic implements GroupService{
 		groupStore.deleteGroup(groupId);
 		articleStore.deleteArticleBygroupId(groupId);
 		commentStore.deleteCommentByGroupId(groupId);
+		List<String> userIds = groupStore.retrieveJoiningUserId(groupId);
 		
 		return false;
 	}

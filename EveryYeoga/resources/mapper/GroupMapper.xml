@@ -3,7 +3,13 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="everyYeoga.store.mapper.GroupMapper">
-    
+  
+   <resultMap type="Group" id="groupMap">
+
+      <association property="traveler" column="writer" select="everyYeoga.store.mapper.UserMapper.retrieveByUserId" javaType="User" jdbcType="VARCHAR"/>
+      <collection property="comments" column="articleId" select="everyYeoga.store.mapper.CommentMapper.retrieveComment" javaType="ArrayList" jdbcType="NUMERIC"/>
+      <collection property="attachments" column="articleId" select="everyYeoga.store.mapper.ArticleMapper.retreiveAttachmentByArticleId" javaType="ArrayList" jdbcType="NUMERIC"/>
+   </resultMap> 
 
   <insert id="createGroup" parameterType="Group">
  	INSERT INTO group_tb(groupId, regDate, travelPlanId) 
@@ -32,7 +38,7 @@
   	WHERE travelPlanId = #{travelPlanId}
   </update>
   
-  <select id="retreiveJoiningGroup" parameterType="String" resultType="Group">
+  <select id="retreiveJoiningGroup" parameterType="String" resultType="groupMap">
   	SELECT groupId, regDate, travelPlanId
   	FROM group_tb
   	WHERE travelPlanId = #{travelPlanId}
@@ -42,4 +48,10 @@
   	DELETE FROM group_user_tb 
   	WHERE groupId = #{groupId} AND userId = #{userId}
   </delete>
+  
+  <select id="retrieveJoiningUserId" parameterType="String" resultType="String">
+  	SELECT groupId, userId
+  	FROM group_user_tb
+  	WHERE groupId = #{groupId}
+  </select>
   </mapper>
