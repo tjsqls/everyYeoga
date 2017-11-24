@@ -99,19 +99,6 @@ public class GroupStoreLogic implements GroupStore{
 		return false;
 	}
 
-	@Override
-	public void deleteUserInGroup(String groupId, String userId) {
-		// 선빈
-		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
-		try {
-			GroupMapper mapper = session.getMapper(GroupMapper.class);
-			mapper.deleteUserInGroup(groupId, userId);
-			session.commit();
-		}finally {
-			session.close();
-		}
-		
-	}
 
 	@Override
 	public List<String> retrieveJoiningUserId(String groupId) {
