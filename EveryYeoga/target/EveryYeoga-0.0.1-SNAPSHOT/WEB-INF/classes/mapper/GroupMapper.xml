@@ -32,4 +32,9 @@
   	WHERE travelPlanId = #{travelPlanId}
   </update>
   
+  <select id="retreiveJoiningGroup" parameterType="String" resultType="Group">
+  	SELECT groupId, regDate, travelPlanId
+  	FROM group_tb
+  	WHERE travelPlanId = #{travelPlanId}
+  </select>
   </mapper>

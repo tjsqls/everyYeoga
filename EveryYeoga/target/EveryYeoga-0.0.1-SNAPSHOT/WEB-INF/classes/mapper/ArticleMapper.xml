@@ -3,7 +3,73 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="everyYeoga.store.mapper.ArticleMapper">
+  	
+  	<resultMap type="Article" id="articleMap">
+
+      <association property="user" column="writer" select="everyYeoga.store.mapper.UserMapper.retrieveByUserId" javaType="User" jdbcType="VARCHAR"/>
+      <collection property="comments" column="articleId" select="everyYeoga.store.mapper.CommentMapper.retrieveComment" javaType="ArrayList" jdbcType="NUMERIC"/>
+      <collection property="attachments" column="articleId" select="everyYeoga.store.mapper.ArticleMapper.retreiveAttachmentByArticleId" javaType="ArrayList" jdbcType="NUMERIC"/>
+   </resultMap>
+
+  	
+  	<insert id="createArticle" parameterType="map">
+  		INSERT INTO article_tb(articleId, title, content, writer, regDate, groupId)
+		VALUES(article_seq.NEXTVAL, #{article.title}, #{article.content}, #{article.user.id}, #{article.regDate}, #{groupId})  	
+  	</insert>
+  	
+  	<insert id="createAttachment" parameterType="map">
+  		INSERT INTO attachment_tb(fileName, filePath, articleId, groupId)
+  		VALUES (#{attachment.fileName}, #{attachment.filePath}, #{articleId}, #{groupId})
+  	</insert>
   
+  <select id="retreiveAttachmentByArticleId" parameterType="String" resultType="Attachment">
+  	SELECT fileName,filePath
+  	FROM attachment_tb
+  	WHERE articleId = #{articleId}
+  </select>
   
+  <delete id="deleteAttachment" parameterType="String">
+  	DELETE FROM attachment_tb
+  	WHERE articleId = #{articleId}
+  </delete>
   
+  <delete id="deleteAttachmentBygroupId" parameterType="String">
+  	DELETE FROM attachment_tb
+  	WHERE groupId = #{groupId}
+  </delete>
+  
+  <update id="updateArticle" parameterType="Article">
+  	UPDATE article_tb
+  	SET title = #{title}, content = #{content}
+  	WHERE articleId = #{articleId}
+  </update>
+  
+
+  
+  <delete id="deleteArticle" parameterType="String">
+  	DELETE FROM article_tb
+  	WHERE articleId = #{articleId}
+  </delete>
+  
+  <delete id="deleteArticleBygroupId" parameterType="String">
+  	DELETE FROM article_tb
+  	WHERE groupId = #{groupId}
+  </delete>
+  
+  <select id="retreiveArticleByArticleId" parameterType="String" resultMap="articleMap">
+  	SELECT articleId, title, content, writer, regDate, groupId
+  	FROM article_tb
+  	WHERE articleId = #{articleId}
+  </select>
+  <select id="retreiveAll" parameterType="String" resultMap="articleMap">
+  	SELECT articleId, title, content, writer, regDate, groupId
+  	FROM article_tb
+  	WHERE groupId = #{groupId}
+  
+  </select>
+  
+  <insert id="createReport" parameterType="map">
+  	INSERT INTO article_report_tb(classifyReport, articleId)
+  	VALUES(#{classifyReport}, #{articleId})
+  </insert>
   </mapper>

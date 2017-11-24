@@ -61,7 +61,7 @@ public class GuideStoreLogic implements GuideStore {
 		}finally {
 			session.close();
 		}
-		return false;
+		return true;
 	}
 
 	@Override
@@ -74,7 +74,7 @@ public class GuideStoreLogic implements GuideStore {
 		}finally {
 			session.close();
 		}
-		return false;
+		return true;
 	}
 
 	@Override
@@ -101,7 +101,7 @@ public class GuideStoreLogic implements GuideStore {
 		}finally {
 			session.close();
 		}
-		return false;
+		return true;
 	}
 
 }
