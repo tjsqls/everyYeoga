@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE HTML>
 
 <html>
@@ -85,24 +86,24 @@
 											<div class="panel-heading">${article.title }</div>
 											<div class="panel-body">
 												<div class="post">
-													<strong>${article.authorName }</strong> &nbsp;<span
+													<strong>${article.user.name }</strong> &nbsp;<span
 														class="text-muted">${article.regDate }</span> &nbsp;<a
-														href="${ctx }/article/modify.do?articleId=${article.articleId}&boardId=${article.boardId}"
+														href="${ctx }/article/modify.do?articleId=${article.articleId}"
 														class="glyphicon glyphicon-cog pull-right"
 														style="padding: 10px">수정</a> <a
-														href="${ctx }/article/remove.do?articleId=${article.articleId}&boardId=${article.boardId}"
+														href="${ctx }/article/remove.do?articleId=${article.articleId}"
 														class="glyphicon glyphicon-cog pull-right"
 														style="padding: 10px">삭제</a>
 												</div>
 												<br>
 
-												<p style="padding: 20px">${article.contents }</p>
-
-												<c:forEach var="comment" items="${article.comments }">
+												<p style="padding: 20px"> ${article.content } </p>
+												
+												<c:forEach items="${article.comments }" var="comment" >
 													<table class="table"
 														style="font-size: 13px; padding: 20px;">
 														<tr>
-															<td><strong>댓글 쓴 사람${comment.authorName }</strong></td>
+															<td><strong>댓글 쓴 사람${comment.user.id }</strong></td>
 															<td class="text-right">댓글 날짜${comment.regDate }
 															<span style="float:right">
 															<a
@@ -113,7 +114,7 @@
 														</tr>
 														<tr>
 															<td colspan="2">
-																<p class="txt">댓글 내용${comment.comments }</p>
+																<p class="txt">${comment.content }</p>
 															</td>
 														</tr>
 													</table>
@@ -121,7 +122,7 @@
 											</div>
 											<div class="panel-footer">
 												<div class="write_area">
-													<form action="${ctx }/comment/regist.do">
+													<form action="${pageContext.request.contextPath }/comment/regist.do" method="POST">
 														<input type="hidden" name="articleId"
 															value="${article.articleId }">
 														<textarea class="input_write_comment" name="comments"

@@ -1,8 +1,11 @@
 package everyYeoga.service.logic;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,7 +38,7 @@ public class GroupServiceLogic implements GroupService{
 		// 선빈
 		return groupStore.updateGroupStatus(travelPlanId, gatheringStatus);
 	}
-
+	
 	@Override
 	public boolean groupOut(String groupId, String userId) {
 		// 선빈
@@ -82,7 +85,11 @@ public class GroupServiceLogic implements GroupService{
 	public boolean registArticle(Article article, String groupId, List<Attachment> attachments) {
 		// 선빈
 		if(article!=null) {
-		articleStore.createArticle(groupId, article);
+			String userId = article.getUser().getId();
+			article.setUser(userStore.retrieveByUserId(userId));
+			Date today = new Date(Calendar.getInstance().getTimeInMillis());
+			article.setRegDate(today);
+			articleStore.createArticle(groupId, article);
 		for(int i=0; i<attachments.size(); i++) {
 			articleStore.createAttachment(groupId, article.getArticleId(), attachments.get(i));	
 		}
