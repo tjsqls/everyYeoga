@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import everyYeoga.domain.User;
+import everyYeoga.service.GroupService;
 import everyYeoga.service.UserService;
 
 @Controller
@@ -18,13 +19,15 @@ public class UserController {         // 인애
 
 	@Autowired
 	UserService userService;
+	@Autowired
+	GroupService groupService;
 
-	@RequestMapping("regist.do")
+	@RequestMapping(value="regist.do", method = RequestMethod.GET)
 	public String showRegistUser(User user) {
 		return "redirect:registUser";
 	}
 
-	@RequestMapping(value = "regist.do", method = RequestMethod.POST)
+	@RequestMapping(value="regist.do", method = RequestMethod.POST)
 	public String registUser(User user) {
 
 		boolean registed = userService.registUser(user);
@@ -34,7 +37,7 @@ public class UserController {         // 인애
 		return "redirect:main";
 	}
 
-	@RequestMapping("detail.do")
+	@RequestMapping(value = "detail.do", method = RequestMethod.POST)
 	public ModelAndView searchMyPage(HttpServletRequest req) {   // 마이페이지 누르면 회원정보 나옴
 		
 		HttpSession session = req.getSession();
@@ -78,31 +81,24 @@ public class UserController {         // 인애
 	@RequestMapping(value = "login.do", method = RequestMethod.POST)
 	public String login(User user, HttpServletRequest req) {
 		
-//		User loginedUser = userService.
-//		
-//		if(loginedUser != null) {
-//			HttpSession session = req.getSession();
-//			session.setAttribute("loginedUser", loginedUser);
-//		}else {
-//			HttpSession session = req.getSession();
-//			session.invalidate();
-//		}
+		User loginedUser = userService.login(user);
+		
+		if(loginedUser != null) {
+			HttpSession session = req.getSession();
+			session.setAttribute("loginedUser", loginedUser);
+		}else {
+			HttpSession session = req.getSession();
+			session.invalidate();
+		}
 		return "redirect:main";
 
 	}
 
-	@RequestMapping("logout.do")
+	@RequestMapping(value = "logout.do", method = RequestMethod.GET)
 	public String logout(HttpServletRequest req) {
 
 		HttpSession session = req.getSession();
 		session.invalidate();
 		return "redirect:login.do";
 	}
-
-	@RequestMapping("")
-	public String searchBlockedUser(User user) {
-
-		return "";
-	}
-
 }
