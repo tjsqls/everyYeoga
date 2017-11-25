@@ -13,8 +13,8 @@ public class TravelPlan {
 	private String preferGuide;
 	private String selfIntroduction;
 	private String gatheringStatus;
-	private Date startDate;
-	private Date endDate;
+	private String startDate;//Date -> String
+	private String endDate;
 	
 	private User traveler;
 	
@@ -92,19 +92,19 @@ public class TravelPlan {
 		this.gatheringStatus = gatheringStatus;
 	}
 
-	public Date getStartDate() {
+	public String getStartDate() {
 		return startDate;
 	}
 
-	public void setStartDate(Date startDate) {
+	public void setStartDate(String startDate) {
 		this.startDate = startDate;
 	}
 
-	public Date getEndDate() {
+	public String getEndDate() {
 		return endDate;
 	}
 
-	public void setEndDate(Date endDate) {
+	public void setEndDate(String endDate) {
 		this.endDate = endDate;
 	}
 
