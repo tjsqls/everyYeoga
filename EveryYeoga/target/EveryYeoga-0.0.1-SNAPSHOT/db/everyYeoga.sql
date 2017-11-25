@@ -157,21 +157,8 @@ CREATE TABLE blocked_user_tb(
 	accessBlockedDate DATE
 );
 
-DROP SEQUENCE travelPlan_seq;
-DROP SEQUENCE join_seq;
-DROP SEQUENCE group_seq;
-DROP SEQUENCE group_user_seq;
-DROP SEQUENCE article_seq;
-DROP SEQUENCE comment_seq;
-DROP SEQUENCE join_evaluation_seq;
 DROP SEQUENCE article_report_seq;
 DROP SEQUENCE comment_report_seq;
-DROP SEQUENCE evaluation_seq;
-DROP SEQUENCE report_seq;
-DROP SEQUENCE travelerHistory_seq;
-DROP SEQUENCE guideHistory_seq;
-DROP SEQUENCE blocked_user_seq;
-DROP SEQUENCE attachment_seq;
 
 CREATE SEQUENCE travelPlan_seq INCREMENT BY 1 START WITH 1;
 CREATE SEQUENCE join_seq INCREMENT BY 1 START WITH 1;
