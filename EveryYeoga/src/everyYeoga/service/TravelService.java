@@ -9,8 +9,8 @@ import everyYeoga.domain.TravelPlan;
 
 public interface TravelService {
 	public boolean registTravelPlan(TravelPlan travelPlan);
-	public boolean registJoin(Join join);
-	public List<TravelPlan> searchTravelAreaByTravelPlan(String travelArea, String speakingAbility, Date startDate);
+	public boolean registJoin(Join join, String travelPlanId);//파라미터 수정
+	public List<TravelPlan> searchTravelAreaByTravelPlan(String travelArea, String speakingAbility, String startDate);//Date타입 파라미터 String으로 변경
 	public TravelPlan searchTravelArea(String travelPlanId);
 	public boolean modifyTravelPlan(String travelPlanId);
 	public boolean removeTravelPlan(String travelPlanId);

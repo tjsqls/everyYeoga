@@ -51,18 +51,6 @@ public class GuideStoreLogic implements GuideStore {
 		return join;
 	}
 
-	@Override
-	public boolean createUserInGroup(String groupId, String userId) {
-		//진휘
-		SqlSession session = factory.getSession();
-		try {
-			GuideMapper mapper = session.getMapper(GuideMapper.class);
-			session.commit();
-		}finally {
-			session.close();
-		}
-		return true;
-	}
 
 	@Override
 	public boolean createEvaluation(Evaluation evaluation) {
