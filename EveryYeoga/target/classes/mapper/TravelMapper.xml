@@ -53,14 +53,14 @@
 
 	<select id="retrieveTravelPlanByTravelAreaAndSpeakingAbility"
 		parameterType="hashmap" resultType="TravelPlan"> SELECT travelPlanId, travelerId,
-		speakingAbility, travelArea, numberOfVisits, theme, numberOfTraveler,
+		travelArea, speakingAbility, numberOfVisits, theme, numberOfTraveler,
 		preferGuide, selfIntroduction, gatheringStatus, startDate,endDate FROM
 		travelPlan_tb WHERE travelArea = #{travelArea} AND speakingAbility =
 		#{speakingAbility} </select>
 
 	<select id="retrieveTravelPlanByTravelAreaAndSpeakingAbilityAndStartDate"
 		parameterType="map" resultType="TravelPlan"> SELECT travelPlanId, travelerId,
-		speakingAbility, travelArea, numberOfVisits, theme, numberOfTraveler,
+		 travelArea,speakingAbility, numberOfVisits, theme, numberOfTraveler,
 		preferGuide, selfIntroduction, gatheringStatus, startDate,endDate FROM
 		travelPlan_tb WHERE travelArea=#{travelArea} AND speakingAbility =
 		#{speakingAbility} AND startDate = #{startDate} </select>

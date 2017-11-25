@@ -3,50 +3,62 @@ package everyYeoga.service.logic;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import everyYeoga.domain.Evaluation;
 import everyYeoga.domain.Join;
 import everyYeoga.domain.TravelPlan;
 import everyYeoga.service.TravelService;
+import everyYeoga.store.GroupStore;
+import everyYeoga.store.GuideStore;
+import everyYeoga.store.TravelStore;
+import everyYeoga.store.UserStore;
 
 @Service
 public class TravelServiceLogic implements TravelService{
-
+	
+	@Autowired
+	private UserStore userStore;
+	@Autowired
+	private TravelStore travelStore;
+	@Autowired
+	private GroupStore groupStore;
+	@Autowired
+	private GuideStore guideStore;
+	
+	
 	@Override
 	public boolean registTravelPlan(TravelPlan travelPlan) {
-		// TODO Auto-generated method stub
-		return false;
+		//진휘
+		return travelStore.createTravelPlan(travelPlan);
 	}
 
 	@Override
-	public boolean registJoin(Join join) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean registJoin(Join join, String travelPlanId) {
+	
+		return guideStore.createJoin(join, travelPlanId);
 	}
 
 	@Override
-	public List<TravelPlan> searchTravelAreaByTravelPlan(String travelArea, String speakingAbility, Date startDate) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<TravelPlan> searchTravelAreaByTravelPlan(String travelArea, String speakingAbility, String startDate) {
+		return travelStore.retrieveTravelPlanByTravelAreaAndSpeakingAbilityAndStartDate(travelArea, speakingAbility, startDate);
 	}
 
 	@Override
 	public TravelPlan searchTravelArea(String travelPlanId) {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
 	@Override
 	public boolean modifyTravelPlan(String travelPlanId) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean removeTravelPlan(String travelPlanId) {
-		// TODO Auto-generated method stub
-		return false;
+		return travelStore.deleteTravelPlan(travelPlanId);
 	}
 
 	@Override
