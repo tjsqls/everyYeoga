@@ -50,8 +50,7 @@
 	</delete>
 
 	<insert id="createReport" parameterType="map">
-		INSERT INTO report_tb
-		(classifyReport, commentId)
+		INSERT INTO comment_report_tb(classifyReport, commentId)
 		VALUES(#{classifyReport}, #{commentId})
 	</insert> 
 </mapper>
