@@ -14,7 +14,7 @@ import everyYeoga.service.UserService;
 
 @Controller
 @RequestMapping("user")
-public class UserController {
+public class UserController {         // 인애
 
 	@Autowired
 	UserService userService;
@@ -38,41 +38,39 @@ public class UserController {
 	public ModelAndView searchMyPage(HttpServletRequest req) {   // 마이페이지 누르면 회원정보 나옴
 		
 		HttpSession session = req.getSession();
-		User user = userService.searchByUserId(session.getId());
+		User user = (User)session.getAttribute("loginedUser");
 		
 		ModelAndView modelAndView = new ModelAndView("myPage");
 		modelAndView.addObject("user", user);
 		
 		return modelAndView;
 	}
-
-	@RequestMapping("modify.do")
-	public String modifyUser(HttpServletRequest req) {   // 2017.11.25 파라미터 User user 에서 req 로 변경
-
-		HttpSession session = req.getSession();
-		User user = userService.searchByUserId(session.getId());
+	
+	@RequestMapping(value="modify.do", method=RequestMethod.GET)
+	public ModelAndView showModifyPage(HttpServletRequest req) {  // 문서에는 get 과 post 로 안나눠져있음!
 		
+		HttpSession session = req.getSession();
+		User user = (User)session.getAttribute("loginedUser");
+		
+		ModelAndView modelAndView = new ModelAndView("modifyUser");
+		modelAndView.addObject("user", user);
+		
+		return modelAndView;
+	}
+	
+	@RequestMapping(value="modify.do", method=RequestMethod.POST)
+	public String modifyUser(User user) {   
 		userService.modifyUser(user);
 		return "redirect:myPage";
 	}
 	
-	
-	@RequestMapping(value="modify.do", method=RequestMethod.POST)
-	public ModelAndView showModifyPage(User user) {  // 문서에는 get 과 post 로 안나눠져있음!
-		
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("modifyUser");
-		
-		return modelAndView;
-	}
-
 	@RequestMapping("remove.do")
 	public String removeUser(String userId) {
 		userService.removeUser(userId);
 		return "redirect:login";
 	}
 
-	@RequestMapping("login.do")
+	@RequestMapping(value = "login.do", method = RequestMethod.GET)
 	public String showLogin(User user) {
 		return "redirect:login";
 	}
