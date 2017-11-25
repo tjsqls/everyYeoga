@@ -2,6 +2,7 @@ package everyYeoga.service;
 
 import java.util.List;
 
+
 import everyYeoga.domain.Article;
 import everyYeoga.domain.Attachment;
 import everyYeoga.domain.Comment;
@@ -20,5 +21,6 @@ public interface GroupService {
 	public boolean modifyComment(Comment comment);
 	public boolean removeComment(String commentId);
 	public void registUserInGroup(String groupId, List<String> userIds); //2017.11.24 파라미터변경 String userId-> List<String> userIds 선빈
-	public void registGroup(Group group); //2017.11.24 메소드 추가 선빈
+	public void registGroup(String travelPlanId); //2017.11.24 메소드 추가 선빈 
+	public List<Article> searchAll(String groupId); //2017.11.24 메소드 추가 선빈 
 }

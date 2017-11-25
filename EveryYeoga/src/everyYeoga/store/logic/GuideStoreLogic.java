@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.jsf.FacesContextUtils;
 
 import everyYeoga.domain.Evaluation;
 import everyYeoga.domain.Join;
