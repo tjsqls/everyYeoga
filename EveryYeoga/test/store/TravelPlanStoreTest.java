@@ -23,24 +23,23 @@ public class TravelPlanStoreTest {
 		store = new TravelStoreLogic();
 	}
 
-//	@Test
-//	public void testCreateTravelPlan() {
-//		
-//		TravelPlan t = new TravelPlan();
-//		t.setTravelPlanId("3");
-//		t.setSpeakingAbility("dd");
-//		t.setPreferGuide("3");
-//		t.setTheme("23");
-//		t.setTravelArea("서울");
-//		t.setNumberOfVisits("2");
-//		t.setNumberOfTraveler("2");
-//		t.setGatheringStatus("2");
-//		t.setSelfIntroduction("asdasd");
-//		User u = new User();
-//		u.setId("123");
-//		t.setTraveler(u);
-//		store.createTravelPlan(t);
-//	} 
+	@Test
+	public void testCreateTravelPlan() {
+		
+		TravelPlan t = new TravelPlan();
+		t.setSpeakingAbility("aㅁㄴㅇㅁㄴㅇㅁㄴㅇ");
+		t.setPreferGuide("3");
+		t.setTheme("23");
+		t.setTravelArea("서울");
+		t.setNumberOfVisits("2");
+		t.setNumberOfTraveler("2");
+		t.setGatheringStatus("2");
+		t.setSelfIntroduction("asdasd");
+		User u = new User();
+		u.setId("123");
+		t.setTraveler(u);
+		store.createTravelPlan(t);
+	} 
 //
 //	@Test
 //	public void testRetrieveTravelPlanByTravelArea() {
@@ -66,12 +65,12 @@ public class TravelPlanStoreTest {
 //		System.out.println(list.get(0).getTheme());
 //	} 
 ////
-	@Test
-	public void testRetrieveTravelPlanByTravelAreaAndSpeakingAbilityAndStartDate() {
-		List<TravelPlan> list = store.retrieveTravelPlanByTravelAreaAndSpeakingAbilityAndStartDate("서울", "중간", "17/11/11");
-		assertEquals("2", list.get(0).getTravelPlanId());
-//		
-	} 
+//	@Test
+//	public void testRetrieveTravelPlanByTravelAreaAndSpeakingAbilityAndStartDate() {
+//		List<TravelPlan> list = store.retrieveTravelPlanByTravelAreaAndSpeakingAbilityAndStartDate("서울", "중간", "17/11/11");
+//		assertEquals("2", list.get(0).getTravelPlanId());
+////		
+//	} 
 //	
 ////
 //	@Test

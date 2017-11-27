@@ -87,6 +87,7 @@ public class GuideStoreLogic implements GuideStore {
 		try {
 			GuideMapper mapper = session.getMapper(GuideMapper.class);
 			mapper.createJoin(join, travelPlanId);
+			session.commit();
 		}finally {
 			session.close();
 		}

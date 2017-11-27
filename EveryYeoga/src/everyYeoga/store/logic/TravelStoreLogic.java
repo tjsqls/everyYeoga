@@ -13,22 +13,22 @@ import everyYeoga.store.mapper.TravelMapper;
 
 @Repository
 public class TravelStoreLogic implements TravelStore {
-	
+
 	private EveryYeogaSqlSessionFactory factory;
-	
-	 public TravelStoreLogic() {
-		 factory = EveryYeogaSqlSessionFactory.getInstance();
+
+	public TravelStoreLogic() {
+		factory = EveryYeogaSqlSessionFactory.getInstance();
 	}
-	
+
 
 	@Override
 	public boolean createTravelPlan(TravelPlan travelPlan) {
 		//진휘
 		SqlSession session = factory.getSession();
 		try {
-		TravelMapper mapper = session.getMapper(TravelMapper.class);
-		mapper.createTravelPlan(travelPlan);
-		session.commit();
+			TravelMapper mapper = session.getMapper(TravelMapper.class);
+			mapper.createTravelPlan(travelPlan);
+			session.commit();
 		}finally {
 			session.close();
 		}
@@ -58,7 +58,7 @@ public class TravelStoreLogic implements TravelStore {
 		try {
 			TravelMapper mapper = session.getMapper(TravelMapper.class);
 			list = mapper.retrieveTravelPlanByTravelAreaAndStartDate(travelArea, startDate);
-			
+
 		}finally {
 			session.close();
 		}
@@ -73,11 +73,11 @@ public class TravelStoreLogic implements TravelStore {
 		try {
 			TravelMapper mapper = session.getMapper(TravelMapper.class);
 			list = mapper.retrieveTravelPlanByTravelAreaAndSpeakingAbility(travelPlanMap);
-			
+
 		}finally {
 			session.close();
 		}
-		
+
 		return list;
 	}
 
@@ -90,7 +90,7 @@ public class TravelStoreLogic implements TravelStore {
 		try {
 			TravelMapper mapper = session.getMapper(TravelMapper.class);
 			list = mapper.retrieveTravelPlanByTravelAreaAndSpeakingAbilityAndStartDate(travelArea, speakingAbility, startDate);
-			
+
 		}finally {
 			session.close();
 		}
@@ -101,7 +101,7 @@ public class TravelStoreLogic implements TravelStore {
 	public TravelPlan retrieveTravelPlan(String travelPlanId) {
 		//진휘
 		SqlSession session = factory.getSession();
-		TravelPlan travelPlan = null;
+		TravelPlan travelPlan;
 		try {
 			travelPlan = new TravelPlan();
 			TravelMapper mapper = session.getMapper(TravelMapper.class);

@@ -5,7 +5,7 @@
 <mapper namespace="everyYeoga.store.mapper.GuideMapper">
 	<resultMap type="Join" id="JoinMap">
 
-		<id property="joinId" column="joinid"></id>
+		<id property="joinId" column="joinId"></id>
 		<result property="travelArea" column="travelArea"></result>
 		<result property="speakingAbility" column="speakingAbility"></result>
 		<result property="guideExperience" column="guideExperience"></result>
@@ -14,11 +14,13 @@
 		<result property="guideGrade" column="guideGrade"></result>
 		<association column="guideId" property="guide" jdbcType="VARCHAR"
 			javaType="User" select="everyYeoga.store.mapper.UserMapper.retrieveByUserId" />
+			<association column="travelerId" property="travler" jdbcType="VARCHAR"
+			javaType="User" select="everyYeoga.store.mapper.UserMapper.retrieveByUserId" />
 	</resultMap>
 
 
 
-	<select id="retrieveGuide" parameterType="String" resultType="Join">
+	<select id="retrieveGuide" parameterType="String" resultMap="JoinMap">
 		SELECT joinId, travelArea, speakingAbility, guideExperience,
 		selfIntroduction,
 		joinReason, guideId
@@ -38,9 +40,8 @@
 	</select>
 
 	<insert id="createEvaluation" parameterType="Evaluation">
-		INSERT INTO evaluation_tb(evaluationId, pros, cons, stars, travelerId,
-		guideId)
-		VALUES(#{evaluationId}, #{pros}, #{cons}, #{stars}, #{traveler.id}, #{guide.id})
+		INSERT INTO evaluation_tb(evaluationId, pros, cons, stars,guideId)
+		VALUES(evaluation_seq.NEXTVAL, #{pros}, #{cons}, #{stars}, #{guide.id})
 	</insert>
 
 	<select id="retrieveEvaluation" parameterType="String"
@@ -53,15 +54,8 @@
 
 
 	<insert id="createJoin" parameterType="map">
-		INSERT INTO join_tb(
-		joinId, guideId, 
-		travelArea, speakingAbility,
-		guideExperience,selfIntroduction, 
-		joinReason, travelPlanId)
-		VALUES(
-		#{join.joinId}, #{join.guide.id}, 
-		#{join.travelArea}, #{join.speakingAbility}, 
-		#{join.guideExperience},#{join.selfIntroduction}, 
+		INSERT INTO join_tb(joinId, guideId, speakingAbility,travelArea, guideExperience,selfIntroduction, joinReason, travelPlanId)
+		VALUES(join_seq.NEXTVAL, #{join.guide.id}, #{join.speakingAbility}, #{join.travelArea}, #{join.guideExperience},#{join.selfIntroduction}, 
 		#{join.joinReason}, #{travelPlanId}) 
 	</insert>
 

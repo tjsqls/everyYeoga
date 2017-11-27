@@ -4,6 +4,13 @@ import java.util.List;
 
 public class Join {
 
+	@Override
+	public String toString() {
+		return "Join [joinId=" + joinId + ", travelArea=" + travelArea + ", speakingAbility=" + speakingAbility
+				+ ", guideExperience=" + guideExperience + ", selfIntroduction=" + selfIntroduction + ", joinReason="
+				+ joinReason + ", guideGrade=" + guideGrade + ", guide=" + guide + ", evaluations=" + evaluations
+				+ ", guideHistories=" + guideHistories + ", reports=" + reports + "]";
+	}
 	private String joinId;
 	private String travelArea;
 	private String speakingAbility;

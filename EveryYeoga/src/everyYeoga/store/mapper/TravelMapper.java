@@ -14,6 +14,6 @@ public interface TravelMapper {
 	public List<TravelPlan> retrieveTravelPlanByTravelAreaAndSpeakingAbility(Map<String, String> travelPlanMap);
 	public List<TravelPlan> retrieveTravelPlanByTravelAreaAndSpeakingAbilityAndStartDate(@Param("travelArea")String travelArea, @Param("speakingAbility")String speakingAbility, @Param("startDate")String startDate);
 	public TravelPlan retrieveTravelPlan(String travelPlanId); 
-	public boolean updateTravelPlan(TravelPlan travelPlanId);//String -> 객체로 변경
+	public boolean updateTravelPlan(TravelPlan travelPlanId);//2017.11.2 String -> 객체로 변경 진휘
 	public boolean deleteTravelPlan(String travelPlanId);
 }
