@@ -18,7 +18,7 @@
 
 						<!-- Logo -->
             <div id="logo">
-              <h1><a href="index.html">모두의 가이드</a></h1>
+              <h1><a href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp">모두의 가이드</a></h1>
      
             </div>
 						<!-- Nav -->
@@ -149,13 +149,7 @@
                         </div>
                     </div>
                     <br />
-                    <div class="form-group">
-                        <div class="col-lg-10 col-lg-offset-2"><h3>사진 첨부</h3></label>
-                          <form action="uploadFile.do" method="post"enctype="multipart/form-data">
-  		                          <input type="file" name="file" />
-  	                      </form>
-                        </div>
-                    </div>
+
                     <br />
                     <div class="form-group">
                         <div class="col-lg-10 col-lg-offset-2">
