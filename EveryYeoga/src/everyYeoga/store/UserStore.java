@@ -11,5 +11,9 @@ public interface UserStore {
 	public boolean deleteUser(String userId);
 	public User retrieveBlockedUser(String email); //2017.11.25 메소드 추가 선빈
 	public boolean BlockedUser(User user);//2017.11.25 메소드 추가 선빈
+	public boolean updateBlockedNumber(String userId); // 2017.11.27 인애 추가   ---> 정지횟수 1증가
+	public boolean updateReportedNumber(String userId); // 2017.11.27 인애 추가  --> 신고횟수 1 증가
 
+	
+	
 }

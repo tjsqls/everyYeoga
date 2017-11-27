@@ -9,17 +9,17 @@ import everyYeoga.store.factory.EveryYeogaSqlSessionFactory;
 import everyYeoga.store.mapper.UserMapper;
 
 @Repository
-public class UserStoreLogic implements UserStore{
+public class UserStoreLogic implements UserStore {
 
 	@Override
 	public boolean createUser(User user) {
-		//선빈
+		// 선빈
 		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
 		try {
-		UserMapper mapper = session.getMapper(UserMapper.class);
-		mapper.createUser(user);
-		session.commit();
-		}finally {
+			UserMapper mapper = session.getMapper(UserMapper.class);
+			mapper.createUser(user);
+			session.commit();
+		} finally {
 			session.close();
 		}
 		return false;
@@ -27,13 +27,13 @@ public class UserStoreLogic implements UserStore{
 
 	@Override
 	public User retrieveByUserId(String userId) {
-		//선빈
+		// 선빈
 		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
 		User user = null;
 		try {
 			UserMapper mapper = session.getMapper(UserMapper.class);
 			user = mapper.retrieveByUserId(userId);
-		}finally {
+		} finally {
 			session.close();
 		}
 		return user;
@@ -41,13 +41,13 @@ public class UserStoreLogic implements UserStore{
 
 	@Override
 	public boolean updateUser(User user) {
-		//선빈
+		// 선빈
 		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
 		try {
 			UserMapper mapper = session.getMapper(UserMapper.class);
 			mapper.updateUser(user);
 			session.commit();
-		}finally {
+		} finally {
 			session.close();
 		}
 		return false;
@@ -55,13 +55,13 @@ public class UserStoreLogic implements UserStore{
 
 	@Override
 	public boolean deleteUser(String userId) {
-		//선빈
+		// 선빈
 		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
 		try {
 			UserMapper mapper = session.getMapper(UserMapper.class);
 			mapper.deleteUser(userId);
 			session.commit();
-		}finally {
+		} finally {
 			session.close();
 		}
 		return false;
@@ -75,8 +75,8 @@ public class UserStoreLogic implements UserStore{
 		try {
 			UserMapper mapper = session.getMapper(UserMapper.class);
 			user = mapper.retrieveBlockedUser(email);
-			
-		}finally {
+
+		} finally {
 			session.close();
 		}
 		return user;
@@ -90,11 +90,37 @@ public class UserStoreLogic implements UserStore{
 			UserMapper mapper = session.getMapper(UserMapper.class);
 			mapper.BlockedUser(user);
 			session.commit();
-		}finally {
+		} finally {
 			session.close();
 		}
 		return false;
 	}
 
+	@Override
+	public boolean updateBlockedNumber(String userId) {
+		// 인애
+		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
+		try {
+			UserMapper mapper = session.getMapper(UserMapper.class);
+			mapper.updateBlockedNumber(userId);
+			session.commit();
+		} finally {
+			session.close();
+		}
+		return false;
+	}
 
+	@Override
+	public boolean updateReportedNumber(String userId) {
+		// 인애
+		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
+		try {
+			UserMapper mapper = session.getMapper(UserMapper.class);
+		mapper.updateReportedNumber(userId);
+			session.commit();
+		} finally {
+			session.close();
+		}
+		return false;
+	}
 }

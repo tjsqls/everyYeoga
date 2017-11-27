@@ -10,6 +10,7 @@ import everyYeoga.service.ReportService;
 import everyYeoga.store.ArticleStore;
 import everyYeoga.store.CommentStore;
 import everyYeoga.store.ReportStore;
+import everyYeoga.store.UserStore;
 
 @Service
 public class ReportServiceLogic implements ReportService {
@@ -20,6 +21,8 @@ public class ReportServiceLogic implements ReportService {
 	private CommentStore commentStore;
 	@Autowired
 	private ArticleStore articleStore;
+	@Autowired
+	private UserStore userStore;
 
 	@Override
 	public Report searchArticleReport(String reportedArticleId) {
@@ -46,14 +49,20 @@ public class ReportServiceLogic implements ReportService {
 	}
 
 	@Override
-	public boolean registReport(Report report, String classifyId) {   // classifyId is whether articleId or commentId. 
-		// 인애	
+	public boolean registReport(Report report, String classifyId) { // classifyId is whether articleId or commentId.
+		// 인애
 		if (report.getClassifyReport().equals("comment")) {
-		commentStore.createReport(report.getClassifyReport(), classifyId);
-		
-		}else if (report.getClassifyReport().equals("article")) {
+			commentStore.createReport(report.getClassifyReport(), classifyId);
+			userStore.updateReportedNumber(report.getReportedUser().getId());
+
+			
+
+		} else if (report.getClassifyReport().equals("article")) {
 			articleStore.createReport(report.getClassifyReport(), classifyId);
-		}		
-		return reportStore.createReport(report);
+			userStore.updateReportedNumber(report.getReportedUser().getId());
+
+			return reportStore.createReport(report);
+		}
+		return true;
 	}
 }

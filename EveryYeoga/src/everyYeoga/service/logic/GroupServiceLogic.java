@@ -159,6 +159,7 @@ public class GroupServiceLogic implements GroupService{
 	}
 	
 	public Comment retreiveCommentByCommentId(String commentId) { 
+		// 인애 2017.11.27 추가
 		return commentStore.retreiveCommentByCommentId(commentId);
 	}
 
