@@ -103,10 +103,10 @@ if (confirm("정말 삭제하시겠습니까??") == true){    //확인
 												<div class="post">
 													<strong>${article.user.name }</strong> &nbsp;<span
 														class="text-muted">${article.regDate }</span> &nbsp;<a
-														href="${ctx }/article/modify.do?articleId=${article.articleId}"
+														href="${pageContext.request.contextPath }/article/modify.do?articleId=${article.articleId}"
 														class="glyphicon glyphicon-cog pull-right"
 														style="padding: 10px">수정</a> <a
-														href="${ctx }/article/remove.do?articleId=${article.articleId}"
+														href="${pageContext.request.contextPath }/article/remove.do?articleId=${article.articleId}"
 														class="glyphicon glyphicon-cog pull-right"
 														onclick="button_event();">삭제</a>
 						
@@ -124,7 +124,7 @@ if (confirm("정말 삭제하시겠습니까??") == true){    //확인
 															<span style="float:right">
 															<a
 																class="glyphicon glyphicon-trash"
-																href="${ctx }/comment/remove.do?articleId=${article.articleId}&commentId=${comment.commentId}">삭제</a>
+																href="${pageContext.request.contextPath }/comment/remove.do?articleId=${article.articleId}&commentId=${comment.commentId}">삭제</a>
 															</span>
 															</td>
 														</tr>

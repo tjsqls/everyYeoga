@@ -36,19 +36,20 @@ public class ArticleController {
 //		model.addAttribute("boardId", boardId);
 //		return "article/articleWrite";
 //	}
-//	
+	
 //	@RequestMapping(value="regist.do", method=RequestMethod.POST)
 //	public ModelAndView registArticle(Article article, HttpServletRequest req, @RequestParam("fileName")List<String> fileNames, @RequestParam("file")List<MultipartFile> files) {
 //		groupService.registArticle(article, req.getParameter("groupId"), attachments);
 //		return "redirect:/board/find.do?boardId="+article.getBoardId();
 //	}
-//	
+	
 	@RequestMapping(value="articleDetail.do", method=RequestMethod.GET)
-	public String searchArticleDetail(String articleId, Model model) {
+	public String searchArticleDetail(String articleId,  Model model) {
 		Article article = groupService.retreiveArticleByArticleId(articleId);
 		
-//		Group group = groupService.retreiveJoiningGroup(article.getUser().getId(), travelPlanId);
+//		Group group = groupService.retreiveJoiningGroup(article.getUser().getId(), groupId);
 		model.addAttribute("article", article);
+//		model.addAttribute("group", group);
 		return "article/articleDetail";
 	}
 	
