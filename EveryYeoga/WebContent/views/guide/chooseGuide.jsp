@@ -26,8 +26,10 @@
 				<!-- Nav -->
 				<nav id="nav">
 					<ul>
-					<li class="current"><a href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp">여행검색</a></li>
-					<li class="current"><a href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp">모임관리</a></li>
+						<li class="current"><a
+							href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp">여행검색</a></li>
+						<li class="current"><a
+							href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp">모임관리</a></li>
 						<li class="current"><a href="login.html">로그아웃</a></li>
 					</ul>
 				</nav>
@@ -47,16 +49,20 @@
 							<!-- Sidebar -->
 							<section>
 								<ul class="style2">
-																		<li><a
+									<li><a
 										href="${pageContext.request.contextPath}/views/user/myPage.jsp"><h3>회원정보</h3></a></li>
-								<a
-										href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp"><h3>여행 검색</h3></a></li>
-								
-									<li><a href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp"><h3>참여중인 모임</h3></a></li>
+									<a
+										href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp"><h3>여행
+											검색</h3></a>
+									</li>
+
+									<li><a
+										href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp"><h3>참여중인
+												모임</h3></a></li>
 									<li><a
 										href="${pageContext.request.contextPath}/views/travel/myTravelPlan.jsp"><h3>내가
 												올린 여행계획</h3></a></li>
-	<li><a
+									<li><a
 										href="${pageContext.request.contextPath}/views/history/myTravelerHistory.jsp"><h3>여행
 												내역</h3></a></li>
 									<li><a
@@ -93,25 +99,27 @@
 													<tr>
 														<th class="text-center">선택</th>
 														<th class="text-center">이름</th>
-														<th class="text-center">언어능력</th>
 														<th class="text-center">가이드경험</th>
-														<th class="text-center">나이</th>
+														<th class="text-center">언어능력</th>
+
 													</tr>
 												</thead>
 												<tbody>
 													<form action="/가이드선택완료" method="post">
-													<tr>
-														<td><input type="checkbox" name="guide" value="회원아이디"></td>
-														<td class="text-center">${article.articleId }</td>
-														<td><a
-															href="${ctx}/article/find.do?articleId=${article.articleId}">${article.title}
-														</a></td>
-														<td class="text-center"><fmt:formatDate
-																value="${article.regDate }" pattern="yyyy-MM-dd" /></td>
-														<td class="text-center">${article.authorName }</td>
+														<tr>
+															<td><input type="checkbox" name="guide"
+																value="회원아이디"></td>
+															<td class="text-center">${article.articleId }</td>
+															<td><a
+																href="${ctx}/article/find.do?articleId=${article.articleId}">${article.title}
+															</a></td>
+															<td class="text-center"><fmt:formatDate
+																	value="${article.regDate }" pattern="yyyy-MM-dd" /></td>
+															<td class="text-center">${article.authorName }</td>
 
-													</tr>
-													<span style="float:right"><input type="submit" value="선택완료"></span>
+														</tr>
+														<span style="float: right"><input type="submit"
+															value="선택완료"></span>
 													</form>
 
 													<!-- 						

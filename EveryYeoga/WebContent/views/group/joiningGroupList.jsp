@@ -91,8 +91,8 @@
 								<th class="text-center">번호</th>
 								<th class="text-center">모임명</th>
 								<th class="text-center">테마</th>
+								<th class="text-center">모집상태</th>
 								<th class="text-center">인원</th>
-								<th class="text-center">날짜</th>
 							</tr>
 						</thead>
 						<tbody>

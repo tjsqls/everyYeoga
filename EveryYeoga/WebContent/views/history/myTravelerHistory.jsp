@@ -69,7 +69,7 @@
 							<div class="8u 12u$(medium) important(medium)">
 								<div id="content">
                     <div class="col-sm-9 col-lg-9">
-                      <div><h3>여행자 내역</h3></div>
+                      <div><h3>여행 내역</h3></div>
 
     <div class="table-responsive">
         <div class="well">
