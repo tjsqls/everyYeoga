@@ -31,9 +31,8 @@
 
 	<select id="retrieveJoinDetail" parameterType="String"
 		resultType="Join">
-		SELECT joinId, travelArea, speakingAbility, guideExperience,
-		selfIntroduction,
-		joinReason, guideId
+		SELECT joinId, guideId, speakingAbility, travelArea,  guideExperience,
+		selfIntroduction, joinReason, travelPlanId
 		FROM join_tb
 		WHERE
 		joinId = #{joinId}

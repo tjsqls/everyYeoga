@@ -182,7 +182,6 @@ public class TravelServiceLogic implements TravelService {
 		
 		
 		
-		
 		}
 	@Override //test 완료
 	public List<Join> searchGuide(String travelPlanId) {// 여행계획에 참여신청한 가이드 목록
@@ -223,7 +222,6 @@ public class TravelServiceLogic implements TravelService {
 	public Join searchJoinDetail(String joinId) {
 		// 진휘
 		Join j = guideStore.retrieveJoinDetail(joinId);
-
 		j.setGuide(userStore.retrieveByUserId(j.getGuide().getId()));
 
 		List<GuideHistory> cGs = historyStore.retrieveCheckedGuideHistory(j.getGuide().getId(), "checked");

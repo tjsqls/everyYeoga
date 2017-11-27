@@ -31,28 +31,29 @@ public class GuideStoreTest {
 //		assertEquals("aa", list.get(0).getJoinReason());
 //	}완
 //
-//	@Test
-//	public void testRetrieveJoinDetail() {
-//		Join j = store.retrieveJoinDetail("1");
-//		assertEquals("dd", j.getSpeakingAbility());
-//	}
-
-
 	@Test
-	public void testCreateEvaluation() {
-		User u = new User();
-		u.setId("2");
-		User g = new User();
-		g.setId("2");
-		Evaluation e = new Evaluation();
-		e.setEvaluationId("123");
-		e.setPros("dd");
-		e.setCons("dd");
-		e.setStars(3);
-		e.setGuide(g);
-		store.createEvaluation(e);
-	
+	public void testRetrieveJoinDetail() {
+		Join j = store.retrieveJoinDetail("1");
+		assertEquals("dd", j.getSpeakingAbility());
+		System.out.println(j.toString());
 	}
+
+
+//	@Test
+//	public void testCreateEvaluation() {
+//		User u = new User();
+//		u.setId("2");
+//		User g = new User();
+//		g.setId("2");
+//		Evaluation e = new Evaluation();
+//		e.setEvaluationId("123");
+//		e.setPros("dd");
+//		e.setCons("dd");
+//		e.setStars(3);
+//		e.setGuide(g);
+//		store.createEvaluation(e);
+//	
+//	}
 
 //	@Test
 //	public void testRetrieveEvaluation() {
