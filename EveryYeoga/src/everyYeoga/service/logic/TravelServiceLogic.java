@@ -174,7 +174,7 @@ public class TravelServiceLogic implements TravelService {
 //		System.out.println(list.size());
 		
 		System.out.println("aaaaaaaaaaaaa");
-		Join j = service.searchJoinDetail("2");
+		Join j = service.searchJoinDetail("1");
 		System.out.println(j.getGuideExperience());
 		
 		
