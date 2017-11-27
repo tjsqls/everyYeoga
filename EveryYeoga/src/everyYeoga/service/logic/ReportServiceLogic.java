@@ -16,7 +16,9 @@ public class ReportServiceLogic implements ReportService {
 
 	@Autowired
 	private ReportStore reportStore;
+	@Autowired
 	private CommentStore commentStore;
+	@Autowired
 	private ArticleStore articleStore;
 
 	@Override
@@ -44,7 +46,7 @@ public class ReportServiceLogic implements ReportService {
 	}
 
 	@Override
-	public boolean registReport(Report report, String classifyId) {   // classifyId is wether articleId or commentId. 
+	public boolean registReport(Report report, String classifyId) {   // classifyId is whether articleId or commentId. 
 		// 인애	
 		if (report.getClassifyReport().equals("comment")) {
 		commentStore.createReport(report.getClassifyReport(), classifyId);

@@ -88,4 +88,10 @@ public class CommentStoreLogicTest {
 //		
 //		store.createReport(report.getClassifyReport(), comment.getCommentId());
 	}
+	
+	@Test
+	public void testRetrieveCommentByCommentId() {
+//		Comment comment = store.retreiveCommentByCommentId("7");
+//		assertEquals(comment.getContent(), "new");
+	}
 }

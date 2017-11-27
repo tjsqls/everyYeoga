@@ -21,4 +21,5 @@ public interface GroupService {
 	public boolean removeComment(String commentId);
 	public void registUserInGroup(String groupId, List<String> userIds); //2017.11.24 파라미터변경 String userId-> List<String> userIds 선빈
 	public void registGroup(Group group); //2017.11.24 메소드 추가 선빈
+	public Comment retreiveCommentByCommentId(String commentId); // 2017.11.27 인애 추가
 }

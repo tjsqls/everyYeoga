@@ -1,30 +1,28 @@
 package everyYeoga.service.logic;
 
-import java.util.Calendar;
-import java.util.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import everyYeoga.domain.User;
 import everyYeoga.service.UserService;
 import everyYeoga.store.UserStore;
-import everyYeoga.store.logic.UserStoreLogic;
+
 
 @Service
 public class UserServiceLogic implements UserService {
 	
 	@Autowired
-	private UserStore userStore;
+	private UserStore userStore;	
 
 	@Override
 	public boolean registUser(User user) {
 		// 인애
-//		User userCheck = userStore.retrieveBlockedUser(user.getEmail());   /* 가입이 막힌 user 인지 이메일 확인 후 가입 */
-//		if (userCheck == null) {
-//			return userStore.createUser(user);
-//		}
-		return false;
+		User userCheck = userStore.retrieveBlockedUser(user.getEmail());   /* 가입이 막힌 user 인지 이메일 확인 후 가입 */
+		if (userCheck == null) {
+			return userStore.createUser(user);
+		}else{
+			throw new RuntimeException("가입 하실수 없습니다.");
+		}
 	}
 	
 	public User login(User user) {
@@ -53,6 +51,7 @@ public class UserServiceLogic implements UserService {
 		// 인애
 		return userStore.deleteUser(userId);
 	}
+
 	private boolean validate(User user) {
 		//선빈
 		if (user == null) {
@@ -65,6 +64,4 @@ public class UserServiceLogic implements UserService {
 		return true;
 	}
 
-
-//searchBlockedUser
 }

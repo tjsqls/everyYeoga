@@ -5,9 +5,11 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import everyYeoga.domain.Article;
 import everyYeoga.domain.Comment;
 import everyYeoga.store.CommentStore;
 import everyYeoga.store.factory.EveryYeogaSqlSessionFactory;
+import everyYeoga.store.mapper.ArticleMapper;
 import everyYeoga.store.mapper.CommentMapper;
 
 @Repository
@@ -109,5 +111,19 @@ public class CommentStoreLogic implements CommentStore {
 			session.close();
 		}
 		return false;
+	}
+	
+	public Comment retreiveCommentByCommentId(String commentId) { 
+		// 2017.11.27 인애 추가 for 신고된 특정 comment 확인
+		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
+		Comment comment = null;
+		try {
+			CommentMapper mapper = session.getMapper(CommentMapper.class);
+			comment = mapper.retreiveCommentByCommentId(commentId);
+			session.commit();
+		}finally {
+			session.close();
+		}
+		return comment;
 	}
 }

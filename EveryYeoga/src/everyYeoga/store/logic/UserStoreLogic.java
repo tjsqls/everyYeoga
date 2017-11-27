@@ -1,7 +1,5 @@
 package everyYeoga.store.logic;
 
-import java.util.Date;
-
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
