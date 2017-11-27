@@ -9,6 +9,21 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet" href="../../assets/css/main.css" />
+
+<script type="text/javascript">
+
+function button_event(){
+if (confirm("정말 삭제하시겠습니까??") == true){    //확인
+    document.form.submit();
+}else{   //취소
+    return ;
+}
+}
+
+</script>
+ 
+
+
 </head>
 <body class="left-sidebar">
 	<div id="page-wrapper">
@@ -93,7 +108,8 @@
 														style="padding: 10px">수정</a> <a
 														href="${ctx }/article/remove.do?articleId=${article.articleId}"
 														class="glyphicon glyphicon-cog pull-right"
-														style="padding: 10px">삭제</a>
+														onclick="button_event();">삭제</a>
+						
 												</div>
 												<br>
 

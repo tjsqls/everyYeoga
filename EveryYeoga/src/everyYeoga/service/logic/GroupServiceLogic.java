@@ -5,7 +5,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -149,13 +148,27 @@ public class GroupServiceLogic implements GroupService{
 	}
 
 	@Override
-	public void registGroup(Group group) {
+	public void registGroup(String travelPlanId) {
 		// 선빈
+		Group group = new Group();
+		Date today = new Date(Calendar.getInstance().getTimeInMillis());
+		group.setRegDate(today);
+		group.setTravelPlanId(travelPlanId);
 		groupStore.createGroup(group);
+		
 	}
 	
 	public Comment retreiveCommentByCommentId(String commentId) { 
 		return commentStore.retreiveCommentByCommentId(commentId);
 	}
+
+	@Override
+	public List<Article> searchAll(String groupId) {
+		// 선빈
+		List<Article> list = articleStore.retreiveAll(groupId);
+		return list;
+	}
+
+
 
 }

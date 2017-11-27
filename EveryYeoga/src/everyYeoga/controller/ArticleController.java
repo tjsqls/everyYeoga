@@ -42,14 +42,14 @@ public class ArticleController {
 //		groupService.registArticle(article, req.getParameter("groupId"), attachments);
 //		return "redirect:/board/find.do?boardId="+article.getBoardId();
 //	}
-	
-//	@RequestMapping(value="articleDetail.do", method=RequestMethod.GET)
-//	public String searchArticleDetail(String articleId, Model model) {
-//		Article article = groupService.retreiveArticleByArticleId(articleId);
-//		
+//	
+	@RequestMapping(value="articleDetail.do", method=RequestMethod.GET)
+	public String searchArticleDetail(String articleId, Model model) {
+		Article article = groupService.retreiveArticleByArticleId(articleId);
+		
 //		Group group = groupService.retreiveJoiningGroup(article.getUser().getId(), travelPlanId);
-//		model.addAttribute("article", article);
-//		return "article/articleDetail";
-//	}
+		model.addAttribute("article", article);
+		return "article/articleDetail";
+	}
 	
 }

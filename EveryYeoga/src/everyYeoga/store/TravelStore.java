@@ -1,12 +1,10 @@
 package everyYeoga.store;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 
-import everyYeoga.domain.Join;
 import everyYeoga.domain.TravelPlan;
 
 public interface TravelStore {
