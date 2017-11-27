@@ -23,7 +23,7 @@ import everyYeoga.service.UserService;
 
 
 @Controller
-@RequestMapping("report") // 2017.11.25 인애 registReport 부분 수정중
+@RequestMapping("report") 
 public class ReportController {
 
 	@Autowired
