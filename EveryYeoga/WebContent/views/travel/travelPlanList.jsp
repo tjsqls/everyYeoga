@@ -87,16 +87,12 @@
 										<div class="row">
 											<div class="col-sm-12 col-lg-12">
 												<form>
-													<span style="float: right"><button type="input">검색</button></span>
-													<span style="float: right"><input
-														placeholder="yyyy/mm/dd" /></span> <span style="float: right"><input
+													<span style="float: right"><button type="input"style="padding: 10px">검색</button></span>
+													<span style="float: right"style="padding: 10px"><input
+														placeholder="yyyy/mm/dd" /></span> <span style="float: right"style="padding: 10px"><input
 														placeholder="여행계획" /></span>
-
 												</form>
 
-
-												<span style="float: right"> <!--<button >여행 등록하기</button>  -->
-												</span>
 											</div>
 										</div>
 

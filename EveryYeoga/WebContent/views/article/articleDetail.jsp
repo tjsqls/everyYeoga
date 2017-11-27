@@ -32,7 +32,7 @@
 				<!-- Logo -->
 				<div id="logo">
 					<h1>
-						<a href="index.html">모두의 가이드</a> 
+						<a href="index.html">모두의 가이드</a>
 
 					</h1>
 
@@ -61,16 +61,20 @@
 							<section>
 
 								<ul class="style2">
-														<li><a
+									<li><a
 										href="${pageContext.request.contextPath}/views/user/myPage.jsp"><h3>회원정보</h3></a></li>
-								<a
-										href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp"><h3>여행 검색</h3></a></li>
-								
-									<li><a href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp"><h3>참여중인 모임</h3></a></li>
+									<a
+										href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp"><h3>여행
+											검색</h3></a>
+									</li>
+
+									<li><a
+										href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp"><h3>참여중인
+												모임</h3></a></li>
 									<li><a
 										href="${pageContext.request.contextPath}/views/travel/myTravelPlan.jsp"><h3>내가
 												올린 여행계획</h3></a></li>
-	<li><a
+									<li><a
 										href="${pageContext.request.contextPath}/views/history/myTravelerHistory.jsp"><h3>여행
 												내역</h3></a></li>
 									<li><a
@@ -100,19 +104,19 @@
 											<div class="panel-heading">${article.title }</div>
 											<div class="panel-body">
 												<div class="post">
-													<strong>${article.user.name }</strong> &nbsp;<span
-														class="text-muted">${article.regDate }</span> &nbsp;<a
-														href="${ctx }/article/modify.do?articleId=${article.articleId}"
-														class="glyphicon glyphicon-cog pull-right"
-														style="padding: 10px">수정</a> <a
+													<strong>작성자${article.user.name }</strong> &nbsp;<span
+														class="text-muted">${article.regDate }</span> &nbsp; <a
 														href="${ctx }/article/remove.do?articleId=${article.articleId}"
 														class="glyphicon glyphicon-cog pull-right"
-														onclick="button_event();">삭제</a>
+														onclick="button_event();" style="padding: 10px">삭제</a> <a
+														href="${ctx }/article/modify.do?articleId=${article.articleId}"
+														class="glyphicon glyphicon-cog pull-right"
+														style="padding: 10px">수정</a>
 
-												</div>
+														
 												<br>
 
-												<p style="padding: 20px">${article.content }</p>
+												<p style="padding: 20px">내용${article.content }</p>
 
 												<c:forEach items="${article.comments }" var="comment">
 													<table class="table"
