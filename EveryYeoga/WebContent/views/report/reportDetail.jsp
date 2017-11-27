@@ -43,9 +43,9 @@
 										<section>
 											<h2>관리자 페이지</h2>
 										<ul class="style2">
-												<li><a href="#"><h3>여행 계획 목록</h3></a></li>
-										<li><a href="#"><h3>신고 목록</h3></a></li>
-								
+															<li><a href="${pageContext.request.contextPath}/views/user/adminPage.jsp"><h3>신고내역 관리</h3></a></li>
+										<li><a href="${pageContext.request.contextPath}/views/travel/manageTravelPlan.jsp"><h3>여행계획 관리</h3></a></li>
+				
 											</ul>
 																	</footer>
 										</section>
