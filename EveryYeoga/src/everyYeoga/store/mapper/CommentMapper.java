@@ -14,4 +14,5 @@ public interface CommentMapper {
 	public void deleteCommentByGroupId(String groupId);
 	public List<Comment> retrieveComment(String articleId);
 	public boolean createReport(@Param("classifyReport") String classifyReport, @Param("commentId") String commentId);
+	public Comment retreiveCommentByCommentId(String commentId);
 }

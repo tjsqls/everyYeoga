@@ -153,5 +153,9 @@ public class GroupServiceLogic implements GroupService{
 		// 선빈
 		groupStore.createGroup(group);
 	}
+	
+	public Comment retreiveCommentByCommentId(String commentId) { 
+		return commentStore.retreiveCommentByCommentId(commentId);
+	}
 
 }

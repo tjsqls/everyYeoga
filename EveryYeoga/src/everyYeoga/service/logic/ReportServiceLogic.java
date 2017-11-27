@@ -1,11 +1,7 @@
 package everyYeoga.service.logic;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-
 import java.util.List;
 
-import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,14 +20,6 @@ public class ReportServiceLogic implements ReportService {
 	private CommentStore commentStore;
 	@Autowired
 	private ArticleStore articleStore;
-	
-	@Test
-	public void testSearchReport() {
-		List<Report> list = reportStore.retrieveReport("3");
-		assertEquals("1", list.size());
-				
-
-	}
 
 	@Override
 	public Report searchArticleReport(String reportedArticleId) {
@@ -58,7 +46,7 @@ public class ReportServiceLogic implements ReportService {
 	}
 
 	@Override
-	public boolean registReport(Report report, String classifyId) {   // classifyId is wether articleId or commentId. 
+	public boolean registReport(Report report, String classifyId) {   // classifyId is whether articleId or commentId. 
 		// 인애	
 		if (report.getClassifyReport().equals("comment")) {
 		commentStore.createReport(report.getClassifyReport(), classifyId);

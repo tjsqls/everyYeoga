@@ -12,7 +12,7 @@ import everyYeoga.store.UserStore;
 public class UserServiceLogic implements UserService {
 	
 	@Autowired
-	private UserStore userStore;
+	private UserStore userStore;	
 
 	@Override
 	public boolean registUser(User user) {
@@ -21,7 +21,7 @@ public class UserServiceLogic implements UserService {
 		if (userCheck == null) {
 			return userStore.createUser(user);
 		}else{
-			throw new RuntimeException("가입이 거절 되었습니다.");
+			throw new RuntimeException("가입 하실수 없습니다.");
 		}
 	}
 	

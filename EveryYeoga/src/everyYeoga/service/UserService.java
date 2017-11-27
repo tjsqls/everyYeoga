@@ -1,7 +1,5 @@
 package everyYeoga.service;
 
-import java.util.Date;
-
 import everyYeoga.domain.User;
 
 public interface UserService {
