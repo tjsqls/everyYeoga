@@ -8,20 +8,18 @@
 <title>Verti by HTML5 UP</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="stylesheet" href="../../assets/css/main.css" />
+<link rel="stylesheet" type="text/css" href="main.css" />
 
 <script type="text/javascript">
-
-function button_event(){
-if (confirm("정말 삭제하시겠습니까??") == true){    //확인
-    document.form.submit();
-}else{   //취소
-    return ;
-}
-}
-
+	function button_event() {
+		if (confirm("정말 삭제하시겠습니까??") == true) { //확인
+			document.form.submit();
+		} else { //취소
+			return;
+		}
+	}
 </script>
- 
+
 
 
 </head>
@@ -35,15 +33,18 @@ if (confirm("정말 삭제하시겠습니까??") == true){    //확인
 				<!-- Logo -->
 				<div id="logo">
 					<h1>
-						<a href="index.html">모두의 가이드</a>
+						<a href="index.html">모두의 가이드</a> 
+
 					</h1>
 
 				</div>
 				<!-- Nav -->
 				<nav id="nav">
 					<ul>
-					<li class="current"><a href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp">여행검색</a></li>
-					<li class="current"><a href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp">모임관리</a></li>
+						<li class="current"><a
+							href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp">여행검색</a></li>
+						<li class="current"><a
+							href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp">모임관리</a></li>
 						<li class="current"><a href="login.html">로그아웃</a></li>
 					</ul>
 				</nav>
@@ -56,10 +57,10 @@ if (confirm("정말 삭제하시겠습니까??") == true){    //확인
 				<div class="row 50%">
 					<div class="4u 12u$(medium)">
 						<div id="sidebar">
-<!-- ㅁㄴㅇ -->
+							<!-- ㅁㄴㅇ -->
 							<!-- Sidebar -->
 							<section>
-								
+
 								<ul class="style2">
 									<li><a
 										href="${pageContext.request.contextPath}/views/user/myPage.jsp"><h3>회원정보</h3></a></li>
@@ -69,12 +70,14 @@ if (confirm("정말 삭제하시겠습니까??") == true){    //확인
 									<li><a
 										href="${pageContext.request.contextPath}/views/history/myGuideHistory.jsp"><h3>가이드
 												내역</h3></a></li>
-									<li><a href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp"><h3>참여중인 모임</h3></a></li>
+									<li><a
+										href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp"><h3>참여중인
+												모임</h3></a></li>
 									<li><a
 										href="${pageContext.request.contextPath}/views/travel/myTravelPlan.jsp"><h3>내가
 												올린 여행계획</h3></a></li>
 								</ul>
-		
+
 								</footer>
 							</section>
 
@@ -89,10 +92,6 @@ if (confirm("정말 삭제하시겠습니까??") == true){    //확인
 
 								<div class="table-responsive">
 									<div class="well">
-
-
-
-
 										<div>
 											<h3>${boardDetail.name }</h3>
 										</div>
@@ -103,19 +102,19 @@ if (confirm("정말 삭제하시겠습니까??") == true){    //확인
 												<div class="post">
 													<strong>${article.user.name }</strong> &nbsp;<span
 														class="text-muted">${article.regDate }</span> &nbsp;<a
-														href="${pageContext.request.contextPath }/article/modify.do?articleId=${article.articleId}"
+														href="${ctx }/article/modify.do?articleId=${article.articleId}"
 														class="glyphicon glyphicon-cog pull-right"
 														style="padding: 10px">수정</a> <a
-														href="${pageContext.request.contextPath }/article/remove.do?articleId=${article.articleId}"
+														href="${ctx }/article/remove.do?articleId=${article.articleId}"
 														class="glyphicon glyphicon-cog pull-right"
 														onclick="button_event();">삭제</a>
-						
+
 												</div>
 												<br>
 
-												<p style="padding: 20px"> ${article.content } </p>
-												
-												<c:forEach items="${article.comments }" var="comment" >
+												<p style="padding: 20px">${article.content }</p>
+
+												<c:forEach items="${article.comments }" var="comment">
 													<table class="table"
 														style="font-size: 13px; padding: 20px;">
 														<tr>
@@ -138,32 +137,21 @@ if (confirm("정말 삭제하시겠습니까??") == true){    //확인
 											</div>
 											<div class="panel-footer">
 												<div class="write_area">
-													<form action="${pageContext.request.contextPath }/comment/regist.do" method="POST">
+													<form
+														action="${pageContext.request.contextPath }/comment/regist.do"
+														method="POST">
 														<input type="hidden" name="articleId"
 															value="${article.articleId }">
 														<textarea class="input_write_comment" name="comments"
 															placeholder="댓글쓰기"></textarea>
-														<span style="float:right">
-														<input type="submit" class="comment_submit" value="댓글 등록">
-													</span>
+														<span style="float: right"> <input type="submit"
+															class="comment_submit" value="댓글 등록">
+														</span>
 													</form>
 												</div>
 											</div>
 
-
-
-
 										</div>
-
-
-
-
-
-
-
-
-
-
 									</div>
 								</div>
 							</div>
@@ -171,40 +159,38 @@ if (confirm("정말 삭제하시겠습니까??") == true){    //확인
 					</div>
 				</div>
 			</div>
-		</div>
 
-		<!-- Footer -->
-		<div id="footer-wrapper">
-			<footer id="footer" class="container">
-				<div class="row">
-					<div class="3u 6u(medium) 12u$(small)"></div>
-					<div class="3u 6u$(medium) 12u$(small)"></div>
-					<div class="3u 6u(medium) 12u$(small)"></div>
-					<div class="3u 6u$(medium) 12u$(small)"></div>
-				</div>
-				<div class="row">
-					<div class="12u">
-						<div id="copyright">
-							<ul class="menu">
-								<li>&copy; Untitled. All rights reserved</li>
-								<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-							</ul>
+			<!-- Footer -->
+			<div id="footer-wrapper">
+				<footer id="footer" class="container">
+					<div class="row">
+						<div class="3u 6u(medium) 12u$(small)"></div>
+						<div class="3u 6u$(medium) 12u$(small)"></div>
+						<div class="3u 6u(medium) 12u$(small)"></div>
+						<div class="3u 6u$(medium) 12u$(small)"></div>
+					</div>
+					<div class="row">
+						<div class="12u">
+							<div id="copyright">
+								<ul class="menu">
+									<li>&copy; Untitled. All rights reserved</li>
+									<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+								</ul>
+							</div>
 						</div>
 					</div>
-				</div>
-			</footer>
+				</footer>
+			</div>
+
 		</div>
 
-	</div>
+		<!-- Scripts -->
 
-	<!-- Scripts -->
-
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/jquery.dropotron.min.js"></script>
-	<script src="assets/js/skel.min.js"></script>
-	<script src="assets/js/util.js"></script>
-	<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-	<script src="assets/js/main.js"></script>
-
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.dropotron.min.js"></script>
+		<script src="assets/js/skel.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+		<script src="assets/js/main.js"></script>
 </body>
 </html>
