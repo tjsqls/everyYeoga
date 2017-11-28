@@ -18,7 +18,7 @@
 
 						<!-- Logo -->
             <div id="logo">
-              <h1><a href="index.html">모두의 가이드</a></h1>
+              <h1><a href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp">모두의 가이드</a></h1>
      
             </div>
 						<!-- Nav -->
@@ -42,18 +42,21 @@
 									<!-- Sidebar -->
 										<section>
 											<ul class="style2">
-																			<li><a
+																												<li><a
 										href="${pageContext.request.contextPath}/views/user/myPage.jsp"><h3>회원정보</h3></a></li>
+								<a
+										href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp"><h3>여행 검색</h3></a></li>
+								
+									<li><a href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp"><h3>참여중인 모임</h3></a></li>
 									<li><a
+										href="${pageContext.request.contextPath}/views/travel/myTravelPlan.jsp"><h3>내가
+												올린 여행계획</h3></a></li>
+	<li><a
 										href="${pageContext.request.contextPath}/views/history/myTravelerHistory.jsp"><h3>여행
 												내역</h3></a></li>
 									<li><a
 										href="${pageContext.request.contextPath}/views/history/myGuideHistory.jsp"><h3>가이드
-												내역</h3></a></li>
-									<li><a href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp"><h3>참여중인 모임</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/views/travel/myTravelPlan.jsp"><h3>내가
-												올린 여행계획</h3></a></li>				</ul>
+												내역</h3></a></li></ul>
 											</footer>
 										</section>
 
@@ -66,11 +69,11 @@
 
     <div class="table-responsive">
         <div class="well">
-            <form action="${pageContext.request.contextPath}/article/regist.do"
+            <form action="${pageContext.request.contextPath}/travel/regist.do"
                   class="bs-example form-horizontal" method="POST">
                 <fieldset>
                     <div class="form-group">
-                      <input type="hidden" name="boardId" value="${boardDetail.boardId}">
+                      <input type="hidden" name="${travelPlan.speakingAbility }">
                         <label class="col-lg-2 control-label"><h3>언어 구사 능력</h3></label>
 
                         <div class="col-lg-10">
@@ -79,7 +82,7 @@
                     </div>
 
                     <div class="form-group">
-                      <input type="hidden" name="boardId" value="${boardDetail.boardId}">
+                      <input type="hidden" name="${travelPlan.travelArea }">
                         <label class="col-lg-2 control-label"><h3>여행 지역</h3></label>
 
                         <div class="col-lg-10">
@@ -88,7 +91,7 @@
                     </div>
                     
                                         <div class="form-group">
-                      <input type="hidden" name="boardId" value="${boardDetail.boardId}">
+                       <input type="hidden" name="${travelPlan.numberOfVisits }">
                         <label class="col-lg-2 control-label"><h3>여행 지역 방문 횟수</h3></label>
 
                         <div class="col-lg-10">
@@ -98,7 +101,7 @@
                     
                     
                                         <div class="form-group">
-                      <input type="hidden" name="boardId" value="${boardDetail.boardId}">
+                       <input type="hidden" name="${travelPlan.startDate }">
                         <label class="col-lg-2 control-label"><h3>여행 일정</h3></label>
 
                         <div class="col-lg-10">
@@ -108,7 +111,7 @@
 
                     
                                         <div class="form-group">
-                      <input type="hidden" name="boardId" value="${boardDetail.boardId}">
+                       <input type="hidden" name="${travelPlan.theme }">
                         <label class="col-lg-2 control-label"><h3>여행 테마</h3></label>
 
                         <div class="col-lg-10">
@@ -118,7 +121,7 @@
                     
                     
                                         <div class="form-group">
-                      <input type="hidden" name="boardId" value="${boardDetail.boardId}">
+                       <input type="hidden" name="${travelPlan.numberOfTraveler }">
                         <label class="col-lg-2 control-label"><h3>여행 인원</h3></label>
 
                         <div class="col-lg-10">
@@ -129,7 +132,7 @@
                     
                     
                                         <div class="form-group">
-                      <input type="hidden" name="boardId" value="${boardDetail.boardId}">
+                      <input type="hidden" name="${travelPlan.preferGuide }">
                         <label class="col-lg-2 control-label"><h3>선호 가이드</h3></label>
 
                         <div class="col-lg-10">
@@ -139,6 +142,7 @@
                     
                     
                     <div class="form-group">
+                      <input type="hidden" name="${travelPlan.selfIntroduction }">
                         <label class="col-lg-2 control-label"><h3>자기 소개</h3></label>
 
                         <div class="col-lg-10">
@@ -146,13 +150,7 @@
                         </div>
                     </div>
                     <br />
-                    <div class="form-group">
-                        <div class="col-lg-10 col-lg-offset-2"><h3>사진 첨부</h3></label>
-                          <form action="uploadFile.do" method="post"enctype="multipart/form-data">
-  		                          <input type="file" name="file" />
-  	                      </form>
-                        </div>
-                    </div>
+
                     <br />
                     <div class="form-group">
                         <div class="col-lg-10 col-lg-offset-2">

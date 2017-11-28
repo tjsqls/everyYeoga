@@ -16,7 +16,7 @@ import everyYeoga.store.logic.ReportStoreLogic;
 
 public class ReportStoreLogicTest {
 
-	ReportStore store;
+	private ReportStore store;
 	
 	@Before
 	public void setUp() {

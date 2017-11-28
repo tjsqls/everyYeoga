@@ -5,9 +5,103 @@
 <html>
 <head>
 <title>Verti by HTML5 UP</title>
-
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet" href="../../assets/css/main.css" />
+<style>
+.star-input>.input, .star-input>.input>label:hover, .star-input>.input>input:focus+label,
+	.star-input>.input>input:checked+label {
+	display: inline-block;
+	vertical-align: middle;
+	background: url('${pageContext.request.contextPath}/img/grade_img.png')
+		no-repeat;
+}
+
+.star-input {
+	display: inline-block;
+	white-space: nowrap;
+	width: 225px;
+	height: 40px;
+	padding: 25px;
+	line-height: 30px;
+}
+
+.star-input>.input {
+	display: inline-block;
+	width: 150px;
+	background-size: 150px;
+	height: 28px;
+	white-space: nowrap;
+	overflow: hidden;
+	position: relative;
+}
+
+.star-input>.input>input {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	opacity: 0;
+}
+
+star-input>.input.focus {
+	outline: 1px dotted #ddd;
+}
+
+.star-input>.input>label {
+	width: 30px;
+	height: 0;
+	padding: 28px 0 0 0;
+	overflow: hidden;
+	float: left;
+	cursor: pointer;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.star-input>.input>label:hover, .star-input>.input>input:focus+label,
+	.star-input>.input>input:checked+label {
+	background-size: 150px;
+	background-position: 0 bottom;
+}
+
+.star-input>.input>label:hover ~label {
+	background-image: none;
+}
+
+.star-input>.input>label[for="p1"] {
+	width: 30px;
+	z-index: 5;
+}
+
+.star-input>.input>label[for="p2"] {
+	width: 60px;
+	z-index: 4;
+}
+
+.star-input>.input>label[for="p3"] {
+	width: 90px;
+	z-index: 3;
+}
+
+.star-input>.input>label[for="p4"] {
+	width: 120px;
+	z-index: 2;
+}
+
+.star-input>.input>label[for="p5"] {
+	width: 150px;
+	z-index: 1;
+}
+
+.star-input>output {
+	display: inline-block;
+	width: 60px;
+	font-size: 18px;
+	text-align: right;
+	vertical-align: middle;
+}
+</style>
 </head>
 <body class="left-sidebar">
 	<div id="page-wrapper">
@@ -19,15 +113,19 @@
 				<!-- Logo -->
 				<div id="logo">
 					<h1>
-						<a href="index.html">모두의 가이드</a>
+						<a
+							href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp">모두의
+							가이드</a>
 					</h1>
 
 				</div>
 				<!-- Nav -->
 				<nav id="nav">
 					<ul>
-					<li class="current"><a href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp">여행검색</a></li>
-					<li class="current"><a href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp">모임관리</a></li>
+						<li class="current"><a
+							href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp">여행검색</a></li>
+						<li class="current"><a
+							href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp">모임관리</a></li>
 						<li class="current"><a href="login.html">로그아웃</a></li>
 					</ul>
 				</nav>
@@ -43,20 +141,27 @@
 
 							<!-- Sidebar -->
 							<section>
-								
+
 								<ul class="style2">
-																		<li><a
+									<li><a
 										href="${pageContext.request.contextPath}/views/user/myPage.jsp"><h3>회원정보</h3></a></li>
+									<a
+										href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp"><h3>여행
+											검색</h3></a>
+									</li>
+
+									<li><a
+										href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp"><h3>참여중인
+												모임</h3></a></li>
+									<li><a
+										href="${pageContext.request.contextPath}/views/travel/myTravelPlan.jsp"><h3>내가
+												올린 여행계획</h3></a></li>
 									<li><a
 										href="${pageContext.request.contextPath}/views/history/myTravelerHistory.jsp"><h3>여행
 												내역</h3></a></li>
 									<li><a
 										href="${pageContext.request.contextPath}/views/history/myGuideHistory.jsp"><h3>가이드
 												내역</h3></a></li>
-									<li><a href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp"><h3>참여중인 모임</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/views/travel/myTravelPlan.jsp"><h3>내가
-												올린 여행계획</h3></a></li>
 								</ul>
 								</footer>
 							</section>
@@ -93,23 +198,30 @@
 
 
 												<div class="form-group">
-													<label class="col-lg-2 control-label"><h3>나빴던 점</h3></label>
+													<label class="col-lg-2 control-label"><h3>나빴던
+															점</h3></label>
 
 													<div class="col-lg-10">
 														<textarea class="form-control" name="contents" rows="2"
 															id="textArea"></textarea>
 													</div>
 												</div>
-												<label class="col-lg-2 control-label"><h3>별점</h3></label>
 
-												<div class="col-lg-10">
-													<input type="text" name="title" class="form-control">
-												</div>
-
-
-												<br /> <br />
-
-
+												<label class="col-lg-2 control-label"><h3>별점</h3></label> <span
+													class="star-input"> <span class="input"> <input
+														type="radio" name="star-input" value="1" id="p1">
+														<label for="p1">1</label> <input type="radio"
+														name="star-input" value="2" id="p2"> <label
+														for="p2">2</label> <input type="radio" name="star-input"
+														value="3" id="p3"> <label for="p3">3</label> <input
+														type="radio" name="star-input" value="4" id="p4">
+														<label for="p4">4</label> <input type="radio"
+														name="star-input" value="5" id="p5"> <label
+														for="p5">5</label>
+												</span> <output for="star-input">
+														<b>0</b>점
+													</output>
+												</span> <br /> <br /> <br /> <br />
 
 												<div class="form-group">
 													<div class="col-lg-10 col-lg-offset-2">
@@ -155,7 +267,9 @@
 	</div>
 
 	<!-- Scripts -->
-
+	<script
+		src="${pageContext.request.contextPath}/js/jquery-1.11.3.min.js"></script>
+	<script src="${pageContext.request.contextPath}/js/star.js"></script>
 	<script src="assets/js/jquery.min.js"></script>
 	<script src="assets/js/jquery.dropotron.min.js"></script>
 	<script src="assets/js/skel.min.js"></script>

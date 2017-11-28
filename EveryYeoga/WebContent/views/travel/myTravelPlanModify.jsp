@@ -19,15 +19,19 @@
 				<!-- Logo -->
 				<div id="logo">
 					<h1>
-						<a href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp">모두의 가이드</a>
+						<a
+							href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp">모두의
+							가이드</a>
 					</h1>
 
 				</div>
 				<!-- Nav -->
 				<nav id="nav">
 					<ul>
-					<li class="current"><a href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp">여행검색</a></li>
-					<li class="current"><a href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp">모임관리</a></li>
+						<li class="current"><a
+							href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp">여행검색</a></li>
+						<li class="current"><a
+							href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp">모임관리</a></li>
 						<li class="current"><a href="login.html">로그아웃</a></li>
 					</ul>
 				</nav>
@@ -43,16 +47,21 @@
 
 							<!-- Sidebar -->
 							<section>
-								<ul class="style2">									<li><a
+								<ul class="style2">
+									<li><a
 										href="${pageContext.request.contextPath}/views/user/myPage.jsp"><h3>회원정보</h3></a></li>
-								<a
-										href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp"><h3>여행 검색</h3></a></li>
-								
-									<li><a href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp"><h3>참여중인 모임</h3></a></li>
+									<a
+										href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp"><h3>여행
+											검색</h3></a>
+									</li>
+
+									<li><a
+										href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp"><h3>참여중인
+												모임</h3></a></li>
 									<li><a
 										href="${pageContext.request.contextPath}/views/travel/myTravelPlan.jsp"><h3>내가
 												올린 여행계획</h3></a></li>
-	<li><a
+									<li><a
 										href="${pageContext.request.contextPath}/views/history/myTravelerHistory.jsp"><h3>여행
 												내역</h3></a></li>
 									<li><a
@@ -68,20 +77,24 @@
 						<div id="content">
 							<div class="col-sm-9 col-lg-9">
 								<div>
-									<h3>내가 올린 여행 계획</h3>
+									<h3>여행 계획 수정</h3>
 								</div>
 
 								<div class="table-responsive">
 									<div class="well">
-									
+										<form
+											action="${pageContext.request.contextPath}/article/regist.do"
+											class="bs-example form-horizontal" method="POST">
 											<fieldset>
+												<input type="radio" name="gatheringStatus" value="true">모집중
+												<input type="radio" name="gatheringStatus" value="false">모집완료
 												<div class="form-group">
 													<input type="hidden" name="boardId"
 														value="${boardDetail.boardId}"> <label
 														class="col-lg-2 control-label"><h3>언어 구사 능력</h3></label>
 
 													<div class="col-lg-10">
-														<font>언어구사능력</font>
+														<input type="text" name="title" class="form-control" value="aa언어구사능력">
 													</div>
 												</div>
 
@@ -91,7 +104,7 @@
 														class="col-lg-2 control-label"><h3>여행 지역</h3></label>
 
 													<div class="col-lg-10">
-														<font>여행지역</font>
+														<input type="text" name="title" class="form-control">
 													</div>
 												</div>
 
@@ -102,7 +115,7 @@
 															횟수</h3></label>
 
 													<div class="col-lg-10">
-														<font>방문횟수</font>
+														<input type="text" name="title" class="form-control">
 													</div>
 												</div>
 
@@ -113,7 +126,7 @@
 														class="col-lg-2 control-label"><h3>여행 일정</h3></label>
 
 													<div class="col-lg-10">
-														<font>일정</font>
+														<input type="text" name="title" class="form-control">
 													</div>
 												</div>
 
@@ -124,7 +137,7 @@
 														class="col-lg-2 control-label"><h3>여행 테마</h3></label>
 
 													<div class="col-lg-10">
-														<font>테마</font>
+														<input type="text" name="title" class="form-control">
 													</div>
 												</div>
 
@@ -135,7 +148,7 @@
 														class="col-lg-2 control-label"><h3>여행 인원</h3></label>
 
 													<div class="col-lg-10">
-														<font>인원</font>
+														<input type="text" name="title" class="form-control">
 													</div>
 												</div>
 
@@ -147,7 +160,7 @@
 														class="col-lg-2 control-label"><h3>선호 가이드</h3></label>
 
 													<div class="col-lg-10">
-														<font>선호가이드</font>
+														<input type="text" name="title" class="form-control">
 													</div>
 												</div>
 
@@ -157,16 +170,21 @@
 															소개</h3></label>
 
 													<div class="col-lg-10">
-														<font>자기소개</font>
+														<textarea class="form-control" name="contents" rows="2"
+															id="textArea"></textarea>
 													</div>
 												</div>
-												<span style="float: right" >
-												<button type="button" onclick="location.href='${pageContext.request.contextPath}/views/guide/chooseGuide.jsp' ">가이드 보기</button>
-												</span>
 												<br /> <br />
-
+												<div class="form-group">
+													<div class="col-lg-10 col-lg-offset-2">
+														<span style="float: center"><button type="submit"
+																class="btn btn-pr">여행계획 수정</button> <span
+															style="float: center"><button type="reset"
+																	class="btn btn-default">취소</button>
+													</div>
+												</div>
 											</fieldset>
-										
+										</form>
 									</div>
 								</div>
 							</div>

@@ -10,14 +10,19 @@ import everyYeoga.service.ReportService;
 import everyYeoga.store.ArticleStore;
 import everyYeoga.store.CommentStore;
 import everyYeoga.store.ReportStore;
+import everyYeoga.store.UserStore;
 
 @Service
 public class ReportServiceLogic implements ReportService {
 
 	@Autowired
 	private ReportStore reportStore;
+	@Autowired
 	private CommentStore commentStore;
+	@Autowired
 	private ArticleStore articleStore;
+	@Autowired
+	private UserStore userStore;
 
 	@Override
 	public Report searchArticleReport(String reportedArticleId) {
@@ -44,14 +49,26 @@ public class ReportServiceLogic implements ReportService {
 	}
 
 	@Override
-	public boolean registReport(Report report, String classifyId) {   // classifyId is wether articleId or commentId. 
-		// 인애	
+	public boolean registReport(Report report, String classifyId) { // classifyId is whether articleId or commentId.
+		// 인애
+		String userId = report.getReportedUser().getId();
 		if (report.getClassifyReport().equals("comment")) {
-		commentStore.createReport(report.getClassifyReport(), classifyId);
-		
-		}else if (report.getClassifyReport().equals("article")) {
+			commentStore.createReport(report.getClassifyReport(), classifyId);
+			userStore.updateReportedNumber(userId);
+			if (userStore.countReportedNumber(userId).equals("3")) {
+				userStore.updateBlockedNumber(userId);
+			}
+			
+
+		} else if (report.getClassifyReport().equals("article")) {
 			articleStore.createReport(report.getClassifyReport(), classifyId);
-		}		
-		return reportStore.createReport(report);
+			userStore.updateReportedNumber(userId);
+			if(userStore.countReportedNumber(userId).equals("3")) {
+				userStore.updateBlockedNumber(userId);
+			}
+
+			return reportStore.createReport(report);
+		}
+		return true;
 	}
 }
