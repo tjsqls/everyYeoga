@@ -157,6 +157,11 @@ public class GroupServiceLogic implements GroupService{
 		groupStore.createGroup(group);
 		
 	}
+	
+	public Comment retreiveCommentByCommentId(String commentId) { 
+		// 인애 2017.11.27 추가
+		return commentStore.retreiveCommentByCommentId(commentId);
+	}
 
 	@Override
 	public List<Article> searchAll(String groupId) {
