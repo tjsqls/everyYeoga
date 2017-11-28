@@ -21,7 +21,7 @@
 				<input />
 			<tr>
 				<div class="help">비밀번호를 입력해 주세요</div>
-				<b><label>비밀번호 확인 <span>*</span></label></b>
+				<b><label>비밀번호 확인 </label></b>
 				<input />
 			<tr>
 				<div class="help">비밀번호를 한번 더 입력해 주세요</div>

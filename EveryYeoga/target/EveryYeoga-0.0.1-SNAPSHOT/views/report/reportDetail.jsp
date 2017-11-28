@@ -18,7 +18,7 @@
 
 						<!-- Logo -->
             <div id="logo">
-              <h1><a href="index.html">모두의 가이드</a></h1>
+              <h1><a href="${pageContext.request.contextPath}/views/user/adminPage.jsp">모두의 가이드</a></h1>
      
             </div>
 						<!-- Nav -->
@@ -43,9 +43,9 @@
 										<section>
 											<h2>관리자 페이지</h2>
 										<ul class="style2">
-												<li><a href="#"><h3>여행 계획 목록</h3></a></li>
-										<li><a href="#"><h3>신고 목록</h3></a></li>
-								
+															<li><a href="${pageContext.request.contextPath}/views/user/adminPage.jsp"><h3>신고내역 관리</h3></a></li>
+										<li><a href="${pageContext.request.contextPath}/views/travel/manageTravelPlan.jsp"><h3>여행계획 관리</h3></a></li>
+				
 											</ul>
 																	</footer>
 										</section>
@@ -55,7 +55,7 @@
 							<div class="8u 12u$(medium) important(medium)">
 								<div id="content">
                     <div class="col-sm-9 col-lg-9">
-                      <div><h3>신고 하기</h3></div>
+                      <div><h3>신고 내역</h3></div>
 
     <div class="table-responsive">
         <div class="well">

@@ -149,6 +149,23 @@
 													</c:forEach>
 
 												</div>
+
+												<br>
+
+												<p style="padding: 20px">${article.content }</p>
+
+												<c:forEach items="${article.comments }" var="comment">
+													<table class="table"
+														style="font-size: 13px; padding: 20px;">
+														<tr>
+															<td><strong>댓글 쓴 사람${comment.user.id }</strong></td>
+															<td class="text-right">댓글 날짜${comment.regDate }
+															<span style="float:right">
+															<a
+																class="glyphicon glyphicon-trash"
+																href="${pageContext.request.contextPath }/comment/remove.do?articleId=${article.articleId}&commentId=${comment.commentId}">삭제</a>
+													</table>
+													</c:forEach>
 												<div class="panel-footer">
 													<div class="write_area">
 														<form
@@ -160,6 +177,7 @@
 																placeholder="댓글쓰기"></textarea>
 															<span style="float: right"> <input type="submit"
 																class="comment_submit" value="댓글 등록">
+
 															</span>
 														</form>
 													</div>
