@@ -83,7 +83,7 @@
 								<div class="table-responsive">
 									<div class="well">
 										<form
-											action="${pageContext.request.contextPath}/article/regist.do"
+											action="${pageContext.request.contextPath}/travel/modify.do"
 											class="bs-example form-horizontal" method="POST">
 											<fieldset>
 												<input type="radio" name="gatheringStatus" value="true">모집중

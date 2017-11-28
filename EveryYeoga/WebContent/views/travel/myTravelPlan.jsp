@@ -28,7 +28,7 @@
 					<ul>
 					<li class="current"><a href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp">여행검색</a></li>
 					<li class="current"><a href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp">모임관리</a></li>
-						<li class="current"><a href="login.html">로그아웃</a></li>
+						<li class="current"><a href="${pageContext.request.contextPath}/user/logout.do">로그아웃</a></li>
 					</ul>
 				</nav>
 			</header>
@@ -76,7 +76,7 @@
 									
 											<fieldset>
 												<div class="form-group">
-													<input type="hidden" name="boardId"
+													<input type="hidden" name="speakongAbility"
 														value="${boardDetail.boardId}"> <label
 														class="col-lg-2 control-label"><h3>언어 구사 능력</h3></label>
 
@@ -86,7 +86,7 @@
 												</div>
 
 												<div class="form-group">
-													<input type="hidden" name="boardId"
+													<input type="hidden" name="travelArea"
 														value="${boardDetail.boardId}"> <label
 														class="col-lg-2 control-label"><h3>여행 지역</h3></label>
 
@@ -96,7 +96,7 @@
 												</div>
 
 												<div class="form-group">
-													<input type="hidden" name="boardId"
+													<input type="hidden" name="numberOfVisits"
 														value="${boardDetail.boardId}"> <label
 														class="col-lg-2 control-label"><h3>여행 지역 방문
 															횟수</h3></label>
@@ -108,7 +108,7 @@
 
 
 												<div class="form-group">
-													<input type="hidden" name="boardId"
+													<input type="hidden" name="startDate"
 														value="${boardDetail.boardId}"> <label
 														class="col-lg-2 control-label"><h3>여행 일정</h3></label>
 
@@ -119,7 +119,7 @@
 
 
 												<div class="form-group">
-													<input type="hidden" name="boardId"
+													<input type="hidden" name="theme"
 														value="${boardDetail.boardId}"> <label
 														class="col-lg-2 control-label"><h3>여행 테마</h3></label>
 
@@ -130,7 +130,7 @@
 
 
 												<div class="form-group">
-													<input type="hidden" name="boardId"
+													<input type="hidden" name="numberOfTraveler"
 														value="${boardDetail.boardId}"> <label
 														class="col-lg-2 control-label"><h3>여행 인원</h3></label>
 
@@ -142,7 +142,7 @@
 
 
 												<div class="form-group">
-													<input type="hidden" name="boardId"
+													<input type="hidden" name="preferGuide"
 														value="${boardDetail.boardId}"> <label
 														class="col-lg-2 control-label"><h3>선호 가이드</h3></label>
 

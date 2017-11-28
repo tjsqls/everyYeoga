@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE HTML>
 
 <html>
@@ -7,7 +8,20 @@
 <title>Verti by HTML5 UP</title>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="stylesheet" href="../../assets/css/main.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath }/assets/css/main.css" />
+<link href="${pageContext.request.contextPath }/resources/css/bootstrap_modify.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/resources/css/layout.css" rel="stylesheet">
+<script src="${pageContext.request.contextPath }/resources/js/jquery-2.1.3.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js/jquery.blockUI.js"></script>
+<script type="text/javascript">
+	function button_event() {
+		if (confirm("정말 삭제하시겠습니까??") == true) { //확인
+			document.form.submit();
+		} else { //취소
+			return;
+		}
+	}
+</script>
 </head>
 <body class="left-sidebar">
 	<div id="page-wrapper">
@@ -19,7 +33,9 @@
 				<!-- Logo -->
 				<div id="logo">
 					<h1>
-						<a href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp">모두의 가이드</a>
+						<a
+							href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp">모두의
+							가이드</a>
 					</h1>
 
 				</div>
@@ -31,7 +47,7 @@
 							href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp">여행검색</a></li>
 						<li class="current"><a
 							href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp">모임관리</a></li>
-						<li class="current"><a href="login.html">로그아웃</a></li>
+						<li class="current"><a href="${pageContext.request.contextPath}/user/logout.do">로그아웃</a></li>
 					</ul>
 				</nav>
 			</header>
@@ -64,10 +80,10 @@
 										href="${pageContext.request.contextPath}/views/travel/myTravelPlan.jsp"><h3>내가
 												올린 여행계획</h3></a></li>
 									<li><a
-										href="${pageContext.request.contextPath}/views/history/myTravelerHistory.jsp"><h3>여행
+										href="${pageContext.request.contextPath}/history/searchTravelerHistory.do"><h3>여행
 												내역</h3></a></li>
 									<li><a
-										href="${pageContext.request.contextPath}/views/history/myGuideHistory.jsp"><h3>가이드
+										href="${pageContext.request.contextPath}/history/searchGuideHistory.do"><h3>가이드
 												내역</h3></a></li>
 								</ul>
 								</footer>
@@ -87,59 +103,44 @@
 
 										<div class="table-responsive">
 											<table class="table table-striped table-bordered table-hover">
-												<colgroup>
-													<col width="100" />
-													<col width="*" />
-													<col width="120" />
-													<col width="70" />
-													<col width="50" />
-												</colgroup>
+												
 												<thead>
 													<tr>
 														<th class="text-center">번호</th>
 														<th class="text-center">여행지역</th>
 														<th class="text-center">테마</th>
 														<th class="text-center">가이드</th>
-														<th class="text-center">날짜</th>
+														<th class="text-center">출발날짜</th>
+														<th class="text-center">도착날짜</th>
 													</tr>
 												</thead>
-												<tbody>
-
-													<tr>
-														<td class="text-center">${article.articleId }</td>
-														<td><a
-															href="${ctx}/article/find.do?articleId=${article.articleId}">${article.title}
-														</a></td>
-														<td class="text-center"><fmt:formatDate
-																value="${article.regDate }" pattern="yyyy-MM-dd" /></td>
-														<td class="text-center">${article.authorName }</td>
-														<td class="text-center">110</td>
-													</tr>
-
-													<!-- 						
-	<c:choose>
-								<c:when test="${empty boardDetail.articles }">
-									<tr>
-										<th colspan="5" class="text-center">게시물이 존재하지 않습니다.</th>
-									</tr>
-								</c:when>
-								<c:otherwise>
-									<c:forEach var="article" items="${boardDetail.articles }">
-										<tr>
-											<td class="text-center">${article.articleId }</td>
-											<td><a
-												href="${ctx}/article/find.do?articleId=${article.articleId}">${article.title}
-											</a></td>
-											<td class="text-center"><fmt:formatDate
-													value="${article.regDate }" pattern="yyyy-MM-dd" /></td>
-											<td class="text-center">${article.authorName }</td>
-											<td class="text-center">110</td>
-										</tr>
-									</c:forEach>
-								</c:otherwise>
-							</c:choose>
-		 -->
-												</tbody>
+												<c:choose>
+													<c:when test="${empty list}">
+														<tr>
+															<th colspan="5" class="text-center">여행 내역이 존재하지
+																않습니다.</th>
+														</tr>
+													</c:when>
+													<c:otherwise>
+														<c:forEach items="${list}" var="tavelerHistory" varStatus="sts" >
+															<tr>
+																<td class="text-center">${sts.count}</td>
+																<td class="text-center">${travelerHistory.travelArea}</td>
+																<td class="text-center">${travelerHistory.theme}</td>
+																<td class="text-center">${travelerHistory.guideName}</td>
+																<td class="text-center"><fmt:formatDate
+																		value="${travelerHistory.startDate}"
+																		pattern="yyyy-MM-dd" /></td>
+																<td class="text-center"><fmt:formatDate
+																		value="${travelerHistory.endDate}"
+																		pattern="yyyy-MM-dd" /></td>
+																		<td><a
+														href="${pageContext.request.contextPath }/history/remove.do?travelerHistoryId=${travelerHistory.travelerHistoryId}"
+														onclick="button_event();">삭제</a></td>
+															</tr>
+														</c:forEach>
+													</c:otherwise>
+												</c:choose>
 											</table>
 										</div>
 									</div>

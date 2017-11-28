@@ -5,9 +5,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import org.junit.FixMethodOrder;
-import org.junit.runner.RunWith;
-import org.junit.runners.MethodSorters;
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -127,6 +125,8 @@ public class GroupServiceLogic implements GroupService{
 	@Override
 	public boolean registComment(String groupId, String articleId, Comment comment) {
 		// 선빈
+		Date today = new Date(Calendar.getInstance().getTimeInMillis());
+		comment.setRegDate(today);
 		return commentStore.createComment(groupId, articleId, comment);
 	}
 

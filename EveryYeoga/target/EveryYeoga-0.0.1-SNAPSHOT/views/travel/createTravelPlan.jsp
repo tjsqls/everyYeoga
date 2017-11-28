@@ -18,7 +18,7 @@
 
 						<!-- Logo -->
             <div id="logo">
-              <h1><a href="index.html">모두의 가이드</a></h1>
+              <h1><a href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp">모두의 가이드</a></h1>
      
             </div>
 						<!-- Nav -->
@@ -42,18 +42,21 @@
 									<!-- Sidebar -->
 										<section>
 											<ul class="style2">
-																			<li><a
+																												<li><a
 										href="${pageContext.request.contextPath}/views/user/myPage.jsp"><h3>회원정보</h3></a></li>
+								<a
+										href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp"><h3>여행 검색</h3></a></li>
+								
+									<li><a href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp"><h3>참여중인 모임</h3></a></li>
 									<li><a
+										href="${pageContext.request.contextPath}/views/travel/myTravelPlan.jsp"><h3>내가
+												올린 여행계획</h3></a></li>
+	<li><a
 										href="${pageContext.request.contextPath}/views/history/myTravelerHistory.jsp"><h3>여행
 												내역</h3></a></li>
 									<li><a
 										href="${pageContext.request.contextPath}/views/history/myGuideHistory.jsp"><h3>가이드
-												내역</h3></a></li>
-									<li><a href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp"><h3>참여중인 모임</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/views/travel/myTravelPlan.jsp"><h3>내가
-												올린 여행계획</h3></a></li>				</ul>
+												내역</h3></a></li></ul>
 											</footer>
 										</section>
 
@@ -146,13 +149,7 @@
                         </div>
                     </div>
                     <br />
-                    <div class="form-group">
-                        <div class="col-lg-10 col-lg-offset-2"><h3>사진 첨부</h3></label>
-                          <form action="uploadFile.do" method="post"enctype="multipart/form-data">
-  		                          <input type="file" name="file" />
-  	                      </form>
-                        </div>
-                    </div>
+
                     <br />
                     <div class="form-group">
                         <div class="col-lg-10 col-lg-offset-2">

@@ -26,7 +26,7 @@
 							<ul>
 					<li class="current"><a href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp">여행검색</a></li>
 					<li class="current"><a href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp">모임관리</a></li>
-						<li class="current"><a href="login.html">로그아웃</a></li>
+						<li class="current"><a href="${pageContext.request.contextPath}/user/logout.do">로그아웃</a></li>
 							</ul>
 						</nav>
 					</header>
@@ -70,7 +70,7 @@
     <div class="table-responsive">
         <div class="well">
             <form action="${pageContext.request.contextPath}/travel/regist.do"
-                  class="bs-example form-horizontal" method="POST">
+                  class="bs-example form-horizontal" method="GET">
                 <fieldset>
                     <div class="form-group">
                       <input type="hidden" name="${travelPlan.speakingAbility }">

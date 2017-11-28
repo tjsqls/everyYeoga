@@ -19,7 +19,7 @@
 				<!-- Logo -->
 				<div id="logo">
 					<h1>
-						<a href="index.html">모두의 가이드</a>
+						<a href="${pageContext.request.contextPath}/views/user/adminPage.jsp">모두의 가이드</a>
 					</h1>
 
 				</div>
@@ -47,19 +47,21 @@
 
 							<!-- Sidebar -->
 							<section>
-								<ul class="style2">
-																<li><a
+								<ul class="style2">									<li><a
 										href="${pageContext.request.contextPath}/views/user/myPage.jsp"><h3>회원정보</h3></a></li>
+								<a
+										href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp"><h3>여행 검색</h3></a></li>
+								
+									<li><a href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp"><h3>참여중인 모임</h3></a></li>
 									<li><a
+										href="${pageContext.request.contextPath}/views/travel/myTravelPlan.jsp"><h3>내가
+												올린 여행계획</h3></a></li>
+	<li><a
 										href="${pageContext.request.contextPath}/views/history/myTravelerHistory.jsp"><h3>여행
 												내역</h3></a></li>
 									<li><a
 										href="${pageContext.request.contextPath}/views/history/myGuideHistory.jsp"><h3>가이드
 												내역</h3></a></li>
-									<li><a href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp"><h3>참여중인 모임</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/views/travel/myTravelPlan.jsp"><h3>내가
-												올린 여행계획</h3></a></li>
 								</ul>
 								</footer>
 							</section>
