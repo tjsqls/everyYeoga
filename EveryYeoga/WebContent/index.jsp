@@ -5,6 +5,10 @@
 <head>
 </head>
 <body>
+<<<<<<< HEAD
 	<c:redirect url="/views/user/login.jsp"/>
+=======
+	<c:redirect url="/views/travel/travelPlanList.jsp"/>
+>>>>>>> branch 'master' of https://github.com/tjsqls/everyYeoga.git
 </body>
 </html>
