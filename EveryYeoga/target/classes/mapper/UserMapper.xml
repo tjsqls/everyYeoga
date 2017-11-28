@@ -25,7 +25,7 @@
 		= #{userId}
 	</select>
 
-	<update id="updateUser" parameterType="String">
+	<update id="updateUser" parameterType="User">
 		UPDATE user_tb
 		SET pw =
 		#{pw}, name = #{name}, birthDate=#{birthDate},
@@ -57,8 +57,7 @@
 		UPDATE user_tb
 		SET reportedNumber = CASE
 		WHEN reportedNumber is NULL THEN '1'
-		WHEN
-		reportedNumber in('1') THEN '2'
+		WHEN reportedNumber in('1') THEN '2'
 		WHEN reportedNumber in('2') THEN '3'
 		WHEN reportedNumber in('3') THEN '1'
 		END
@@ -83,19 +82,17 @@
 		WHERE id = #{userId}
 	</select>
 
-	<select id="retrieveAcessBlockedDate" parameterType="String"
-		resultMap="userMap">
+	<select id="retrieveAccessBlockedDate" parameterType="String" resultType="Date">
 		SELECT accessBlockedDate
 		FROM user_tb
 		WHERE id = #{userId}
 	</select>
 
-	<delete id="deleteAccessBlockedDate" parameterType="String">
-		DELETE
-		accessBlockedDate
-		FROM user_tb
+	<update id="deleteAccessBlockedDate" parameterType="String">
+		UPDATE user_tb
+		SET accessBlockedDate = null
 		WHERE id = #{userId}
-	</delete>
+	</update>
 
 	<update id="updateAccessBlockedDate" parameterType="String">
 		UPDATE user_tb

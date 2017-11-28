@@ -13,45 +13,13 @@
 <link href="${pageContext.request.contextPath }/resources/css/layout.css" rel="stylesheet">
 <script src="${pageContext.request.contextPath }/resources/js/jquery-2.1.3.js"></script>
 <script src="${pageContext.request.contextPath }/resources/js/jquery.blockUI.js"></script>
-<script type="text/javascript">
-	function button_event() {
-		if (confirm("정말 삭제하시겠습니까??") == true) { //확인
-			document.form.submit();
-		} else { //취소
-			return;
-		}
-	}
-</script>
+
 </head>
 <body class="left-sidebar">
 	<div id="page-wrapper">
 
 		<!-- Header -->
-		<div id="header-wrapper">
-			<header id="header" class="container">
-
-				<!-- Logo -->
-				<div id="logo">
-					<h1>
-						<a
-							href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp">모두의
-							가이드</a>
-					</h1>
-
-				</div>
-
-				<!-- Nav -->
-				<nav id="nav">
-					<ul>
-						<li class="current"><a
-							href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp">여행검색</a></li>
-						<li class="current"><a
-							href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp">모임관리</a></li>
-						<li class="current"><a href="${pageContext.request.contextPath}/user/logout.do">로그아웃</a></li>
-					</ul>
-				</nav>
-			</header>
-		</div>
+<%@ include file="/views/layout/header.jsp" %>
 
 		<!-- Main -->
 
@@ -115,14 +83,14 @@
 													</tr>
 												</thead>
 												<c:choose>
-													<c:when test="${empty list}">
+													<c:when test="${empty list }">
 														<tr>
 															<th colspan="5" class="text-center">여행 내역이 존재하지
 																않습니다.</th>
 														</tr>
 													</c:when>
 													<c:otherwise>
-														<c:forEach items="${list}" var="tavelerHistory" varStatus="sts" >
+														<c:forEach items="${list }" var="tavelerHistory" varStatus="sts" >
 															<tr>
 																<td class="text-center">${sts.count}</td>
 																<td class="text-center">${travelerHistory.travelArea}</td>

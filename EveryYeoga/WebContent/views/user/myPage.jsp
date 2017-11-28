@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE HTML>
 
 <html>
@@ -7,33 +8,24 @@
 <title>Verti by HTML5 UP</title>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="stylesheet" href="../../assets/css/main.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/assets/css/main.css" />
+<link
+	href="${pageContext.request.contextPath }/resources/css/bootstrap_modify.css"
+	rel="stylesheet">
+<link
+	href="${pageContext.request.contextPath }/resources/css/layout.css"
+	rel="stylesheet">
+<script
+	src="${pageContext.request.contextPath }/resources/js/jquery-2.1.3.js"></script>
+<script
+	src="${pageContext.request.contextPath }/resources/js/jquery.blockUI.js"></script>
 </head>
 <body class="left-sidebar">
 	<div id="page-wrapper">
 
 		<!-- Header -->
-		<div id="header-wrapper">
-			<header id="header" class="container">
-
-				<!-- Logo -->
-				<div id="logo">
-					<h1>
-						<a href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp">모두의 가이드</a>
-					</h1>
-
-				</div>
-
-				<!-- Nav -->
-				<nav id="nav">
-				<ul>
-						<li class="current"><a href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp">여행검색</a></li>
-					<li class="current"><a href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp">모임관리</a></li>
-						<li class="current"><a href="login.html">로그아웃</a></li>
-					</ul>
-				</nav>
-			</header>
-		</div>
+<%@ include file="/views/layout/header.jsp" %>
 
 		<!-- Main -->
 		<div id="main-wrapper">
@@ -43,27 +35,8 @@
 						<div id="sidebar">
 
 							<!-- Sidebar -->
-							<section>
-								<ul class="style2">
-									<li><a
-										href="${pageContext.request.contextPath}/views/user/myPage.jsp"><h3>회원정보</h3></a></li>
-								<a
-										href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp"><h3>여행 검색</h3></a></li>
-								
-									<li><a href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp"><h3>참여중인 모임</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/views/travel/myTravelPlan.jsp"><h3>내가
-												올린 여행계획</h3></a></li>
-	<li><a
-										href="${pageContext.request.contextPath}/views/history/myTravelerHistory.jsp"><h3>여행
-												내역</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/views/history/myGuideHistory.jsp"><h3>가이드
-												내역</h3></a></li>
-								</ul>
-								</footer>
-							</section>
 
+<%@ include file="/views/layout/side.jsp" %>
 						</div>
 					</div>
 					<div class="8u 12u$(medium) important(medium)">
@@ -77,21 +50,38 @@
 
 
 									<table>
-										<b><label>ID </label></b>
-										<label>아이디</label>
-										<br />
+										<tr>
+											<td>ID</td>
+											<td>${user.id}</td>
+										</tr>
 
-										<b><label>이름</label></b>
-										<label>이름</label>
 
-										<br />
-										<b> <label>생년월일</label></b>
-										<label>생년월일</label>
+										<tr>
+											<td>이름</td>
+											<td>${user.name}</td>
+										</tr>
 
-										<br />
-										<b><label>이메일</label></b>
-										<label>이메일</label>
-										<br />
+										<tr>
+											<td>생년월일</td>
+											<td>${user.birthDate}</td>
+										</tr>
+
+										<tr>
+											<td>이메일</td>
+											<td>${user.email}</td>
+										</tr>
+
+										<tr>
+											<td>휴대폰 번호</td>
+											<td>${user.phoneNumber}</td>
+										</tr>
+										<tr>
+											<td><a
+												href="${pageContext.request.contextPath}/user/modify.do?userId=${user.id}">수정</a></td>
+											<td><a
+												href="${pageContext.request.contextPath}/user/remove.do?userId=${user.id}">삭제</a></td>
+										</tr>
+
 
 									</table>
 								</form>

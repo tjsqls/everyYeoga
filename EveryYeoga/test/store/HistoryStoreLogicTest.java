@@ -18,13 +18,13 @@ public class HistoryStoreLogicTest {
 		store = new HistoryStoreLogic();
 	}
 
-	@Test
-	public void testRetrieveTravelerHistory() {
-		List<TravelerHistory> list = store.retrieveTravelerHistory("sunny");
-		
-		assertNotNull(list);
-		assertEquals("정인애", list.get(0).getGuideName());
-	}
+//	@Test
+//	public void testRetrieveTravelerHistory() {
+//		List<TravelerHistory> list = store.retrieveTravelerHistory("sunny");
+//		
+//		assertNotNull(list);
+//		assertEquals("정인애", list.get(0).getGuideName());
+//	}
 
 //	@Test
 //	public void testCreateTravelerHistory() {
@@ -33,7 +33,7 @@ public class HistoryStoreLogicTest {
 //
 //	@Test
 //	public void testDeleteTravelerHistory() {
-//		fail("Not yet implemented");
+//		store.deleteTravelerHistory("1");
 //	}
 //
 //	@Test

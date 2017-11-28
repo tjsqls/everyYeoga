@@ -13,29 +13,7 @@
 	<div id="page-wrapper">
 
 		<!-- Header -->
-		<div id="header-wrapper">
-			<header id="header" class="container">
-
-				<!-- Logo -->
-				<div id="logo">
-					<h1>
-						<a href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp">모두의 가이드</a>
-					</h1>
-
-				</div>
-
-				<!-- Nav -->
-				<nav id="nav">
-					<ul>
-						<li class="current"><a
-							href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp">여행검색</a></li>
-						<li class="current"><a
-							href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp">모임관리</a></li>
-						<li class="current"><a href="login.html">로그아웃</a></li>
-					</ul>
-				</nav>
-			</header>
-		</div>
+<%@ include file="/views/layout/header.jsp" %>
 
 		<!-- Main -->
 
@@ -51,7 +29,7 @@
 							<section>
 								<ul class="style2">
 									<li><a
-										href="${pageContext.request.contextPath}/views/user/myPage.jsp"><h3>회원정보</h3></a></li>
+										href="${pageContext.request.contextPath}/user/detail.do"><h3>회원정보</h3></a></li>
 									<a
 										href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp"><h3>여행
 											검색</h3></a>
