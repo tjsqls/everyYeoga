@@ -32,7 +32,7 @@
 				<!-- Logo -->
 				<div id="logo">
 					<h1>
-						<a href="index.html">모두의 가이드</a> 
+						<a href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp">모두의 가이드</a>
 
 					</h1>
 
@@ -61,16 +61,20 @@
 							<section>
 
 								<ul class="style2">
-														<li><a
+									<li><a
 										href="${pageContext.request.contextPath}/views/user/myPage.jsp"><h3>회원정보</h3></a></li>
-								<a
-										href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp"><h3>여행 검색</h3></a></li>
-								
-									<li><a href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp"><h3>참여중인 모임</h3></a></li>
+									<a
+										href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp"><h3>여행
+											검색</h3></a>
+									</li>
+
+									<li><a
+										href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp"><h3>참여중인
+												모임</h3></a></li>
 									<li><a
 										href="${pageContext.request.contextPath}/views/travel/myTravelPlan.jsp"><h3>내가
 												올린 여행계획</h3></a></li>
-	<li><a
+									<li><a
 										href="${pageContext.request.contextPath}/views/history/myTravelerHistory.jsp"><h3>여행
 												내역</h3></a></li>
 									<li><a
@@ -87,7 +91,7 @@
 						<div id="content">
 							<div class="col-sm-9 col-lg-9">
 								<div>
-									<h3>여행 계획 상세</h3>
+									<h3>게시물 상세</h3>
 								</div>
 
 								<div class="table-responsive">
@@ -100,16 +104,52 @@
 											<div class="panel-heading">${article.title }</div>
 											<div class="panel-body">
 												<div class="post">
-													<strong>${article.user.name }</strong> &nbsp;<span
-														class="text-muted">${article.regDate }</span> &nbsp;<a
-														href="${ctx }/article/modify.do?articleId=${article.articleId}"
-														class="glyphicon glyphicon-cog pull-right"
-														style="padding: 10px">수정</a> <a
+													<strong>작성자${article.user.name }</strong> &nbsp;<span
+														class="text-muted">${article.regDate }</span> &nbsp; <a
 														href="${ctx }/article/remove.do?articleId=${article.articleId}"
 														class="glyphicon glyphicon-cog pull-right"
-														onclick="button_event();">삭제</a>
+														onclick="button_event();" style="padding: 10px">삭제</a> <a
+														href="${ctx }/article/modify.do?articleId=${article.articleId}"
+														class="glyphicon glyphicon-cog pull-right"
+														style="padding: 10px">수정</a> <br>
+
+													<p style="padding: 20px">내용${article.content }</p>
+													<a
+														href="${ctx }/article/modify.do?articleId=${article.articleId}"
+														class="glyphicon glyphicon-cog pull-right"
+														style="padding: 10px">신고</a>
+
+
+
+
+													<c:forEach items="${article.comments }" var="comment">
+														<table class="table"
+															style="font-size: 13px; padding: 20px;">
+															<tr>
+																<td><strong>댓글 쓴 사람${comment.user.id }</strong></td>
+																<td class="text-right">날짜${comment.regDate } <span
+																	style="float: right"> <a
+																		class="glyphicon glyphicon-trash"
+																		href="${ctx }/comment/remove.do?articleId=${article.articleId}&commentId=${comment.commentId}">수정</a>
+
+																		<a class="glyphicon glyphicon-trash"
+																		href="${ctx }/comment/remove.do?articleId=${article.articleId}&commentId=${comment.commentId}">삭제</a>
+
+																		<a class="glyphicon glyphicon-trash"
+																		href="${ctx }/comment/remove.do?articleId=${article.articleId}&commentId=${comment.commentId}">신고</a>
+																</span></td>
+
+															</tr>
+															<tr>
+																<td colspan="2">
+																	<p class="txt">${comment.content }</p>
+																</td>
+															</tr>
+														</table>
+													</c:forEach>
 
 												</div>
+
 												<br>
 
 												<p style="padding: 20px">${article.content }</p>
@@ -124,33 +164,25 @@
 															<a
 																class="glyphicon glyphicon-trash"
 																href="${pageContext.request.contextPath }/comment/remove.do?articleId=${article.articleId}&commentId=${comment.commentId}">삭제</a>
-															</span>
-															</td>
-														</tr>
-														<tr>
-															<td colspan="2">
-																<p class="txt">${comment.content }</p>
-															</td>
-														</tr>
-													</table>
-												</c:forEach>
-											</div>
-											<div class="panel-footer">
-												<div class="write_area">
-													<form
-														action="${pageContext.request.contextPath }/comment/regist.do"
-														method="POST">
-														<input type="hidden" name="articleId"
-															value="${article.articleId }">
-														<textarea class="input_write_comment" name="comments"
-															placeholder="댓글쓰기"></textarea>
-														<span style="float: right"> <input type="submit"
-															class="comment_submit" value="댓글 등록">
-														</span>
-													</form>
-												</div>
-											</div>
 
+												<div class="panel-footer">
+													<div class="write_area">
+														<form
+															action="${pageContext.request.contextPath }/comment/regist.do"
+															method="POST">
+															<input type="hidden" name="articleId"
+																value="${article.articleId }">
+															<textarea class="input_write_comment" name="comments"
+																placeholder="댓글쓰기"></textarea>
+															<span style="float: right"> <input type="submit"
+																class="comment_submit" value="댓글 등록">
+
+															</span>
+														</form>
+													</div>
+												</div>
+
+											</div>
 										</div>
 									</div>
 								</div>
@@ -158,39 +190,38 @@
 						</div>
 					</div>
 				</div>
-			</div>
 
-			<!-- Footer -->
-			<div id="footer-wrapper">
-				<footer id="footer" class="container">
-					<div class="row">
-						<div class="3u 6u(medium) 12u$(small)"></div>
-						<div class="3u 6u$(medium) 12u$(small)"></div>
-						<div class="3u 6u(medium) 12u$(small)"></div>
-						<div class="3u 6u$(medium) 12u$(small)"></div>
-					</div>
-					<div class="row">
-						<div class="12u">
-							<div id="copyright">
-								<ul class="menu">
-									<li>&copy; Untitled. All rights reserved</li>
-									<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-								</ul>
+				<!-- Footer -->
+				<div id="footer-wrapper">
+					<footer id="footer" class="container">
+						<div class="row">
+							<div class="3u 6u(medium) 12u$(small)"></div>
+							<div class="3u 6u$(medium) 12u$(small)"></div>
+							<div class="3u 6u(medium) 12u$(small)"></div>
+							<div class="3u 6u$(medium) 12u$(small)"></div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<div id="copyright">
+									<ul class="menu">
+										<li>&copy; Untitled. All rights reserved</li>
+										<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+									</ul>
+								</div>
 							</div>
 						</div>
-					</div>
-				</footer>
+					</footer>
+				</div>
+
 			</div>
 
-		</div>
+			<!-- Scripts -->
 
-		<!-- Scripts -->
-
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/jquery.dropotron.min.js"></script>
-		<script src="assets/js/skel.min.js"></script>
-		<script src="assets/js/util.js"></script>
-		<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-		<script src="assets/js/main.js"></script>
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
 </body>
 </html>

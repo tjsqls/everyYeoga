@@ -19,7 +19,7 @@
 				<!-- Logo -->
 				<div id="logo">
 					<h1>
-						<a href="index.html">모두의 가이드</a>
+						<a href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp">모두의 가이드</a>
 					</h1>
 
 				</div>
@@ -73,9 +73,7 @@
 
 								<div class="table-responsive">
 									<div class="well">
-										<form
-											action="${pageContext.request.contextPath}/article/regist.do"
-											class="bs-example form-horizontal" method="POST">
+									
 											<fieldset>
 												<div class="form-group">
 													<input type="hidden" name="boardId"
@@ -162,11 +160,13 @@
 														<font>자기소개</font>
 													</div>
 												</div>
-												<span style="float: right" ><input type="submit" value="가이드 보기"></input></span>
+												<span style="float: right" >
+												<button type="button" onclick="location.href='${pageContext.request.contextPath}/views/guide/chooseGuide.jsp' ">가이드 보기</button>
+												</span>
 												<br /> <br />
 
 											</fieldset>
-										</form>
+										
 									</div>
 								</div>
 							</div>
