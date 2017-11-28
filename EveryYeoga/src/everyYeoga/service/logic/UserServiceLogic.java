@@ -26,6 +26,15 @@ public class UserServiceLogic implements UserService {
 //		}
 		return false;
 	}
+	
+	public User login(User user) {
+		//선빈
+		User readedUser = null;
+		if (validate(user)) {
+			readedUser = userStore.retrieveByUserId(user.getId());
+		}
+		return readedUser;
+	}
 
 	@Override
 	public User searchByUserId(String userId) {
@@ -44,6 +53,18 @@ public class UserServiceLogic implements UserService {
 		// 인애
 		return userStore.deleteUser(userId);
 	}
+	private boolean validate(User user) {
+		//선빈
+		if (user == null) {
+			throw new RuntimeException("사용자 정보가 없습니다.");
+		} else if (user.getId() == null || user.getId().isEmpty()) {
+			throw new RuntimeException("ID가 없습니다.");
+		} else if (user.getPw() == null || user.getPw().isEmpty()) {
+			throw new RuntimeException("비밀번호가 없습니다.");
+		}
+		return true;
+	}
+
 
 //searchBlockedUser
 }

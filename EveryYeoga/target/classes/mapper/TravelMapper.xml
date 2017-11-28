@@ -71,11 +71,38 @@
 		selfIntroduction, gatheringStatus, startDate,endDate FROM
 		travelPlan_tb WHERE travelPlanId=#{travelPlanId} </select>
 
-	<update id="updateTravelPlan" parameterType="String"> UPDATE
-		travelPlan_tb SET theme =#{theme} WHERE travelPlanId=#{travelPlanId}
+	<update id="updateTravelPlan" parameterType="TravelPlan"> 
+		UPDATE	travelPlan_tb 
+		SET speakingAbility = #{speakingAbility} 
+		AND travelArea = #{travelArea}
+		AND numberOfVisits = #{numberOfVisits} 
+		AND theme = #{theme}
+		AND numberOfTraveler = #{numberOfTraveler}
+		AND preferGuide = #{preferGuide}
+		AND selfIntroduction = #{selfIntroduction}
+		AND gatheringStatus = #{gatheringStatus}
+		WHERE travelPlanId=#{travelPlanId}
 	</update>
 
-	<delete id="deleteTravelPlan" parameterType="String"> DELETE FROM
-		travelPlan_tb WHERE travelPlanId=#{travelPlanId} </delete>
+	<delete id="deleteTravelPlan" parameterType="String"> 
+	DELETE FROM	travelPlan_tb 
+	WHERE travelPlanId=#{travelPlanId} </delete>
+
+
+	<select id="retrieveAllTravelPlans"	resultType="travelPlan"> 
+	SELECT travelPlanId, travelerId, speakingAbility,
+		travelArea, numberOfVisits, theme, numberOfTraveler, preferGuide,
+		selfIntroduction, gatheringStatus, startDate,endDate 
+	FROM travelPlan_tb
+	</select>
+		
+
+	<select id="retrieveTravelPlanByUserId"	parameterType="String" resultType="travelPlan"> 
+	SELECT travelPlanId, travelerId, speakingAbility,
+		travelArea, numberOfVisits, theme, numberOfTraveler, preferGuide,
+		selfIntroduction, gatheringStatus, startDate,endDate 
+	FROM travelPlan_tb
+	WHERE travelerId=#{userId} AND gatheringStatus='false'
+	</select>
 
 </mapper>

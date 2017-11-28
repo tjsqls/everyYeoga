@@ -113,12 +113,12 @@ public class TravelStoreLogic implements TravelStore {
 	}
 
 	@Override
-	public boolean updateTravelPlan(TravelPlan travelPlanId) {
+	public boolean updateTravelPlan(TravelPlan travelPlan) {
 		//진휘
 		SqlSession session = factory.getSession();
 		try {
 			TravelMapper mapper = session.getMapper(TravelMapper.class);
-			mapper.updateTravelPlan(travelPlanId);
+			mapper.updateTravelPlan(travelPlan);//mapper수정완료
 			session.commit();
 		}finally {
 			session.close();
@@ -138,6 +138,35 @@ public class TravelStoreLogic implements TravelStore {
 			session.close();
 		}
 		return true;
+	}
+
+
+	@Override
+	public List<TravelPlan> retrieveAllTravelPlans() {
+		SqlSession session = factory.getSession();
+		List<TravelPlan> list = null;
+		try {
+			TravelMapper mapper = session.getMapper(TravelMapper.class);
+			list = mapper.retrieveAllTravelPlans();
+		}finally {
+			session.close();
+		}
+		return list;
+	}
+
+
+	@Override
+	public TravelPlan retrieveTravelPlanByUserId(String userId) {
+		SqlSession session = factory.getSession();
+		TravelPlan travelPlan = null;
+		try {
+			TravelMapper mapper = session.getMapper(TravelMapper.class);
+
+			travelPlan = mapper.retrieveTravelPlanByUserId(userId);
+		}finally {
+			session.close();
+		}
+		return travelPlan;
 	}
 
 }

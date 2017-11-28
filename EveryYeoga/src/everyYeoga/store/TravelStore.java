@@ -1,12 +1,10 @@
 package everyYeoga.store;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 
-import everyYeoga.domain.Join;
 import everyYeoga.domain.TravelPlan;
 
 public interface TravelStore {
@@ -18,5 +16,8 @@ public interface TravelStore {
 	public TravelPlan retrieveTravelPlan(String travelPlanId); 
 	public boolean updateTravelPlan(TravelPlan travelPlanId);//String -> 객체로 변경
 	public boolean deleteTravelPlan(String travelPlanId);
+	
+	public List<TravelPlan> retrieveAllTravelPlans();
+	public TravelPlan retrieveTravelPlanByUserId(String userId);
 
 }

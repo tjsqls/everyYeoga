@@ -16,4 +16,7 @@ public interface TravelMapper {
 	public TravelPlan retrieveTravelPlan(String travelPlanId); 
 	public boolean updateTravelPlan(TravelPlan travelPlanId);//2017.11.2 String -> 객체로 변경 진휘
 	public boolean deleteTravelPlan(String travelPlanId);
+	
+	public List<TravelPlan> retrieveAllTravelPlans();
+	public TravelPlan retrieveTravelPlanByUserId(String userId);
 }

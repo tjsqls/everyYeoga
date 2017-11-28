@@ -14,9 +14,9 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.objenesis.instantiator.sun.MagicInstantiator;
 import org.springframework.stereotype.Service;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
+//import org.springframework.test.context.ContextConfiguration;
+//import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+//import org.springframework.test.context.web.WebAppConfiguration;
 
 import everyYeoga.domain.Evaluation;
 import everyYeoga.domain.GuideHistory;
@@ -97,7 +97,7 @@ public class TravelServiceLogic implements TravelService {
 		return travelStore.retrieveTravelPlan(travelPlanId);
 	}
 
-	@Override
+	@Override//store test완료
 	public boolean modifyTravelPlan(TravelPlan travelPlan) {
 		// 진휘
 		return travelStore.updateTravelPlan(travelPlan);
@@ -108,8 +108,8 @@ public class TravelServiceLogic implements TravelService {
 		// 진휘
 		return travelStore.deleteTravelPlan(travelPlanId);
 	}
-	@Test
-	public void testRegistJoin() {
+//	@Test
+//	public void testRegistJoin() {
 		/*	TravelPlan t = new TravelPlan();
 		t.setSpeakingAbility("0");
 		t.setPreferGuide("0");
@@ -172,17 +172,14 @@ public class TravelServiceLogic implements TravelService {
 		
 //		List<TravelPlan> list = service.searchTravelPlansByTravelPlan("인천", "중간", "17/11/11");
 //		System.out.println(list.size());
+//		
+//		System.out.println("aaaaaaaaaaaaa");
+//		Join j = service.searchJoinDetail("1");
+//		System.out.println(j.getGuideExperience());
 		
-		System.out.println("aaaaaaaaaaaaa");
-		Join j = service.searchJoinDetail("1");
-		System.out.println(j.getGuideExperience());
-		
-		
-		
-		
-		
-		
-		}
+	
+	
+//		}
 	@Override //test 완료
 	public List<Join> searchGuide(String travelPlanId) {// 여행계획에 참여신청한 가이드 목록
 		// 진휘
@@ -246,6 +243,18 @@ public class TravelServiceLogic implements TravelService {
 	public List<Evaluation> searchEvaluation(String guideId) {
 		// 진휘
 		return guideStore.retrieveEvaluation(guideId);
+	}
+
+	@Override
+	public List<TravelPlan> searchAllTravelPlans() {
+		// TODO Auto-generated method stub
+		return travelStore.retrieveAllTravelPlans();
+	}
+
+	@Override
+	public TravelPlan searchTravelPlanByUserId(String userId) {
+		// TODO Auto-generated method stub
+		return travelStore.retrieveTravelPlanByUserId(userId);
 	}
 
 

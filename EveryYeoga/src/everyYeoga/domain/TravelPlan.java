@@ -13,7 +13,8 @@ public class TravelPlan {
 	private String preferGuide;
 	private String selfIntroduction;
 	private String gatheringStatus;
-	private String startDate;//2017.11.23 Date -> String 진휘
+
+	private String startDate;//2011.11.23 Date -> String 진휘
 	private String endDate;
 	
 	private User traveler;

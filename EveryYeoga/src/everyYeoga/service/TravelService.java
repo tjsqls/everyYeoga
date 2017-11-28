@@ -19,5 +19,8 @@ public interface TravelService {
 	public Join searchJoinDetail(String joinId);//2017.11.27 reportedUserId 파라미터 삭제 진휘
 	public boolean registEvaluation(Evaluation evaluation);
 	public List<Evaluation> searchEvaluation(String guideId);
+	
+	public List<TravelPlan> searchAllTravelPlans();
+	public TravelPlan searchTravelPlanByUserId(String userId);
 
 }
