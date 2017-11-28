@@ -2,6 +2,9 @@ package store;
 
 import static org.junit.Assert.*;
 
+import java.util.Calendar;
+import java.util.Date;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -19,10 +22,14 @@ public class UserStoreLogicTest {
 	}
 
 	@Test
-	public void testUpdateReportedNumber() {
+	public void testretrieveAccessBlockedDate() {
+		Date today = new Date(Calendar.getInstance().getTimeInMillis());
 
-		store.updateBlockedNumber("1");
+	String date = store.retrieveAcessBlockedDate("1");
 
+	assertTrue(date.toString().equals(today.toString()));
+		
+		
 
 	}
 

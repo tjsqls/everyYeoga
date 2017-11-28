@@ -116,7 +116,80 @@ public class UserStoreLogic implements UserStore {
 		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
 		try {
 			UserMapper mapper = session.getMapper(UserMapper.class);
-		mapper.updateReportedNumber(userId);
+			mapper.updateReportedNumber(userId);
+			session.commit();
+		} finally {
+			session.close();
+		}
+		return false;
+	}
+
+	@Override
+	public String countBlockedNumber(String userId) {
+		// 인애
+		String temp = null;
+		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
+		try {
+			UserMapper mapper = session.getMapper(UserMapper.class);
+			temp = mapper.countBlockedNumber(userId);
+			session.commit();
+		} finally {
+			session.close();
+		}
+		return temp;
+	}
+
+	@Override
+	public String countReportedNumber(String userId) {
+		// 인애
+		String temp = null;
+		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
+		try {
+			UserMapper mapper = session.getMapper(UserMapper.class);
+			temp = mapper.countReportedNumber(userId);
+			session.commit();
+		} finally {
+			session.close();
+		}
+		return temp;
+	}
+
+	@Override
+	public String retrieveAcessBlockedDate(String userId) {
+		// 인애
+		String temp = null;
+		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
+		try {
+			UserMapper mapper = session.getMapper(UserMapper.class);
+			temp = mapper.retrieveAcessBlockedDate(userId);
+			session.commit();
+		} finally {
+			session.close();
+		}
+		return temp;
+	}
+
+	@Override
+	public boolean updateAccessBlockedDate(String userId) {
+		// 인애
+		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
+		try {
+			UserMapper mapper = session.getMapper(UserMapper.class);
+			mapper.updateAccessBlockedDate(userId);
+			session.commit();
+		} finally {
+			session.close();
+		}
+		return false;
+	}
+
+	@Override
+	public boolean deleteAccessBlockedDate(String userId) {
+		// 인애
+		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
+		try {
+			UserMapper mapper = session.getMapper(UserMapper.class);
+			mapper.deleteAccessBlockedDate(userId);
 			session.commit();
 		} finally {
 			session.close();

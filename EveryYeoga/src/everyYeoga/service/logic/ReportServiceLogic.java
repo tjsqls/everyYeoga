@@ -51,15 +51,21 @@ public class ReportServiceLogic implements ReportService {
 	@Override
 	public boolean registReport(Report report, String classifyId) { // classifyId is whether articleId or commentId.
 		// 인애
+		String userId = report.getReportedUser().getId();
 		if (report.getClassifyReport().equals("comment")) {
 			commentStore.createReport(report.getClassifyReport(), classifyId);
-			userStore.updateReportedNumber(report.getReportedUser().getId());
-
+			userStore.updateReportedNumber(userId);
+			if (userStore.countReportedNumber(userId).equals("3")) {
+				userStore.updateBlockedNumber(userId);
+			}
 			
 
 		} else if (report.getClassifyReport().equals("article")) {
 			articleStore.createReport(report.getClassifyReport(), classifyId);
-			userStore.updateReportedNumber(report.getReportedUser().getId());
+			userStore.updateReportedNumber(userId);
+			if(userStore.countReportedNumber(userId).equals("3")) {
+				userStore.updateBlockedNumber(userId);
+			}
 
 			return reportStore.createReport(report);
 		}
