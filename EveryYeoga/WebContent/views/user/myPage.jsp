@@ -49,8 +49,8 @@
 						<c:choose>
 							<c:when test="${loginedUser eq null}">
 								<li class="current"><a
-									href="${pageContext.request.contextPath}/user/login.do">로그인</a></li> | <li
-									class="current"><a
+									href="${pageContext.request.contextPath}/user/login.do">로그인</a></li> 
+									<li class="current"><a
 									href="${pageContext.request.contextPath}/user/regist.do">회원가입</a></li>
 							</c:when>
 							<c:otherwise>
