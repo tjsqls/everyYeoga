@@ -53,4 +53,10 @@
 		INSERT INTO comment_report_tb(classifyReport, commentId)
 		VALUES(#{classifyReport}, #{commentId})
 	</insert> 
+	
+	  <select id="retreiveCommentByCommentId" parameterType="String" resultMap="commentMap">
+  	SELECT commentId, content, writer, regDate, articleId, groupId
+  	FROM comment_tb
+  	WHERE commentId = #{commentId}
+  </select>
 </mapper>
