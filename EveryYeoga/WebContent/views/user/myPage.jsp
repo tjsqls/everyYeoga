@@ -77,7 +77,7 @@
 
 
 									<table>
-										<b><label>ID </label></b>
+										<b><label>ID</label></b>
 										<label>아이디</label>
 										<br />
 

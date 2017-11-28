@@ -15,7 +15,7 @@ public interface UserMapper {
 	public boolean updateReportedNumber(String userId); // 2017.11.27 인애 추가  --> 신고횟수 1 증가
 	public String countBlockedNumber(String userId);    // 2017.11.27 인애 추가  
 	public String countReportedNumber(String userId);   // 2017.11.27 인애 추가  
-	public String retrieveAcessBlockedDate(String userId);   // 2017.11.28 인애 추가  
+	public Date retrieveAccessBlockedDate(String userId);   // 2017.11.28 인애 추가  
 	public boolean updateAccessBlockedDate(String userId);  // 2017.11.28 인애 추가  
 	public boolean deleteAccessBlockedDate(String userId);  // 2017.11.28 인애 추가  
 

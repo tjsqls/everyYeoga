@@ -29,9 +29,11 @@ public class TravelController {
 
 	@RequestMapping(value = "regist.do") // createTravelPlan.jsp
 	public String registTravelPlan(HttpServletRequest req, TravelPlan travelPlan) {// 2017.11.27 HttpServletRequest 추가
-		HttpSession session = req.getSession();
-		User user = (User) session.getAttribute("loginedUser");
-
+//		HttpSession session = req.getSession();
+//		User user = (User) session.getAttribute("loginedUser");
+		
+		User user = userService.searchByUserId("2");
+		
 		travelPlan.setTraveler(user);
 
 		travelService.registTravelPlan(travelPlan);

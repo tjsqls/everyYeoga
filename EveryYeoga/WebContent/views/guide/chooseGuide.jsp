@@ -111,7 +111,7 @@
 																value="회원아이디"></td>
 															<td class="text-center">${article.articleId }</td>
 															<td><a
-																href="${ctx}/article/find.do?articleId=${article.articleId}">${article.title}
+																href="${ctx}/article/search.do?articleId=${article.articleId}">${article.title}
 															</a></td>
 															<td class="text-center"><fmt:formatDate
 																	value="${article.regDate }" pattern="yyyy/MM/dd" /></td>
