@@ -25,7 +25,7 @@
 		= #{userId}
 	</select>
 
-	<update id="updateUser" parameterType="String">
+	<update id="updateUser" parameterType="User">
 		UPDATE user_tb
 		SET pw =
 		#{pw}, name = #{name}, birthDate=#{birthDate},

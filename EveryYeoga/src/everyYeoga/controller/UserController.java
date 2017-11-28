@@ -37,43 +37,46 @@ public class UserController {         // 인애
 		return "redirect:main";
 	}
 
-	@RequestMapping(value = "detail.do", method = RequestMethod.POST)
+	@RequestMapping(value = "detail.do", method = RequestMethod.GET)
 	public ModelAndView searchMyPage(HttpServletRequest req) {   // 마이페이지 누르면 회원정보 나옴
 		
 		HttpSession session = req.getSession();
 		User user = (User)session.getAttribute("loginedUser");
-		
-		ModelAndView modelAndView = new ModelAndView("myPage");
-		modelAndView.addObject("user", user);
+		User user1 = userService.searchByUserId(user.getId());
+		ModelAndView modelAndView = new ModelAndView("/user/myPage");
+		modelAndView.addObject("user", user1);
 		
 		return modelAndView;
 	}
 	
 	@RequestMapping(value="modify.do", method=RequestMethod.GET)
-	public ModelAndView showModifyPage(HttpServletRequest req) {  // 문서에는 get 과 post 로 안나눠져있음!
+	public ModelAndView showModifyPage(String userId) {  // 문서에는 get 과 post 로 안나눠져있음!
 		
-		HttpSession session = req.getSession();
-		User user = (User)session.getAttribute("loginedUser");
+		User user = userService.searchByUserId(userId);
 		
-		ModelAndView modelAndView = new ModelAndView("modifyUser");
+		ModelAndView modelAndView = new ModelAndView("/user/createUser");
 		modelAndView.addObject("user", user);
 		
 		return modelAndView;
 	}
 	
 	@RequestMapping(value="modify.do", method=RequestMethod.POST)
-	public String modifyUser(User user) {   
+	public ModelAndView modifyUser(User user) {   
 		userService.modifyUser(user);
-		return "redirect:myPage";
+		User user1 = userService.searchByUserId(user.getId());
+		ModelAndView modelAndView = new ModelAndView("/user/myPage");
+		modelAndView.addObject("user", user1);
+		
+		return modelAndView;
 	}
 	
 	@RequestMapping("remove.do")
 	public String removeUser(String userId) {
 		userService.removeUser(userId);
-		return "redirect:login";
+		return "redirect:/user/login.do";
 	}
 
-	@RequestMapping(value = "login.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
 	public String showLogin(User user) {
 		return "user/login";
 	}

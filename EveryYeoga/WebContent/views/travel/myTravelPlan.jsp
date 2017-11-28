@@ -31,7 +31,7 @@
 						<li class="current"><a href="${pageContext.request.contextPath}/user/logout.do">로그아웃</a></li>
 					</ul>
 				</nav>
-			</header>
+			</header> 
 		</div>
 
 		<!-- Main -->

@@ -66,7 +66,7 @@
 							<section>
 								<ul class="style2">
 									<li><a
-										href="${pageContext.request.contextPath}/views/user/myPage.jsp"><h3>회원정보</h3></a></li>
+										href="${pageContext.request.contextPath}/user/detail.do"><h3>회원정보</h3></a></li>
 									<a
 										href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp"><h3>여행
 											검색</h3></a>
