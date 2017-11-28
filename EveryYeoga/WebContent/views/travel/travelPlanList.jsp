@@ -159,7 +159,7 @@
 										</div>
 										
 										<span style="float: right"><a
-										href="${pageContext.request.contextPath}/views/article/articleRegist.jsp"><h3>여행계획 등록하기</h3></a></span>
+										href="${pageContext.request.contextPath}/views/travel/createTravelPlan.jsp"><h3>여행계획 등록하기</h3></a></span>
 													
 										
 									</div>
