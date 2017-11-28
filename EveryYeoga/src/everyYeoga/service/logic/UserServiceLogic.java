@@ -1,5 +1,6 @@
 package everyYeoga.service.logic;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -28,15 +29,41 @@ public class UserServiceLogic implements UserService {
 	}
 
 	public User login(User user) {
-		// 선빈 + 11.28 인애 30일 정지 일때 로그인 금지 추가
+		// 선빈
+		// 인애   30일 정지 일때 로그인 금지 추가 11/28
 		User readedUser = null;
-		Date today = new Date(Calendar.getInstance().getTimeInMillis());
 
 		if (validate(user)) {
 			readedUser = userStore.retrieveByUserId(user.getId());
 
-			// user 의 로그인 금지 일 + 30일 = 오늘 날짜
-			if (((userStore.retrieveAcessBlockedDate(readedUser.getId()) + 30).toString()).equals(today.toString())) {
+			SimpleDateFormat sdf = new SimpleDateFormat("yy/MM/dd");
+			Date blocked = userStore.retrieveAccessBlockedDate(readedUser.getId()); // 정지 된 날짜
+
+			if (blocked != null) {
+
+				String blockedDate = sdf.format(blocked);
+				
+				/*  --- 이용 정지일로 부터 30일 추출 --- */
+				Calendar cal = Calendar.getInstance();
+				cal.setTime(blocked);
+				cal.add(Calendar.DATE, 30); 
+
+				Date plusDate = new Date(cal.getTimeInMillis());
+				String accessEndDate = sdf.format(plusDate);
+				/*  -------------------------- */
+
+				Date d = new Date(Calendar.getInstance().getTimeInMillis()); // 오늘의 날짜
+				String today = sdf.format(d);
+
+				// user 의 로그인 금지 풀리는날 = 오늘 날짜 or 풀리는날이 오늘이 넘어갓다면
+				if (accessEndDate.equals(today) || plusDate.after(d)) {
+					userStore.deleteAccessBlockedDate(readedUser.getId());
+					return readedUser;
+				} else if (!accessEndDate.equals(today) || plusDate.before(d)) {
+					throw new RuntimeException("이용 정지 상태입니다.");
+					// 접속 가능한날은 "xxx" 입니다. << 출력하려면 accessEndDate 를 하면 뎀 
+				}
+			} else {
 				return readedUser;
 			}
 		}
@@ -64,11 +91,11 @@ public class UserServiceLogic implements UserService {
 	private boolean validate(User user) {
 		// 선빈
 		if (user == null) {
-			throw new RuntimeException("사용자 정보가 없습니다.");
+			throw new RuntimeException("사용자가 존재하지 않습니다.");
 		} else if (user.getId() == null || user.getId().isEmpty()) {
-			throw new RuntimeException("ID가 없습니다.");
+			throw new RuntimeException("ID가 존재하지 않습니다.");
 		} else if (user.getPw() == null || user.getPw().isEmpty()) {
-			throw new RuntimeException("비밀번호가 없습니다.");
+			throw new RuntimeException("비밀번호가 잘못되었습니다.");
 		}
 		return true;
 	}

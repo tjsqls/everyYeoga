@@ -1,5 +1,7 @@
 package everyYeoga.store.logic;
 
+import java.util.Date;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
@@ -155,13 +157,13 @@ public class UserStoreLogic implements UserStore {
 	}
 
 	@Override
-	public String retrieveAcessBlockedDate(String userId) {
+	public Date retrieveAccessBlockedDate(String userId) {
 		// 인애
-		String temp = null;
+		Date temp = null;
 		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
 		try {
 			UserMapper mapper = session.getMapper(UserMapper.class);
-			temp = mapper.retrieveAcessBlockedDate(userId);
+			temp = mapper.retrieveAccessBlockedDate(userId);
 			session.commit();
 		} finally {
 			session.close();
