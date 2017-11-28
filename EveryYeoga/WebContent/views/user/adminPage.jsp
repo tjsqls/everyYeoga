@@ -15,13 +15,11 @@
 			<!-- Header -->
 				<div id="header-wrapper">
 					<header id="header" class="container">
-
 						<!-- Logo -->
             <div id="logo">
               <h1><a href="${pageContext.request.contextPath}/views/user/adminPage.jsp">모두의 가이드</a></h1>
      
             </div>
-
 						<!-- Nav -->
 						<nav id="nav">
 							<ul>
