@@ -53,22 +53,29 @@ public class ReportServiceLogic implements ReportService {
 		// 인애
 		String userId = report.getReportedUser().getId();
 		if (report.getClassifyReport().equals("comment")) {
-			commentStore.createReport(report.getClassifyReport(), classifyId);
-			userStore.updateReportedNumber(userId);
-			if (userStore.countReportedNumber(userId).equals("3")) {
-				userStore.updateBlockedNumber(userId);
+			commentStore.createReport(report.getClassifyReport(), classifyId);   // 중간테이블에 값 등록
+			userStore.updateReportedNumber(userId);								// 신고 횟수 추가
+			if (userStore.countReportedNumber(userId).equals("3")) { 			
+				userStore.updateBlockedNumber(userId);							// 정지 횟수 추가
+				userStore.updateAccessBlockedDate(userId);						// 30일 이용 정지
+				if(userStore.countBlockedNumber(userId).equals("3")) {
+					userStore.deleteUser(userId);								// 회원 탈퇴
+				}
 			}
+			return reportStore.createReport(report);
 			
-
 		} else if (report.getClassifyReport().equals("article")) {
 			articleStore.createReport(report.getClassifyReport(), classifyId);
 			userStore.updateReportedNumber(userId);
 			if(userStore.countReportedNumber(userId).equals("3")) {
 				userStore.updateBlockedNumber(userId);
+				userStore.updateAccessBlockedDate(userId);
+				if(userStore.countBlockedNumber(userId).equals("3")) {
+					userStore.deleteUser(userId);
+				}
 			}
-
 			return reportStore.createReport(report);
 		}
-		return true;
+		return false;
 	}
 }
