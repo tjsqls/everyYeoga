@@ -9,6 +9,10 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet" href="../../assets/css/main.css" />
+<link href="${pageContext.request.contextPath }/resources/css/bootstrap_modify.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/resources/css/layout.css" rel="stylesheet">
+<script src="${pageContext.request.contextPath }/resources/js/jquery-2.1.3.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js/jquery.blockUI.js"></script>
 <script type="text/javascript">
 	function button_event() {
 		if (confirm("정말 삭제하시겠습니까??") == true) { //확인
@@ -43,7 +47,7 @@
 							href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp">여행검색</a></li>
 						<li class="current"><a
 							href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp">모임관리</a></li>
-						<li class="current"><a href="login.html">로그아웃</a></li>
+						<li class="current"><a href="${pageContext.request.contextPath}/user/logout.do">로그아웃</a></li>
 					</ul>
 				</nav>
 			</header>

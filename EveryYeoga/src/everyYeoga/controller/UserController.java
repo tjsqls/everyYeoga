@@ -75,7 +75,7 @@ public class UserController {         // 인애
 
 	@RequestMapping(value = "login.do", method = RequestMethod.GET)
 	public String showLogin(User user) {
-		return "redirect:login";
+		return "user/login";
 	}
 
 	@RequestMapping(value = "login.do", method = RequestMethod.POST)
@@ -90,7 +90,7 @@ public class UserController {         // 인애
 			HttpSession session = req.getSession();
 			session.invalidate();
 		}
-		return "redirect:main";
+		return "travel/travelPlanList";
 
 	}
 

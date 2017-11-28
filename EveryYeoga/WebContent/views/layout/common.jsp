@@ -5,9 +5,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<c:set var="ctx" value="${pageContext.request.contextPath }"/>
-<link href="${ctx }/resources/css/bootstrap_modify.css" rel="stylesheet">
-<link href="${ctx }/resources/css/layout.css" rel="stylesheet">
-<script src="${ctx }/resources/js/jquery-2.1.3.js"></script>
-<script src="${ctx }/resources/js/jquery.blockUI.js"></script>
+
+<link href="${pageContext.request.contextPath }/resources/css/bootstrap_modify.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/resources/css/layout.css" rel="stylesheet">
+<script src="${pageContext.request.contextPath }/resources/js/jquery-2.1.3.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js/jquery.blockUI.js"></script>
 

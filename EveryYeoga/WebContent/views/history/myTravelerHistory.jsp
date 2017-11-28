@@ -8,7 +8,20 @@
 <title>Verti by HTML5 UP</title>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="stylesheet" href="../../assets/css/main.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath }/assets/css/main.css" />
+<link href="${pageContext.request.contextPath }/resources/css/bootstrap_modify.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/resources/css/layout.css" rel="stylesheet">
+<script src="${pageContext.request.contextPath }/resources/js/jquery-2.1.3.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js/jquery.blockUI.js"></script>
+<script type="text/javascript">
+	function button_event() {
+		if (confirm("정말 삭제하시겠습니까??") == true) { //확인
+			document.form.submit();
+		} else { //취소
+			return;
+		}
+	}
+</script>
 </head>
 <body class="left-sidebar">
 	<div id="page-wrapper">
@@ -34,7 +47,7 @@
 							href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp">여행검색</a></li>
 						<li class="current"><a
 							href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp">모임관리</a></li>
-						<li class="current"><a href="login.html">로그아웃</a></li>
+						<li class="current"><a href="${pageContext.request.contextPath}/user/logout.do">로그아웃</a></li>
 					</ul>
 				</nav>
 			</header>
@@ -109,9 +122,9 @@
 														</tr>
 													</c:when>
 													<c:otherwise>
-														<c:forEach var="tavelerHistory" items="${list}">
+														<c:forEach items="${list}" var="tavelerHistory" varStatus="sts" >
 															<tr>
-																<td class="text-center">${travelerHistory.travelerHistoryId}</td>
+																<td class="text-center">${sts.count}</td>
 																<td class="text-center">${travelerHistory.travelArea}</td>
 																<td class="text-center">${travelerHistory.theme}</td>
 																<td class="text-center">${travelerHistory.guideName}</td>
@@ -123,8 +136,7 @@
 																		pattern="yyyy-MM-dd" /></td>
 																		<td><a
 														href="${pageContext.request.contextPath }/history/remove.do?travelerHistoryId=${travelerHistory.travelerHistoryId}"
-														class="glyphicon glyphicon-cog pull-right"
-														onclick="button_event();" style="padding: 10px">삭제</a></td>
+														onclick="button_event();">삭제</a></td>
 															</tr>
 														</c:forEach>
 													</c:otherwise>

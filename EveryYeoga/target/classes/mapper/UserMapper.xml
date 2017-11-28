@@ -14,10 +14,8 @@
 	</resultMap>
 
 	<insert id="createUser" parameterType="User">
-		INSERT INTO user_tb(id,
-		pw, name, birthDate, phoneNumber, email)
-		VALUES(#{id}, #{pw}, #{name},
-		#{birthDate}, #{phoneNumber}, #{email})
+		INSERT INTO user_tb(id, pw, name, birthDate, phoneNumber, email)
+		VALUES(#{id}, #{pw}, #{name}, #{birthDate}, #{phoneNumber}, #{email})
 	</insert>
 
 	<select id="retrieveByUserId" parameterType="String" resultMap="userMap">
