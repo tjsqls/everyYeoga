@@ -56,63 +56,6 @@
 		box-sizing: border-box;
 	}
 
-	caption{
- background: url(images/title_event.png) no-repeat center center;
- width:700px;
- height:50px;
-}
-caption span{
- display:none;
-}
-
-	table{
- border-collapse: collapse;
-}
-td{
- border-bottom: 1px solid #000;
- text-align:center;
- padding:5px 10px;
-}
-th{
- height:34px;
- padding:0px 0px;
- font-size:12px;
-}
-th span{
-/*  border-right:1px solid #666; */
- background: url(images/bar7_1.png) no-repeat right 10px;
-  display:block;
-  padding:0px 0px 2px 0px;
-}
-tr:FIRST-CHILD{
-
-}
-tr:last-CHILD{
- border-bottom: 2px solid #000;
-}
-th:FIRST-CHILD{
- background: url(images/table_header_bg.png) repeat-x;
-}
- /* 2열의 th 내용*/
-th:nth-child(2) {
- background: url(images/table_header_bg.png) center top repeat-x;
-}
-th:nth-child(3) {
- background: url(images/table_header_bg.png) center top repeat-x;
-}
-th:nth-child(4) {
- background: url(images/table_header_bg.png) center top repeat-x;
-}
-th:nth-child(5) {
- background: url(images/table_header_bg.png) right top repeat-x;
-}
-.bb{
- border:none;
-}
-td{
- background: url(images/bar7_1.png) no-repeat right bottom;
-}
-
 /* Containers */
 
 	.container {
@@ -1671,8 +1614,8 @@ td{
 		outline: 0;
 		border: 0;
 		cursor: pointer;
-		font-size: 13px;
-		padding: 3px 20px;
+		font-size: 1.35em;
+		padding: 0.6em 1.5em;
 	}
 
 		input[type="button"].icon:before,
@@ -2101,17 +2044,10 @@ td{
 		padding: 4em 0 0 0;
 		text-align: center;
 	}
-.aa{
- line-height: 30px;
-	background-color: #F6F6F6;
-	border-top: solid 2px #000000;
-	border-bottom: solid 2px #000000;
 
-}
-.form-group{
-	background-color: #F6F6F6;
-}
-
+		#copyright a {
+			color: inherit;
+		}
 
 /* XLarge */
 
