@@ -164,7 +164,8 @@
 															<a
 																class="glyphicon glyphicon-trash"
 																href="${pageContext.request.contextPath }/comment/remove.do?articleId=${article.articleId}&commentId=${comment.commentId}">삭제</a>
-
+													</table>
+													</c:forEach>
 												<div class="panel-footer">
 													<div class="write_area">
 														<form

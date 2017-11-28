@@ -19,7 +19,7 @@
 				<!-- Logo -->
 				<div id="logo">
 					<h1>
-						<a href="index.html">모두의 가이드</a>
+						<a href="${pageContext.request.contextPath}/views/user/adminPage.jsp">모두의 가이드</a>
 					</h1>
 
 				</div>
@@ -62,7 +62,7 @@
 						<div id="content">
 							<div class="col-sm-9 col-lg-9">
 								<div>
-									<h3>신고 목록</h3>
+									<h3>여행계획 신고 목록</h3>
 								</div>
 
 								<div class="table-responsive">
@@ -84,8 +84,8 @@
 									<th class="text-center">번호</th>
 								<th class="text-center">여행계획</th>
 								<th class="text-center">테마</th>
+								<th class="text-center">신고분류</th>
 								<th class="text-center">여행자</th>
-								<th class="text-center">모집상태</th>
 													</tr>
 												</thead>
 												<tbody>

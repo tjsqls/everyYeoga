@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE HTML>
 
 <html>
@@ -19,7 +20,9 @@
 				<!-- Logo -->
 				<div id="logo">
 					<h1>
-						<a href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp">모두의 가이드</a>
+						<a
+							href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp">모두의
+							가이드</a>
 					</h1>
 
 				</div>
@@ -64,10 +67,10 @@
 										href="${pageContext.request.contextPath}/views/travel/myTravelPlan.jsp"><h3>내가
 												올린 여행계획</h3></a></li>
 									<li><a
-										href="${pageContext.request.contextPath}/views/history/myTravelerHistory.jsp"><h3>여행
+										href="${pageContext.request.contextPath}/history/searchTravelerHistory.do"><h3>여행
 												내역</h3></a></li>
 									<li><a
-										href="${pageContext.request.contextPath}/views/history/myGuideHistory.jsp"><h3>가이드
+										href="${pageContext.request.contextPath}/history/searchGuideHistory.do"><h3>가이드
 												내역</h3></a></li>
 								</ul>
 								</footer>
@@ -87,59 +90,45 @@
 
 										<div class="table-responsive">
 											<table class="table table-striped table-bordered table-hover">
-												<colgroup>
-													<col width="100" />
-													<col width="*" />
-													<col width="120" />
-													<col width="70" />
-													<col width="50" />
-												</colgroup>
+												
 												<thead>
 													<tr>
 														<th class="text-center">번호</th>
 														<th class="text-center">여행지역</th>
 														<th class="text-center">테마</th>
 														<th class="text-center">가이드</th>
-														<th class="text-center">날짜</th>
+														<th class="text-center">출발날짜</th>
+														<th class="text-center">도착날짜</th>
 													</tr>
 												</thead>
-												<tbody>
-
-													<tr>
-														<td class="text-center">${article.articleId }</td>
-														<td><a
-															href="${ctx}/article/find.do?articleId=${article.articleId}">${article.title}
-														</a></td>
-														<td class="text-center"><fmt:formatDate
-																value="${article.regDate }" pattern="yyyy-MM-dd" /></td>
-														<td class="text-center">${article.authorName }</td>
-														<td class="text-center">110</td>
-													</tr>
-
-													<!-- 						
-	<c:choose>
-								<c:when test="${empty boardDetail.articles }">
-									<tr>
-										<th colspan="5" class="text-center">게시물이 존재하지 않습니다.</th>
-									</tr>
-								</c:when>
-								<c:otherwise>
-									<c:forEach var="article" items="${boardDetail.articles }">
-										<tr>
-											<td class="text-center">${article.articleId }</td>
-											<td><a
-												href="${ctx}/article/find.do?articleId=${article.articleId}">${article.title}
-											</a></td>
-											<td class="text-center"><fmt:formatDate
-													value="${article.regDate }" pattern="yyyy-MM-dd" /></td>
-											<td class="text-center">${article.authorName }</td>
-											<td class="text-center">110</td>
-										</tr>
-									</c:forEach>
-								</c:otherwise>
-							</c:choose>
-		 -->
-												</tbody>
+												<c:choose>
+													<c:when test="${empty list}">
+														<tr>
+															<th colspan="5" class="text-center">여행 내역이 존재하지
+																않습니다.</th>
+														</tr>
+													</c:when>
+													<c:otherwise>
+														<c:forEach var="tavelerHistory" items="${list}">
+															<tr>
+																<td class="text-center">${travelerHistory.travelerHistoryId}</td>
+																<td class="text-center">${travelerHistory.travelArea}</td>
+																<td class="text-center">${travelerHistory.theme}</td>
+																<td class="text-center">${travelerHistory.guideName}</td>
+																<td class="text-center"><fmt:formatDate
+																		value="${travelerHistory.startDate}"
+																		pattern="yyyy-MM-dd" /></td>
+																<td class="text-center"><fmt:formatDate
+																		value="${travelerHistory.endDate}"
+																		pattern="yyyy-MM-dd" /></td>
+																		<td><a
+														href="${pageContext.request.contextPath }/history/remove.do?travelerHistoryId=${travelerHistory.travelerHistoryId}"
+														class="glyphicon glyphicon-cog pull-right"
+														onclick="button_event();" style="padding: 10px">삭제</a></td>
+															</tr>
+														</c:forEach>
+													</c:otherwise>
+												</c:choose>
 											</table>
 										</div>
 									</div>

@@ -19,7 +19,7 @@
 				<!-- Logo -->
 				<div id="logo">
 					<h1>
-						<a href="index.html">모두의 가이드</a>
+						<a href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp">모두의 가이드</a>
 					</h1>
 
 				</div>
@@ -43,19 +43,21 @@
 
 							<!-- Sidebar -->
 							<section>
-								<ul class="style2">
-																	<li><a
+								<ul class="style2">									<li><a
 										href="${pageContext.request.contextPath}/views/user/myPage.jsp"><h3>회원정보</h3></a></li>
+								<a
+										href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp"><h3>여행 검색</h3></a></li>
+								
+									<li><a href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp"><h3>참여중인 모임</h3></a></li>
 									<li><a
+										href="${pageContext.request.contextPath}/views/travel/myTravelPlan.jsp"><h3>내가
+												올린 여행계획</h3></a></li>
+	<li><a
 										href="${pageContext.request.contextPath}/views/history/myTravelerHistory.jsp"><h3>여행
 												내역</h3></a></li>
 									<li><a
 										href="${pageContext.request.contextPath}/views/history/myGuideHistory.jsp"><h3>가이드
 												내역</h3></a></li>
-									<li><a href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp"><h3>참여중인 모임</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/views/travel/myTravelPlan.jsp"><h3>내가
-												올린 여행계획</h3></a></li>
 								</ul>
 								</footer>
 							</section>
@@ -71,9 +73,7 @@
 
 								<div class="table-responsive">
 									<div class="well">
-										<form
-											action="${pageContext.request.contextPath}/article/regist.do"
-											class="bs-example form-horizontal" method="POST">
+									
 											<fieldset>
 												<div class="form-group">
 													<input type="hidden" name="boardId"
@@ -160,11 +160,13 @@
 														<font>자기소개</font>
 													</div>
 												</div>
-												<span style="float: right" ><input type="submit" value="가이드 보기"></input></span>
+												<span style="float: right" >
+												<button type="button" onclick="location.href='${pageContext.request.contextPath}/views/guide/chooseGuide.jsp' ">가이드 보기</button>
+												</span>
 												<br /> <br />
 
 											</fieldset>
-										</form>
+										
 									</div>
 								</div>
 							</div>

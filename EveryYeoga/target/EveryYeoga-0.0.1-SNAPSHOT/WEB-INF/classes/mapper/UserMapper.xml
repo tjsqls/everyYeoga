@@ -35,5 +35,14 @@
   		WHERE id = #{userId}
   	</delete>
   	
-
+  	<insert id="BlockedUser" parameterType="User">
+  		INSERT INTO blocked_user_tb(id, pw, name, birthDate, phoneNumber, email)
+  		VALUES(#{id}, #{pw}, #{name}, #{birthDate}, #{phoneNumber}, #{email})
+  	</insert>
+  	
+	<select id="retrieveBlockedUser" parameterType="String" resultType="User">
+		SELECT id, pw, name, birthDate, phoneNumber, email
+		FROM blocked_user_tb
+		WHERE email = #{email}
+	</select>
   </mapper>
