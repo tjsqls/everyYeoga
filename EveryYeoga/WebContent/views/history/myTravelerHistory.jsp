@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE HTML>
 
 <html>
@@ -19,31 +21,8 @@
 	<div id="page-wrapper">
 
 		<!-- Header -->
-		<div id="header-wrapper">
-			<header id="header" class="container">
 
-				<!-- Logo -->
-				<div id="logo">
-					<h1>
-						<a
-							href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp">모두의
-							가이드</a>
-					</h1>
-
-				</div>
-
-				<!-- Nav -->
-				<nav id="nav">
-					<ul>
-						<li class="current"><a
-							href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp">여행검색</a></li>
-						<li class="current"><a
-							href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp">모임관리</a></li>
-						<li class="current"><a href="${pageContext.request.contextPath}/user/logout.do">로그아웃</a></li>
-					</ul>
-				</nav>
-			</header>
-		</div>
+<%@ include file="/views/layout/header.jsp" %>
 
 		<!-- Main -->
 
@@ -114,21 +93,17 @@
 														</tr>
 													</c:when>
 													<c:otherwise>
-														<c:forEach items="${list }" var="tavelerHistory" varStatus="sts" >
+														<c:forEach items="${list }" var="travelerHistory" varStatus="sts" >
 															<tr>
 																<td class="text-center">${sts.count}</td>
 																<td class="text-center">${travelerHistory.travelArea}</td>
 																<td class="text-center">${travelerHistory.theme}</td>
 																<td class="text-center">${travelerHistory.guideName}</td>
-																<td class="text-center"><fmt:formatDate
-																		value="${travelerHistory.startDate}"
-																		pattern="yyyy-MM-dd" /></td>
-																<td class="text-center"><fmt:formatDate
-																		value="${travelerHistory.endDate}"
-																		pattern="yyyy-MM-dd" /></td>
+																<td class="text-center"><fmt:formatDate value="${travelerHistory.startDate}" pattern="yyyy-MM-dd" /></td>
+																<td class="text-center"><fmt:formatDate value="${travelerHistory.endDate}" pattern="yyyy-MM-dd" /></td>
 																		<td><a
 														href="${pageContext.request.contextPath }/history/remove.do?travelerHistoryId=${travelerHistory.travelerHistoryId}"
-														onclick="button_event();">삭제</a></td>
+														>삭제</a></td>
 															</tr>
 														</c:forEach>
 													</c:otherwise>
