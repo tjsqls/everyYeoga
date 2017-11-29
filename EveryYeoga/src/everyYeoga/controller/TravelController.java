@@ -26,13 +26,12 @@ public class TravelController {
 	private TravelService travelService;
 	@Autowired
 	private UserService userService;
+	
 
 	@RequestMapping(value = "regist.do") // createTravelPlan.jsp
 	public String registTravelPlan(HttpServletRequest req, TravelPlan travelPlan) {// 2017.11.27 HttpServletRequest 추가
 		HttpSession session = req.getSession();
 		User user = (User) session.getAttribute("loginedUser");
-		
-		
 		travelPlan.setTraveler(user);
 
 		travelService.registTravelPlan(travelPlan);
@@ -56,7 +55,7 @@ public class TravelController {
 		return "travel/searchTravelPlan"; // --> 처리해야한다.(searchTravelPlan으루)
 	}
 
-	@RequestMapping(value = "search.do")
+	@RequestMapping(value = "myTravelPlan.do")
 	public ModelAndView searchTravelPlanByUserId(HttpServletRequest req) {
 		HttpSession session = req.getSession();
 		User user = (User) session.getAttribute("loginedUser");
@@ -65,7 +64,6 @@ public class TravelController {
 		
 		ModelAndView modelAndView = new ModelAndView("travel/myTravelPlan");
 		modelAndView.addObject("travelPlan", travelPlan);
-		System.out.println(travelPlan.toString());
 		return modelAndView;
 	}
 

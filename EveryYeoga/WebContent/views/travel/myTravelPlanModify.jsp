@@ -26,23 +26,23 @@
 							<section>
 								<ul class="style2">
 									<li><a
-										href="${pageContext.request.contextPath}/views/user/myPage.jsp"><h3>회원정보</h3></a></li>
+										href="${pageContext.request.contextPath}/user/myPage.do"><h3>회원정보</h3></a></li>
 									<a
-										href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp"><h3>여행
+										href="${pageContext.request.contextPath}/travel/travelPlanList.do"><h3>여행
 											검색</h3></a>
 									</li>
 
 									<li><a
-										href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp"><h3>참여중인
+										href="${pageContext.request.contextPath}/group/joiningGroupList.do"><h3>참여중인
 												모임</h3></a></li>
 									<li><a
-										href="${pageContext.request.contextPath}/views/travel/myTravelPlan.jsp"><h3>내가
+										href="${pageContext.request.contextPath}/travel/myTravelPlan.do"><h3>내가
 												올린 여행계획</h3></a></li>
 									<li><a
-										href="${pageContext.request.contextPath}/views/history/myTravelerHistory.jsp"><h3>여행
+										href="${pageContext.request.contextPath}/history/myTravelerHistory.do"><h3>여행
 												내역</h3></a></li>
 									<li><a
-										href="${pageContext.request.contextPath}/views/history/myGuideHistory.jsp"><h3>가이드
+										href="${pageContext.request.contextPath}/history/myGuideHistory.do"><h3>가이드
 												내역</h3></a></li>
 								</ul>
 								</footer>
@@ -66,31 +66,31 @@
 												<input type="radio" name="gatheringStatus" value="true">모집중
 												<input type="radio" name="gatheringStatus" value="false">모집완료
 												<div class="form-group">
-													<input type="hidden" name="boardId"
-														value="${travelPlan.speakingAbility}"> <label
+													 <label
 														class="col-lg-2 control-label"><h3>언어 구사 능력</h3></label>
-
+<input type="text" name="speakingAbility"
+														value="${travelPlan.speakingAbility}">
 													<div class="col-lg-10">
 														<input type="text" name="title" class="form-control" value="aa언어구사능력">
 													</div>
 												</div>
 
 												<div class="form-group">
-													<input type="text" name="travelArea"
-														value="${travelPlan.travelArea}"> <label
+													 <label
 														class="col-lg-2 control-label"><h3>여행 지역</h3></label>
-
+<input type="text" name="travelArea"
+														value="${travelPlan.travelArea}">
 													<div class="col-lg-10">
 														<input type="text" name="title" class="form-control">
 													</div>
 												</div>
 
 												<div class="form-group">
-													<input type="text" name="numberOfVisits"
-														value="${travelPlan.numberOfVisits}" disabled="disabled"> <label
+													 <label
 														class="col-lg-2 control-label"><h3>여행 지역 방문
 															횟수</h3></label>
-
+<input type="text" name="numberOfVisits"
+														value="${travelPlan.numberOfVisits}" disabled="disabled">
 													<div class="col-lg-10">
 														<input type="text" name="title" class="form-control">
 													</div>
@@ -98,10 +98,10 @@
 
 
 												<div class="form-group">
-													<input type="text" name="startDate"
-														value="${travelPlan.startDate}"> <label
+											 <label
 														class="col-lg-2 control-label"><h3>여행 일정</h3></label>
-
+		<input type="text" name="startDate"
+														value="${travelPlan.startDate}">
 													<div class="col-lg-10">
 														<input type="text" name="title" class="form-control">
 													</div>
@@ -109,10 +109,10 @@
 
 
 												<div class="form-group">
-													<input type="text" name="theme"
-														value="${travelPlan.theme}"> <label
+													 <label
 														class="col-lg-2 control-label"><h3>여행 테마</h3></label>
-
+<input type="text" name="theme"
+														value="${travelPlan.theme}">
 													<div class="col-lg-10">
 														<input type="text" name="title" class="form-control">
 													</div>
@@ -120,10 +120,10 @@
 
 
 												<div class="form-group">
-													<input type="text" name="numberOfTraveler"
-														value="${travelPlan.numberOfTraveler}"> <label
+													 <label
 														class="col-lg-2 control-label"><h3>여행 인원</h3></label>
-
+<input type="text" name="numberOfTraveler"
+														value="${travelPlan.numberOfTraveler}">
 													<div class="col-lg-10">
 														<input type="text" name="title" class="form-control">
 													</div>
@@ -132,10 +132,10 @@
 
 
 												<div class="form-group">
-													<input type="text" name="preferGuide"
-														value="${travelPlan.preferGuide}"> <label
+													 <label
 														class="col-lg-2 control-label"><h3>선호 가이드</h3></label>
-
+<input type="text" name="preferGuide"
+														value="${travelPlan.preferGuide}">
 													<div class="col-lg-10">
 														<input type="text" name="title" class="form-control">
 													</div>
