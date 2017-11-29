@@ -33,6 +33,9 @@
 	<div id="page-wrapper">
 
 		<!-- Header -->
+<<<<<<< HEAD
+	<%@ include file="/views/layout/header.jsp" %>
+=======
 		<div id="header-wrapper">
 			<header id="header" class="container">
 
@@ -69,6 +72,7 @@
 				</nav>
 			</header>
 		</div>
+>>>>>>> branch 'master' of https://github.com/tjsqls/everyYeoga.git
 
 		<!-- Main -->
 

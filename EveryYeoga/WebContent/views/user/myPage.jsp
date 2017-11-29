@@ -25,6 +25,9 @@
 	<div id="page-wrapper">
 
 		<!-- Header -->
+<<<<<<< HEAD
+<%@ include file="/views/layout/header.jsp" %>
+=======
 		<div id="header-wrapper">
 			<header id="header" class="container">
 
@@ -62,6 +65,7 @@
 				</nav>
 			</header>
 		</div>
+>>>>>>> branch 'master' of https://github.com/tjsqls/everyYeoga.git
 
 		<!-- Main -->
 		<div id="main-wrapper">
@@ -71,31 +75,8 @@
 						<div id="sidebar">
 
 							<!-- Sidebar -->
-							<section>
-								<ul class="style2">
-									<li><a
-										href="${pageContext.request.contextPath}/user/myPage.do"><h3>회원정보</h3></a></li>
-									<a
-										href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp"><h3>여행
-											검색</h3></a>
-									</li>
 
-									<li><a
-										href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp"><h3>참여중인
-												모임</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/views/travel/myTravelPlan.jsp"><h3>내가
-												올린 여행계획</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/views/history/myTravelerHistory.jsp"><h3>여행
-												내역</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/views/history/myGuideHistory.jsp"><h3>가이드
-												내역</h3></a></li>
-								</ul>
-								</footer>
-							</section>
-
+<%@ include file="/views/layout/side.jsp" %>
 						</div>
 					</div>
 					<div class="8u 12u$(medium) important(medium)">
