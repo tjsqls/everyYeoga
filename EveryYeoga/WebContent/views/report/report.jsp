@@ -83,26 +83,24 @@
 									<div class="well">
 										<form action="${pageContext.request.contextPath}/report/regist.do" class="bs-example form-horizontal" method="POST">
 											<fieldset>
-												<table style="width:90%">
+												<table>
 
 												<tr><td><p><strong>신고 회원 : </strong> ${reportUser.id }</p></td></tr>
 												<tr><td><p><strong>신고 구분 : </strong> [ 댓글]</p></td></tr>
 
-													<tr><label for="dropdown"><td><p><strong>신고 분류 :</strong></p>
-													<select id="dropdown" style>
+													<tr><td><p><strong>신고 분류 :</strong></p>
+												<select style="width:50%">
 															<option value="${reportType}">광고물 게시</option>
 															<option value="${reportType}">욕설 및 비방</option>
 															<option value="${reportType}">음란물 게시</option>
 															<option value="${reportType}">도배</option>
 															<option value="${reportType}">기타</option>
-													</select></td> </label>
+													</select></td></tr> 
 
-													<tr><td><label class="col-lg-2 control-label"><h3>신고사유 :</h3></label></td></tr>
-														<tr><td><textarea class="form-control" name="contents" rows="1"
+													<tr><td><p><strong>신고사유 :</strong></p></td></tr>
+														<tr><td><textarea class="form-control" name="contents" rows="1" style="width:70%"
 															id="textArea" value="${reportReason}"></textarea></td></tr></table>
-													</div>
-												</div>
-												<br /> <br />
+												
 												<div class="form-group">
 													<div class="col-lg-10 col-lg-offset-2">
 														<button type="submit" class="btn btn-pr">신고하기</button>
