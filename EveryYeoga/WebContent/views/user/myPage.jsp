@@ -25,47 +25,8 @@
 	<div id="page-wrapper">
 
 		<!-- Header -->
-<<<<<<< HEAD
+
 <%@ include file="/views/layout/header.jsp" %>
-=======
-		<div id="header-wrapper">
-			<header id="header" class="container">
-
-				<!-- Logo -->
-				<div id="logo">
-					<h1>
-						<a
-							href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp">모두의
-							가이드</a>
-					</h1>
-
-				</div>
-
-				<!-- Nav -->
-				<nav id="nav">
-					<ul>
-						<li class="current"><a
-							href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp">여행검색</a></li>
-						<li class="current"><a
-							href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp">모임관리</a></li>
-
-						<c:choose>
-							<c:when test="${loginedUser eq null}">
-								<li class="current"><a
-									href="${pageContext.request.contextPath}/user/login.do">로그인</a></li> 
-									<li class="current"><a
-									href="${pageContext.request.contextPath}/user/regist.do">회원가입</a></li>
-							</c:when>
-							<c:otherwise>
-								<li class="current"><a
-									href="${pageContext.request.contextPath}/user/logout.do">로그아웃</a></li>
-							</c:otherwise>
-						</c:choose>
-					</ul>
-				</nav>
-			</header>
-		</div>
->>>>>>> branch 'master' of https://github.com/tjsqls/everyYeoga.git
 
 		<!-- Main -->
 		<div id="main-wrapper">
@@ -74,9 +35,7 @@
 					<div class="4u 12u$(medium)">
 						<div id="sidebar">
 
-							<!-- Sidebar -->
 
-<%@ include file="/views/layout/side.jsp" %>
 						</div>
 					</div>
 					<div class="8u 12u$(medium) important(medium)">

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE HTML>
 
 <html>
@@ -8,7 +9,7 @@
 <title>Verti by HTML5 UP</title>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="stylesheet" href="../../assets/css/main.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath }/assets/css/main.css" />
 <link
 	href="${pageContext.request.contextPath }/resources/css/bootstrap_modify.css"
 	rel="stylesheet">
@@ -33,46 +34,8 @@
 	<div id="page-wrapper">
 
 		<!-- Header -->
-<<<<<<< HEAD
+
 	<%@ include file="/views/layout/header.jsp" %>
-=======
-		<div id="header-wrapper">
-			<header id="header" class="container">
-
-				<!-- Logo -->
-				<div id="logo">
-					<h1>
-						<a
-							href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp">모두의
-							가이드</a>
-					</h1>
-
-				</div>
-
-				<!-- Nav -->
-				<nav id="nav">
-					<ul>
-						<li class="current"><a
-							href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp">여행검색</a></li>
-						<li class="current"><a
-							href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp">모임관리</a></li>
-						<c:choose>
-							<c:when test="${loginedUser eq null}">
-								<li class="current"><a
-									href="${pageContext.request.contextPath}/user/login.do">로그인</a></li>
-								<li class="current"><a
-									href="${pageContext.request.contextPath}/user/regist.do">회원가입</a></li>
-							</c:when>
-							<c:otherwise>
-								<li class="current"><a
-									href="${pageContext.request.contextPath}/user/logout.do">로그아웃</a></li>
-							</c:otherwise>
-						</c:choose>
-					</ul>
-				</nav>
-			</header>
-		</div>
->>>>>>> branch 'master' of https://github.com/tjsqls/everyYeoga.git
 
 		<!-- Main -->
 
