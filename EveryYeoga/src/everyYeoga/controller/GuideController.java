@@ -22,7 +22,12 @@ public class GuideController {
 	
 	@RequestMapping("registJoin.do")//registJoin.jsp
 	public String registJoin(HttpServletRequest req,Join join, String travelPlanId) {
-		return null;
+		HttpSession session = req.getSession();
+		User user = (User)session.getAttribute("loginedUser");
+		
+		travelService.registJoin(join, travelPlanId);
+		
+		return "guide/registJoin";
 	}
 	
 	@RequestMapping("searchJoinDetail.do")//joinDetail.jsp

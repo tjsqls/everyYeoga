@@ -23,23 +23,23 @@ public class TravelPlanStoreTest {
 		store = new TravelStoreLogic();
 	}
 
-	@Test
-	public void testCreateTravelPlan() {
-		
-		TravelPlan t = new TravelPlan();
-		t.setSpeakingAbility("안녕하세요");
-		t.setPreferGuide("3");
-		t.setTheme("23");
-		t.setTravelArea("서울");
-		t.setNumberOfVisits("2");
-		t.setNumberOfTraveler("2");
-		t.setGatheringStatus("2");
-		t.setSelfIntroduction("asdasd");
-		User u = new User();
-		u.setId("123");
-		t.setTraveler(u);
-		store.createTravelPlan(t);
-	} 
+//	@Test
+//	public void testCreateTravelPlan() {
+//		
+//		TravelPlan t = new TravelPlan();
+//		t.setSpeakingAbility("안녕하세요");
+//		t.setPreferGuide("3");
+//		t.setTheme("23");
+//		t.setTravelArea("서울");
+//		t.setNumberOfVisits("2");
+//		t.setNumberOfTraveler("2");
+//		t.setGatheringStatus("2");
+//		t.setSelfIntroduction("asdasd");
+//		User u = new User();
+//		u.setId("123");
+//		t.setTraveler(u);
+//		store.createTravelPlan(t);
+//	} 
 //
 //	@Test
 //	public void testRetrieveTravelPlanByTravelArea() {
@@ -73,14 +73,12 @@ public class TravelPlanStoreTest {
 //	} 
 //	
 ////
-//	@Test
-//	public void testRetrieveTravelPlan() {
-//		System.out.println("Sdfdsf");
-//		TravelPlan t = store.retrieveTravelPlan("2");
-//		assertEquals("서울", t.getTheme());
-//		System.out.println("1232");
-//		System.out.println("000"+t.getTravelPlanId());
-//	} 
+	@Test
+	public void testRetrieveTravelPlan() {
+		TravelPlan t = store.retrieveTravelPlanByUserId("3");
+		assertEquals("지니", t.getSpeakingAbility());
+		System.out.println(t.toString());
+	} 
 //
 /*	@Test
 	public void testUpdateTravelPlan() {

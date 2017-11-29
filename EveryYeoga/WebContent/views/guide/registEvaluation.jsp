@@ -186,7 +186,7 @@ star-input>.input.focus {
 
 
 												<div class="form-group">
-													<input type="hidden" name="boardId"
+													<input type="text" name="boardId"
 														value="${boardDetail.boardId}"> <label
 														class="col-lg-2 control-label"><h3>좋았던 점</h3></label>
 

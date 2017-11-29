@@ -29,10 +29,9 @@ public class TravelController {
 
 	@RequestMapping(value = "regist.do") // createTravelPlan.jsp
 	public String registTravelPlan(HttpServletRequest req, TravelPlan travelPlan) {// 2017.11.27 HttpServletRequest 추가
-//		HttpSession session = req.getSession();
-//		User user = (User) session.getAttribute("loginedUser");
+		HttpSession session = req.getSession();
+		User user = (User) session.getAttribute("loginedUser");
 		
-		User user = userService.searchByUserId("2");
 		
 		travelPlan.setTraveler(user);
 
@@ -58,13 +57,16 @@ public class TravelController {
 	}
 
 	@RequestMapping(value = "search.do")
-	public String searchTravelPlanByUserId(HttpServletRequest req, Model model) {
+	public ModelAndView searchTravelPlanByUserId(HttpServletRequest req) {
 		HttpSession session = req.getSession();
 		User user = (User) session.getAttribute("loginedUser");
 
 		TravelPlan travelPlan = travelService.searchTravelPlanByUserId(user.getId());
-		model.addAttribute(travelPlan);
-		return "travel/myTravelPlan";
+		
+		ModelAndView modelAndView = new ModelAndView("travel/myTravelPlan");
+		modelAndView.addObject("travelPlan", travelPlan);
+		System.out.println(travelPlan.toString());
+		return modelAndView;
 	}
 
 	@RequestMapping(value = "travelPlanList.do")
@@ -86,6 +88,7 @@ public class TravelController {
 	public ModelAndView searchTravelPlan(String travelArea, String speakingAbility, String startDate) {
 		List<TravelPlan> list = travelService.searchTravelPlansByTravelPlan(travelArea, speakingAbility, startDate);
 		ModelAndView modelAndView = new ModelAndView("travelPlanList.jsp");
+		
 		modelAndView.addObject("list", list);
 
 		return modelAndView;

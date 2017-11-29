@@ -51,7 +51,7 @@
 							<section>
 								<ul class="style2">
 									<li><a
-										href="${pageContext.request.contextPath}/views/user/myPage.jsp"><h3>회원정보</h3></a></li>
+										href="${pageContext.request.contextPath}/user/detail.do"><h3>회원정보</h3></a></li>
 									<a
 										href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp"><h3>여행
 											검색</h3></a>
@@ -61,7 +61,7 @@
 										href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp"><h3>참여중인
 												모임</h3></a></li>
 									<li><a
-										href="${pageContext.request.contextPath}/views/travel/myTravelPlan.jsp"><h3>내가
+										href="${pageContext.request.contextPath}/travel/search.do"><h3>내가
 												올린 여행계획</h3></a></li>
 									<li><a
 										href="${pageContext.request.contextPath}/views/history/myTravelerHistory.jsp"><h3>여행

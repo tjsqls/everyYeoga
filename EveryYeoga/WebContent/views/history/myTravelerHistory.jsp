@@ -13,15 +13,7 @@
 <link href="${pageContext.request.contextPath }/resources/css/layout.css" rel="stylesheet">
 <script src="${pageContext.request.contextPath }/resources/js/jquery-2.1.3.js"></script>
 <script src="${pageContext.request.contextPath }/resources/js/jquery.blockUI.js"></script>
-<script type="text/javascript">
-	function button_event() {
-		if (confirm("정말 삭제하시겠습니까??") == true) { //확인
-			document.form.submit();
-		} else { //취소
-			return;
-		}
-	}
-</script>
+
 </head>
 <body class="left-sidebar">
 	<div id="page-wrapper">
@@ -115,14 +107,14 @@
 													</tr>
 												</thead>
 												<c:choose>
-													<c:when test="${empty list}">
+													<c:when test="${empty list }">
 														<tr>
 															<th colspan="5" class="text-center">여행 내역이 존재하지
 																않습니다.</th>
 														</tr>
 													</c:when>
 													<c:otherwise>
-														<c:forEach items="${list}" var="tavelerHistory" varStatus="sts" >
+														<c:forEach items="${list }" var="tavelerHistory" varStatus="sts" >
 															<tr>
 																<td class="text-center">${sts.count}</td>
 																<td class="text-center">${travelerHistory.travelArea}</td>

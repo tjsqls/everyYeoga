@@ -99,7 +99,7 @@
 												</div>
 
 												<div class="form-group">
-													<input type="hidden" name="travelPlan"
+													<input type="text" name="travelArea"
 														value="${travelPlan.travelArea}"> <label
 														class="col-lg-2 control-label"><h3>여행 지역</h3></label>
 
@@ -109,8 +109,8 @@
 												</div>
 
 												<div class="form-group">
-													<input type="hidden" name="travelPlan"
-														value="${travelPlan.numberOfVisits}"> <label
+													<input type="text" name="numberOfVisits"
+														value="${travelPlan.numberOfVisits}" disabled="disabled"> <label
 														class="col-lg-2 control-label"><h3>여행 지역 방문
 															횟수</h3></label>
 
@@ -121,7 +121,7 @@
 
 
 												<div class="form-group">
-													<input type="hidden" name="travelPlan"
+													<input type="text" name="startDate"
 														value="${travelPlan.startDate}"> <label
 														class="col-lg-2 control-label"><h3>여행 일정</h3></label>
 
@@ -132,7 +132,7 @@
 
 
 												<div class="form-group">
-													<input type="hidden" name="travelPlan"
+													<input type="text" name="theme"
 														value="${travelPlan.theme}"> <label
 														class="col-lg-2 control-label"><h3>여행 테마</h3></label>
 
@@ -143,7 +143,7 @@
 
 
 												<div class="form-group">
-													<input type="hidden" name="travelPlan"
+													<input type="text" name="numberOfTraveler"
 														value="${travelPlan.numberOfTraveler}"> <label
 														class="col-lg-2 control-label"><h3>여행 인원</h3></label>
 
@@ -155,7 +155,7 @@
 
 
 												<div class="form-group">
-													<input type="hidden" name="travelPlan"
+													<input type="text" name="preferGuide"
 														value="${travelPlan.preferGuide}"> <label
 														class="col-lg-2 control-label"><h3>선호 가이드</h3></label>
 
@@ -170,7 +170,7 @@
 															소개</h3></label>
 
 													<div class="col-lg-10">
-														<textarea class="form-control" name="contents" rows="2"
+														<textarea class="form-control" name="selfIntroduction" rows="2"
 															id="textArea"></textarea>
 													</div>
 												</div>

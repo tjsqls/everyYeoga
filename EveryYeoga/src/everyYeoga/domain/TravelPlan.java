@@ -4,6 +4,15 @@ import java.util.Date;
 
 public class TravelPlan {
 
+	@Override
+	public String toString() {
+		return "TravelPlan [travelPlanId=" + travelPlanId + ", speakingAbility=" + speakingAbility + ", travelArea="
+				+ travelArea + ", numberOfVisits=" + numberOfVisits + ", theme=" + theme + ", numberOfTraveler="
+				+ numberOfTraveler + ", preferGuide=" + preferGuide + ", selfIntroduction=" + selfIntroduction
+				+ ", gatheringStatus=" + gatheringStatus + ", startDate=" + startDate + ", endDate=" + endDate
+				+ ", traveler=" + traveler + "]";
+	}
+
 	private String travelPlanId;
 	private String speakingAbility;
 	private String travelArea;

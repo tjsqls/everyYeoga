@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE HTML>
 
 <html>
@@ -7,7 +8,11 @@
 <title>Verti by HTML5 UP</title>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="stylesheet" href="../../assets/css/main.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath }/assets/css/main.css" />
+<link href="${pageContext.request.contextPath }/resources/css/bootstrap_modify.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/resources/css/layout.css" rel="stylesheet">
+<script src="${pageContext.request.contextPath }/resources/js/jquery-2.1.3.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js/jquery.blockUI.js"></script>
 </head>
 <body class="left-sidebar">
 	<div id="page-wrapper">
@@ -26,10 +31,21 @@
 
 				<!-- Nav -->
 				<nav id="nav">
-					<ul>
-			<li class="current"><a href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp">여행검색</a></li>
+				<ul>
+						<li class="current"><a href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp">여행검색</a></li>
 					<li class="current"><a href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp">모임관리</a></li>
-						<li class="current"><a href="login.html">로그아웃</a></li>
+						<c:choose>
+							<c:when test="${loginedUser eq null}">
+								<li class="current"><a
+									href="${pageContext.request.contextPath}/user/login.do">로그인</a></li> | <li
+									class="current"><a
+									href="${pageContext.request.contextPath}/user/regist.do">회원가입</a></li>
+							</c:when>
+							<c:otherwise>
+								<li class="current"><a
+									href="${pageContext.request.contextPath}/user/logout.do">로그아웃</a></li>
+							</c:otherwise>
+						</c:choose>
 					</ul>
 				</nav>
 			</header>
@@ -44,9 +60,9 @@
 
 							<!-- Sidebar -->
 							<section>
-								
-								<ul class="style2">									<li><a
-										href="${pageContext.request.contextPath}/views/user/myPage.jsp"><h3>회원정보</h3></a></li>
+								<ul class="style2">
+									<li><a
+										href="${pageContext.request.contextPath}/user/myPage.do"><h3>회원정보</h3></a></li>
 								<a
 										href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp"><h3>여행 검색</h3></a></li>
 								
@@ -70,71 +86,34 @@
 						<div id="content">
 							<div class="col-sm-9 col-lg-9">
 								<div>
-									<h3>참여 신청 정보</h3>
+									<h3>내 정보</h3>
 								</div>
 
-								<div class="table-responsive">
-									<div class="well">
-										<form
-											action="${pageContext.request.contextPath}/guide/joinDetail.do"
-											class="bs-example form-horizontal" method="POST">
-											<fieldset>
-												<div class="form-group">
-													<input type="text" name="travelArea"
-														value="${travelPlan.travelArea}"> <label
-														class="col-lg-2 control-label"><h3>지역</h3></label>
-
-													<div class="col-lg-10">
-														<font>${travelPlan.travelArea}</font>
-													</div>
-												</div>
-
-												<div class="form-group">
-													<input type="text" name="speakingAbility"
-														value="${travelPlan.speakingAbility}"> <label
-														class="col-lg-2 control-label"><h3>언어 구사 능력</h3></label>
-
-													<div class="col-lg-10">
-														<font>${travelPlan.speakingAbility}</font>
-													</div>
-												</div>
-
-												<div class="form-group">
-													<input type="text" name="preferGuide"
-														value="${travelPlan.preferGuide}"> <label
-														class="col-lg-2 control-label"><h3>가이드 경험</h3></label>
-
-													<div class="col-lg-10">
-														<font>${travelPlan.preferGuide}</font>
-													</div>
-												</div>
-
-
-												<div class="form-group">
-													<input type="text" name="selfIntroduction"
-														value="${travelPlan.selfIntroduction}"> <label
-														class="col-lg-2 control-label"><h3>자기소개</h3></label>
-
-													<div class="col-lg-10">
-														<font>${travelPlan.selfIntroduction}</font>
-													</div>
-												</div>
-
-
-												<div class="form-group">
-													<label class="col-lg-2 control-label"><h3>신청
-															사유</h3></label>
-
-													<div class="col-lg-10">
-														<font>신청사유 입력한거</font>
-													</div>
-												</div>
-												<br /> <br />
-												<div class="form-group"></div>
-											</fieldset>
-										</form>
-									</div>
-								</div>
+								<form action="${pageContext.request.contextPath}/user/modify.do" method="post">
+									<table>
+										<input type="hidden" name="pw" value="${user.pw}">
+										<tr><td>ID </td>
+										<td><input type="text" name="id" value="${user.id}"> </td>
+										</tr>
+										<tr><td>이름 </td>
+										<td><input type="text" name="name" value="${user.name}"></td>
+										</tr>
+										<tr><td>생년월일 </td>
+										<td><input type="text" name="birthDate" value="${user.birthDate}"></td>
+										</tr>
+										<tr><td>이메일 </td>
+										<td><input type="text" name="email" value="${user.email}"></td>
+										</tr>
+										<tr><td>휴대폰 번호 </td>
+										<td><input type="text" name="phoneNumber" value="${user.phoneNumber}"></td>
+										</tr>
+										<tr>
+										<button type="submit">저장</button>
+                    					<a href="#">취소</a>
+										</tr>
+										
+									</table>
+								</form>
 							</div>
 						</div>
 					</div>

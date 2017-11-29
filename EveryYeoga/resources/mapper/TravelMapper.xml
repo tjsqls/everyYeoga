@@ -36,7 +36,7 @@
 		selfIntroduction, gatheringStatus) VALUES(travelPlan_seq.NEXTVAL,
 		#{traveler.id}, #{speakingAbility}, #{travelArea}, #{numberOfVisits},
 		#{theme}, #{numberOfTraveler}, #{preferGuide}, #{selfIntroduction},
-		#{gatheringStatus}) </insert>
+		'true') </insert>
 
 	<select id="retrieveTravelPlanByTravelArea" parameterType="String"
 		resultType="travelPlan"> SELECT travelPlanId, travelerId, speakingAbility,
@@ -102,7 +102,7 @@
 		travelArea, numberOfVisits, theme, numberOfTraveler, preferGuide,
 		selfIntroduction, gatheringStatus, startDate,endDate 
 	FROM travelPlan_tb
-	WHERE travelerId=#{userId} AND gatheringStatus='false'
+	WHERE travelerId=#{traveler.id} AND gatheringStatus='true'
 	</select>
 
 </mapper>

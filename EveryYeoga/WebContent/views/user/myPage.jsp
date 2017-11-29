@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE HTML>
 
 <html>
@@ -7,7 +8,18 @@
 <title>Verti by HTML5 UP</title>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="stylesheet" href="../../assets/css/main.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/assets/css/main.css" />
+<link
+	href="${pageContext.request.contextPath }/resources/css/bootstrap_modify.css"
+	rel="stylesheet">
+<link
+	href="${pageContext.request.contextPath }/resources/css/layout.css"
+	rel="stylesheet">
+<script
+	src="${pageContext.request.contextPath }/resources/js/jquery-2.1.3.js"></script>
+<script
+	src="${pageContext.request.contextPath }/resources/js/jquery.blockUI.js"></script>
 </head>
 <body class="left-sidebar">
 	<div id="page-wrapper">
@@ -19,17 +31,33 @@
 				<!-- Logo -->
 				<div id="logo">
 					<h1>
-						<a href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp">모두의 가이드</a>
+						<a
+							href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp">모두의
+							가이드</a>
 					</h1>
 
 				</div>
 
 				<!-- Nav -->
 				<nav id="nav">
-				<ul>
-						<li class="current"><a href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp">여행검색</a></li>
-					<li class="current"><a href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp">모임관리</a></li>
-						<li class="current"><a href="login.html">로그아웃</a></li>
+					<ul>
+						<li class="current"><a
+							href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp">여행검색</a></li>
+						<li class="current"><a
+							href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp">모임관리</a></li>
+
+						<c:choose>
+							<c:when test="${loginedUser eq null}">
+								<li class="current"><a
+									href="${pageContext.request.contextPath}/user/login.do">로그인</a></li> | <li
+									class="current"><a
+									href="${pageContext.request.contextPath}/user/regist.do">회원가입</a></li>
+							</c:when>
+							<c:otherwise>
+								<li class="current"><a
+									href="${pageContext.request.contextPath}/user/logout.do">로그아웃</a></li>
+							</c:otherwise>
+						</c:choose>
 					</ul>
 				</nav>
 			</header>
@@ -46,15 +74,19 @@
 							<section>
 								<ul class="style2">
 									<li><a
-										href="${pageContext.request.contextPath}/views/user/myPage.jsp"><h3>회원정보</h3></a></li>
-								<a
-										href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp"><h3>여행 검색</h3></a></li>
-								
-									<li><a href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp"><h3>참여중인 모임</h3></a></li>
+										href="${pageContext.request.contextPath}/user/myPage.do"><h3>회원정보</h3></a></li>
+									<a
+										href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp"><h3>여행
+											검색</h3></a>
+									</li>
+
+									<li><a
+										href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp"><h3>참여중인
+												모임</h3></a></li>
 									<li><a
 										href="${pageContext.request.contextPath}/views/travel/myTravelPlan.jsp"><h3>내가
 												올린 여행계획</h3></a></li>
-	<li><a
+									<li><a
 										href="${pageContext.request.contextPath}/views/history/myTravelerHistory.jsp"><h3>여행
 												내역</h3></a></li>
 									<li><a
@@ -77,21 +109,44 @@
 
 
 									<table>
+<<<<<<< HEAD
 										<b><label>ID</label></b>
 										<label>아이디</label>
 										<br />
+=======
+										<tr>
+											<td>ID</td>
+											<td>${user.id}</td>
+										</tr>
+>>>>>>> branch 'master' of https://github.com/tjsqls/everyYeoga.git
 
-										<b><label>이름</label></b>
-										<label>이름</label>
 
-										<br />
-										<b> <label>생년월일</label></b>
-										<label>생년월일</label>
+										<tr>
+											<td>이름</td>
+											<td>${user.name}</td>
+										</tr>
 
-										<br />
-										<b><label>이메일</label></b>
-										<label>이메일</label>
-										<br />
+										<tr>
+											<td>생년월일</td>
+											<td>${user.birthDate}</td>
+										</tr>
+
+										<tr>
+											<td>이메일</td>
+											<td>${user.email}</td>
+										</tr>
+
+										<tr>
+											<td>휴대폰 번호</td>
+											<td>${user.phoneNumber}</td>
+										</tr>
+										<tr>
+											<td><a
+												href="${pageContext.request.contextPath}/user/modify.do?userId=${user.id}">수정</a></td>
+											<td><a
+												href="${pageContext.request.contextPath}/user/remove.do?userId=${user.id}">삭제</a></td>
+										</tr>
+
 
 									</table>
 								</form>

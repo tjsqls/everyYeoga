@@ -71,11 +71,11 @@
 
     <div class="table-responsive">
         <div class="well">
-            <form action="${pageContext.request.contextPath}/article/regist.do"
+            <form action="${pageContext.request.contextPath}/guidec/registJoin.do"
                   class="bs-example form-horizontal" method="POST">
                 <fieldset>
                     <div class="form-group">
-                      <input type="hidden" name="boardId" value="${boardDetail.boardId}">
+                      <input type="text" name="boardId" value="${boardDetail.boardId}">
                         <label class="col-lg-2 control-label"><h3>지역</h3></label>
 
                         <div class="col-lg-10">
@@ -84,7 +84,7 @@
                     </div>
 
                     <div class="form-group">
-                      <input type="hidden" name="boardId" value="${boardDetail.boardId}">
+                      <input type="text" name="boardId" value="${boardDetail.boardId}">
                         <label class="col-lg-2 control-label"><h3>언어 구사 능력</h3></label>
 
                         <div class="col-lg-10">
@@ -93,7 +93,7 @@
                     </div>
                     
                                         <div class="form-group">
-                      <input type="hidden" name="boardId" value="${boardDetail.boardId}">
+                      <input type="text" name="boardId" value="${boardDetail.boardId}">
                         <label class="col-lg-2 control-label"><h3>가이드 경험</h3></label>
 
                         <div class="col-lg-10">
@@ -103,7 +103,7 @@
                     
                     
                                         <div class="form-group">
-                      <input type="hidden" name="boardId" value="${boardDetail.boardId}">
+                      <input type="text" name="boardId" value="${boardDetail.boardId}">
                         <label class="col-lg-2 control-label"><h3>자기소개</h3></label>
 
                   <div class="col-lg-10">
