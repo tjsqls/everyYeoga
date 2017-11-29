@@ -60,48 +60,36 @@
 								<div class="table-responsive">
 									<div class="well">
 										<form
-											action="${pageContext.request.contextPath}/guidec/registJoin.do"
+											action="${pageContext.request.contextPath}/guide/registJoin.do"
 											class="bs-example form-horizontal" method="POST">
 											<fieldset>
 												<div class="form-group">
-													<input type="text" name="boardId"
-														value="${boardDetail.boardId}"> <label
-														class="col-lg-2 control-label"><h3>지역</h3></label>
-
-													<div class="col-lg-10">
-														<input type="text" name="title" class="form-control">
-													</div>
+													<label class="col-lg-2 control-label"><h3>지역</h3></label> <input
+														type="text" name="travelArea" value="${join.travelArea}">
+													<div class="col-lg-10"></div>
 												</div>
 
 												<div class="form-group">
-													<input type="text" name="boardId"
-														value="${boardDetail.boardId}"> <label
-														class="col-lg-2 control-label"><h3>언어 구사 능력</h3></label>
-
-													<div class="col-lg-10">
-														<input type="text" name="title" class="form-control">
-													</div>
+													<label class="col-lg-2 control-label"><h3>언어
+															구사 능력</h3></label> <input type="text" name="speakingAbility"
+														value="${join.speakingAbility}">
+													<div class="col-lg-10"></div>
 												</div>
 
 												<div class="form-group">
-													<input type="text" name="boardId"
-														value="${boardDetail.boardId}"> <label
-														class="col-lg-2 control-label"><h3>가이드 경험</h3></label>
-
-													<div class="col-lg-10">
-														<input type="text" name="title" class="form-control">
-													</div>
+													<label class="col-lg-2 control-label"><h3>가이드
+															경험</h3></label> <input type="text" name="preferGuide"
+														value="${join.guideExperience}">
+													<div class="col-lg-10"></div>
 												</div>
 
 
 												<div class="form-group">
-													<input type="text" name="boardId"
-														value="${boardDetail.boardId}"> <label
-														class="col-lg-2 control-label"><h3>자기소개</h3></label>
+													<label class="col-lg-2 control-label"><h3>자기소개</h3></label>
 
 													<div class="col-lg-10">
-														<textarea class="form-control" name="contents" rows="2"
-															id="textArea"></textarea>
+														<textarea class="form-control" name="selfIntroduction"
+															rows="2" id="textArea"></textarea>
 													</div>
 												</div>
 
@@ -111,7 +99,7 @@
 															사유</h3></label>
 
 													<div class="col-lg-10">
-														<textarea class="form-control" name="contents" rows="2"
+														<textarea class="form-control" name="joinReason" rows="2"
 															id="textArea"></textarea>
 													</div>
 												</div>

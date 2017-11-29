@@ -29,9 +29,9 @@
 							<section>
 								<ul class="style2">
 									<li><a
-										href="${pageContext.request.contextPath}/user/myPage.jsp"><h3>회원정보</h3></a></li>
+										href="${pageContext.request.contextPath}/user/myPage.do"><h3>회원정보</h3></a></li>
 									<a
-										href="${pageContext.request.contextPath}/travel/travelPlanList.jsp"><h3>여행
+										href="${pageContext.request.contextPath}/travel/travelPlanList.do"><h3>여행
 											검색</h3></a>
 									</li>
 
@@ -88,13 +88,11 @@
 														<tr>
 															<td><input type="checkbox" name="guide"
 																value="회원아이디"></td>
-															<td class="text-center">${article.articleId }</td>
-															<td><a
-																href="${ctx}/article/search.do?articleId=${article.articleId}">${article.title}
-															</a></td>
-															<td class="text-center"><fmt:formatDate
-																	value="${article.regDate }" pattern="yyyy/MM/dd" /></td>
-															<td class="text-center">${article.authorName }</td>
+															<td class="text-center">${join.guide.id }</td>
+															<td class="text-center">${join.guide.name }</td>
+															<td class="text-center">${join.guide.guideExperience }</td>
+															<td class="text-center">${join.guide.speakingAbility }</td>
+															
 
 														</tr>
 

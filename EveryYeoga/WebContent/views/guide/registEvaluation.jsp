@@ -158,29 +158,23 @@ star-input>.input.focus {
 											class="bs-example form-horizontal" method="POST">
 											<fieldset>
 
-												<label class="col-lg-2 control-label"><h3>가이드:가이드이름</h3></label>
+												<label class="col-lg-2 control-label"><h3>가이드:${evaluation.guide.name }</h3></label>
 
 
 												<div class="form-group">
-													<input type="text" name="boardId"
-														value="${boardDetail.boardId}"> <label
-														class="col-lg-2 control-label"><h3>좋았던 점</h3></label>
-
-													<div class="col-lg-10">
-														<textarea class="form-control" name="contents" rows="2"
-															id="textArea"></textarea>
-													</div>
+													<input type="text" name="pros" value="${evaluation.pros}">
+													<label class="col-lg-2 control-label"><h3>좋았던
+															점</h3></label> <input type="text" name="pros"
+														value="${evaluation.pros}">
+													<div class="col-lg-10"></div>
 												</div>
 
 
 												<div class="form-group">
 													<label class="col-lg-2 control-label"><h3>나빴던
-															점</h3></label>
-
-													<div class="col-lg-10">
-														<textarea class="form-control" name="contents" rows="2"
-															id="textArea"></textarea>
-													</div>
+															점</h3></label> <input type="text" name="pros"
+														value="${evaluation.pros}">
+													<div class="col-lg-10"></div>
 												</div>
 
 												<label class="col-lg-2 control-label"><h3>별점</h3></label> <span

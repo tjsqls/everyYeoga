@@ -63,43 +63,37 @@
 											class="bs-example form-horizontal" method="POST">
 											<fieldset>
 												<div class="form-group">
-													<input type="text" name="travelArea"
-														value="${travelPlan.travelArea}"> <label
-														class="col-lg-2 control-label"><h3>지역</h3></label>
+													<label class="col-lg-2 control-label"><h3>지역</h3></label>
 
 													<div class="col-lg-10">
-														<font>${travelPlan.travelArea}</font>
+														<font>${join.travelArea}</font>
 													</div>
 												</div>
 
 												<div class="form-group">
-													<input type="text" name="speakingAbility"
-														value="${travelPlan.speakingAbility}"> <label
-														class="col-lg-2 control-label"><h3>언어 구사 능력</h3></label>
+													<label class="col-lg-2 control-label"><h3>언어
+															구사 능력</h3></label>
 
 													<div class="col-lg-10">
-														<font>${travelPlan.speakingAbility}</font>
+														<font>${join.speakingAbility}</font>
 													</div>
 												</div>
 
 												<div class="form-group">
-													<input type="text" name="preferGuide"
-														value="${travelPlan.preferGuide}"> <label
-														class="col-lg-2 control-label"><h3>가이드 경험</h3></label>
+													<label class="col-lg-2 control-label"><h3>가이드
+															경험</h3></label>
 
 													<div class="col-lg-10">
-														<font>${travelPlan.preferGuide}</font>
+														<font>${join.guideExperience}</font>
 													</div>
 												</div>
 
 
 												<div class="form-group">
-													<input type="text" name="selfIntroduction"
-														value="${travelPlan.selfIntroduction}"> <label
-														class="col-lg-2 control-label"><h3>자기소개</h3></label>
+													<label class="col-lg-2 control-label"><h3>자기소개</h3></label>
 
 													<div class="col-lg-10">
-														<font>${travelPlan.selfIntroduction}</font>
+														<font>${join.selfIntroduction}</font>
 													</div>
 												</div>
 
@@ -109,9 +103,10 @@
 															사유</h3></label>
 
 													<div class="col-lg-10">
-														<font>신청사유 입력한거</font>
+														<font>${join.joinReason}</font>
 													</div>
 												</div>
+
 												<br /> <br />
 												<div class="form-group"></div>
 											</fieldset>
