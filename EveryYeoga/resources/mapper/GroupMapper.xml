@@ -44,4 +44,12 @@
   	FROM group_user_tb
   	WHERE groupId = #{groupId}
   </select>
+  
+  <select id="retrieveJoiningGroupAll" parameterType="String" resultType="group">
+  	SELECT groupId, regDate, travelPlanId
+  	FROM group_tb
+  	WHERE groupId IN (SELECT groupId FROM group_user_tb WHERE userId = #{userId})
+  
+  
+  </select>
   </mapper>

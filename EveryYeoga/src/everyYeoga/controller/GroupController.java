@@ -63,4 +63,10 @@ public class GroupController {
 		model.addAttribute("articles", articles);
 		return "group/list.do";
 	}
+	
+	@RequestMapping(value="groupList.do")
+	public String joiningGroup(HttpServletRequest req) {
+		
+		return "";
+	}
 }

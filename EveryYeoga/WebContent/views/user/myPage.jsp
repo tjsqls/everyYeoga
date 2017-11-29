@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE HTML>
 
 <html>
 <head>
 <title>Verti by HTML5 UP</title>
+
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet"
@@ -26,17 +27,14 @@
 
 		<!-- Header -->
 
-<%@ include file="/views/layout/header.jsp" %>
+		<%@ include file="/views/layout/header.jsp"%>
 
 		<!-- Main -->
 		<div id="main-wrapper">
 			<div class="container">
 				<div class="row 50%">
 					<div class="4u 12u$(medium)">
-						<div id="sidebar">
-
-
-						</div>
+						<div id="sidebar"></div>
 					</div>
 					<div class="8u 12u$(medium) important(medium)">
 						<div id="content">

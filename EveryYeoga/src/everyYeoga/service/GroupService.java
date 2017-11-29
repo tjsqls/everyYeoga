@@ -24,4 +24,5 @@ public interface GroupService {
 	public Comment retreiveCommentByCommentId(String commentId); // 2017.11.27 인애 추가
 	public void registGroup(String travelPlanId); //2017.11.24 메소드 추가 선빈 
 	public List<Article> searchAll(String groupId); //2017.11.24 메소드 추가 선빈 
+	public List<Group> retrieveJoiningGroupAll(String userId);//2017.11.29 메소드 추가 선빈 
 }

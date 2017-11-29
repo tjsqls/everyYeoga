@@ -89,29 +89,7 @@
 								<td class="text-center">110</td>
 							</tr>
 
-							<!-- 						
-	<c:choose>
-								<c:when test="${empty boardDetail.articles }">
-									<tr>
-										<th colspan="5" class="text-center">게시물이 존재하지 않습니다.</th>
-									</tr>
-								</c:when>
-								<c:otherwise>
-									<c:forEach var="article" items="${boardDetail.articles }">
-										<tr>
-											<td class="text-center">${article.articleId }</td>
-											<td><a
-												href="${ctx}/article/find.do?articleId=${article.articleId}">${article.title}
-											</a></td>
-											<td class="text-center"><fmt:formatDate
-													value="${article.regDate }" pattern="yyyy-MM-dd" /></td>
-											<td class="text-center">${article.authorName }</td>
-											<td class="text-center">110</td>
-										</tr>
-									</c:forEach>
-								</c:otherwise>
-							</c:choose>
-		 -->
+							
 						</tbody>
 					</table>
 				</div>
