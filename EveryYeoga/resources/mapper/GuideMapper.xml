@@ -14,11 +14,21 @@
 		<result property="guideGrade" column="guideGrade"></result>
 		<association column="guideId" property="guide" jdbcType="VARCHAR"
 			javaType="User" select="everyYeoga.store.mapper.UserMapper.retrieveByUserId" />
-			<association column="travelerId" property="travler" jdbcType="VARCHAR"
+			<association column="travelerId" property="traveler" jdbcType="VARCHAR"
 			javaType="User" select="everyYeoga.store.mapper.UserMapper.retrieveByUserId" />
 	</resultMap>
-
-
+	
+	<resultMap type="Evaluation" id="EvaluationMap">
+	<id property="evaluationId" column="evaluationId"></id>
+	<result property="stars" column="stars"></result>
+	<result property="cons" column="cons"></result>
+	<result property="pros" column="pros"></result>
+	<association column="guideId" property="guide" jdbcType="VARCHAR"
+			javaType="User" select="everyYeoga.store.mapper.UserMapper.retrieveByUserId" />
+			<association column="travelerId" property="traveler" jdbcType="VARCHAR"
+			javaType="User" select="everyYeoga.store.mapper.UserMapper.retrieveByUserId" />
+	</resultMap>
+	
 
 	<select id="retrieveGuide" parameterType="String" resultMap="JoinMap">
 		SELECT joinId, travelArea, speakingAbility, guideExperience,
@@ -44,11 +54,11 @@
 	</insert>
 
 	<select id="retrieveEvaluation" parameterType="String"
-		resultType="Evaluation">
+		resultType="Evaluation" resultMap="EvaluationMap">
 		SELECT evaluationId, pros, cons, stars, travelerId, guideId
 		FROM
 		evaluation_tb
-		WHERE guideId = #{guideId}
+		WHERE guideId = #{guide.id}
 	</select>
 
 

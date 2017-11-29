@@ -97,14 +97,14 @@
 												<div class="form-group">
 
 													<label class="col-lg-2 control-label"><h3>여행
-															시작 날짜</h3></label> <input type="text" id="startDate" name="startDate"
+															시작일</h3></label> <input type="text" id="startDate" name="startDate"
 														placeholder="yyyy/mm/dd" />
 												</div>
 
 												<div class="form-group">
 
 													<label class="col-lg-2 control-label"><h3>여행
-															종료 날짜</h3></label> <input type="text" id="endDate" name="endDate"
+															종료일</h3></label> <input type="text" id="endDate" name="endDate"
 														placeholder="yyyy/mm/dd" />
 												</div>
 

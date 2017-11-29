@@ -19,14 +19,14 @@ import everyYeoga.service.GroupService;
 @Controller
 @RequestMapping("group")
 public class GroupController {
-	
+
 	@Autowired
 	GroupService groupService;
-	
-	@RequestMapping(value="regist.do", method=RequestMethod.POST)
+
+	@RequestMapping(value = "regist.do", method = RequestMethod.POST)
 	public String registGroup(String travelPlanId, List<String> guideId, HttpServletRequest req) {
 		HttpSession session = req.getSession();
-		User user = (User)session.getAttribute("loginedUser");
+		User user = (User) session.getAttribute("loginedUser");
 		List<String> userIds = guideId;
 		userIds.add(user.getId());
 		groupService.registGroup(travelPlanId);
@@ -34,31 +34,31 @@ public class GroupController {
 		groupService.modifyGroupStatus(travelPlanId, "모집완료");
 		return "group/groupMain";
 	}
-	
-	@RequestMapping(value="list.do")
-	public String groupMain(HttpServletRequest req,String groupId, Model model) {
+
+	@RequestMapping(value = "list.do")
+	public String groupMain(HttpServletRequest req, String groupId, Model model) {
 		HttpSession session = req.getSession();
-		User user = (User)session.getAttribute("loginedUser");
+		User user = (User) session.getAttribute("loginedUser");
 		List<Article> articles = groupService.searchAll(groupId);
 		String travelerId = user.getId();
 		Group group = groupService.retreiveJoiningGroup(travelerId, groupId);
-		
+
 		model.addAttribute("group", group);
 		model.addAttribute("articles", articles);
 		return "group/groupMain";
 	}
-	
-	@RequestMapping(value="groupModifyStatus")
+
+	@RequestMapping(value = "groupModifyStatus")
 	public String modifyGroupStatus(String travelPlanId, HttpServletRequest req, Model model) {
-		
+
 		groupService.modifyGroupStatus(travelPlanId, "모집중");
-		
+
 		HttpSession session = req.getSession();
-		User user = (User)session.getAttribute("loginedUser");
+		User user = (User) session.getAttribute("loginedUser");
 		List<Article> articles = groupService.searchAll(travelPlanId);
 		String travelerId = user.getId();
 		Group group = groupService.retreiveJoiningGroup(travelerId, travelPlanId);
-		
+
 		model.addAttribute("group", group);
 		model.addAttribute("articles", articles);
 		return "group/list.do";

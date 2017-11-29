@@ -26,10 +26,10 @@ public class TravelController {
 	private TravelService travelService;
 	@Autowired
 	private UserService userService;
-	
 
 	@RequestMapping(value = "regist.do") // createTravelPlan.jsp
 	public String registTravelPlan(HttpServletRequest req, TravelPlan travelPlan) {// 2017.11.27 HttpServletRequest 추가
+		//진휘
 		HttpSession session = req.getSession();
 		User user = (User) session.getAttribute("loginedUser");
 		travelPlan.setTraveler(user);
@@ -41,6 +41,7 @@ public class TravelController {
 	// test해야함
 	@RequestMapping(value = "modify.do", method = RequestMethod.GET)
 	public String modifyTravelPlan(String travelPlanId, Model model) {
+		//진휘
 		TravelPlan travelPlan = travelService.searchTravelPlan(travelPlanId);
 
 		model.addAttribute("travelPlan", travelPlan);
@@ -50,6 +51,7 @@ public class TravelController {
 	// test해야함
 	@RequestMapping(value = "modify.do", method = RequestMethod.POST) // myTravelPlan.jsp
 	public String modifyTravelPlan(TravelPlan travelPlan) {// 수정
+		//진휘
 		travelService.modifyTravelPlan(travelPlan);
 
 		return "travel/searchTravelPlan"; // --> 처리해야한다.(searchTravelPlan으루)
@@ -57,19 +59,22 @@ public class TravelController {
 
 	@RequestMapping(value = "myTravelPlan.do")
 	public ModelAndView searchTravelPlanByUserId(HttpServletRequest req) {
+		//진휘
 		HttpSession session = req.getSession();
 		User user = (User) session.getAttribute("loginedUser");
 
 		TravelPlan travelPlan = travelService.searchTravelPlanByUserId(user.getId());
-		
+
 		ModelAndView modelAndView = new ModelAndView("travel/myTravelPlan");
 		modelAndView.addObject("travelPlan", travelPlan);
 		return modelAndView;
 	}
 
 	@RequestMapping(value = "travelPlanList.do")
-	public String searchAllTravelPlans(Model model) {
-
+	public String searchAllTravelPlans(HttpServletRequest req, Model model) {
+		//진휘
+		HttpSession session = req.getSession();
+		User user = (User) session.getAttribute("loginedUser");
 		List<TravelPlan> list = travelService.searchAllTravelPlans();
 
 		model.addAttribute(list);
@@ -78,15 +83,20 @@ public class TravelController {
 
 	@RequestMapping(value = "remove.do") // myTravelPlan.jsp
 	public String removeTravelPlan(String travelPlanId) {
+		//진휘
 		travelService.removeTravelPlan(travelPlanId);
 		return "redirect:travel/myTravelPlan";
 	}
 
 	@RequestMapping(value = "searchTravelPlan.do") // travelPlanList.jsp
-	public ModelAndView searchTravelPlan(String travelArea, String speakingAbility, String startDate) {
+	public ModelAndView searchTravelPlan(HttpServletRequest req, String travelArea, String speakingAbility,
+			String startDate) {
+		//진휘
+		HttpSession session = req.getSession();
+		User user = (User) session.getAttribute("loginedUser");
 		List<TravelPlan> list = travelService.searchTravelPlansByTravelPlan(travelArea, speakingAbility, startDate);
 		ModelAndView modelAndView = new ModelAndView("travelPlanList.jsp");
-		
+
 		modelAndView.addObject("list", list);
 
 		return modelAndView;

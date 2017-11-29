@@ -89,7 +89,7 @@
 
 
 											<div class="form-group">
-												<label class="col-lg-2 control-label"><h3>여행 시작날짜</h3></label>
+												<label class="col-lg-2 control-label"><h3>여행 시작일</h3></label>
 
 												<div class="col-lg-10">
 													<font>${travelPlan.startDate}</font>
@@ -98,7 +98,7 @@
 											</div>
 											
 											<div class="form-group">
-												<label class="col-lg-2 control-label"><h3>여행 종료날짜</h3></label>
+												<label class="col-lg-2 control-label"><h3>여행 종료일</h3></label>
 
 												<div class="col-lg-10">
 													<font>${travelPlan.endDate}</font>

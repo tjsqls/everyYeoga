@@ -21,30 +21,30 @@ import everyYeoga.service.HistoryService;
 @Controller
 @RequestMapping("history")
 public class HistoryController {
-	
+
 	@Autowired
 	private HistoryService historyService;
-	
-	@RequestMapping(value="/searchTravelerHistory.do", method=RequestMethod.GET)
+
+	@RequestMapping(value = "/searchTravelerHistory.do", method = RequestMethod.GET)
 	public String searchTravelerHistoryList(HttpServletRequest req, Model model) {
 		HttpSession session = req.getSession();
-		User user = (User)session.getAttribute("loginedUser");
-		
+		User user = (User) session.getAttribute("loginedUser");
+
 		List<TravelerHistory> list = historyService.searchTravelerHistory(user.getId());
 		model.addAttribute("list", list);
 		return "/history/myTravelerHistory";
 	}
-	
-	@RequestMapping(value="remove.do", method=RequestMethod.GET)
+
+	@RequestMapping(value = "remove.do", method = RequestMethod.GET)
 	public String removeTravelerHistory(String travelerHistoryId, Model model) {
 		historyService.removeTravelerHistory(travelerHistoryId);
 		return "redirect:/history/searchTravelerHistory.do";
 	}
-	
-	@RequestMapping(value="/searchGuideHistory.do", method=RequestMethod.GET)
+
+	@RequestMapping(value = "/searchGuideHistory.do", method = RequestMethod.GET)
 	public String searchGuideHistoryList(HttpServletRequest req, Model model) {
 		HttpSession session = req.getSession();
-		User user = (User)session.getAttribute("loginedUser");
+		User user = (User) session.getAttribute("loginedUser");
 		List<GuideHistory> tlist = historyService.searchGuideHistory(user.getId(), "확인");
 		List<GuideHistory> flist = historyService.searchGuideHistory(user.getId(), "미확인");
 		model.addAttribute("tlist", tlist);

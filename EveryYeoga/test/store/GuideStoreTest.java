@@ -31,12 +31,12 @@ public class GuideStoreTest {
 //		assertEquals("aa", list.get(0).getJoinReason());
 //	}완
 //
-	@Test
-	public void testRetrieveJoinDetail() {
-		Join j = store.retrieveJoinDetail("1");
-		assertEquals("dd", j.getSpeakingAbility());
-		System.out.println(j.toString());
-	}
+//	@Test
+//	public void testRetrieveJoinDetail() {
+//		Join j = store.retrieveJoinDetail("1");
+//		assertEquals("dd", j.getSpeakingAbility());
+//		System.out.println(j.toString());
+//	}
 
 
 //	@Test
@@ -55,12 +55,12 @@ public class GuideStoreTest {
 //	
 //	}
 
-//	@Test
-//	public void testRetrieveEvaluation() {
-//		List<Evaluation> list = store.retrieveEvaluation("2");
-//		assertEquals("dd", list.get(0).getPros());
-//		
-//	}완
+	@Test
+	public void testRetrieveEvaluation() {
+		List<Evaluation> list = store.retrieveEvaluation("2");
+		assertEquals("3", list.get(0).getTraveler().getId());
+		
+	}
 
 //	@Test
 //	public void testCreateJoin() {

@@ -13,7 +13,7 @@
 	<div id="page-wrapper">
 
 		<!-- Header -->
-<%@ include file="/views/layout/header.jsp" %>
+		<%@ include file="/views/layout/header.jsp"%>
 
 		<!-- Main -->
 		<div id="main-wrapper">
@@ -66,79 +66,64 @@
 												<input type="radio" name="gatheringStatus" value="true">모집중
 												<input type="radio" name="gatheringStatus" value="false">모집완료
 												<div class="form-group">
-													 <label
-														class="col-lg-2 control-label"><h3>언어 구사 능력</h3></label>
-<input type="text" name="speakingAbility"
+													<label class="col-lg-2 control-label"><h3>언어
+															구사 능력</h3></label> <input type="text" name="speakingAbility"
 														value="${travelPlan.speakingAbility}">
-													<div class="col-lg-10">
-														<input type="text" name="title" class="form-control" value="aa언어구사능력">
-													</div>
+													<div class="col-lg-10"></div>
 												</div>
 
 												<div class="form-group">
-													 <label
-														class="col-lg-2 control-label"><h3>여행 지역</h3></label>
-<input type="text" name="travelArea"
+													<label class="col-lg-2 control-label"><h3>여행
+															지역</h3></label> <input type="text" name="travelArea"
 														value="${travelPlan.travelArea}">
-													<div class="col-lg-10">
-														<input type="text" name="title" class="form-control">
-													</div>
+													<div class="col-lg-10"></div>
 												</div>
 
 												<div class="form-group">
-													 <label
-														class="col-lg-2 control-label"><h3>여행 지역 방문
-															횟수</h3></label>
-<input type="text" name="numberOfVisits"
+													<label class="col-lg-2 control-label"><h3>여행
+															지역 방문 횟수</h3></label> <input type="text" name="numberOfVisits"
 														value="${travelPlan.numberOfVisits}" disabled="disabled">
-													<div class="col-lg-10">
-														<input type="text" name="title" class="form-control">
-													</div>
+													<div class="col-lg-10"></div>
 												</div>
 
 
 												<div class="form-group">
-											 <label
-														class="col-lg-2 control-label"><h3>여행 일정</h3></label>
-		<input type="text" name="startDate"
-														value="${travelPlan.startDate}">
-													<div class="col-lg-10">
-														<input type="text" name="title" class="form-control">
-													</div>
+													<label class="col-lg-2 control-label"><h3>여행
+															시작일</h3></label> <input type="text" name="startDate"
+														value="${travelPlan.startDate}" disabled="disabled">
+													<div class="col-lg-10"></div>
+												</div>
+												
+												<div class="form-group">
+													<label class="col-lg-2 control-label"><h3>여행
+															종료일</h3></label> <input type="text" name="endDate"
+														value="${travelPlan.endDate}" disabled="disabled">
+													<div class="col-lg-10"></div>
 												</div>
 
 
 												<div class="form-group">
-													 <label
-														class="col-lg-2 control-label"><h3>여행 테마</h3></label>
-<input type="text" name="theme"
+													<label class="col-lg-2 control-label"><h3>여행
+															테마</h3></label> <input type="text" name="theme"
 														value="${travelPlan.theme}">
-													<div class="col-lg-10">
-														<input type="text" name="title" class="form-control">
-													</div>
+													<div class="col-lg-10"></div>
 												</div>
 
 
 												<div class="form-group">
-													 <label
-														class="col-lg-2 control-label"><h3>여행 인원</h3></label>
-<input type="text" name="numberOfTraveler"
+													<label class="col-lg-2 control-label"><h3>여행
+															인원</h3></label> <input type="text" name="numberOfTraveler"
 														value="${travelPlan.numberOfTraveler}">
-													<div class="col-lg-10">
-														<input type="text" name="title" class="form-control">
-													</div>
+													<div class="col-lg-10"></div>
 												</div>
 
 
 
 												<div class="form-group">
-													 <label
-														class="col-lg-2 control-label"><h3>선호 가이드</h3></label>
-<input type="text" name="preferGuide"
+													<label class="col-lg-2 control-label"><h3>선호
+															가이드</h3></label> <input type="text" name="preferGuide"
 														value="${travelPlan.preferGuide}">
-													<div class="col-lg-10">
-														<input type="text" name="title" class="form-control">
-													</div>
+													<div class="col-lg-10"></div>
 												</div>
 
 
@@ -147,8 +132,8 @@
 															소개</h3></label>
 
 													<div class="col-lg-10">
-														<textarea class="form-control" name="selfIntroduction" rows="2"
-															id="textArea"></textarea>
+														<textarea class="form-control" name="selfIntroduction"
+															rows="2" id="textArea"></textarea>
 													</div>
 												</div>
 												<br /> <br />

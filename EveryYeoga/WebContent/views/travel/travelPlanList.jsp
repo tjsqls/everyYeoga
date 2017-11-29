@@ -1,4 +1,4 @@
-00000000000<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE HTML>
@@ -77,7 +77,7 @@
 												<form>
 													<span style="float: right"><button type="input"style="padding: 10px">검색</button></span>
 													<span style="float: right"style="padding: 10px">
-														 <input type="text"placeholder="yy/mm/dd"/></span>
+														 <input type="text"placeholder="여행 시작 날짜 (yy/mm/dd)"/></span>
 														  <span style="float: right"style="padding: 10px">
 														 <input placeholder="지역" /></span>
 														<input placeholder="언어구사능력" /></span>
@@ -101,7 +101,7 @@
 											<c:choose>
 												<c:when test="${empty list}">
 													<tr>
-														<th colspan="5" class="text-center">여행계획이 존재하지 않습니다.</th>
+														<th colspan="5" class="text-center"></th>
 													</tr>
 												</c:when>
 												<c:otherwise>
@@ -109,10 +109,10 @@
 														varStatus="sts">
 														<tr>
 															<td class="text-center">${sts.count}</td>
-															<td class="text-center">${list.travelArea}</td>
-															<td class="text-center">${list.theme}</td>
-															<td class="text-center">${list.gatheringStatus}</td>
-															<td class="text-center">${list.traveler.name}</td>
+															<td class="text-center">${travelPlan.travelArea}</td>
+															<td class="text-center">${travelPlan.theme}</td>
+															<td class="text-center">${travelPlan.gatheringStatus}</td>
+															<td class="text-center">${travelPlan.travler.name}</td>
 														</tr>
 													</c:forEach>
 												</c:otherwise>
