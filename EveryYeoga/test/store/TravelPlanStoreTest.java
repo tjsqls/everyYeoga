@@ -68,7 +68,7 @@ public class TravelPlanStoreTest {
 	@Test
 	public void testRetrieveTravelPlanByTravelAreaAndSpeakingAbilityAndStartDate() {
 		List<TravelPlan> list = store.retrieveTravelPlanByTravelAreaAndSpeakingAbilityAndStartDate("지니", "지니", "17/12/01");
-		assertEquals("3", list.get(0).getTraveler().getId());
+		assertEquals("3", list.get(0).getTravelerId());
 		System.out.println(list.toString());
 	} 
 //	

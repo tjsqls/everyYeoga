@@ -55,12 +55,12 @@ public class GuideStoreTest {
 //	
 //	}
 
-	@Test
-	public void testRetrieveEvaluation() {
-		List<Evaluation> list = store.retrieveEvaluation("2");
-		assertEquals("3", list.get(0).getTraveler().getId());
-		
-	}
+//	@Test
+//	public void testRetrieveEvaluation() {
+//		List<Evaluation> list = store.retrieveEvaluation("2");
+//		assertEquals("3", list.get(0).getTraveler().getId());
+//		
+//	}
 
 //	@Test
 //	public void testCreateJoin() {

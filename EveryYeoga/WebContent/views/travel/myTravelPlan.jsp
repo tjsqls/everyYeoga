@@ -146,7 +146,7 @@
 											</div>
 											<span style="float: right">
 												<button type="button"
-													onclick="location.href='${pageContext.request.contextPath}/views/guide/chooseGuide.jsp' ">가이드
+													onclick="location.href='${pageContext.request.contextPath}/guide/searchGuide.do?travelPlanId=${travelPlan.travelPlanId }' ">가이드
 													보기</button>
 											</span> <br /> <br />
 

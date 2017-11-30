@@ -29,7 +29,7 @@ public class GuideController {
 		//진휘
 		HttpSession session = req.getSession();
 		User user = (User) session.getAttribute("loginedUser");
-		join.setGuide(user);
+		join.setGuideId(user.getId());
 		travelService.registJoin(join, travelPlanId);
 
 		return "guide/registJoin";
@@ -47,7 +47,7 @@ public class GuideController {
 		return modelAndView;
 	}
 
-	@RequestMapping("searchGuide.do") // chooseGuide.jsp
+	@RequestMapping(value="searchGuide.do", method = RequestMethod.GET) // chooseGuide.jsp
 	public ModelAndView searchGuide(HttpServletRequest req, String travelPlanId) {
 		//진휘
 		HttpSession session = req.getSession();
@@ -55,7 +55,6 @@ public class GuideController {
 		List<Join> j = travelService.searchGuide(travelPlanId);
 		ModelAndView modelAndView = new ModelAndView("guide/chooseGuide");
 		modelAndView.addObject("joinList", j);
-
 		return modelAndView;
 	}
 
@@ -70,7 +69,7 @@ public class GuideController {
 		//진휘
 		HttpSession session = req.getSession();
 		User user = (User) session.getAttribute("loginedUser");
-		evaluation.setTraveler(user);
+		evaluation.setTravelerId(user.getId());
 		travelService.registEvaluation(evaluation);
 		return "travel/travelPlanList";
 	}

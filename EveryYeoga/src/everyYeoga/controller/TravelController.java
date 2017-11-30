@@ -32,7 +32,7 @@ public class TravelController {
 		//진휘
 		HttpSession session = req.getSession();
 		User user = (User) session.getAttribute("loginedUser");
-		travelPlan.setTraveler(user);
+		travelPlan.setTravelerId(user.getId());
 
 		travelService.registTravelPlan(travelPlan);
 		return "travel/travelPlanList";
@@ -50,7 +50,7 @@ public class TravelController {
 		//진휘
 		HttpSession session = req.getSession();
 		User user = (User) session.getAttribute("loginedUser");
-		travelPlan.setTraveler(user);
+		travelPlan.setTravelerId(user.getId());
 		travelService.modifyTravelPlan(travelPlan);
 
 		return "travel/myTravelPlanList"; // --> 처리해야한다.(searchTravelPlan으루)
@@ -87,7 +87,7 @@ public class TravelController {
 		return "redirect:travel/myTravelPlan";
 	}
 
-	@RequestMapping(value = "searchTravelPlan.do") // travelPlanList.jsp
+	@RequestMapping(value = "searchTravelPlan.do", method=RequestMethod.POST) // travelPlanList.jsp
 	public ModelAndView searchTravelPlan(HttpServletRequest req, String travelArea, String speakingAbility,
 			String startDate) {
 		//진휘
@@ -96,10 +96,19 @@ public class TravelController {
 		
 		List<TravelPlan> list = travelService.searchTravelPlansByTravelPlan(travelArea, speakingAbility, startDate);
 		ModelAndView modelAndView = new ModelAndView("travel/travelPlanList");
-
 		modelAndView.addObject("list", list);
-
+		
 		return modelAndView;
 	}
+	@RequestMapping(value = "searchTravelPlan.do", method=RequestMethod.GET)
+	public ModelAndView searchTravelPlan() {
+		
+		ModelAndView modelAndView = new ModelAndView("travel/travelPlanList");
+		
+		return modelAndView;
+		
+	}
+	
+	
 
 }

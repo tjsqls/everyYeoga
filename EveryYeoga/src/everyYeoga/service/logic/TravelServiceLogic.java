@@ -76,21 +76,23 @@ public class TravelServiceLogic implements TravelService {
 	@Override//test 완료
 	public List<TravelPlan> searchTravelPlansByTravelPlan(String travelArea, String speakingAbility, String startDate) {
 		// 진휘
-		if(speakingAbility.equals("") && startDate.equals("")) {
-
-			return travelStore.retrieveTravelPlanByTravelArea(travelArea);
-		}else if(startDate.equals("")) {
-
-			
-
-			return travelStore.retrieveTravelPlanByTravelAreaAndSpeakingAbility(travelArea, speakingAbility);
-		}else if(speakingAbility.equals("")){
-
-			return travelStore.retrieveTravelPlanByTravelAreaAndStartDate(travelArea, startDate);
-		}else {
-
-			return travelStore.retrieveTravelPlanByTravelAreaAndSpeakingAbilityAndStartDate(travelArea, speakingAbility, startDate);
-		}
+//		if(speakingAbility ==null && startDate ==null) {
+//
+//			return travelStore.retrieveTravelPlanByTravelArea(travelArea);
+//		}
+//		else if(startDate.equals("")) {
+//
+//			
+//
+//			return travelStore.retrieveTravelPlanByTravelAreaAndSpeakingAbility(travelArea, speakingAbility);
+//		}else if(speakingAbility.equals("")){
+//
+//			return travelStore.retrieveTravelPlanByTravelAreaAndStartDate(travelArea, startDate);
+//		}else {
+//
+//			return travelStore.retrieveTravelPlanByTravelAreaAndSpeakingAbilityAndStartDate(travelArea, speakingAbility, startDate);
+//		}
+		return travelStore.retrieveTravelPlanByTravelArea(travelArea);
 	}
 
 	@Override// test 완료
@@ -202,19 +204,14 @@ public class TravelServiceLogic implements TravelService {
 			j.setGuide(userStore.retrieveByUserId(j.getGuide().getId()));
 		}
 		 */
-		for (Join j : js) {
-			List<GuideHistory> cGs = historyStore.retrieveCheckedGuideHistory(j.getGuide().getId(), "checked");
-			cGs.addAll(historyStore.retrieveCheckedGuideHistory(j.getGuide().getId(), "unchecked"));
-
+		for (int i=0; i<js.size(); i++ ) {
+			Join j = new Join();
+			List<GuideHistory> cGs = historyStore.retrieveCheckedGuideHistory(j.getGuideId(), "확인");
+			cGs.addAll(historyStore.retrieveUncheckedGuideHistory(j.getGuideId(), "미확인"));
 			j.setGuideHistories(cGs);
-		}//test완료
-
-		for (Join j : js) {
-			j.setReports(reportStore.retrieveReport(j.getGuide().getId()));
-		}//test 완료
-
-		for (Join j : js) {
-			j.setEvaluations(guideStore.retrieveEvaluation(j.getGuide().getId()));
+			j.setReports(reportStore.retrieveReport(j.getGuideId()));
+			j.setEvaluations(guideStore.retrieveEvaluation(j.getGuideId()));
+			js.add(j);
 		}//test완료
 
 		return js;
@@ -224,16 +221,16 @@ public class TravelServiceLogic implements TravelService {
 	public Join searchJoinDetail(String joinId) {
 		// 진휘
 		Join j = guideStore.retrieveJoinDetail(joinId);
-		j.setGuide(userStore.retrieveByUserId(j.getGuide().getId()));
+		j.setGuideId(joinId);
 
-		List<GuideHistory> cGs = historyStore.retrieveCheckedGuideHistory(j.getGuide().getId(), "checked");
-		cGs.addAll(historyStore.retrieveCheckedGuideHistory(j.getGuide().getId(), "unchecked"));
+		List<GuideHistory> cGs = historyStore.retrieveCheckedGuideHistory(j.getGuideId(), "확인");
+		cGs.addAll(historyStore.retrieveCheckedGuideHistory(j.getGuideId(), "미확인"));
 
 		j.setGuideHistories(cGs);
 
-		j.setReports(reportStore.retrieveReport(j.getGuide().getId()));
+		j.setReports(reportStore.retrieveReport(j.getGuideId()));
 
-		j.setEvaluations(guideStore.retrieveEvaluation(j.getGuide().getId()));
+		j.setEvaluations(guideStore.retrieveEvaluation(j.getGuideId()));
 
 		return j;
 	}

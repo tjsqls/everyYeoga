@@ -10,7 +10,7 @@ public class TravelPlan {
 				+ travelArea + ", numberOfVisits=" + numberOfVisits + ", theme=" + theme + ", numberOfTraveler="
 				+ numberOfTraveler + ", preferGuide=" + preferGuide + ", selfIntroduction=" + selfIntroduction
 				+ ", gatheringStatus=" + gatheringStatus + ", startDate=" + startDate + ", endDate=" + endDate
-				+ ", traveler=" + traveler + "]";
+				+ ", travelerId=" + travelerId + "]";
 	}
 
 	private String travelPlanId;
@@ -26,7 +26,7 @@ public class TravelPlan {
 	private String startDate;//2011.11.23 Date -> String 진휘
 	private String endDate;
 	
-	private User traveler;
+	private String travelerId; //2017.11.30 User travler 에서 String travelerId로 변경 진휘
 	
 	
 
@@ -118,12 +118,12 @@ public class TravelPlan {
 		this.endDate = endDate;
 	}
 
-	public User getTraveler() {
-		return traveler;
+	public String getTravelerId() {
+		return travelerId;
 	}
 
-	public void setTraveler(User traveler) {
-		this.traveler = traveler;
+	public void setTravelerId(String travelerId) {
+		this.travelerId = travelerId;
 	}
 	
 	
