@@ -84,7 +84,9 @@
 													</tr>
 												</thead>
 												<tbody>
-													<form action="/가이드선택완료" method="post">
+													<form
+											action="${pageContext.request.contextPath}/guide/searchGuide.do"
+											class="bs-example form-horizontal" method="POST">
 														<tr>
 															<td><input type="checkbox" name="guide"
 																value="회원아이디"></td>

@@ -74,13 +74,15 @@
 									<div class="well">
 										<div class="row">
 											<div class="col-sm-12 col-lg-12">
-												<form>
-													<span style="float: right"><button type="input"style="padding: 10px">검색</button></span>
+												<form
+											action="${pageContext.request.contextPath}/travel/searchTravelPlan.do"
+											class="bs-example form-horizontal" method="POST">
+													<span style="float: right"><button type="submit"style="padding: 10px">검색</button></span>
 													<span style="float: right"style="padding: 10px">
-														 <input type="text"placeholder="여행 시작 날짜 (yy/mm/dd)"/></span>
+														 <input type="text"placeholder="여행 시작 날짜 (yy/mm/dd)" value=""/></span>
 														  <span style="float: right"style="padding: 10px">
-														 <input placeholder="지역" /></span>
-														<input placeholder="언어구사능력" /></span>
+														 <input placeholder="언어구사능력" value="" /></span>
+														<input placeholder="지역" value="" /></span>
 												</form>
 											</div>
 											

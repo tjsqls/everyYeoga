@@ -51,8 +51,8 @@ public class TravelPlanStoreTest {
 //	public void testRetrieveTravelPlanByTravelAreaAndStartDate() {
 //		
 //		
-//		List<TravelPlan> t = store.retrieveTravelPlanByTravelAreaAndStartDate("서울", "17/11/11");
-//		assertEquals("2", t.get(0).getTravelPlanId());
+//		List<TravelPlan> t = store.retrieveTravelPlanByTravelAreaAndStartDate("지니", "17/12/01");
+//		assertEquals("10055", t.get(0).getTravelPlanId());
 //	} 
 ////
 //	@Test
@@ -65,20 +65,20 @@ public class TravelPlanStoreTest {
 //		System.out.println(list.get(0).getTheme());
 //	} 
 ////
-//	@Test
-//	public void testRetrieveTravelPlanByTravelAreaAndSpeakingAbilityAndStartDate() {
-//		List<TravelPlan> list = store.retrieveTravelPlanByTravelAreaAndSpeakingAbilityAndStartDate("서울", "중간", "17/11/11");
-//		assertEquals("2", list.get(0).getTravelPlanId());
-////		
-//	} 
+	@Test
+	public void testRetrieveTravelPlanByTravelAreaAndSpeakingAbilityAndStartDate() {
+		List<TravelPlan> list = store.retrieveTravelPlanByTravelAreaAndSpeakingAbilityAndStartDate("지니", "지니", "17/12/01");
+		assertEquals("3", list.get(0).getTraveler().getId());
+		System.out.println(list.toString());
+	} 
 //	
 ////
-	@Test
-	public void testRetrieveTravelPlan() {
-		TravelPlan t = store.retrieveTravelPlanByUserId("3");
-		assertEquals("지니", t.getSpeakingAbility());
-		System.out.println(t.toString());
-	} 
+//	@Test
+//	public void testRetrieveTravelPlan() {
+//		TravelPlan t = store.retrieveTravelPlanByUserId("3");
+//		assertEquals("지니", t.getSpeakingAbility());
+//		System.out.println(t.toString());
+//	} 
 //
 /*	@Test
 	public void testUpdateTravelPlan() {

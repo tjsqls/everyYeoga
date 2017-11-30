@@ -154,7 +154,7 @@ star-input>.input.focus {
 								<div class="table-responsive">
 									<div class="well">
 										<form
-											action="${pageContext.request.contextPath}/article/regist.do"
+											action="${pageContext.request.contextPath}/guide/registEvaluation.do"
 											class="bs-example form-horizontal" method="POST">
 											<fieldset>
 
@@ -162,7 +162,6 @@ star-input>.input.focus {
 
 
 												<div class="form-group">
-													<input type="text" name="pros" value="${evaluation.pros}">
 													<label class="col-lg-2 control-label"><h3>좋았던
 															점</h3></label> <input type="text" name="pros"
 														value="${evaluation.pros}">
@@ -173,7 +172,7 @@ star-input>.input.focus {
 												<div class="form-group">
 													<label class="col-lg-2 control-label"><h3>나빴던
 															점</h3></label> <input type="text" name="pros"
-														value="${evaluation.pros}">
+														value="${evaluation.cons}">
 													<div class="col-lg-10"></div>
 												</div>
 

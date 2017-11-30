@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-	
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE HTML>
 
 <html>
@@ -16,7 +16,7 @@
 
 		<!-- Header -->
 
-<%@ include file="/views/layout/header.jsp" %>
+		<%@ include file="/views/layout/header.jsp"%>
 		<!-- Main -->
 		<div id="main-wrapper">
 			<div class="container">
@@ -89,16 +89,18 @@
 
 
 											<div class="form-group">
-												<label class="col-lg-2 control-label"><h3>여행 시작일</h3></label>
+												<label class="col-lg-2 control-label"><h3>여행
+														시작일</h3></label>
 
 												<div class="col-lg-10">
 													<font>${travelPlan.startDate}</font>
-												
+
 												</div>
 											</div>
-											
+
 											<div class="form-group">
-												<label class="col-lg-2 control-label"><h3>여행 종료일</h3></label>
+												<label class="col-lg-2 control-label"><h3>여행
+														종료일</h3></label>
 
 												<div class="col-lg-10">
 													<font>${travelPlan.endDate}</font>
@@ -128,7 +130,7 @@
 
 											<div class="form-group">
 												<label class="col-lg-2 control-label"><h3>선호
-														가이드</h3></label> 
+														가이드</h3></label>
 												<div class="col-lg-10">
 													<font>${travelPlan.preferGuide}</font>
 												</div>

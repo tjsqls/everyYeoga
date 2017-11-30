@@ -76,7 +76,6 @@
 												<thead>
 													<tr>
 														<th class="text-center">번호</th>
-														<th class="text-center">모임명</th>
 														<th class="text-center">테마</th>
 														<th class="text-center">모집상태</th>
 														<th class="text-center">인원</th>
@@ -85,14 +84,11 @@
 												<tbody>
 
 													<tr>
-														<td class="text-center">${article.articleId }</td>
-														<td><a
-															href="${ctx}/article/find.do?articleId=${article.articleId}">${article.title}
-														</a></td>
-														<td class="text-center"><fmt:formatDate
-																value="${article.regDate }" pattern="yyyy-MM-dd" /></td>
-														<td class="text-center">${article.authorName }</td>
-														<td class="text-center">110</td>
+														<td class="text-center">${join.joinId }</td>
+														<td class="text-center">${travelPlan.theme }</td>
+														<td class="text-center">${travelPlan.gatheringStatus }</td>
+														<td class="text-center">${travelPlan.numberOfTraveler }</td>
+
 													</tr>
 
 													<!-- 						

@@ -17,6 +17,9 @@ import org.springframework.stereotype.Service;
 //import org.springframework.test.context.ContextConfiguration;
 //import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 //import org.springframework.test.context.web.WebAppConfiguration;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
 
 import everyYeoga.domain.Evaluation;
 import everyYeoga.domain.GuideHistory;
@@ -78,11 +81,9 @@ public class TravelServiceLogic implements TravelService {
 			return travelStore.retrieveTravelPlanByTravelArea(travelArea);
 		}else if(startDate.equals("")) {
 
-			Map<String, String> map = new HashMap();
-			map.put("travelArea", travelArea);
-			map.put("speakingAbility", speakingAbility);
+			
 
-			return travelStore.retrieveTravelPlanByTravelAreaAndSpeakingAbility(map);
+			return travelStore.retrieveTravelPlanByTravelAreaAndSpeakingAbility(travelArea, speakingAbility);
 		}else if(speakingAbility.equals("")){
 
 			return travelStore.retrieveTravelPlanByTravelAreaAndStartDate(travelArea, startDate);
@@ -109,8 +110,8 @@ public class TravelServiceLogic implements TravelService {
 		// 진휘
 		return travelStore.deleteTravelPlan(travelPlanId);
 	}
-	//	@Test
-	//	public void testRegistJoin() {
+//		@Test
+//		public void testRegistJoin() {
 	/*	TravelPlan t = new TravelPlan();
 		t.setSpeakingAbility("0");
 		t.setPreferGuide("0");
@@ -140,8 +141,11 @@ public class TravelServiceLogic implements TravelService {
 		service.registJoin(j, travel.getTravelPlanId());
 	 */
 
-	//List<TravelPlan> list = service.searchTravelPlansByTravelPlan("서울", "중간", "17/11/11");
-	//System.out.println(list.size());
+//	List<TravelPlan> list = service.searchTravelPlansByTravelPlan("지니", "지니", "17/12/01");
+//	assertEquals("3", list.get(0).getTraveler().getId());
+//	System.out.println(list.size());
+		
+		
 	/*	List<Join> l = service.searchGuide("1");
 		System.out.println("size: "+l.size());
 		System.out.println("theme"+l.get(0).getGuideHistories().get(0).getTheme());
@@ -180,7 +184,7 @@ public class TravelServiceLogic implements TravelService {
 
 
 
-	//		}
+//			}
 	@Override //test 완료
 	public List<Join> searchGuide(String travelPlanId) {// 여행계획에 참여신청한 가이드 목록
 		// 진휘

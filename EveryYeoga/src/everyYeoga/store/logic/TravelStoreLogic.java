@@ -66,13 +66,13 @@ public class TravelStoreLogic implements TravelStore {
 	}
 
 	@Override
-	public List<TravelPlan> retrieveTravelPlanByTravelAreaAndSpeakingAbility(Map<String, String> travelPlanMap) {
+	public List<TravelPlan> retrieveTravelPlanByTravelAreaAndSpeakingAbility(String travelArea, String speakingAbility) {
 		//진휘
 		SqlSession session = factory.getSession();
 		List<TravelPlan> list = null;
 		try {
 			TravelMapper mapper = session.getMapper(TravelMapper.class);
-			list = mapper.retrieveTravelPlanByTravelAreaAndSpeakingAbility(travelPlanMap);
+			list = mapper.retrieveTravelPlanByTravelAreaAndSpeakingAbility(travelArea,speakingAbility);
 
 		}finally {
 			session.close();
