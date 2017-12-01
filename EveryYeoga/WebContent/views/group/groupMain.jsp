@@ -7,13 +7,10 @@
 <html>
 <head>
 <title>Verti by HTML5 UP</title>
-
+<%@ include file="/views/layout/common.jsp"%>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="stylesheet" href="${pageContext.request.contextPath }/assets/css/main.css" />
-<link href="${pageContext.request.contextPath }/resources/css/bootstrap_modify.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath }/resources/css/layout.css" rel="stylesheet">
-<script src="${pageContext.request.contextPath }/resources/js/jquery-2.1.3.js"></script>
-<script src="${pageContext.request.contextPath }/resources/js/jquery.blockUI.js"></script>
+<link rel="stylesheet" href="${ctx }/assets/css/main.css" />
+
 
 <script type="text/javascript">
 	function button_event() {
@@ -37,41 +34,7 @@
 		<div id="main-wrapper">
 			<div class="container">
 				<div class="row 50%">
-					<div class="4u 12u$(medium)">
-						<div id="sidebar">
-							<!-- ㅁㄴㅇ -->
-							<!-- Sidebar -->
-							<section>
-
-								<ul class="style2">
-
-									<li><a href="#"><h3>참여중인 모임 리스트들 출력</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/views/user/myPage.jsp"><h3>회원정보</h3></a></li>
-									<a
-										href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp"><h3>여행
-											검색</h3></a>
-									</li>
-
-									<li><a
-										href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp"><h3>참여중인
-												모임</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/views/travel/myTravelPlan.jsp"><h3>내가
-												올린 여행계획</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/views/history/myTravelerHistory.jsp"><h3>여행
-												내역</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/views/history/myGuideHistory.jsp"><h3>가이드
-												내역</h3></a></li>
-								</ul>
-
-								</footer>
-							</section>
-
-						</div>
-					</div>
+					<%@ include file="/views/layout/sidebar.jsp"%>
 					<div class="8u 12u$(medium) important(medium)">
 						<div id="content">
 							<div class="col-sm-9 col-lg-9">
@@ -102,33 +65,35 @@
 														<th class="text-center">제목</th>
 														<th class="text-center">작성일</th>
 														<th class="text-center">작성자</th>
-														<th class="text-center">조회</th>
+
 													</tr>
 												</thead>
 												<tbody>
 													<c:choose>
-														<c:when test="${empty boardDetail.articles }">
+														<c:when test="${empty articles }">
 															<tr>
 																<th colspan="5" class="text-center">게시물이 존재하지 않습니다.</th>
 															</tr>
 														</c:when>
 														<c:otherwise>
-															<c:forEach var="article" items="${boardDetail.articles }">
+															<c:forEach var="article" items="${articles }" varStatus="sts">
 																<tr>
 																	<td class="text-center">${article.articleId }</td>
 																	<td><a
-																		href="${ctx}/article/find.do?articleId=${article.articleId}">${article.title}
+																		href="${ctx}/article/articleDetail.do?articleId=${article.articleId}">${article.title}
 																	</a></td>
 																	<td class="text-center"><fmt:formatDate
 																			value="${article.regDate }" pattern="dd/MM/yyyy" /></td>
 																	<td class="text-center">${article.authorName }</td>
-																	<td class="text-center">110</td>
+
 																</tr>
 															</c:forEach>
 														</c:otherwise>
 													</c:choose>
+													
 												</tbody>
 											</table>
+											<a href="${ctx}/article/regist.do">게시물 올리기 </a>
 										</div>
 									</div>
 								</div>
@@ -170,5 +135,6 @@
 		<script src="assets/js/util.js"></script>
 		<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 		<script src="assets/js/main.js"></script>
+</div>
 </body>
 </html>

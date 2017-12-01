@@ -139,5 +139,33 @@ public class TravelStoreLogic implements TravelStore {
 		}
 		return true;
 	}
+	@Override
+	   public List<TravelPlan> retrieveAllTravelPlans() {
+	      SqlSession session = factory.getSession();
+	      List<TravelPlan> list = null;
+	      try {
+	         TravelMapper mapper = session.getMapper(TravelMapper.class);
+	         list = mapper.retrieveAllTravelPlans();
+	      }finally {
+	         session.close();
+	      }
+	      return list;
+	   }
+
+
+	   @Override
+	   public TravelPlan retrieveTravelPlanByUserId(String userId) {
+	      SqlSession session = factory.getSession();
+	      TravelPlan travelPlan = null;
+	      try {
+	         TravelMapper mapper = session.getMapper(TravelMapper.class);
+
+	         travelPlan = mapper.retrieveTravelPlanByUserId(userId);
+	      }finally {
+	         session.close();
+	      }
+	      return travelPlan;
+	   }
+	
 
 }

@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.MultipartRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import everyYeoga.domain.Article;
@@ -40,23 +41,20 @@ public class ArticleController {
 //	@RequestMapping(value="regist.do", method=RequestMethod.GET)
 //	public String registArticle(String groupId, Model model) {
 //		
-//		groupService.retreiveJoiningGroup(travelerId, travelPlanId)
-//		model.addAttribute("boards", boards);
-//		model.addAttribute("boardDetail", boardDetail);
-//		model.addAttribute("boardId", boardId);
-//		return "article/articleWrite";
+//		
+//		return "article/registArticle";
 //	}
-	 
+//	 
 //	@RequestMapping(value="regist.do", method=RequestMethod.POST)
 //	public ModelAndView registArticle(Article article, HttpServletRequest req, MultipartHttpServletRequest multipartRequest) {
-//		Attachment attachments = new Attachment()
+//		Attachment attachments = new Attachment();
+//		MultipartRequest mpr = 
 //		
 //		
-//		
-//		groupService.registArticle(article, req.getParameter("groupId"), attachments);
+//		groupService.registArticle(article, gorupId ,attachments);
 //		return "redirect:/board/find.do?boardId="+article.getBoardId();
 //	}
-	@RequestMapping(value="remove.do", method=RequestMethod.GET)
+	@RequestMapping(value="/remove.do", method=RequestMethod.GET)
 	public String removeArticle(HttpServletRequest req, String articleId) {
 		//선빈
 		HttpSession session = req.getSession();
@@ -89,7 +87,7 @@ public class ArticleController {
 		Article article = groupService.retreiveArticleByArticleId(articleId);
 		model.addAttribute("article", article);
 		model.addAttribute("user", article.getUser());
-
+		
 		return "article/articleDetail";
 	}
 	
@@ -118,7 +116,7 @@ public class ArticleController {
 	        String originalFilename = mpf.getOriginalFilename(); //파일명
 	 
 	        String fileFullPath = filePath+"/"+originalFilename; //파일 전체 경로
-	 
+	        
 	        try {
 	            //파일 저장
 	            mpf.transferTo(new File(fileFullPath)); //파일저장

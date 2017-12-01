@@ -7,8 +7,8 @@ public class Evaluation {
 	private String cons;    // 나쁜점
 	private String pros;    // 좋은점
 	
-	private User traveler;
-	private User guide;
+	private String travelerId;
+	private String guideId;
 	
 	
 	public String getEvaluationId() {
@@ -35,17 +35,17 @@ public class Evaluation {
 	public void setPros(String pros) {
 		this.pros = pros;
 	}
-	public User getTraveler() {
-		return traveler;
+	public String getTravelerId() {
+		return travelerId;
 	}
-	public void setTraveler(User traveler) {
-		this.traveler = traveler;
+	public void setTravelerId(String travelerId) {
+		this.travelerId = travelerId;
 	}
-	public User getGuide() {
-		return guide;
+	public String getGuideId() {
+		return guideId;
 	}
-	public void setGuide(User guide) {
-		this.guide = guide;
+	public void setGuideId(String guideId) {
+		this.guideId = guideId;
 	}
 	
 	

@@ -72,7 +72,7 @@ public class GroupServiceLogic implements GroupService{
 		User traveler = new User();
 		Group group = groupStore.retreiveJoiningGroup(travelPlanId);
 		List<String> userIds = groupStore.retrieveJoiningUserId(travelPlanId);
-		if(travelPlan.getTraveler().getId().equals(travelerId)) {
+		if(travelPlan.getTravelerId().equals(travelerId)) {
 		traveler = userStore.retrieveByUserId(travelerId);
 		}
 		List<User> guides = new ArrayList<User>();

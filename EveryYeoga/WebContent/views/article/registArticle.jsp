@@ -1,17 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE HTML>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<%@ include file="/views/layout/common.jsp"%>
 <link rel="stylesheet" href="../../assets/css/main.css" />
 
   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
   <script type="text/javascript">
     $(document).ready(function() {$("input[type=file]").change(function () {
             var fileListView = "";
+            var fileListViewPath = "";
             var formData = new FormData(); //ajax로 넘길 data             
             var fileInput = document.getElementById("test_file"); //id로 파일 태그를 호출             
             var files = fileInput.files; //업로드한 파일들의 정보를 넣는다.             
@@ -30,9 +31,11 @@
                         $.each(fileInfoList, function( index, fileInfo ) {                       
                             console.log("Path: "+fileInfo.fileFullPath); //전체경로
                             console.log("FileName: "+fileInfo.originalFilename); //파일명                   
-                            fileListView += "<p>"+fileInfo.originalFilename+"</p>"; //루프를 돌려서 화면에 보여줄 리스트 작성
+                            fileListView += "<p>"+fileInfo.originalFilename+"<p>"; //루프를 돌려서 화면에 보여줄 리스트 작성
+                            fileListViewPath += "<p>"+fileInfo.fileFullPath+"</p>"; //루프를 돌려서 화면에 보여줄 경로 리스트 작성
                         });
                         $("#file_view_list").html(fileListView); //리스트를 화면에 보여줌
+                        $("#file_view_pathList").html(fileListViewPath); //경로 리스트를 화면에 보여줌
                     }else{
                         alert("파일 등록에 실패하였습니다.");
                     }
@@ -47,7 +50,7 @@
          
     });
   </script>
-	<%@ include file="/views/layout/common.jsp"%>
+
 </head>
 <body>
 	<!-- Header -->
@@ -71,9 +74,10 @@
 									<div>
 										<h3>${boardDetail.name }</h3>
 									</div>
-									<form action="${pageContext.request.contextPath}/article/regist.do" method="post">
+									<form action="${ctx}/article/regist.do" method="post">
 										<div class="panel panel-default">
 											<div class="panel-heading">
+											
 												<input type="text" name="title" value=""
 													placeholder="제목을 입력해주세요.">
 											</div>
@@ -84,7 +88,8 @@
 											<h3>파일 리스트</h3>
 											<br>
 											<div id="file_view_list"></div>
-
+											
+											
 											<div class="panel-body">
 												<div class="post">
 													<input type="hidden" name="writer" value="${user.name }" />

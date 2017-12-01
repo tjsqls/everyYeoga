@@ -46,7 +46,7 @@ public class GroupController {
 		
 		model.addAttribute("group", group);
 		model.addAttribute("articles", articles);
-		return "article/groupMain";
+		return "group/groupMain";
 	}
 	
 	@RequestMapping(value="groupModifyStatus")

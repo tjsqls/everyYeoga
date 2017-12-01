@@ -75,15 +75,16 @@ if (confirm("정말 삭제하시겠습니까??") == true){    //확인
 
 
 													<c:forEach items="${article.comments }" var="comment">
+													<c:set var="commentUser" value="${comment.user}"/>
 														<table class="table"
 															style="font-size: 13px; padding: 20px;">
 															<tr>
-																<td><strong>댓글 쓴 사람${comment.user.id }</strong></td>
+																<td><strong>댓글 쓴 사람 ${commentUser.id }</strong></td>
 																<td class="text-right">날짜<fmt:formatDate
 																	value="${comment.regDate }" pattern="dd-MM-yyyy" /> <span
 																	style="float: right"> <a
 																		class="glyphicon glyphicon-trash"
-																		href="${ctx }/comment/remove.do?articleId=${article.articleId}&commentId=${comment.commentId}">수정</a>
+																		href="${ctx }/comment/modify.do?articleId=${article.articleId}&commentId=${comment.commentId}">수정</a>
 
 																		<a class="glyphicon glyphicon-trash"
 																		href="${ctx }/comment/remove.do?articleId=${article.articleId}&commentId=${comment.commentId}">삭제</a>
@@ -109,11 +110,10 @@ if (confirm("정말 삭제하시겠습니까??") == true){    //확인
 												<div class="panel-footer">
 													<div class="write_area">
 														<form
-															action="${ctx }/comment/regist.do"
-															method="POST">
-															<input type="hidden" name="articleId"
-																value="${article.articleId }">
-															<textarea class="input_write_comment" name="comments"
+															action="${ctx }/comment/regist.do" method="POST">
+															<input type="hidden" name="articleId" value="${article.articleId }">
+															<input type="hidden" name="groupId" value="${article.groupId }">
+															<textarea class="input_write_comment" name="content"
 																placeholder="댓글쓰기"></textarea>
 															<span style="float: right"> <input type="submit"
 																class="comment_submit" value="댓글 등록">
