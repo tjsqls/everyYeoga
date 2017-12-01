@@ -1,3 +1,4 @@
+
 package everyYeoga.controller;
 
 import java.util.List;
@@ -45,7 +46,7 @@ public class GroupController {
 		
 		model.addAttribute("group", group);
 		model.addAttribute("articles", articles);
-		return "group/groupMain";
+		return "article/groupMain";
 	}
 	
 	@RequestMapping(value="groupModifyStatus")

@@ -29,6 +29,7 @@
 		}
 	}
 </script>
+<%@ include file="/views/layout/common.jsp" %>
 </head>
 <body class="left-sidebar">
 	<div id="page-wrapper">
@@ -70,7 +71,7 @@
 										href="${pageContext.request.contextPath}/history/searchGuideHistory.do"><h3>가이드
 												내역</h3></a></li>
 								</ul>
-								</footer>
+							
 							</section>
 
 						</div>

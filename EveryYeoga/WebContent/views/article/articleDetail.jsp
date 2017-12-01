@@ -1,24 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE HTML>
 
 <html>
 <head>
 <title>Verti by HTML5 UP</title>
-
+<%@ include file="/views/layout/common.jsp" %>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet" href="../../assets/css/main.css" />
 
 <script type="text/javascript">
-	function button_event() {
-		if (confirm("정말 삭제하시겠습니까??") == true) { //확인
-			document.form.submit();
-		} else { //취소
-			return;
-		}
-	}
+
+function button_event(){
+if (confirm("정말 삭제하시겠습니까??") == true){    //확인
+    location.href="${ctx }/article/remove.do?articleId=${article.articleId}";
+}else{   //취소
+    return;
+}
+}
 </script>
+
 
 
 </head>
@@ -29,42 +32,11 @@
 <%@ include file="/views/layout/header.jsp" %>
 
 		<!-- Main -->
+		
 		<div id="main-wrapper">
 			<div class="container">
 				<div class="row 50%">
-					<div class="4u 12u$(medium)">
-						<div id="sidebar">
-							<!-- ㅁㄴㅇ -->
-							<!-- Sidebar -->
-							<section>
-
-								<ul class="style2">
-									<li><a
-										href="${pageContext.request.contextPath}/views/user/myPage.jsp"><h3>회원정보</h3></a></li>
-									<a
-										href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp"><h3>여행
-											검색</h3></a>
-									</li>
-
-									<li><a
-										href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp"><h3>참여중인
-												모임</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/views/travel/myTravelPlan.jsp"><h3>내가
-												올린 여행계획</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/views/history/myTravelerHistory.jsp"><h3>여행
-												내역</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/views/history/myGuideHistory.jsp"><h3>가이드
-												내역</h3></a></li>
-								</ul>
-
-								</footer>
-							</section>
-
-						</div>
-					</div>
+					<%@ include file="/views/layout/sidebar.jsp" %>
 					<div class="8u 12u$(medium) important(medium)">
 						<div id="content">
 							<div class="col-sm-9 col-lg-9">
@@ -79,19 +51,21 @@
 										</div>
 
 										<div class="panel panel-default">
-											<div class="panel-heading">${article.title }</div>
+											<div class="panel-heading">제목 ${article.title }</div>
 											<div class="panel-body">
 												<div class="post">
-													<strong>작성자${article.user.name }</strong> &nbsp;<span
-														class="text-muted">${article.regDate }</span> &nbsp; <a
-														href="${ctx }/article/remove.do?articleId=${article.articleId}"
-														class="glyphicon glyphicon-cog pull-right"
-														onclick="button_event();" style="padding: 10px">삭제</a> <a
+													<strong>작성자 ${user.name }</strong> &nbsp;<span
+														class="text-muted"><fmt:formatDate
+																	value="${article.regDate }" pattern="yyyy-MM-dd" /></span> &nbsp; 
+																	
+																	<a class="glyphicon glyphicon-cog pull-right" 
+																	onclick="button_event();" style="padding: 10px">삭제</a>
+																	 <a
 														href="${ctx }/article/modify.do?articleId=${article.articleId}"
 														class="glyphicon glyphicon-cog pull-right"
 														style="padding: 10px">수정</a> <br>
 
-													<p style="padding: 20px">내용${article.content }</p>
+													<p style="padding: 20px">${article.content }</p>
 													<a
 														href="${ctx }/article/modify.do?articleId=${article.articleId}"
 														class="glyphicon glyphicon-cog pull-right"
@@ -105,7 +79,8 @@
 															style="font-size: 13px; padding: 20px;">
 															<tr>
 																<td><strong>댓글 쓴 사람${comment.user.id }</strong></td>
-																<td class="text-right">날짜${comment.regDate } <span
+																<td class="text-right">날짜<fmt:formatDate
+																	value="${comment.regDate }" pattern="dd-MM-yyyy" /> <span
 																	style="float: right"> <a
 																		class="glyphicon glyphicon-trash"
 																		href="${ctx }/comment/remove.do?articleId=${article.articleId}&commentId=${comment.commentId}">수정</a>
@@ -134,7 +109,7 @@
 												<div class="panel-footer">
 													<div class="write_area">
 														<form
-															action="${pageContext.request.contextPath }/comment/regist.do"
+															action="${ctx }/comment/regist.do"
 															method="POST">
 															<input type="hidden" name="articleId"
 																value="${article.articleId }">
@@ -179,6 +154,7 @@
 					</footer>
 				</div>
 
+			</div>
 			</div>
 
 			<!-- Scripts -->

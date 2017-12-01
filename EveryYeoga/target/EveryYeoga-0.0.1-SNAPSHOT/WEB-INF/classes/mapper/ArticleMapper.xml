@@ -13,7 +13,7 @@
   	
   	<insert id="createArticle" parameterType="map">
   		INSERT INTO article_tb(articleId, title, content, writer, regDate, groupId)
-		VALUES(article_seq.NEXTVAL, #{article.title}, #{article.content}, #{article.user.id}, #{article.regDate}, #{groupId})  	
+		VALUES(article_seq.NEXTVAL, #{article.title}, #{article.content}, #{article.writer}, #{article.regDate}, #{groupId})  	
   	</insert>
   	
   	<insert id="createAttachment" parameterType="map">

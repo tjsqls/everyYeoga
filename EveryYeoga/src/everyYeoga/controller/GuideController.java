@@ -50,7 +50,7 @@ public class GuideController {
 		travelService.searchGuide(travelPlanId);
 		ModelAndView modelAndView = new ModelAndView("chooseGuide.jsp");
 		modelAndView.addObject("travelPlanId", travelPlanId);
-		
+		 
 		
 		
 		return modelAndView;

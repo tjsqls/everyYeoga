@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE HTML>
 
 <html>
@@ -11,14 +12,16 @@
 <link rel="stylesheet" href="../../assets/css/main.css" />
 
 <script type="text/javascript">
-	function button_event() {
-		if (confirm("정말 삭제하시겠습니까??") == true) { //확인
-			document.form.submit();
-		} else { //취소
-			return;
-		}
-	}
+
+function button_event(){
+if (confirm("정말 삭제하시겠습니까??") == true){    //확인
+    document.form.submit();
+}else{   //취소
+    return;
+}
+}
 </script>
+
 
 
 </head>
@@ -26,29 +29,7 @@
 	<div id="page-wrapper">
 
 		<!-- Header -->
-		<div id="header-wrapper">
-			<header id="header" class="container">
-
-				<!-- Logo -->
-				<div id="logo">
-					<h1>
-						<a href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp">모두의 가이드</a>
-
-					</h1>
-
-				</div>
-				<!-- Nav -->
-				<nav id="nav">
-					<ul>
-						<li class="current"><a
-							href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp">여행검색</a></li>
-						<li class="current"><a
-							href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp">모임관리</a></li>
-						<li class="current"><a href="login.html">로그아웃</a></li>
-					</ul>
-				</nav>
-			</header>
-		</div>
+<%@ include file="/views/layout/header.jsp" %>
 
 		<!-- Main -->
 		<div id="main-wrapper">
@@ -101,15 +82,17 @@
 										</div>
 
 										<div class="panel panel-default">
-											<div class="panel-heading">${article.title }</div>
+											<div class="panel-heading">제목 ${article.title }</div>
 											<div class="panel-body">
 												<div class="post">
-													<strong>작성자${article.user.name }</strong> &nbsp;<span
-														class="text-muted">${article.regDate }</span> &nbsp; <a
-														href="${ctx }/article/remove.do?articleId=${article.articleId}"
-														class="glyphicon glyphicon-cog pull-right"
-														onclick="button_event();" style="padding: 10px">삭제</a> <a
-														href="${ctx }/article/modify.do?articleId=${article.articleId}"
+													<strong>작성자 ${user.name }</strong> &nbsp;<span
+														class="text-muted"><fmt:formatDate
+																	value="${article.regDate }" pattern="yyyy-MM-dd" /></span> &nbsp; 
+																	
+																	<a class="glyphicon glyphicon-cog pull-right" 
+																	href="${pageContext.request.contextPath }/article/remove.do?articleId="${article.articleId}  onclick="button_event();" style="padding: 10px">삭제</a>
+																	 <a
+														href="${pageContext.request.contextPath }/article/modify.do?articleId=${article.articleId}"
 														class="glyphicon glyphicon-cog pull-right"
 														style="padding: 10px">수정</a> <br>
 
@@ -127,7 +110,8 @@
 															style="font-size: 13px; padding: 20px;">
 															<tr>
 																<td><strong>댓글 쓴 사람${comment.user.id }</strong></td>
-																<td class="text-right">날짜${comment.regDate } <span
+																<td class="text-right">날짜<fmt:formatDate
+																	value="${comment.regDate }" pattern="dd-MM-yyyy" /> <span
 																	style="float: right"> <a
 																		class="glyphicon glyphicon-trash"
 																		href="${ctx }/comment/remove.do?articleId=${article.articleId}&commentId=${comment.commentId}">수정</a>
@@ -152,20 +136,7 @@
 
 												<br>
 
-												<p style="padding: 20px">${article.content }</p>
-
-												<c:forEach items="${article.comments }" var="comment">
-													<table class="table"
-														style="font-size: 13px; padding: 20px;">
-														<tr>
-															<td><strong>댓글 쓴 사람${comment.user.id }</strong></td>
-															<td class="text-right">댓글 날짜${comment.regDate }
-															<span style="float:right">
-															<a
-																class="glyphicon glyphicon-trash"
-																href="${pageContext.request.contextPath }/comment/remove.do?articleId=${article.articleId}&commentId=${comment.commentId}">삭제</a>
-													</table>
-													</c:forEach>
+												
 												<div class="panel-footer">
 													<div class="write_area">
 														<form
@@ -214,6 +185,7 @@
 					</footer>
 				</div>
 
+			</div>
 			</div>
 
 			<!-- Scripts -->
