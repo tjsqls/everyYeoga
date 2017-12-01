@@ -63,6 +63,15 @@
 									<div class="well">
 
 
+<<<<<<< HEAD
+							
+						</tbody>
+					</table>
+				</div>
+        </div>
+    </div>
+</div>
+=======
 
 										<div class="table-responsive">
 											<table class="table table-striped table-bordered table-hover">
@@ -118,6 +127,7 @@
 											</table>
 										</div>
 									</div>
+>>>>>>> branch 'master' of https://github.com/tjsqls/everyYeoga.git
 								</div>
 							</div>
 						</div>

@@ -1,3 +1,4 @@
+
 package everyYeoga.controller;
 
 import java.util.List;
@@ -45,10 +46,11 @@ public class GroupController {
 
 		model.addAttribute("group", group);
 		model.addAttribute("articles", articles);
+		
 		return "group/groupMain";
 	}
 
-	@RequestMapping(value = "groupModifyStatus")
+	@RequestMapping(value = "groupModifyStatus.do")
 	public String modifyGroupStatus(String travelPlanId, HttpServletRequest req, Model model) {
 
 		groupService.modifyGroupStatus(travelPlanId, "모집중");
@@ -61,6 +63,12 @@ public class GroupController {
 
 		model.addAttribute("group", group);
 		model.addAttribute("articles", articles);
-		return "group/list.do";
+		return "redirect:/group/list.do";
+	}
+	
+	@RequestMapping(value="groupList.do")
+	public String joiningGroup(HttpServletRequest req) {
+		
+		return "";
 	}
 }

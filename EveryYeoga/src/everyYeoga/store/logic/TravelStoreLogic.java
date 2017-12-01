@@ -140,7 +140,6 @@ public class TravelStoreLogic implements TravelStore {
 		return true;
 	}
 
-
 	@Override
 	public List<TravelPlan> retrieveAllTravelPlans() {
 		SqlSession session = factory.getSession();

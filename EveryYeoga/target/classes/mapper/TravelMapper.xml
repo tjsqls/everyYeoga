@@ -5,32 +5,23 @@
 <mapper namespace="everyYeoga.store.mapper.TravelMapper">
 
 	<resultMap id="TravelPlanMap" type="TravelPlan">
-
 		<id column="travelPlanId" property="travelPlanId" />
-
 		<result column="speakingAbility" property="speakingAbility" />
-
 		<result column="travelArea" property="travelArea" />
-
 		<result column="numberOfVisits" property="numberOfVisits" />
-
 		<result column="theme" property="theme" />
-
 		<result column="numberOfTraveler" property="numberOfTraveler" />
-
 		<result column="preferGuide" property="preferGuide" />
-
 		<result column="selfIntroduction" property="selfIntroduction" />
-
 		<result column="gatheringStatus" property="gatheringStatus" />
 	</resultMap>
 
 	<insert id="createTravelPlan" parameterType="travelPlan"> INSERT INTO
 		travelPlan_tb(travelPlanId, travelerId, speakingAbility, travelArea,
-		numberOfVisits, theme, numberOfTraveler, preferGuide,
+		numberOfVisits, startDate, endDate, theme, numberOfTraveler, preferGuide,
 		selfIntroduction, gatheringStatus) VALUES(travelPlan_seq.NEXTVAL,
-		#{traveler.id}, #{speakingAbility}, #{travelArea}, #{numberOfVisits},
-		#{theme}, #{numberOfTraveler}, #{preferGuide}, #{selfIntroduction},
+		#{travelerId}, #{speakingAbility}, #{travelArea}, #{numberOfVisits},
+		#{startDate}, #{endDate} #{theme}, #{numberOfTraveler}, #{preferGuide}, #{selfIntroduction},
 		'true') </insert>
 
 	<select id="retrieveTravelPlanByTravelArea" parameterType="String"

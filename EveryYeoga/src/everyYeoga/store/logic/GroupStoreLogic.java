@@ -114,4 +114,18 @@ public class GroupStoreLogic implements GroupStore{
 		return list;
 	}
 
+	@Override
+	public List<Group> retrieveJoiningGroupAll(String userId) {
+		// 선빈
+		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
+		List<Group> list = null;
+		try {
+			GroupMapper mapper = session.getMapper(GroupMapper.class);
+			list = mapper.retrieveJoiningGroupAll(userId);
+		}finally {
+			session.close();
+		}
+		return list;
+	}
+
 }

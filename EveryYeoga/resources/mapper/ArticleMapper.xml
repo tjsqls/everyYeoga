@@ -5,6 +5,12 @@
   <mapper namespace="everyYeoga.store.mapper.ArticleMapper">
   	
   	<resultMap type="Article" id="articleMap">
+		<id property="articleId" column="articleId"></id>
+      <result property="title" column="title"></result>
+      <result property="content" column="content" />
+      <result property="regDate" column="regDate" />
+      <result property="writer" column="writer" />
+		<result property="groupId" column="groupId" />
       <association property="user" column="writer" select="everyYeoga.store.mapper.UserMapper.retrieveByUserId" javaType="User" jdbcType="VARCHAR"/>
       <collection property="comments" column="articleId" select="everyYeoga.store.mapper.CommentMapper.retrieveComment" javaType="ArrayList" jdbcType="NUMERIC"/>
       <collection property="attachments" column="articleId" select="everyYeoga.store.mapper.ArticleMapper.retreiveAttachmentByArticleId" javaType="ArrayList" jdbcType="NUMERIC"/>
@@ -13,7 +19,7 @@
   	
   	<insert id="createArticle" parameterType="map">
   		INSERT INTO article_tb(articleId, title, content, writer, regDate, groupId)
-		VALUES(article_seq.NEXTVAL, #{article.title}, #{article.content}, #{article.user.id}, #{article.regDate}, #{groupId})  	
+		VALUES(article_seq.NEXTVAL, #{article.title}, #{article.content}, #{article.writer}, #{article.regDate}, #{groupId})  	
   	</insert>
   	
   	<insert id="createAttachment" parameterType="map">

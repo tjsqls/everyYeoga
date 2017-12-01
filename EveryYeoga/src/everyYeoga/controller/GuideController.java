@@ -13,7 +13,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import everyYeoga.domain.Evaluation;
 import everyYeoga.domain.Join;
+
 import everyYeoga.domain.TravelPlan;
+
 import everyYeoga.domain.User;
 import everyYeoga.service.TravelService;
 
@@ -48,22 +50,15 @@ public class GuideController {
 	}
 
 	@RequestMapping(value="searchGuide.do", method = RequestMethod.GET) // chooseGuide.jsp
-	public ModelAndView searchGuide(HttpServletRequest req, int travelPlanId) {
+
+	public ModelAndView searchGuide(HttpServletRequest req, String travelPlanId) {
 		//진휘
-		int a = travelPlanId;
-		String b = Integer.toString(a);
 		HttpSession session = req.getSession();
 		User user = (User) session.getAttribute("loginedUser");
-//		System.out.println(b);
-		List<Join> j = travelService.searchGuide(b);
-		System.out.println(j.size());
-		
-		
-		
-		
+		List<Join> j = travelService.searchGuide(travelPlanId);
 		ModelAndView modelAndView = new ModelAndView("guide/chooseGuide");
 		modelAndView.addObject("joinList", j);
-//		modelAndView.addObject("guideId",)
+
 		return modelAndView;
 	}
 

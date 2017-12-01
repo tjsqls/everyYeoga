@@ -2,6 +2,8 @@ package store;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -51,4 +53,10 @@ public class GroupStoreLogicTest {
 //	public void testDeleteUserInGroup() {
 //		store.deleteUserInGroup("1", "선빈");
 //	}
+	@Test
+	public void testRetrieveJoiningGroupAll() {
+		List<Group> list = store.retrieveJoiningGroupAll("sun");
+		assertNotNull(list);
+		assertEquals("3", list.get(0).getTravelPlanId());
+	}
 }

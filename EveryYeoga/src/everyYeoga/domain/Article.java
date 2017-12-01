@@ -10,6 +10,8 @@ public class Article {
 	private String title;
 	private String content;
 	private Date regDate;
+	private String writer; 
+	private String groupId; //2017.12.01 필드 추가 선빈
 	
 	private List<Comment> comments;
 	private User user;
@@ -58,4 +60,18 @@ public class Article {
 	public void setAttachments(List<Attachment> attachments) {
 		this.attachments = attachments;
 	}
+	public String getWriter() {
+		return writer;
+	}
+	public void setWriter(String writer) {
+		this.writer = writer;
+	}
+	public String getGroupId() {
+		return groupId;
+	}
+	public void setGroupId(String groupId) {
+		this.groupId = groupId;
+	}
+	
+	
 }

@@ -16,7 +16,6 @@ public interface TravelStore {
 	public TravelPlan retrieveTravelPlan(String travelPlanId); 
 	public boolean updateTravelPlan(TravelPlan travelPlanId);//String -> 객체로 변경
 	public boolean deleteTravelPlan(String travelPlanId);
-	
 	public List<TravelPlan> retrieveAllTravelPlans();
 	public TravelPlan retrieveTravelPlanByUserId(String userId);
 
