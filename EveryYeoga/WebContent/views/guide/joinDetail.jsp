@@ -106,11 +106,31 @@
 														<font>${join.joinReason}</font>
 													</div>
 												</div>
+												<c:choose>
+														<c:when test="${empty evaluation}">
+															<tr>
+																<th colspan="5" class="text-center"></th>
+															</tr>
+														</c:when>
+														<c:otherwise>
+															<c:forEach var="evaluation" items="${evaluation}"
+																varStatus="sts">
+																	<tr>
+																		<td class="text-center">${evaluation.stars}</td>
+																		<td class="text-center">${evaluation.cons}</td>
+																		<td class="text-center">${evaluation.pros}</td>
+																		
+																	</tr>
+																</c:forEach> 
+														</c:otherwise>
+													</c:choose>
 
 												<br /> <br />
 												<div class="form-group"></div>
+												
 											</fieldset>
 										</form>
+										<input type=button value="되돌아가기" onClick="history.back();">
 									</div>
 								</div>
 							</div>

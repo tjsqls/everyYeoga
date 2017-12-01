@@ -219,13 +219,9 @@ public class TravelServiceLogic implements TravelService {
 
 		List<GuideHistory> cGs = historyStore.retrieveCheckedGuideHistory(j.getGuideId(), "확인");
 		cGs.addAll(historyStore.retrieveCheckedGuideHistory(j.getGuideId(), "미확인"));
-
 		j.setGuideHistories(cGs);
-
 		j.setReports(reportStore.retrieveReport(j.getGuideId()));
-
 		j.setEvaluations(guideStore.retrieveEvaluation(j.getGuideId()));
-
 		return j;
 	}
 

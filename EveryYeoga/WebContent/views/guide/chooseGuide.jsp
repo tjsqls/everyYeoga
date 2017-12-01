@@ -107,8 +107,11 @@
 																		<td class="text-center">${list.guideId}</td>
 																		<td class="text-center">${list.guideExperience}</td>
 																		<td class="text-center">${list.speakingAbility}</td>
+																		
+																		<button type="button"
+													onclick="location.href='${pageContext.request.contextPath}/guide/searchJoinDetail.do?joinId=${list.joinId }' ">상세보기</button>
 																	</tr>
-																</c:forEach>
+																</c:forEach> 
 														</c:otherwise>
 													</c:choose>
 												</tbody>

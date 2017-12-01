@@ -42,7 +42,7 @@ public class GuideController {
 		User user = (User) session.getAttribute("loginedUser");
 		Join join = travelService.searchJoinDetail(joinId);
 		ModelAndView modelAndView = new ModelAndView("guide/joinDetail");
-		modelAndView.addObject("joinId", joinId);
+		modelAndView.addObject("join", join);
 
 		return modelAndView;
 	}
@@ -54,16 +54,13 @@ public class GuideController {
 		String b = Integer.toString(a);
 		HttpSession session = req.getSession();
 		User user = (User) session.getAttribute("loginedUser");
-//		System.out.println(b);
 		List<Join> j = travelService.searchGuide(b);
-		System.out.println(j.size());
 		
 		
 		
 		
 		ModelAndView modelAndView = new ModelAndView("guide/chooseGuide");
 		modelAndView.addObject("joinList", j);
-//		modelAndView.addObject("guideId",)
 		return modelAndView;
 	}
 
@@ -88,10 +85,9 @@ public class GuideController {
 		//진휘
 		HttpSession session = req.getSession();
 		User user = (User) session.getAttribute("loginedUser");
-
-		travelService.searchEvaluation(guideId);
+		List<Evaluation> evaluation = travelService.searchEvaluation(guideId);
 		ModelAndView modelAndView = new ModelAndView("guide/joinDetail");
-		modelAndView.addObject("guideId", guideId);
+		modelAndView.addObject("evaluation", evaluation);
 
 		return modelAndView;
 	}
