@@ -13,7 +13,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import everyYeoga.domain.Evaluation;
 import everyYeoga.domain.Join;
-import everyYeoga.domain.TravelPlan;
 import everyYeoga.domain.User;
 import everyYeoga.service.TravelService;
 
