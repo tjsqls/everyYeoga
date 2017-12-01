@@ -61,9 +61,6 @@
 
 								<div class="table-responsive">
 									<div class="well">
-
-
-<<<<<<< HEAD
 							
 						</tbody>
 					</table>
@@ -71,63 +68,7 @@
         </div>
     </div>
 </div>
-=======
 
-										<div class="table-responsive">
-											<table class="table table-striped table-bordered table-hover">
-												<colgroup>
-													<col width="100" />
-													<col width="*" />
-													<col width="120" />
-													<col width="70" />
-													<col width="50" />
-												</colgroup>
-												<thead>
-													<tr>
-														<th class="text-center">번호</th>
-														<th class="text-center">테마</th>
-														<th class="text-center">모집상태</th>
-														<th class="text-center">인원</th>
-													</tr>
-												</thead>
-												<tbody>
-
-													<tr>
-														<td class="text-center">${join.joinId }</td>
-														<td class="text-center">${join.theme }</td>
-														<td class="text-center">${join.gatheringStatus }</td>
-														<td class="text-center">${join.numberOfTraveler }</td>
-
-													</tr>
-
-													<!-- 						
-	<c:choose>
-								<c:when test="${empty boardDetail.articles }">
-									<tr>
-										<th colspan="5" class="text-center">게시물이 존재하지 않습니다.</th>
-									</tr>
-								</c:when>
-								<c:otherwise>
-									<c:forEach var="article" items="${boardDetail.articles }">
-										<tr>
-											<td class="text-center">${article.articleId }</td>
-											<td><a
-												href="${ctx}/article/find.do?articleId=${article.articleId}">${article.title}
-											</a></td>
-											<td class="text-center"><fmt:formatDate
-													value="${article.regDate }" pattern="yyyy-MM-dd" /></td>
-											<td class="text-center">${article.authorName }</td>
-											<td class="text-center">110</td>
-										</tr>
-									</c:forEach>
-								</c:otherwise>
-							</c:choose>
-		 -->
-												</tbody>
-											</table>
-										</div>
-									</div>
->>>>>>> branch 'master' of https://github.com/tjsqls/everyYeoga.git
 								</div>
 							</div>
 						</div>

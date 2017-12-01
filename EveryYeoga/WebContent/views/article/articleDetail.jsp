@@ -36,39 +36,9 @@ if (confirm("정말 삭제하시겠습니까??") == true){    //확인
 		<div id="main-wrapper">
 			<div class="container">
 				<div class="row 50%">
-<<<<<<< HEAD
-					<div class="4u 12u$(medium)">
-						<div id="sidebar">
-							<!-- ㅁㄴㅇ -->
-							<!-- Sidebar -->
-							<section>
 
-								<ul class="style2">
-									<li><a
-										href="${pageContext.request.contextPath}/views/user/myPage.jsp"><h3>회원정보</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp"><h3>여행 검색</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp"><h3>참여중인모임</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/views/travel/myTravelPlan.jsp"><h3>내가
-												올린 여행계획</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/views/history/myTravelerHistory.jsp"><h3>여행
-												내역</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/views/history/myGuideHistory.jsp"><h3>가이드
-												내역</h3></a></li>
-								</ul>
-
-								</footer>
-							</section>
-
-						</div>
-					</div>
-=======
 					<%@ include file="/views/layout/sidebar.jsp" %>
->>>>>>> branch 'master' of https://github.com/tjsqls/everyYeoga.git
+
 					<div class="8u 12u$(medium) important(medium)">
 						<div id="content">
 							<div class="col-sm-9 col-lg-9">
