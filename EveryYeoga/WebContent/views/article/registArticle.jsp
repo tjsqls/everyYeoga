@@ -66,7 +66,7 @@
 					<div id="content">
 						<div class="col-sm-9 col-lg-9">
 							<div>
-								<h3>게시물 상세</h3>
+								<h3>게시물 작성</h3>
 							</div>
 
 							<div class="table-responsive">
@@ -77,7 +77,7 @@
 									<form action="${ctx}/article/regist.do" method="post">
 										<div class="panel panel-default">
 											<div class="panel-heading">
-											
+											<input type="hidden" name="groupId" value="${groupId }">
 												<input type="text" name="title" value=""
 													placeholder="제목을 입력해주세요.">
 											</div>
@@ -92,7 +92,7 @@
 											
 											<div class="panel-body">
 												<div class="post">
-													<input type="hidden" name="writer" value="${user.name }" />
+													<input type="hidden" name="writer" value="${loginUser.id }" />
 													&nbsp;<span class="text-muted"></span> &nbsp; <br>
 													<p style="padding: 20px">
 														<textarea class="input_write_article" name="content"

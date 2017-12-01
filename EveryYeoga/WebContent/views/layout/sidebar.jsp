@@ -8,23 +8,23 @@
 
 			<ul class="style2">
 				<li><a
-					href="${pageContext.request.contextPath}/views/user/myPage.do"><h3>회원정보</h3></a></li>
+					href="${pageContext.request.contextPath}/user/myPage.do"><h3>회원정보</h3></a></li>
 				<a
-					href="${pageContext.request.contextPath}/views/travel/travelPlanList.do"><h3>여행
+					href="${pageContext.request.contextPath}/travel/travelPlanList.do"><h3>여행
 						검색</h3></a>
 				</li>
 
 				<li><a
-					href="${pageContext.request.contextPath}/views/group/joiningGroupList.do"><h3>참여중인
+					href="${pageContext.request.contextPath}/group/joiningGroupList.do"><h3>참여중인
 							모임</h3></a></li>
 				<li><a
-					href="${pageContext.request.contextPath}/views/travel/myTravelPlan.do"><h3>내가
+					href="${pageContext.request.contextPath}/travel/myTravelPlan.do"><h3>내가
 							올린 여행계획</h3></a></li>
 				<li><a
-					href="${pageContext.request.contextPath}/views/history/myTravelerHistory.do"><h3>여행
+					href="${pageContext.request.contextPath}/history/searchTravelerHistory.do"><h3>여행
 							내역</h3></a></li>
 				<li><a
-					href="${pageContext.request.contextPath}/views/history/myGuideHistory.do"><h3>가이드
+					href="${pageContext.request.contextPath}/history/searchGuideHistory.do"><h3>가이드
 							내역</h3></a></li>
 			</ul>
 

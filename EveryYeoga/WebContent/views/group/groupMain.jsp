@@ -77,6 +77,7 @@
 														</c:when>
 														<c:otherwise>
 															<c:forEach var="article" items="${articles }" varStatus="sts">
+															
 																<tr>
 																	<td class="text-center">${article.articleId }</td>
 																	<td><a
@@ -84,7 +85,7 @@
 																	</a></td>
 																	<td class="text-center"><fmt:formatDate
 																			value="${article.regDate }" pattern="dd/MM/yyyy" /></td>
-																	<td class="text-center">${article.authorName }</td>
+																	<td class="text-center">${article.writer }</td>
 
 																</tr>
 															</c:forEach>
@@ -93,7 +94,7 @@
 													
 												</tbody>
 											</table>
-											<a href="${ctx}/article/regist.do">게시물 올리기 </a>
+											<a href="${ctx}/article/regist.do?groupId=${group.groupId}">게시물 올리기 </a>
 										</div>
 									</div>
 								</div>

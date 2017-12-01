@@ -6,27 +6,8 @@
 <html>
 <head>
 <title>Verti by HTML5 UP</title>
-<<<<<<< HEAD
+		<%@ include file="/views/layout/common.jsp"%>
 
-<meta charset="utf-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="${pageContext.request.contextPath }/assets/css/main.css" />
-<link href="${pageContext.request.contextPath }/resources/css/bootstrap_modify.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath }/resources/css/layout.css" rel="stylesheet">
-<script src="${pageContext.request.contextPath }/resources/js/jquery-2.1.3.js"></script>
-<script src="${pageContext.request.contextPath }/resources/js/jquery.blockUI.js"></script>
-
-<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-	<link rel="stylesheet" href="/resources/demos/style.css">
-	<script>
-	  $(function() {
-	    $( "#datepicker" ).datepicker();
-	  });
-	</script>
-=======
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet" href="../../assets/css/main.css" />
@@ -36,60 +17,25 @@
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <link rel="stylesheet" href="/resources/demos/style.css">
 <script>
-	$(function() {
-		$("#datepicker").datepicker();
+$(function() {
+	$("#satartDate").datepicker({
+		dateFormat : 'yy/mm/dd'
 	});
+});
 </script>
->>>>>>> branch 'master' of https://github.com/tjsqls/everyYeoga.git
+
 </head>
 <body class="left-sidebar">
 	<div id="page-wrapper">
 
 		<!-- Header -->
-<<<<<<< HEAD
-		<%@ include file="/views/layout/header.jsp" %>
-=======
 		<%@ include file="/views/layout/header.jsp"%>
->>>>>>> branch 'master' of https://github.com/tjsqls/everyYeoga.git
-
 		<!-- Main -->
 
 		<div id="main-wrapper">
 			<div class="container">
 				<div class="row 50%">
-					<div class="4u 12u$(medium)">
-
-
-						<div id="sidebar">
-
-							<!-- Sidebar -->
-							<section>
-								<ul class="style2">
-									<li><a
-										href="${pageContext.request.contextPath}/user/myPage.do"><h3>회원정보</h3></a></li>
-									<a
-										href="${pageContext.request.contextPath}/travel/searchTravelPlan.do"><h3>여행
-											검색</h3></a>
-									</li>
-
-									<li><a
-										href="${pageContext.request.contextPath}/group/joiningGroupList.do"><h3>참여중인
-												모임</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/travel/myTravelPlan.do"><h3>내가
-												올린 여행계획</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/history/myTravelerHistory.do"><h3>여행
-												내역</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/history/myGuideHistory.do"><h3>가이드
-												내역</h3></a></li>
-								</ul>
-								</footer>
-							</section>
-
-						</div>
-					</div>
+					<%@ include file="/views/layout/sidebar.jsp"%>
 					<div class="8u 12u$(medium) important(medium)">
 						<div id="content">
 							<div class="col-sm-9 col-lg-9">
@@ -107,11 +53,12 @@
 													<span style="float: right"><button type="submit"
 															style="padding: 10px">검색</button></span> <span
 														style="float: right" style="padding: 10px"> <input
-														name="satartDate" type="text"
+														id="satartDate" name="satartDate" type="text"
 														placeholder="여행 시작 날짜 (yy/mm/dd)" value="" /></span> <span
 														style="float: right" style="padding: 10px"> <input
-														name="speakingAbility" placeholder="언어구사능력" value="" /></span> <input
-														name="travelArea" placeholder="지역" value="" /></span>
+														name="speakingAbility" placeholder="언어구사능력" value="" /></span> 
+														<span style="float: right" style="padding: 10px"> 
+														<input name="travelArea" placeholder="지역" value="" /></span>
 												</form>
 											</div>
 

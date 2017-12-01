@@ -38,13 +38,12 @@ public class ArticleController {
 	@Autowired
 	private GroupService groupService;
 	
-//	@RequestMapping(value="regist.do", method=RequestMethod.GET)
-//	public String registArticle(String groupId, Model model) {
-//		
-//		
-//		return "article/registArticle";
-//	}
-//	 
+	@RequestMapping(value="regist.do", method=RequestMethod.GET)
+	public String registArticle(String groupId, Model model) {
+		model.addAttribute("groupId", groupId);
+		return "article/registArticle";
+	}
+
 //	@RequestMapping(value="regist.do", method=RequestMethod.POST)
 //	public ModelAndView registArticle(Article article, HttpServletRequest req, MultipartHttpServletRequest multipartRequest) {
 //		Attachment attachments = new Attachment();
