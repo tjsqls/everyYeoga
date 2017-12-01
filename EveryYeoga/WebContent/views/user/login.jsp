@@ -3,16 +3,14 @@
 <!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
+<title>A Pen by Zoltan Kohalmy</title>
+<%@ include file="/views/layout/common.jsp" %>
+
 <title>모두의 여가</title>
 <link rel="stylesheet" href="../../css/style.css">
-<link href="${pageContext.request.contextPath }/resources/css/bootstrap_modify.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath }/resources/css/layout.css" rel="stylesheet">
-<script src="${pageContext.request.contextPath }/resources/js/jquery-2.1.3.js"></script>
-<script src="${pageContext.request.contextPath }/resources/js/jquery.blockUI.js"></script>
 </head>
 
 <body>
-
 	<form action="${pageContext.request.contextPath}/user/login.do" method="post">
 		<header>Login</header>
 		<label>아이디 <span>*</span></label> <input id="id"  name="id" class="form-control" type="text" value="" placeholder="ID를 입력해주세요.">
@@ -21,7 +19,5 @@
 		<div class="help">Use upper and lowercase lettes as well</div>
 		<button type="submit">로그인</button>
 	</form>
-
-
 </body>
 </html>

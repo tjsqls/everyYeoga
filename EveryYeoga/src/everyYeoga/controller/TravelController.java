@@ -27,9 +27,15 @@ public class TravelController {
 	@Autowired
 	private UserService userService;
 
-	@RequestMapping(value = "regist.do") // createTravelPlan.jsp
+	@RequestMapping(value = "regist.do", method=RequestMethod.GET) // createTravelPlan.jsp
+	public String registTravelPlan() {// 2017.11.27 HttpServletRequest 추가
+		//진휘
+		return "travel/createTravelPlan";
+	}
+	@RequestMapping(value = "regist.do", method=RequestMethod.POST) // createTravelPlan.jsp
 	public String registTravelPlan(HttpServletRequest req, TravelPlan travelPlan) {// 2017.11.27 HttpServletRequest 추가
 		//진휘
+		System.out.println(travelPlan.getStartDate());
 		HttpSession session = req.getSession();
 		User user = (User) session.getAttribute("loginedUser");
 		travelPlan.setTravelerId(user.getId());

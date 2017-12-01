@@ -8,6 +8,7 @@ import everyYeoga.domain.Join;
 import everyYeoga.domain.TravelPlan;
 
 public interface TravelService {
+
 	public boolean registTravelPlan(TravelPlan travelPlan);
 	public boolean registJoin(Join join, String travelPlanId);//파라미터 수정
 	//여행지역, 언어구사능력, 날짜로 여행계획 목록 검색
@@ -19,8 +20,7 @@ public interface TravelService {
 	public Join searchJoinDetail(String joinId);//2017.11.27 reportedUserId 파라미터 삭제 진휘
 	public boolean registEvaluation(Evaluation evaluation);
 	public List<Evaluation> searchEvaluation(String guideId);
-	
-	public List<TravelPlan> searchAllTravelPlans();
-	public TravelPlan searchTravelPlanByUserId(String userId);
+    public List<TravelPlan> searchAllTravelPlans();
+    public TravelPlan searchTravelPlanByUserId(String userId);
 
 }

@@ -5,21 +5,15 @@
 <html>
 <head>
 <title>Verti by HTML5 UP</title>
-
+<%@ include file="/views/layout/common.jsp"%>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet" href="../../assets/css/main.css" />
-<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-	<link rel="stylesheet" href="/resources/demos/style.css">
-<script>
-	$(function() {
-		$("#startDate").datepicker();
-	});
-	$(function() {
-		$("#endDate").datepicker();
-	});
-</script>
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<link rel="stylesheet" href="/resources/demos/style.css">
+
 </head>
 <body class="left-sidebar">
 	<div id="page-wrapper">
@@ -70,9 +64,7 @@
 
 								<div class="table-responsive">
 									<div class="well">
-										<form
-											action="${pageContext.request.contextPath}/travel/regist.do"
-											class="bs-example form-horizontal" method="GET">
+										<form action="${ctx}/travel/regist.do" class="bs-example form-horizontal" method="post">
 											<fieldset>
 												<div class="form-group">
 
@@ -97,15 +89,15 @@
 												<div class="form-group">
 
 													<label class="col-lg-2 control-label"><h3>여행
-															시작일</h3></label> <input type="text" id="startDate" name="startDate"
-														placeholder="yyyy/mm/dd" />
+															시작일</h3></label> <input type="date" id="startDate" name="startDate"
+														placeholder="yyyy/mm/dd" value=""/>
 												</div>
 
 												<div class="form-group">
 
 													<label class="col-lg-2 control-label"><h3>여행
-															종료일</h3></label> <input type="text" id="endDate" name="endDate"
-														placeholder="yyyy/mm/dd" />
+															종료일</h3></label> <input type="date" id="endDate" name="endDate"
+														placeholder="yyyy/mm/dd" value="" />
 												</div>
 
 
@@ -141,10 +133,8 @@
 												<br /> <br />
 												<div class="form-group">
 													<div class="col-lg-10 col-lg-offset-2">
-														<span style="float: center"><button type="submit"
-																class="btn btn-pr">여행계획 등록</button> <span
-															style="float: center"><button type="reset"
-																	class="btn btn-default">취소</button>
+														<span style="float: center"><button type="submit" class="btn btn-pr">여행계획 등록</button> 
+														<span style="float: center"><button type="reset" class="btn btn-default">취소</button>
 													</div>
 												</div>
 											</fieldset>

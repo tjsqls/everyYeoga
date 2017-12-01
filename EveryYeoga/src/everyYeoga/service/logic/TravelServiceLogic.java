@@ -214,6 +214,7 @@ public class TravelServiceLogic implements TravelService {
 	@Override//해야함
 	public Join searchJoinDetail(String joinId) {
 		// 진휘
+		Join join = new Join();
 		Join j = guideStore.retrieveJoinDetail(joinId);
 		j.setGuideId(joinId);
 
