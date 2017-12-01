@@ -27,11 +27,16 @@ public class CommentController {
 		comment.setUser(user);
 		groupService.registComment(groupId, articleId, comment);
 		return "redirect:/article/articleDetail.do?articleId="+articleId;
+
+
 	}
-	
-	@RequestMapping(value="/remove.do", method=RequestMethod.GET)
-	public String removeComment(String commentId, String articleId) {
+
+
+	@RequestMapping(value = "remove.do")
+	public String removeComment(String commentId, String articleId, Model model) {
 		groupService.removeComment(commentId);
+
 		return "redirect:/article/articleDetail.do?articleId="+articleId;
 	} 
+
 }

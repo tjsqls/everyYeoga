@@ -13,7 +13,11 @@
 	<div id="page-wrapper">
 
 		<!-- Header -->
+<<<<<<< HEAD
 	<%@ include file="/views/layout/header.jsp" %>
+=======
+		<%@ include file="/views/layout/header.jsp"%>
+>>>>>>> branch 'master' of https://github.com/tjsqls/everyYeoga.git
 		<!-- Main -->
 		<div id="main-wrapper">
 			<div class="container">
@@ -23,21 +27,25 @@
 
 							<!-- Sidebar -->
 							<section>
-								
-								<ul class="style2">									<li><a
+								<ul class="style2">
+									<li><a
 										href="${pageContext.request.contextPath}/views/user/myPage.jsp"><h3>회원정보</h3></a></li>
-								<a
-										href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp"><h3>여행 검색</h3></a></li>
-								
-									<li><a href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp"><h3>참여중인 모임</h3></a></li>
+									<a
+										href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp"><h3>여행
+											검색</h3></a>
+									</li>
+
+									<li><a
+										href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp"><h3>참여중인
+												모임</h3></a></li>
 									<li><a
 										href="${pageContext.request.contextPath}/views/travel/myTravelPlan.jsp"><h3>내가
 												올린 여행계획</h3></a></li>
-	<li><a
-										href="${pageContext.request.contextPath}/views/history/myTravelerHistory.jsp"><h3>여행
+									<li><a
+										href="${pageContext.request.contextPath}/history/searchTravelerHistory.do"><h3>여행
 												내역</h3></a></li>
 									<li><a
-										href="${pageContext.request.contextPath}/views/history/myGuideHistory.jsp"><h3>가이드
+										href="${pageContext.request.contextPath}/history/searchGuideHistory.do"><h3>가이드
 												내역</h3></a></li>
 								</ul>
 								</footer>
@@ -55,47 +63,41 @@
 								<div class="table-responsive">
 									<div class="well">
 										<form
-											action="${pageContext.request.contextPath}/article/regist.do"
+											action="${pageContext.request.contextPath}/guide/joinDetail.do"
 											class="bs-example form-horizontal" method="POST">
 											<fieldset>
 												<div class="form-group">
-													<input type="hidden" name="boardId"
-														value="${boardDetail.boardId}"> <label
-														class="col-lg-2 control-label"><h3>지역</h3></label>
+													<label class="col-lg-2 control-label"><h3>지역</h3></label>
 
 													<div class="col-lg-10">
-														<font>지역입력한거</font>
+														<font>${join.travelArea}</font>
 													</div>
 												</div>
 
 												<div class="form-group">
-													<input type="hidden" name="boardId"
-														value="${boardDetail.boardId}"> <label
-														class="col-lg-2 control-label"><h3>언어 구사 능력</h3></label>
+													<label class="col-lg-2 control-label"><h3>언어
+															구사 능력</h3></label>
 
 													<div class="col-lg-10">
-														<font>언어구사능력입력한거</font>
+														<font>${join.speakingAbility}</font>
 													</div>
 												</div>
 
 												<div class="form-group">
-													<input type="hidden" name="boardId"
-														value="${boardDetail.boardId}"> <label
-														class="col-lg-2 control-label"><h3>가이드 경험</h3></label>
+													<label class="col-lg-2 control-label"><h3>가이드
+															경험</h3></label>
 
 													<div class="col-lg-10">
-														<font>가이드 경험 입력한거</font>
+														<font>${join.guideExperience}</font>
 													</div>
 												</div>
 
 
 												<div class="form-group">
-													<input type="hidden" name="boardId"
-														value="${boardDetail.boardId}"> <label
-														class="col-lg-2 control-label"><h3>자기소개</h3></label>
+													<label class="col-lg-2 control-label"><h3>자기소개</h3></label>
 
 													<div class="col-lg-10">
-														<font>자기소개입력한거</font>
+														<font>${join.selfIntroduction}</font>
 													</div>
 												</div>
 
@@ -105,9 +107,10 @@
 															사유</h3></label>
 
 													<div class="col-lg-10">
-														<font>신청사유 입력한거</font>
+														<font>${join.joinReason}</font>
 													</div>
 												</div>
+
 												<br /> <br />
 												<div class="form-group"></div>
 											</fieldset>

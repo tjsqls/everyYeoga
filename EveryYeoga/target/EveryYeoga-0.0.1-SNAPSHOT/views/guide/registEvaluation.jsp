@@ -107,7 +107,11 @@ star-input>.input.focus {
 	<div id="page-wrapper">
 
 		<!-- Header -->
+<<<<<<< HEAD
 <%@ include file="/views/layout/header.jsp" %>
+=======
+		<%@ include file="/views/layout/header.jsp"%>
+>>>>>>> branch 'master' of https://github.com/tjsqls/everyYeoga.git
 
 		<!-- Main -->
 		<div id="main-wrapper">
@@ -118,26 +122,25 @@ star-input>.input.focus {
 
 							<!-- Sidebar -->
 							<section>
-
 								<ul class="style2">
 									<li><a
-										href="${pageContext.request.contextPath}/views/user/myPage.jsp"><h3>회원정보</h3></a></li>
+										href="${pageContext.request.contextPath}/user/myPage.jsp"><h3>회원정보</h3></a></li>
 									<a
-										href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp"><h3>여행
+										href="${pageContext.request.contextPath}/travel/travelPlanList.jsp"><h3>여행
 											검색</h3></a>
 									</li>
 
 									<li><a
-										href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp"><h3>참여중인
+										href="${pageContext.request.contextPath}/group/joiningGroupList.jsp"><h3>참여중인
 												모임</h3></a></li>
 									<li><a
-										href="${pageContext.request.contextPath}/views/travel/myTravelPlan.jsp"><h3>내가
+										href="${pageContext.request.contextPath}/travel/myTravelPlan.jsp"><h3>내가
 												올린 여행계획</h3></a></li>
 									<li><a
-										href="${pageContext.request.contextPath}/views/history/myTravelerHistory.jsp"><h3>여행
+										href="${pageContext.request.contextPath}/history/searchTravelerHistory.do"><h3>여행
 												내역</h3></a></li>
 									<li><a
-										href="${pageContext.request.contextPath}/views/history/myGuideHistory.jsp"><h3>가이드
+										href="${pageContext.request.contextPath}/history/searchGuideHistory.do"><h3>가이드
 												내역</h3></a></li>
 								</ul>
 								</footer>
@@ -155,33 +158,26 @@ star-input>.input.focus {
 								<div class="table-responsive">
 									<div class="well">
 										<form
-											action="${pageContext.request.contextPath}/article/regist.do"
+											action="${pageContext.request.contextPath}/guide/registEvaluation.do"
 											class="bs-example form-horizontal" method="POST">
 											<fieldset>
 
-												<label class="col-lg-2 control-label"><h3>가이드:가이드이름</h3></label>
+												<label class="col-lg-2 control-label"><h3>가이드:${evaluation.guide.name }</h3></label>
 
 
 												<div class="form-group">
-													<input type="hidden" name="boardId"
-														value="${boardDetail.boardId}"> <label
-														class="col-lg-2 control-label"><h3>좋았던 점</h3></label>
-
-													<div class="col-lg-10">
-														<textarea class="form-control" name="contents" rows="2"
-															id="textArea"></textarea>
-													</div>
+													<label class="col-lg-2 control-label"><h3>좋았던
+															점</h3></label> <input type="text" name="pros"
+														value="${evaluation.pros}">
+													<div class="col-lg-10"></div>
 												</div>
 
 
 												<div class="form-group">
 													<label class="col-lg-2 control-label"><h3>나빴던
-															점</h3></label>
-
-													<div class="col-lg-10">
-														<textarea class="form-control" name="contents" rows="2"
-															id="textArea"></textarea>
-													</div>
+															점</h3></label> <input type="text" name="pros"
+														value="${evaluation.cons}">
+													<div class="col-lg-10"></div>
 												</div>
 
 												<label class="col-lg-2 control-label"><h3>별점</h3></label> <span

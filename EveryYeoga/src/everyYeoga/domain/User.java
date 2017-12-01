@@ -2,6 +2,11 @@ package everyYeoga.domain;
 
 public class User {
 
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", pw=" + pw + ", name=" + name + ", birthDate=" + birthDate + ", phoneNumber="
+				+ phoneNumber + ", email=" + email + "]";
+	}
 	private String id;
 	private String pw;
 	private String name;

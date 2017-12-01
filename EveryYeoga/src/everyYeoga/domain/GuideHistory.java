@@ -12,7 +12,7 @@ public class GuideHistory {
 	private Date startDate;
 	private Date endDate;
 	
-	private User guide;
+	private User guide; 
 	
 
 	public String getGuideHistoryId() {
@@ -78,5 +78,8 @@ public class GuideHistory {
 	public void setGuide(User guide) {
 		this.guide = guide;
 	}
+	
+
+	
 	
 }

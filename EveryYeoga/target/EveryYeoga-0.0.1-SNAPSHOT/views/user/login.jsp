@@ -3,8 +3,17 @@
 <!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
+<<<<<<< HEAD
 <title>A Pen by Zoltan Kohalmy</title>
 <%@ include file="/views/layout/common.jsp" %>
+=======
+<title>모두의 여가</title>
+<link rel="stylesheet" href="../../css/style.css">
+<link href="${pageContext.request.contextPath }/resources/css/bootstrap_modify.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/resources/css/layout.css" rel="stylesheet">
+<script src="${pageContext.request.contextPath }/resources/js/jquery-2.1.3.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js/jquery.blockUI.js"></script>
+>>>>>>> branch 'master' of https://github.com/tjsqls/everyYeoga.git
 </head>
 
 <body>

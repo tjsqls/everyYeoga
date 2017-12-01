@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE HTML>
 
 <html>
@@ -9,7 +9,8 @@
 <title>Verti by HTML5 UP</title>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="stylesheet" href="${pageContext.request.contextPath }/assets/css/main.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/assets/css/main.css" />
 <link
 	href="${pageContext.request.contextPath }/resources/css/bootstrap_modify.css"
 	rel="stylesheet">
@@ -34,9 +35,10 @@
 <body class="left-sidebar">
 	<div id="page-wrapper">
 
+
 		<!-- Header -->
 
-	<%@ include file="/views/layout/header.jsp" %>
+		<%@ include file="/views/layout/header.jsp"%>
 
 		<!-- Main -->
 
@@ -52,17 +54,17 @@
 							<section>
 								<ul class="style2">
 									<li><a
-										href="${pageContext.request.contextPath}/views/user/myPage.jsp"><h3>회원정보</h3></a></li>
+										href="${pageContext.request.contextPath}/user/myPage.jsp"><h3>회원정보</h3></a></li>
 									<a
-										href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp"><h3>여행
+										href="${pageContext.request.contextPath}/travel/travelPlanList.jsp"><h3>여행
 											검색</h3></a>
 									</li>
 
 									<li><a
-										href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp"><h3>참여중인
+										href="${pageContext.request.contextPath}/group/joiningGroupList.do"><h3>참여중인
 												모임</h3></a></li>
 									<li><a
-										href="${pageContext.request.contextPath}/views/travel/myTravelPlan.jsp"><h3>내가
+										href="${pageContext.request.contextPath}/travel/myTravelPlan.do"><h3>내가
 												올린 여행계획</h3></a></li>
 									<li><a
 										href="${pageContext.request.contextPath}/history/searchTravelerHistory.do"><h3>여행
@@ -87,7 +89,6 @@
 									<div class="well">
 
 
-
 										<div class="table-responsive">
 											<table class="table table-striped table-bordered table-hover">
 												<thead>
@@ -101,32 +102,33 @@
 														<th class="text-center">도착날짜</th>
 													</tr>
 												</thead>
-											<tbody>
-											<c:choose>
-												<c:when test="${empty flist}">
-													<tr>
-														<th colspan="5" class="text-center">미확인 가이드 내역이 존재하지
-															않습니다.</th>
-													</tr>
-												</c:when>
-												<c:otherwise>
-													<c:forEach var="guideHistory" items="${flist}"
-														varStatus="sts">
-														<tr>
-															<td class="text-center">${sts.count}</td>
-															<td class="text-center">${guideHistory.travelEndStatus}</td>
-															<td class="text-center">${guideHistory.travelerName}</td>
-															<td class="text-center">${guideHistory.travelArea}</td>
-															<td class="text-center">${guideHistory.theme}</td>
-															<td class="text-center"><fmt:formatDate
-																	value="${guideHistory.startDate}" pattern="yyyy-MM-dd" /></td>
-															<td class="text-center"><fmt:formatDate
-																	value="${guideHistory.endDate}" pattern="yyyy-MM-dd" /></td>
-														</tr>
-													</c:forEach>
-												</c:otherwise>
-											</c:choose>
-											</tbody>
+												<tbody>
+													<c:choose>
+														<c:when test="${empty flist}">
+															<tr>
+																<th colspan="5" class="text-center">미확인 가이드 내역이
+																	존재하지 않습니다.</th>
+															</tr>
+														</c:when>
+														<c:otherwise>
+															<c:forEach var="guideHistory" items="${flist}"
+																varStatus="sts">
+																<tr>
+																	<td class="text-center">${sts.count}</td>
+																	<td class="text-center">${guideHistory.travelEndStatus}</td>
+																	<td class="text-center">${guideHistory.travelerName}</td>
+																	<td class="text-center">${guideHistory.travelArea}</td>
+																	<td class="text-center">${guideHistory.theme}</td>
+																	<td class="text-center"><fmt:formatDate
+																			value="${guideHistory.startDate}"
+																			pattern="yyyy-MM-dd" /></td>
+																	<td class="text-center"><fmt:formatDate
+																			value="${guideHistory.endDate}" pattern="yyyy-MM-dd" /></td>
+																</tr>
+															</c:forEach>
+														</c:otherwise>
+													</c:choose>
+												</tbody>
 											</table>
 											<table class="table table-striped table-bordered table-hover">
 												<colgroup>
@@ -147,33 +149,34 @@
 														<th class="text-center">도착날짜</th>
 													</tr>
 												</thead>
-											
-											<tbody>
-											<c:choose>
-												<c:when test="${empty tlist}">
-													<tr>
-														<th colspan="5" class="text-center">확인 가이드 내역이 존재하지
-															않습니다.</th>
-													</tr>
-												</c:when>
-												<c:otherwise>
-													<c:forEach var="tguideHistory" items="${tlist}"
-														varStatus="sts">
-														<tr>
-															<td class="text-center">${sts.count}</td>
-															<td class="text-center">${tguideHistory.travelEndStatus}</td>
-															<td class="text-center">${tguideHistory.travelerName}</td>
-															<td class="text-center">${tguideHistory.travelArea}</td>
-															<td class="text-center">${tguideHistory.theme}</td>
-															<td class="text-center"><fmt:formatDate
-																	value="${tguideHistory.startDate}" pattern="yyyy-MM-dd" /></td>
-															<td class="text-center"><fmt:formatDate
-																	value="${tguideHistory.endDate}" pattern="yyyy-MM-dd" /></td>
-														</tr>
-													</c:forEach>
-												</c:otherwise>
-											</c:choose>
-											</tbody>
+
+												<tbody>
+													<c:choose>
+														<c:when test="${empty tlist}">
+															<tr>
+																<th colspan="5" class="text-center">확인 가이드 내역이 존재하지
+																	않습니다.</th>
+															</tr>
+														</c:when>
+														<c:otherwise>
+															<c:forEach var="tguideHistory" items="${tlist}"
+																varStatus="sts">
+																<tr>
+																	<td class="text-center">${sts.count}</td>
+																	<td class="text-center">${tguideHistory.travelEndStatus}</td>
+																	<td class="text-center">${tguideHistory.travelerName}</td>
+																	<td class="text-center">${tguideHistory.travelArea}</td>
+																	<td class="text-center">${tguideHistory.theme}</td>
+																	<td class="text-center"><fmt:formatDate
+																			value="${tguideHistory.startDate}"
+																			pattern="yyyy-MM-dd" /></td>
+																	<td class="text-center"><fmt:formatDate
+																			value="${tguideHistory.endDate}" pattern="yyyy-MM-dd" /></td>
+																</tr>
+															</c:forEach>
+														</c:otherwise>
+													</c:choose>
+												</tbody>
 											</table>
 										</div>
 									</div>

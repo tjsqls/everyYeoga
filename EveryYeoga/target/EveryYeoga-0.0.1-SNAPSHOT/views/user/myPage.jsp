@@ -26,15 +26,27 @@
 	<div id="page-wrapper">
 
 		<!-- Header -->
+<<<<<<< HEAD
 
 		<%@ include file="/views/layout/header.jsp"%>
+=======
+
+<%@ include file="/views/layout/header.jsp" %>
+>>>>>>> branch 'master' of https://github.com/tjsqls/everyYeoga.git
 
 		<!-- Main -->
 		<div id="main-wrapper">
 			<div class="container">
 				<div class="row 50%">
 					<div class="4u 12u$(medium)">
+<<<<<<< HEAD
 						<div id="sidebar"></div>
+=======
+						<div id="sidebar">
+
+
+						</div>
+>>>>>>> branch 'master' of https://github.com/tjsqls/everyYeoga.git
 					</div>
 					<div class="8u 12u$(medium) important(medium)">
 						<div id="content">

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE HTML>
 
 <html>
@@ -13,7 +15,12 @@
 	<div id="page-wrapper">
 
 		<!-- Header -->
+<<<<<<< HEAD
 <%@ include file="/views/layout/header.jsp" %>
+=======
+
+		<%@ include file="/views/layout/header.jsp"%>
+>>>>>>> branch 'master' of https://github.com/tjsqls/everyYeoga.git
 		<!-- Main -->
 		<div id="main-wrapper">
 			<div class="container">
@@ -23,20 +30,25 @@
 
 							<!-- Sidebar -->
 							<section>
-								<ul class="style2">									<li><a
-										href="${pageContext.request.contextPath}/views/user/myPage.jsp"><h3>회원정보</h3></a></li>
-								<a
-										href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp"><h3>여행 검색</h3></a></li>
-								
-									<li><a href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp"><h3>참여중인 모임</h3></a></li>
+								<ul class="style2">
 									<li><a
-										href="${pageContext.request.contextPath}/views/travel/myTravelPlan.jsp"><h3>내가
+										href="${pageContext.request.contextPath}/user/myPage.do"><h3>회원정보</h3></a></li>
+									<a
+										href="${pageContext.request.contextPath}/travel/travelPlanList.do"><h3>여행
+											검색</h3></a>
+									</li>
+
+									<li><a
+										href="${pageContext.request.contextPath}/group/joiningGroupList.do"><h3>참여중인
+												모임</h3></a></li>
+									<li><a
+										href="${pageContext.request.contextPath}/travel/myTravelPlan.do"><h3>내가
 												올린 여행계획</h3></a></li>
-	<li><a
-										href="${pageContext.request.contextPath}/views/history/myTravelerHistory.jsp"><h3>여행
+									<li><a
+										href="${pageContext.request.contextPath}/history/myTravelerHistory.do"><h3>여행
 												내역</h3></a></li>
 									<li><a
-										href="${pageContext.request.contextPath}/views/history/myGuideHistory.jsp"><h3>가이드
+										href="${pageContext.request.contextPath}/history/myGuideHistory.do"><h3>가이드
 												내역</h3></a></li>
 								</ul>
 								</footer>
@@ -53,100 +65,97 @@
 
 								<div class="table-responsive">
 									<div class="well">
-									
-											<fieldset>
-												<div class="form-group">
-													<input type="hidden" name="boardId"
-														value="${boardDetail.boardId}"> <label
-														class="col-lg-2 control-label"><h3>언어 구사 능력</h3></label>
 
-													<div class="col-lg-10">
-														<font>언어구사능력</font>
-													</div>
+										<fieldset>
+											<div class="form-group">
+												<label class="col-lg-2 control-label"><h3>언어 구사
+														능력</h3></label>
+												<div class="col-lg-10">
+													<font>${travelPlan.speakingAbility}</font>
 												</div>
+											</div>
 
-												<div class="form-group">
-													<input type="hidden" name="boardId"
-														value="${boardDetail.boardId}"> <label
-														class="col-lg-2 control-label"><h3>여행 지역</h3></label>
+											<div class="form-group">
+												<label class="col-lg-2 control-label"><h3>여행 지역</h3></label>
 
-													<div class="col-lg-10">
-														<font>여행지역</font>
-													</div>
+												<div class="col-lg-10">
+													<font>${travelPlan.travelArea}</font>
 												</div>
+											</div>
 
-												<div class="form-group">
-													<input type="hidden" name="boardId"
-														value="${boardDetail.boardId}"> <label
-														class="col-lg-2 control-label"><h3>여행 지역 방문
-															횟수</h3></label>
-
-													<div class="col-lg-10">
-														<font>방문횟수</font>
-													</div>
+											<div class="form-group">
+												<label class="col-lg-2 control-label"><h3>여행 지역
+														방문 횟수</h3></label>
+												<div class="col-lg-10">
+													<font>${travelPlan.numberOfVisits}</font>
 												</div>
+											</div>
 
 
-												<div class="form-group">
-													<input type="hidden" name="boardId"
-														value="${boardDetail.boardId}"> <label
-														class="col-lg-2 control-label"><h3>여행 일정</h3></label>
+											<div class="form-group">
+												<label class="col-lg-2 control-label"><h3>여행
+														시작일</h3></label>
 
-													<div class="col-lg-10">
-														<font>일정</font>
-													</div>
+												<div class="col-lg-10">
+													<font>${travelPlan.startDate}</font>
+
 												</div>
+											</div>
 
+											<div class="form-group">
+												<label class="col-lg-2 control-label"><h3>여행
+														종료일</h3></label>
 
-												<div class="form-group">
-													<input type="hidden" name="boardId"
-														value="${boardDetail.boardId}"> <label
-														class="col-lg-2 control-label"><h3>여행 테마</h3></label>
-
-													<div class="col-lg-10">
-														<font>테마</font>
-													</div>
+												<div class="col-lg-10">
+													<font>${travelPlan.endDate}</font>
 												</div>
+											</div>
 
 
-												<div class="form-group">
-													<input type="hidden" name="boardId"
-														value="${boardDetail.boardId}"> <label
-														class="col-lg-2 control-label"><h3>여행 인원</h3></label>
+											<div class="form-group">
+												<label class="col-lg-2 control-label"><h3>여행 테마</h3></label>
 
-													<div class="col-lg-10">
-														<font>인원</font>
-													</div>
+
+												<div class="col-lg-10">
+													<font>${travelPlan.theme}</font>
 												</div>
+											</div>
 
 
+											<div class="form-group">
+												<label class="col-lg-2 control-label"><h3>여행 인원</h3></label>
 
-												<div class="form-group">
-													<input type="hidden" name="boardId"
-														value="${boardDetail.boardId}"> <label
-														class="col-lg-2 control-label"><h3>선호 가이드</h3></label>
-
-													<div class="col-lg-10">
-														<font>선호가이드</font>
-													</div>
+												<div class="col-lg-10">
+													<font>${travelPlan.numberOfTraveler}</font>
 												</div>
+											</div>
 
 
-												<div class="form-group">
-													<label class="col-lg-2 control-label"><h3>자기
-															소개</h3></label>
 
-													<div class="col-lg-10">
-														<font>자기소개</font>
-													</div>
+											<div class="form-group">
+												<label class="col-lg-2 control-label"><h3>선호
+														가이드</h3></label>
+												<div class="col-lg-10">
+													<font>${travelPlan.preferGuide}</font>
 												</div>
-												<span style="float: right" >
-												<button type="button" onclick="location.href='${pageContext.request.contextPath}/views/guide/chooseGuide.jsp' ">가이드 보기</button>
-												</span>
-												<br /> <br />
+											</div>
 
-											</fieldset>
-										
+
+											<div class="form-group">
+												<label class="col-lg-2 control-label"><h3>자기 소개</h3></label>
+
+												<div class="col-lg-10">
+													<font>${travelPlan.selfIntroduction }</font>
+												</div>
+											</div>
+											<span style="float: right">
+												<button type="button"
+													onclick="location.href='${pageContext.request.contextPath}/views/guide/chooseGuide.jsp' ">가이드
+													보기</button>
+											</span> <br /> <br />
+
+										</fieldset>
+
 									</div>
 								</div>
 							</div>

@@ -35,15 +35,15 @@
 								<a
 										href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp"><h3>여행 검색</h3></a></li>
 								
-									<li><a href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp"><h3>참여중인 모임</h3></a></li>
+									<li><a href="${pageContext.request.contextPath}/group/joiningGroupList.jsp"><h3>참여중인 모임</h3></a></li>
 									<li><a
-										href="${pageContext.request.contextPath}/views/travel/myTravelPlan.jsp"><h3>내가
+										href="${pageContext.request.contextPath}/travel/myTravelPlan.jsp"><h3>내가
 												올린 여행계획</h3></a></li>
 	<li><a
-										href="${pageContext.request.contextPath}/views/history/myTravelerHistory.jsp"><h3>여행
+										href="${pageContext.request.contextPath}/history/myTravelerHistory.jsp"><h3>여행
 												내역</h3></a></li>
 									<li><a
-										href="${pageContext.request.contextPath}/views/history/myGuideHistory.jsp"><h3>가이드
+										href="${pageContext.request.contextPath}/history/myGuideHistory.jsp"><h3>가이드
 												내역</h3></a></li>
 								</ul>
 								</footer>

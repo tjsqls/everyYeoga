@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="everyYeoga.store.mapper.GuideMapper">
+	
+	<resultMap type="Join" id="JoinMap">
+		<id property="joinId" column="joinId"></id>
+		<result property="travelArea" column="travelArea"></result>
+		<result property="speakingAbility" column="speakingAbility"></result>
+		<result property="guideExperience" column="guideExperience"></result>
+		<result property="selfIntroduction" column="selfIntroduction"></result>
+		<result property="joinReason" column="joinReason"></result>
+		<result property="guideId" column="guideId"></result>
+	</resultMap>
+	
+	<resultMap type="Evaluation" id="EvaluationMap">
+	<id property="evaluationId" column="evaluationId"></id>
+	<result property="stars" column="stars"></result>
+	<result property="cons" column="cons"></result>
+	<result property="pros" column="pros"></result>
+	<result property="guideId" column="guideId"></result>
+	<result property="travelerId" column="travelerId"></result>
+	</resultMap>
+	
+
+	<select id="retrieveGuide" parameterType="String" resultMap="JoinMap">
+		SELECT joinId, travelArea, speakingAbility, guideExperience,
+		selfIntroduction,
+		joinReason, guideId, travelPlanId
+		FROM join_tb
+		WHERE
+		travelPlanId = #{travelPlanId}
+	</select>
+
+	<select id="retrieveJoinDetail" parameterType="String"
+		resultType="Join">
+		SELECT joinId, guideId, speakingAbility, travelArea,  guideExperience,
+		selfIntroduction, joinReason, travelPlanId
+		FROM join_tb
+		WHERE
+		joinId = #{joinId}
+	</select>
+
+	<insert id="createEvaluation" parameterType="Evaluation">
+		INSERT INTO evaluation_tb(evaluationId, pros, cons, stars,guideId)
+		VALUES(evaluation_seq.NEXTVAL, #{pros}, #{cons}, #{stars}, #{guideId})
+	</insert>
+
+	<select id="retrieveEvaluation" parameterType="String"
+		resultType="Evaluation" resultMap="EvaluationMap">
+		SELECT evaluationId, pros, cons, stars, travelerId, guideId
+		FROM
+		evaluation_tb
+		WHERE guideId = #{guideId}
+	</select>
+
+
+	<insert id="createJoin" parameterType="map">
+		INSERT INTO join_tb(joinId, guideId, speakingAbility,travelArea, guideExperience,selfIntroduction, joinReason, travelPlanId)
+		VALUES(join_seq.NEXTVAL, #{join.guideId}, #{join.speakingAbility}, #{join.travelArea}, #{join.guideExperience},#{join.selfIntroduction}, 
+		#{join.joinReason}, #{travelPlanId}) 
+	</insert>
+
+
+
+
+</mapper>
