@@ -170,4 +170,17 @@ public class ArticleStoreLogic implements ArticleStore{
 		return false;
 	}
 
+	@Override
+	public boolean deleteArticleReport(String articleId) {
+		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
+		try {
+			ArticleMapper mapper = session.getMapper(ArticleMapper.class);
+			mapper.deleteArticleReport(articleId);
+			session.commit();
+		}finally {
+			session.close();
+		}
+		return false;
+	}
+
 }

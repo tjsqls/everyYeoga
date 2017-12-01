@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import everyYeoga.domain.Article;
 import everyYeoga.domain.Report;
+import everyYeoga.domain.User;
 import everyYeoga.service.ReportService;
 import everyYeoga.store.ArticleStore;
 import everyYeoga.store.CommentStore;
@@ -39,12 +41,13 @@ public class ReportServiceLogic implements ReportService {
 	@Override
 	public List<Report> searchReport(String reportedUserId) {
 		// 인애
-		return reportStore.retrieveReport(reportedUserId);
+	return reportStore.retrieveReport(reportedUserId);
 	}
 
 	@Override
 	public List<Report> searchAllReport() {
 		// 인애
+
 		return reportStore.retrieveAllReport();
 	}
 

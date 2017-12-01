@@ -15,6 +15,7 @@ public interface ArticleStore {
 	public void deleteAttachmentBygroupId(String groupId);
 	public boolean updateArticle(Article article);
 	public boolean deleteArticle(String articleId);
+	public boolean deleteArticleReport(String articleId); // 2017.12.01 인애 추가
 	public void deleteArticleBygroupId(String groupId);
 	public Article retreiveArticleByArticleId (String articleId); 
 	public List<Article> retreiveAll(String groupId); 

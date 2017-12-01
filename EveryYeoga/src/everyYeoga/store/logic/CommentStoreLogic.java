@@ -126,4 +126,18 @@ public class CommentStoreLogic implements CommentStore {
 		}
 		return comment;
 	}
+
+	@Override
+	public boolean deleteCommentReport(String commentId) {
+		// 인애
+		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
+		try {
+			CommentMapper mapper = session.getMapper(CommentMapper.class);
+			mapper.deleteCommentReport(commentId);
+			session.commit();
+		} finally {
+			session.close();
+		}
+		return false;
+	}
 }
