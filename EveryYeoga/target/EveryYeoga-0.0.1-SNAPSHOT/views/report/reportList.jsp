@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE HTML>
 
 <html>
@@ -13,41 +15,37 @@
 	<div id="page-wrapper">
 
 		<!-- Header -->
+
+		<div id="header-wrapper">
+			<header id="header" class="container">
+
+				<!-- Logo -->
+				<div id="logo">
+					<h1>
+						<a href="${pageContext.request.contextPath}/views/user/adminPage.jsp">모두의 가이드</a>
+					</h1>
+
+				</div>
+
+				<!-- Nav -->
+				<nav id="nav">
+					<ul>
+						<li class="current"><a href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp">여행검색</a></li>
+					<li class="current"><a href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp">모임관리</a></li>
+						<li class="current"><a href="${pageContext.request.contextPath}/user/logout.do">로그아웃</a></li>
+					</ul>
+				</nav>
+			</header>
+		</div>
+
 <%@ include file="/views/layout/header.jsp" %>
+
 
 		<!-- Main -->
 
 		<div id="main-wrapper">
 			<div class="container">
 				<div class="row 50%">
-					<div class="4u 12u$(medium)">
-
-
-						<div id="sidebar">
-
-							<!-- Sidebar -->
-							<section>
-								<ul class="style2">									<li><a
-										href="${pageContext.request.contextPath}/views/user/myPage.jsp"><h3>회원정보</h3></a></li>
-								<a
-										href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp"><h3>여행 검색</h3></a></li>
-								
-									<li><a href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp"><h3>참여중인 모임</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/views/travel/myTravelPlan.jsp"><h3>내가
-												올린 여행계획</h3></a></li>
-	<li><a
-										href="${pageContext.request.contextPath}/views/history/myTravelerHistory.jsp"><h3>여행
-												내역</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/views/history/myGuideHistory.jsp"><h3>가이드
-												내역</h3></a></li>
-								</ul>
-								</footer>
-							</section>
-
-						</div>
-					</div>
 					<div class="8u 12u$(medium) important(medium)">
 						<div id="content">
 							<div class="col-sm-9 col-lg-9">
@@ -55,15 +53,13 @@
 									<h3>신고 목록</h3>
 								</div>
 
-								<div class="table-responsive">
+								<div class="table-responsive" >
 									<div class="well">
-
-
 
 										<div class="table-responsive">
 											<table class="table table-striped table-bordered table-hover">
 												<colgroup>
-													<col width="100" />
+														<col width="100" />
 													<col width="*" />
 													<col width="120" />
 													<col width="70" />
@@ -71,52 +67,34 @@
 												</colgroup>
 												<thead>
 													<tr>
-														<th class="text-center">번호</th>
-														<th class="text-center">게시물/댓글</th>
-														<th class="text-center">신고분류</th>
-														<th class="text-center">신고자</th>
+														<th class="text-center" style="width: 10%">번호</th>
+														<th class="text-center" style="width: 30%">게시물/댓글</th>
+														<th class="text-center" style="width: 20%">신고분류</th>
+														<th class="text-center" style="width: 30%">신고된 날짜</th>
+														<th class="text-center" style="width: 20%">신고자</th>
 														<th class="text-center"></th>
 													</tr>
 												</thead>
 												<tbody>
-
+											<c:forEach var="report" items="${userReport }" varStatus="sts">
 													<tr>
-														<td class="text-center">${article.articleId }</td>
-														<td><a
-															href="${ctx}/article/find.do?articleId=${article.articleId}">${article.title}
-														</a></td>
-														<td class="text-center"><fmt:formatDate
-																value="${article.regDate }" pattern="yyyy-MM-dd" /></td>
-														<td class="text-center">${article.authorName }</td>
-														<td class="text-center">110</td>
+														<td class="text-center" style="width: 10%">${sts.count}</td>
+														<td class="text-center" style="width: 30%">${report.classifyReport }</td>
+														<td class="text-center" style="width: 20%">${report.reportType }</td>
+														<td class="text-center" style="width: 30%">
+														<fmt:formatDate value="${report.regDate }" pattern="yyyy-MM-dd" /></td>
+														<td class="text-center" style="width: 20%">${report.reportedUser.id }</td>
 													</tr>
+													</c:forEach>													
 
-													<!-- 						
-	<c:choose>
-								<c:when test="${empty boardDetail.articles }">
-									<tr>
-										<th colspan="5" class="text-center">게시물이 존재하지 않습니다.</th>
-									</tr>
-								</c:when>
-								<c:otherwise>
-									<c:forEach var="article" items="${boardDetail.articles }">
-										<tr>
-											<td class="text-center">${article.articleId }</td>
-											<td><a
-												href="${ctx}/article/find.do?articleId=${article.articleId}">${article.title}
-											</a></td>
-											<td class="text-center"><fmt:formatDate
-													value="${article.regDate }" pattern="yyyy-MM-dd" /></td>
-											<td class="text-center">${article.authorName }</td>
-											<td class="text-center">110</td>
-										</tr>
-									</c:forEach>
-								</c:otherwise>
-							</c:choose>
-		 -->
 												</tbody>
 											</table>
 										</div>
+										<div class="text-center">
+                <a href=" 특정 가이드의 참여신청 정보 페이지로 이동">
+                 <center><button type="button" class="btn btn-default" style="height:45px; width:78px; font-size:12px;">← 이전</button></center>
+                </a>
+            </div>
 									</div>
 								</div>
 							</div>
@@ -124,6 +102,7 @@
 					</div>
 				</div>
 			</div>
+			
 		</div>
 
 		<!-- Footer -->

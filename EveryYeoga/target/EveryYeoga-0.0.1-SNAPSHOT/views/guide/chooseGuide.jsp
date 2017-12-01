@@ -28,7 +28,7 @@
 							<!-- Sidebar -->
 							<section>
 								<ul class="style2">
-									<li><a
+								 	<li><a
 										href="${pageContext.request.contextPath}/user/myPage.do"><h3>회원정보</h3></a></li>
 									<a
 										href="${pageContext.request.contextPath}/travel/travelPlanList.do"><h3>여행
@@ -36,10 +36,10 @@
 									</li>
 
 									<li><a
-										href="${pageContext.request.contextPath}/group/joiningGroupList.jsp"><h3>참여중인
+										href="${pageContext.request.contextPath}/group/joiningGroupList.do"><h3>참여중인
 												모임</h3></a></li>
 									<li><a
-										href="${pageContext.request.contextPath}/travel/myTravelPlan.jsp"><h3>내가
+										href="${pageContext.request.contextPath}/travel/myTravelPlan.do"><h3>내가
 												올린 여행계획</h3></a></li>
 									<li><a
 										href="${pageContext.request.contextPath}/history/searchTravelerHistory.do"><h3>여행
@@ -47,6 +47,7 @@
 									<li><a
 										href="${pageContext.request.contextPath}/history/searchGuideHistory.do"><h3>가이드
 												내역</h3></a></li>
+												
 								</ul>
 								</footer>
 							</section>
@@ -62,7 +63,14 @@
 
 								<div class="table-responsive">
 									<div class="well">
-
+												<form
+											action="${pageContext.request.contextPath}/guide/searchGuide.do"
+											class="bs-example form-horizontal" method="POST">
+													<span style="float: right"><button type="submit"
+															style="padding: 10px">선택완료</button></span> 
+															<span style="float: right" style="padding: 10px"> </span>
+													
+											
 
 
 										<div class="table-responsive">
@@ -77,38 +85,41 @@
 												<thead>
 													<tr>
 														<th class="text-center">선택</th>
-														<th class="text-center">이름</th>
+														<th class="text-center">가이드 아이디</th>
 														<th class="text-center">가이드경험</th>
 														<th class="text-center">언어능력</th>
 
 													</tr>
 												</thead>
 												<tbody>
-													<form
-											action="${pageContext.request.contextPath}/guide/searchGuide.do"
-											class="bs-example form-horizontal" method="POST">
-														<tr>
-															<td><input type="checkbox" name="guide"
-																value="회원아이디"></td>
-															<td class="text-center">${join.guide.id }</td>
-															<td class="text-center">${join.guide.name }</td>
-															<td class="text-center">${join.guide.guideExperience }</td>
-															<td class="text-center">${join.guide.speakingAbility }</td>
-															
-
-														</tr>
-
-														<span style="float: right"><input type="submit"
-															value="선택완료"></span>
-
-													</form>
-
+											
+														<c:choose>
+														<c:when test="${empty joinList}">
+															<tr>
+																<th colspan="5" class="text-center"></th>
+															</tr>
+														</c:when>
+														<c:otherwise>
+															<c:forEach var="list" items="${joinList}"
+																varStatus="sts">
+																	<tr>
+																		<td class="text-center"><input type="checkbox" name="check" ></td>
+																		<td class="text-center">${list.guideId}</td>
+																		<td class="text-center">${list.guideExperience}</td>
+																		<td class="text-center">${list.speakingAbility}</td>
+																	</tr>
+																</c:forEach>
+														</c:otherwise>
+													</c:choose>
 												</tbody>
 											</table>
 										</div>
+										</form>
 									</div>
+									
 								</div>
 							</div>
+								
 						</div>
 					</div>
 				</div>

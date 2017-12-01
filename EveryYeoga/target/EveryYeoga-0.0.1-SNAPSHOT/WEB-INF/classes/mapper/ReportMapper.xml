@@ -8,6 +8,7 @@
 		<id property="reportId" column="reportId" />
 		<result property="classifyReport" column="classifyReport" />
 		<result property="reportType" column="reportType" />
+		<result property="classifyId" column="classifyId" />
 		<result property="reportReason" column="reportReason" />
 		<result property="regDate" column="reportDate" />
 
@@ -19,26 +20,17 @@
 			 select="everyYeoga.store.mapper.UserMapper.retrieveByUserId" 
 			javaType="User" jdbcType="VARCHAR"/> 
 	</resultMap>
-
-
-		<resultMap type="Comment" id="commentMap">
-		<result property="commentId" column="commentId" />
-		<result property="content" column="content" />
-		<result property="regDate" column="regDate" />
-
-		<association property="user" column="writer"
-			select="everyYeoga.store.mapper.UserMapper.retrieveByUserId" javaType="User"
-			jdbcType="VARCHAR">
-		</association>
 		
-	</resultMap>
 
 
  	<select id="retrieveArticleReport" parameterType="String" resultMap="reportMap">
-		SELECT reportId, classifyReport, reportType, reportReason, reportDate, reportUserId, reportedUserId
+		SELECT reportId, classifyReport, reportType, reportReason, reportDate, reportUserId, reportedUserId, classifyId
 		FROM REPORT_TB
 		WHERE classifyReport = (SELECT classifyReport
 								FROM ARTICLE_REPORT_TB
+								WHERE articleId = #{reportedArticleId})
+		AND classifyId = (SELECT articleId
+								FROM Article_REPORT_TB
 								WHERE articleId = #{reportedArticleId})
 		AND reportedUserId = (SELECT writer
 								FROM ARTICLE_TB
@@ -46,9 +38,12 @@
 	</select>
 	
 	<select id="retrieveCommentReport" parameterType="String" resultMap="reportMap">
-		SELECT reportId, classifyReport, reportType, reportReason, reportDate, reportUserId, reportedUserId
+		SELECT reportId, classifyReport, reportType, reportReason, reportDate, reportUserId, reportedUserId, classifyId
 		FROM REPORT_TB
 		WHERE classifyReport = (SELECT classifyReport
+								FROM COMMENT_REPORT_TB
+								WHERE commentId = #{reportedCommentId})
+		AND classifyId = (SELECT commentId
 								FROM COMMENT_REPORT_TB
 								WHERE commentId = #{reportedCommentId})
 		AND reportedUserId = (SELECT writer
@@ -57,7 +52,7 @@
 	</select> 
 	
 	<select id="retrieveReport" resultMap="reportMap">
-		SELECT classifyReport, reportType, reportReason, reportDate, reportUserId, reportedUserId
+		SELECT classifyReport, reportType, reportReason, reportDate, reportUserId, reportedUserId, classifyId
 		FROM report_tb
 		where reportedUserId = #{reportedUserId}
 	</select>
@@ -68,8 +63,8 @@
 	</select>
 
   	  	<insert id="createReport" parameterType="Report">
-  		INSERT INTO report_tb(reportId, classifyReport, reportType, reportReason, reportDate, reportUserId, reportedUserId)
-		VALUES(report_seq.NEXTVAL, #{classifyReport}, #{reportType}, #{reportReason}, #{regDate}, #{reportUser.id}, #{reportedUser.id})
+  		INSERT INTO report_tb(reportId, classifyReport, reportType, reportReason, reportDate, reportUserId, reportedUserId, classifyId)
+		VALUES(report_seq.NEXTVAL, #{classifyReport}, #{reportType}, #{reportReason}, #{regDate}, #{reportUser.id}, #{reportedUser.id}, #{classifyId})
   	</insert>
 
 </mapper>

@@ -89,10 +89,11 @@
 									<div class="well">
 										<form
 											action="${pageContext.request.contextPath}/report/regist.do"
-											class="bs-example form-horizontal" method="POST">
+											class="bs-example form-horizontal" method="POST" id="regist">
 											<fieldset>
 											<br />
 													  <input type="hidden" name="reportUser" value="${reportUser.id }">
+													   <input type="hidden" name="reportUser" value="${reportUser.id }">
 													<table>
 												<tr><td><span style="font-weight:bold">신고 분류</span> &nbsp;&nbsp;&nbsp;
 												<select name="reportCategory">
@@ -108,8 +109,8 @@
 														
 															<table>
 														<tr><td><span style="font-weight:bold">신고 사유 </span></td></tr>
-														<tr><td><textarea class="form-control" name="contents" rows="2"
-															id="textArea"></textarea></td></tr>
+														<tr><td><textarea placeholder="내용을 입력해주세요." class="form-control" name="contents" rows="2"
+															id="textArea" form="regist"></textarea></td></tr>
 													</table>
 
 												<br /> <br />
