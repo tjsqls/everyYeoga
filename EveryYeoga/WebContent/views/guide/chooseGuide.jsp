@@ -28,7 +28,7 @@
 							<!-- Sidebar -->
 							<section>
 								<ul class="style2">
-									<li><a
+								 	<li><a
 										href="${pageContext.request.contextPath}/user/myPage.do"><h3>회원정보</h3></a></li>
 									<a
 										href="${pageContext.request.contextPath}/travel/travelPlanList.do"><h3>여행
@@ -47,6 +47,7 @@
 									<li><a
 										href="${pageContext.request.contextPath}/history/searchGuideHistory.do"><h3>가이드
 												내역</h3></a></li>
+												
 								</ul>
 								</footer>
 							</section>

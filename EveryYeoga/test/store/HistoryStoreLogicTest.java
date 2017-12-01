@@ -7,6 +7,7 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
+import everyYeoga.domain.GuideHistory;
 import everyYeoga.domain.TravelerHistory;
 import everyYeoga.store.HistoryStore;
 import everyYeoga.store.logic.HistoryStoreLogic;
@@ -36,10 +37,13 @@ public class HistoryStoreLogicTest {
 //		store.deleteTravelerHistory("1");
 //	}
 //
-//	@Test
-//	public void testRetrieveCheckedGuideHistory() {
-//		fail("Not yet implemented");
-//	}
+	@Test
+	public void testRetrieveCheckedGuideHistory() {
+		List<GuideHistory> list = store.retrieveCheckedGuideHistory("1", "확인");
+		assertEquals("1", list.get(0).getGuide().getId());
+		System.out.println(list.get(0).getGuide().toString());
+		System.out.println(list.get(0).getGuideHistoryId());
+	}
 //
 //	@Test
 //	public void testRetrieveUncheckedGuideHistory() {

@@ -2,6 +2,7 @@ package everyYeoga.service.logic;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -36,9 +37,9 @@ import everyYeoga.store.TravelStore;
 import everyYeoga.store.UserStore;
 import everyYeoga.store.logic.TravelStoreLogic;
 
-//@RunWith(SpringJUnit4ClassRunner.class)
-//@WebAppConfiguration
-//@ContextConfiguration(locations = {"file:WebContent/WEB-INF/dispatcher-servlet.xml"})
+@RunWith(SpringJUnit4ClassRunner.class)
+@WebAppConfiguration
+@ContextConfiguration(locations = {"file:WebContent/WEB-INF/dispatcher-servlet.xml"})
 
 @Service
 public class TravelServiceLogic implements TravelService {
@@ -112,8 +113,8 @@ public class TravelServiceLogic implements TravelService {
 		// 진휘
 		return travelStore.deleteTravelPlan(travelPlanId);
 	}
-//		@Test
-//		public void testRegistJoin() {
+		@Test
+		public void testRegistJoin() {
 	/*	TravelPlan t = new TravelPlan();
 		t.setSpeakingAbility("0");
 		t.setPreferGuide("0");
@@ -183,38 +184,31 @@ public class TravelServiceLogic implements TravelService {
 	//		System.out.println("aaaaaaaaaaaaa");
 	//		Join j = service.searchJoinDetail("1");
 	//		System.out.println(j.getGuideExperience());
+			List<Join> list = guideStore.retrieveGuide("0");
+			assertEquals("1", list.get(0).getGuideId());
+			assertEquals("33", list.get(0).getSpeakingAbility());
+		//	System.out.println(list.get(0).get   .toString());
+	
 
-
-
-//			}
+			}
 	@Override //test 완료
 	public List<Join> searchGuide(String travelPlanId) {// 여행계획에 참여신청한 가이드 목록
 		// 진휘
 		List<Join> js = guideStore.retrieveGuide(travelPlanId);
-		//System.out.println("suzeee "+js.size());
-		//System.out.println(js.get(0).toString());
-
-		/*	for(Join j: js) {
-			System.out.println("--"+j.getGuide().getId()+"--");
-		}
-		 */
-		/*
-		 //mapper에서 처리되는 부분이므로 여기서 할 필요 X(이미 되서 넘어옴)
-		for (Join j : js) {
-			j.setGuide(userStore.retrieveByUserId(j.getGuide().getId()));
-		}
-		 */
+		List<Join> list = new ArrayList<Join>();
+	
 		for (int i=0; i<js.size(); i++ ) {
 			Join j = new Join();
+			j=js.get(i);
 			List<GuideHistory> cGs = historyStore.retrieveCheckedGuideHistory(j.getGuideId(), "확인");
 			cGs.addAll(historyStore.retrieveUncheckedGuideHistory(j.getGuideId(), "미확인"));
 			j.setGuideHistories(cGs);
 			j.setReports(reportStore.retrieveReport(j.getGuideId()));
 			j.setEvaluations(guideStore.retrieveEvaluation(j.getGuideId()));
-			js.add(j);
+			list.add(j);
 		}//test완료
 
-		return js;
+		return list;
 	}
 
 	@Override//해야함
