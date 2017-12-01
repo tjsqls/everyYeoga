@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import everyYeoga.domain.Article;
 import everyYeoga.store.ArticleStore;
 import everyYeoga.store.logic.ArticleStoreLogic;
 
@@ -46,10 +47,10 @@ public class ArticleStoreLogicTest {
 //		fail("Not yet implemented");
 //	}
 //
-//	@Test
-//	public void testDeleteArticle() {
-//		fail("Not yet implemented");
-//	}
+	@Test
+	public void testDeleteArticle() {
+	store.deleteArticleReport("2");
+	}
 //
 //	@Test
 //	public void testDeleteArticleBygroupId() {
@@ -58,7 +59,7 @@ public class ArticleStoreLogicTest {
 //
 	@Test
 	public void testRetreiveArticleByArticleId() {
-		fail("Not yet implemented");
+//		fail("Not yet implemented");
 	}
 //
 //	@Test

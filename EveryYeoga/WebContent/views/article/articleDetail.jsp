@@ -63,14 +63,10 @@
 								<ul class="style2">
 									<li><a
 										href="${pageContext.request.contextPath}/views/user/myPage.jsp"><h3>회원정보</h3></a></li>
-									<a
-										href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp"><h3>여행
-											검색</h3></a>
-									</li>
-
 									<li><a
-										href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp"><h3>참여중인
-												모임</h3></a></li>
+										href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp"><h3>여행 검색</h3></a></li>
+									<li><a
+										href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp"><h3>참여중인모임</h3></a></li>
 									<li><a
 										href="${pageContext.request.contextPath}/views/travel/myTravelPlan.jsp"><h3>내가
 												올린 여행계획</h3></a></li>
@@ -115,7 +111,7 @@
 
 													<p style="padding: 20px">내용${article.content }</p>
 													<a
-														href="${ctx }/article/modify.do?articleId=${article.articleId}"
+														href="${ctx }/report/regist.do?articleId=${article.articleId}"
 														class="glyphicon glyphicon-cog pull-right"
 														style="padding: 10px">신고</a>
 
@@ -136,7 +132,7 @@
 																		href="${ctx }/comment/remove.do?articleId=${article.articleId}&commentId=${comment.commentId}">삭제</a>
 
 																		<a class="glyphicon glyphicon-trash"
-																		href="${ctx }/comment/remove.do?articleId=${article.articleId}&commentId=${comment.commentId}">신고</a>
+																		href="${ctx }/comment/regist.do?articleId=${article.articleId}&commentId=${comment.commentId}">신고</a>
 																</span></td>
 
 															</tr>

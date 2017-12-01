@@ -126,7 +126,10 @@ CREATE TABLE report_tb(
 	reportDate DATE,
 	reportUserId VARCHAR(20),
 	reportedUserId VARCHAR(20)
+	classifyId VARCHAR(20)
 );
+
+-- 2017.12.01 report_tb 에 classifyId 컬럼 추가
 
 CREATE TABLE travelerHistory_tb(
 	travelerHistoryId NUMBER PRIMARY KEY,

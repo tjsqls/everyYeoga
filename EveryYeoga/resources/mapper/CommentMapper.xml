@@ -26,6 +26,11 @@
 		DELETE FROM comment_tb
 		WHERE commentId = #{commentId}
 	</delete>
+	
+	<delete id="deleteCommentReport" parameterType="String">
+		DELETE FROM comment_report_tb
+		WHERE commentId = #{commentId}
+	</delete>
 
 	<update id="updateComment" parameterType="Comment">
 		UPDATE comment_tb
