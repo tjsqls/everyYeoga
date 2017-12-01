@@ -27,8 +27,7 @@ public class TravelPlanStoreTest {
 //	public void testCreateTravelPlan() {
 //		
 //		TravelPlan t = new TravelPlan();
-//		t.setTravelPlanId("3");
-//		t.setSpeakingAbility("dd");
+//		t.setSpeakingAbility("안녕하세요");
 //		t.setPreferGuide("3");
 //		t.setTheme("23");
 //		t.setTravelArea("서울");
@@ -52,8 +51,8 @@ public class TravelPlanStoreTest {
 //	public void testRetrieveTravelPlanByTravelAreaAndStartDate() {
 //		
 //		
-//		List<TravelPlan> t = store.retrieveTravelPlanByTravelAreaAndStartDate("서울", "17/11/11");
-//		assertEquals("2", t.get(0).getTravelPlanId());
+//		List<TravelPlan> t = store.retrieveTravelPlanByTravelAreaAndStartDate("지니", "17/12/01");
+//		assertEquals("10055", t.get(0).getTravelPlanId());
 //	} 
 ////
 //	@Test
@@ -68,32 +67,37 @@ public class TravelPlanStoreTest {
 ////
 	@Test
 	public void testRetrieveTravelPlanByTravelAreaAndSpeakingAbilityAndStartDate() {
-		List<TravelPlan> list = store.retrieveTravelPlanByTravelAreaAndSpeakingAbilityAndStartDate("서울", "중간", "17/11/11");
-		assertEquals("2", list.get(0).getTravelPlanId());
-//		
+		List<TravelPlan> list = store.retrieveTravelPlanByTravelAreaAndSpeakingAbilityAndStartDate("지니", "지니", "17/12/01");
+		assertEquals("3", list.get(0).getTravelerId());
+		System.out.println(list.toString());
 	} 
 //	
 ////
 //	@Test
 //	public void testRetrieveTravelPlan() {
-//		System.out.println("Sdfdsf");
-//		TravelPlan t = store.retrieveTravelPlan("2");
-//		assertEquals("서울", t.getTheme());
-//		System.out.println("1232");
-//		System.out.println("000"+t.getTravelPlanId());
+//		TravelPlan t = store.retrieveTravelPlanByUserId("3");
+//		assertEquals("지니", t.getSpeakingAbility());
+//		System.out.println(t.toString());
 //	} 
 //
-//	@Test
-//	public void testUpdateTravelPlan() {
-//		TravelPlan t = new TravelPlan();
-//		t.setTravelPlanId("2");
-//		t.setTheme("서울");
-//		assertEquals(true, store.updateTravelPlan(t));
-//	} 
+/*	@Test
+	public void testUpdateTravelPlan() {
+		TravelPlan t = new TravelPlan();
+		t.setTravelPlanId("1");
+		t.setTheme("서울");
+		//assertEquals(true, store.updateTravelPlan(t));
+	}*/ 
 //	
 //	@Test
 //	public void testDeleteTravelPlan() {
 //		assertEquals(true, store.deleteTravelPlan("1"));
 //	} 
 
+	
+//	@Test
+//	public void test() {
+//		String userId ="1";
+//		System.out.println("size"+store.retrieveAllTravelPlans().size());
+//		System.out.println(store.retrieveTravelPlanByUserId("1").getTravelArea());
+//	}
 }

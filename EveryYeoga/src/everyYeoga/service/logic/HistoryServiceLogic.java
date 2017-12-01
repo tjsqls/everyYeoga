@@ -2,13 +2,24 @@ package everyYeoga.service.logic;
 
 import java.util.List;
 
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
 
 import everyYeoga.domain.GuideHistory;
 import everyYeoga.domain.TravelerHistory;
 import everyYeoga.service.HistoryService;
 import everyYeoga.store.HistoryStore;
+
+
+//@RunWith(SpringJUnit4ClassRunner.class)
+//@WebAppConfiguration
+//@ContextConfiguration(locations = {"file:WebContent/WEB-INF/dispatcher-servlet.xml"})
+
 
 @Service
 public class HistoryServiceLogic implements HistoryService {
@@ -37,7 +48,11 @@ public class HistoryServiceLogic implements HistoryService {
 	@Override
 	public List<GuideHistory> searchGuideHistory(String guideId, String travelEndStatus) {
 		// 선빈
-		return historyStore.retrieveCheckedGuideHistory(guideId, travelEndStatus);
+		if(travelEndStatus =="확인") {
+			return historyStore.retrieveCheckedGuideHistory(guideId, travelEndStatus);
+		}
+		
+		return historyStore.retrieveUncheckedGuideHistory(guideId, travelEndStatus);
 	}
 
 	@Override
@@ -51,5 +66,18 @@ public class HistoryServiceLogic implements HistoryService {
 		// 선빈
 		historyStore.updateGuideHistory(guideHistory);
 	}
+	
+	
+//	@Test
+//	public void testRegistJoin() {
+//		
+//		List<GuideHistory> list = historyStore.retrieveCheckedGuideHistory("1", "확인");
+//		System.out.println(list.get(0).getGuide().getId());
+//	
+//	}
+	
+	
+	
+	
 
 }

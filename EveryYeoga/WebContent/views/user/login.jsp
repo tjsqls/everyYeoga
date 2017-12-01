@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
-<title>A Pen by Zoltan Kohalmy</title>
+<title>모두의 여가</title>
 <link rel="stylesheet" href="../../css/style.css">
 <link href="${pageContext.request.contextPath }/resources/css/bootstrap_modify.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath }/resources/css/layout.css" rel="stylesheet">

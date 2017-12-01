@@ -13,28 +13,7 @@
 	<div id="page-wrapper">
 
 		<!-- Header -->
-		<div id="header-wrapper">
-			<header id="header" class="container">
-
-				<!-- Logo -->
-				<div id="logo">
-					<h1>
-						<a href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp">모두의 가이드</a>
-					</h1>
-				</div>
-
-				<!-- Nav -->
-				<nav id="nav">
-					<ul>
-						<li class="current"><a
-							href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp">여행검색</a></li>
-						<li class="current"><a
-							href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp">모임관리</a></li>
-						<li class="current"><a href="login.html">로그아웃</a></li>
-					</ul>
-				</nav>
-			</header>
-		</div>
+		<%@ include file="/views/layout/header.jsp"%>
 
 		<!-- Main -->
 
@@ -49,25 +28,26 @@
 							<!-- Sidebar -->
 							<section>
 								<ul class="style2">
-									<li><a
-										href="${pageContext.request.contextPath}/views/user/myPage.jsp"><h3>회원정보</h3></a></li>
+								 	<li><a
+										href="${pageContext.request.contextPath}/user/myPage.do"><h3>회원정보</h3></a></li>
 									<a
-										href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp"><h3>여행
+										href="${pageContext.request.contextPath}/travel/travelPlanList.do"><h3>여행
 											검색</h3></a>
 									</li>
 
 									<li><a
-										href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp"><h3>참여중인
+										href="${pageContext.request.contextPath}/group/joiningGroupList.do"><h3>참여중인
 												모임</h3></a></li>
 									<li><a
-										href="${pageContext.request.contextPath}/views/travel/myTravelPlan.jsp"><h3>내가
+										href="${pageContext.request.contextPath}/travel/myTravelPlan.do"><h3>내가
 												올린 여행계획</h3></a></li>
 									<li><a
-										href="${pageContext.request.contextPath}/views/history/myTravelerHistory.jsp"><h3>여행
+										href="${pageContext.request.contextPath}/history/searchTravelerHistory.do"><h3>여행
 												내역</h3></a></li>
 									<li><a
-										href="${pageContext.request.contextPath}/views/history/myGuideHistory.jsp"><h3>가이드
+										href="${pageContext.request.contextPath}/history/searchGuideHistory.do"><h3>가이드
 												내역</h3></a></li>
+												
 								</ul>
 								</footer>
 							</section>
@@ -83,7 +63,14 @@
 
 								<div class="table-responsive">
 									<div class="well">
-
+												<form
+											action="${pageContext.request.contextPath}/guide/searchGuide.do"
+											class="bs-example form-horizontal" method="POST">
+													<span style="float: right"><button type="submit"
+															style="padding: 10px">선택완료</button></span> 
+															<span style="float: right" style="padding: 10px"> </span>
+													
+											
 
 
 										<div class="table-responsive">
@@ -98,38 +85,41 @@
 												<thead>
 													<tr>
 														<th class="text-center">선택</th>
-														<th class="text-center">이름</th>
+														<th class="text-center">가이드 아이디</th>
 														<th class="text-center">가이드경험</th>
 														<th class="text-center">언어능력</th>
 
 													</tr>
 												</thead>
 												<tbody>
-													<form action="/가이드선택완료" method="post">
-														<tr>
-															<td><input type="checkbox" name="guide"
-																value="회원아이디"></td>
-															<td class="text-center">${article.articleId }</td>
-															<td><a
-																href="${ctx}/article/find.do?articleId=${article.articleId}">${article.title}
-															</a></td>
-															<td class="text-center"><fmt:formatDate
-																	value="${article.regDate }" pattern="yyyy/MM/dd" /></td>
-															<td class="text-center">${article.authorName }</td>
-
-														</tr>
-														
-														<span style="float: right"><input type="submit"
-															value="선택완료"></span>
-													
-													</form>
-
+											
+														<c:choose>
+														<c:when test="${empty joinList}">
+															<tr>
+																<th colspan="5" class="text-center"></th>
+															</tr>
+														</c:when>
+														<c:otherwise>
+															<c:forEach var="list" items="${joinList}"
+																varStatus="sts">
+																	<tr>
+																		<td class="text-center"><input type="checkbox" name="check" ></td>
+																		<td class="text-center">${list.guideId}</td>
+																		<td class="text-center">${list.guideExperience}</td>
+																		<td class="text-center">${list.speakingAbility}</td>
+																	</tr>
+																</c:forEach>
+														</c:otherwise>
+													</c:choose>
 												</tbody>
 											</table>
 										</div>
+										</form>
 									</div>
+									
 								</div>
 							</div>
+								
 						</div>
 					</div>
 				</div>

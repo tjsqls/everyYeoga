@@ -13,27 +13,7 @@
 	<div id="page-wrapper">
 
 		<!-- Header -->
-		<div id="header-wrapper">
-			<header id="header" class="container">
-
-				<!-- Logo -->
-				<div id="logo">
-					<h1>
-						<a href="${pageContext.request.contextPath}/views/user/adminPage.jsp">모두의 가이드</a>
-					</h1>
-
-				</div>
-
-				<!-- Nav -->
-				<nav id="nav">
-					<ul>
-					<li class="current"><a href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp">여행검색</a></li>
-					<li class="current"><a href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp">모임관리</a></li>
-						<li class="current"><a href="login.html">로그아웃</a></li>
-					</ul>
-				</nav>
-			</header>
-		</div>
+<%@ include file="/views/layout/header.jsp" %>
 
 		<!-- Main -->
 
@@ -82,23 +62,19 @@
 												<thead>
 													<tr>
 									<th class="text-center">번호</th>
-								<th class="text-center">여행계획</th>
+								<th class="text-center">여행 테마</th>
 								<th class="text-center">테마</th>
 								<th class="text-center">신고분류</th>
-								<th class="text-center">여행자</th>
+								<th class="text-center">신고 받은 회원</th>
 													</tr>
 												</thead>
 												<tbody>
 
 													<tr>
-														<td class="text-center">${article.articleId }</td>
-														<td><a
-															href="${ctx}/article/find.do?articleId=${article.articleId}">${article.title}
-														</a></td>
-														<td class="text-center"><fmt:formatDate
-																value="${article.regDate }" pattern="yyyy-MM-dd" /></td>
-														<td class="text-center">${article.authorName }</td>
-														<td class="text-center">110</td>
+														<td class="text-center">${report.reportId }</td>
+														<td class="text-center">${travelPlan.theme }</td>
+														<td class="text-center">${report.classifyReport }</td>
+														<td class="text-center">${report.reportedUser }</td>
 													</tr>
 
 													<!-- 						

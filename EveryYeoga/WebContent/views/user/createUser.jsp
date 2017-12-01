@@ -18,38 +18,7 @@
 	<div id="page-wrapper">
 
 		<!-- Header -->
-		<div id="header-wrapper">
-			<header id="header" class="container">
-
-				<!-- Logo -->
-				<div id="logo">
-					<h1>
-						<a href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp">모두의 가이드</a>
-					</h1>
-
-				</div>
-
-				<!-- Nav -->
-				<nav id="nav">
-				<ul>
-						<li class="current"><a href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp">여행검색</a></li>
-					<li class="current"><a href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp">모임관리</a></li>
-						<c:choose>
-							<c:when test="${loginedUser eq null}">
-								<li class="current"><a
-									href="${pageContext.request.contextPath}/user/login.do">로그인</a></li> | <li
-									class="current"><a
-									href="${pageContext.request.contextPath}/user/regist.do">회원가입</a></li>
-							</c:when>
-							<c:otherwise>
-								<li class="current"><a
-									href="${pageContext.request.contextPath}/user/logout.do">로그아웃</a></li>
-							</c:otherwise>
-						</c:choose>
-					</ul>
-				</nav>
-			</header>
-		</div>
+	<%@ include file="/views/layout/header.jsp" %>
 
 		<!-- Main -->
 		<div id="main-wrapper">
@@ -66,15 +35,15 @@
 								<a
 										href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp"><h3>여행 검색</h3></a></li>
 								
-									<li><a href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp"><h3>참여중인 모임</h3></a></li>
+									<li><a href="${pageContext.request.contextPath}/group/joiningGroupList.jsp"><h3>참여중인 모임</h3></a></li>
 									<li><a
-										href="${pageContext.request.contextPath}/views/travel/myTravelPlan.jsp"><h3>내가
+										href="${pageContext.request.contextPath}/travel/myTravelPlan.jsp"><h3>내가
 												올린 여행계획</h3></a></li>
 	<li><a
-										href="${pageContext.request.contextPath}/views/history/myTravelerHistory.jsp"><h3>여행
+										href="${pageContext.request.contextPath}/history/myTravelerHistory.jsp"><h3>여행
 												내역</h3></a></li>
 									<li><a
-										href="${pageContext.request.contextPath}/views/history/myGuideHistory.jsp"><h3>가이드
+										href="${pageContext.request.contextPath}/history/myGuideHistory.jsp"><h3>가이드
 												내역</h3></a></li>
 								</ul>
 								</footer>

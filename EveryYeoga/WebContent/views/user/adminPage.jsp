@@ -14,6 +14,7 @@
 <body class="left-sidebar">
 	<div id="page-wrapper">
 
+<<<<<<< HEAD
 		<!-- Header -->
 		<div id="header-wrapper">
 			<header id="header" class="container">
@@ -40,6 +41,10 @@
 				</nav>
 			</header>
 		</div>
+=======
+			<!-- Header -->
+<%@ include file="/views/layout/header.jsp" %>
+>>>>>>> branch 'master' of https://github.com/tjsqls/everyYeoga.git
 
 		<!-- Main -->
 

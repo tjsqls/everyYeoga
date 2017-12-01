@@ -36,46 +36,73 @@
 		selfIntroduction, gatheringStatus) VALUES(travelPlan_seq.NEXTVAL,
 		#{traveler.id}, #{speakingAbility}, #{travelArea}, #{numberOfVisits},
 		#{theme}, #{numberOfTraveler}, #{preferGuide}, #{selfIntroduction},
-		#{gatheringStatus}) </insert>
+		'true') </insert>
 
-	<select id="retrieveTravelPlanByTravelArea" parameterType="String"
-		resultType="travelPlan"> SELECT travelPlanId, travelerId, speakingAbility,
+	<select id="retrieveTravelPlanByTravelArea" parameterType="map"
+		resultMap="TravelPlanMap"> SELECT travelPlanId, travelerId, speakingAbility,
 		travelArea, numberOfVisits, theme, numberOfTraveler, preferGuide,
 		selfIntroduction, gatheringStatus, startDate,endDate FROM
 		travelPlan_tb WHERE travelArea=#{travelArea} </select>
 
 	<select id="retrieveTravelPlanByTravelAreaAndStartDate"
-		parameterType="map" resultType="TravelPlan"> SELECT travelPlanId, travelerId,
+		parameterType="map" resultMap="TravelPlanMap"> SELECT travelPlanId, travelerId,
 		speakingAbility, travelArea, numberOfVisits, theme, numberOfTraveler,
 		preferGuide, selfIntroduction, gatheringStatus, startDate,endDate FROM
 		travelPlan_tb WHERE travelArea = #{travelArea} AND startDate =
 		#{startDate} </select>
 
 	<select id="retrieveTravelPlanByTravelAreaAndSpeakingAbility"
-		parameterType="hashmap" resultType="TravelPlan"> SELECT travelPlanId, travelerId,
+		parameterType="map" resultMap="TravelPlanMap"> SELECT travelPlanId, travelerId,
 		travelArea, speakingAbility, numberOfVisits, theme, numberOfTraveler,
 		preferGuide, selfIntroduction, gatheringStatus, startDate,endDate FROM
 		travelPlan_tb WHERE travelArea = #{travelArea} AND speakingAbility =
 		#{speakingAbility} </select>
 
 	<select id="retrieveTravelPlanByTravelAreaAndSpeakingAbilityAndStartDate"
-		parameterType="map" resultType="TravelPlan"> SELECT travelPlanId, travelerId,
+		parameterType="map" resultMap="TravelPlanMap"> SELECT travelPlanId, travelerId,
 		 travelArea,speakingAbility, numberOfVisits, theme, numberOfTraveler,
 		preferGuide, selfIntroduction, gatheringStatus, startDate,endDate FROM
 		travelPlan_tb WHERE travelArea=#{travelArea} AND speakingAbility =
 		#{speakingAbility} AND startDate = #{startDate} </select>
 
-	<select id="retrieveTravelPlan" parameterType="String"
-		resultType="travelPlan"> SELECT travelPlanId, travelerId, speakingAbility,
+	<select id="retrieveTravelPlan" parameterType="map"
+		resultMap="TravelPlanMap"> SELECT travelPlanId, travelerId, speakingAbility,
 		travelArea, numberOfVisits, theme, numberOfTraveler, preferGuide,
 		selfIntroduction, gatheringStatus, startDate,endDate FROM
 		travelPlan_tb WHERE travelPlanId=#{travelPlanId} </select>
 
-	<update id="updateTravelPlan" parameterType="String"> UPDATE
-		travelPlan_tb SET theme =#{theme} WHERE travelPlanId=#{travelPlanId}
+	<update id="updateTravelPlan" parameterType="TravelPlan"> 
+		UPDATE	travelPlan_tb 
+		SET speakingAbility = #{speakingAbility} 
+		AND travelArea = #{travelArea}
+		AND numberOfVisits = #{numberOfVisits} 
+		AND theme = #{theme}
+		AND numberOfTraveler = #{numberOfTraveler}
+		AND preferGuide = #{preferGuide}
+		AND selfIntroduction = #{selfIntroduction}
+		AND gatheringStatus = #{gatheringStatus}
+		WHERE travelPlanId=#{travelPlanId}
 	</update>
 
-	<delete id="deleteTravelPlan" parameterType="String"> DELETE FROM
-		travelPlan_tb WHERE travelPlanId=#{travelPlanId} </delete>
+	<delete id="deleteTravelPlan" parameterType="String"> 
+	DELETE FROM	travelPlan_tb 
+	WHERE travelPlanId=#{travelPlanId} </delete>
+
+
+	<select id="retrieveAllTravelPlans"	resultMap="TravelPlanMap"> 
+	SELECT travelPlanId, travelerId, speakingAbility,
+		travelArea, numberOfVisits, theme, numberOfTraveler, preferGuide,
+		selfIntroduction, gatheringStatus, startDate,endDate 
+	FROM travelPlan_tb
+	</select>
+		
+
+	<select id="retrieveTravelPlanByUserId"	parameterType="String" resultMap="TravelPlanMap"> 
+	SELECT travelPlanId, travelerId, speakingAbility,
+		travelArea, numberOfVisits, theme, numberOfTraveler, preferGuide,
+		selfIntroduction, gatheringStatus, startDate,endDate 
+	FROM travelPlan_tb
+	WHERE travelerId=#{traveler.id} AND gatheringStatus='true'
+	</select>
 
 </mapper>

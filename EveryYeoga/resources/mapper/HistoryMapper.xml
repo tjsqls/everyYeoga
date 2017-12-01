@@ -10,7 +10,7 @@
       <result property="endDate" column="EndDate" />
       <result property="theme" column="theme" />
       <result property="guideName" column="guideName" />
-      <association property="traveler" column="traveledUserId" select="everyYeoga.store.mapper.UserMapper.retrieveByUserId" javaType="User" jdbcType="VARCHAR"/>
+      <association property="traveler" column="travelerId" select="everyYeoga.store.mapper.UserMapper.retrieveByUserId" javaType="User"></association>
    </resultMap> 
      <resultMap type="GuideHistory" id="guideHistoryMap">
       <id property="guideHistoryId" column="guideHistoryId"></id>
@@ -20,7 +20,7 @@
       <result property="startDate" column="startDate" />
       <result property="endDate" column="endDate" />
       <result property="theme" column="theme" />
-      <association property="guide" column="guideId" select="everyYeoga.store.mapper.UserMapper.retrieveByUserId" javaType="User" jdbcType="VARCHAR"/>
+      <association property="guide" column="guideId" select="everyYeoga.store.mapper.UserMapper.retrieveByUserId" javaType="User"></association>
    </resultMap>
    
   	<select id="retrieveTravelerHistory" parameterType="String" resultMap="travelerHistoryMap">
@@ -60,13 +60,13 @@
   	<select id="retrieveUncheckedGuideHistory" parameterType="map" resultMap="guideHistoryMap">
   		SELECT guideHistoryId, travelEndStatus, travelerName, travelArea, startDate, endDate, theme, guideId
   		FROM guideHistory_tb 
-  		WHERE guideId = #{guideId} AND travelEndStatus = #{travelEndStatus}
+  		WHERE guideId = #{guideId} AND travelEndStatus = '미확인'
   	</select>
   	
   	<select id="retrieveCheckedGuideHistory" parameterType="map" resultMap="guideHistoryMap">
   		SELECT guideHistoryId, travelEndStatus, travelerName, travelArea, startDate, endDate, theme, guideId
   		FROM guideHistory_tb 
-  		WHERE guideId = #{guideId} AND travelEndStatus = #{travelEndStatus}
+  		WHERE guideId = #{guideId} AND travelEndStatus = '확인'
   	</select>
   	
   </mapper>

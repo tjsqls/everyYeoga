@@ -23,6 +23,8 @@ CREATE TABLE user_tb(
 	phoneNumber VARCHAR(11),
 	email VARCHAR(50),
 	accessBlockedDate DATE
+	reportedNumber VARCHAR(20),
+	blockedNumber VARCHAR(20)
 );
 
 CREATE TABLE travelPlan_tb(

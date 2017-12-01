@@ -16,20 +16,20 @@ public class CommentController {
 
 	@Autowired
 	private GroupService groupService;
-	
-	@RequestMapping(value="regist.do", method=RequestMethod.POST)
+
+	@RequestMapping(value = "regist.do", method = RequestMethod.POST)
 	public String registComment(String articleId, Comment comment, Model model) {
 		groupService.registComment("1", articleId, comment);
 		Article article = groupService.retreiveArticleByArticleId(articleId);
 		model.addAttribute("article", article);
-		return "article/articleDetail.do?articleId="+articleId;
+		return "article/articleDetail.do?articleId=" + articleId;
 	}
-	
-	@RequestMapping(value="remove.do")
+
+	@RequestMapping(value = "remove.do")
 	public String removeComment(String commentId, String articleId, Model model) {
 		groupService.removeComment(commentId);
 		Article article = groupService.retreiveArticleByArticleId(articleId);
 		model.addAttribute("article", article);
-		return "article/articleDetail.do?articleId="+articleId;
-	} 
+		return "article/articleDetail.do?articleId=" + articleId;
+	}
 }

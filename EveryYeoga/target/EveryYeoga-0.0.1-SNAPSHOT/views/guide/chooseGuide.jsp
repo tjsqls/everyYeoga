@@ -13,28 +13,7 @@
 	<div id="page-wrapper">
 
 		<!-- Header -->
-		<div id="header-wrapper">
-			<header id="header" class="container">
-
-				<!-- Logo -->
-				<div id="logo">
-					<h1>
-						<a href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp">모두의 가이드</a>
-					</h1>
-				</div>
-
-				<!-- Nav -->
-				<nav id="nav">
-					<ul>
-						<li class="current"><a
-							href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp">여행검색</a></li>
-						<li class="current"><a
-							href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp">모임관리</a></li>
-						<li class="current"><a href="login.html">로그아웃</a></li>
-					</ul>
-				</nav>
-			</header>
-		</div>
+		<%@ include file="/views/layout/header.jsp"%>
 
 		<!-- Main -->
 
@@ -50,23 +29,23 @@
 							<section>
 								<ul class="style2">
 									<li><a
-										href="${pageContext.request.contextPath}/views/user/myPage.jsp"><h3>회원정보</h3></a></li>
+										href="${pageContext.request.contextPath}/user/myPage.do"><h3>회원정보</h3></a></li>
 									<a
-										href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp"><h3>여행
+										href="${pageContext.request.contextPath}/travel/travelPlanList.do"><h3>여행
 											검색</h3></a>
 									</li>
 
 									<li><a
-										href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp"><h3>참여중인
+										href="${pageContext.request.contextPath}/group/joiningGroupList.jsp"><h3>참여중인
 												모임</h3></a></li>
 									<li><a
-										href="${pageContext.request.contextPath}/views/travel/myTravelPlan.jsp"><h3>내가
+										href="${pageContext.request.contextPath}/travel/myTravelPlan.jsp"><h3>내가
 												올린 여행계획</h3></a></li>
 									<li><a
-										href="${pageContext.request.contextPath}/views/history/myTravelerHistory.jsp"><h3>여행
+										href="${pageContext.request.contextPath}/history/searchTravelerHistory.do"><h3>여행
 												내역</h3></a></li>
 									<li><a
-										href="${pageContext.request.contextPath}/views/history/myGuideHistory.jsp"><h3>가이드
+										href="${pageContext.request.contextPath}/history/searchGuideHistory.do"><h3>가이드
 												내역</h3></a></li>
 								</ul>
 								</footer>
@@ -105,23 +84,23 @@
 													</tr>
 												</thead>
 												<tbody>
-													<form action="/가이드선택완료" method="post">
+													<form
+											action="${pageContext.request.contextPath}/guide/searchGuide.do"
+											class="bs-example form-horizontal" method="POST">
 														<tr>
 															<td><input type="checkbox" name="guide"
 																value="회원아이디"></td>
-															<td class="text-center">${article.articleId }</td>
-															<td><a
-																href="${ctx}/article/find.do?articleId=${article.articleId}">${article.title}
-															</a></td>
-															<td class="text-center"><fmt:formatDate
-																	value="${article.regDate }" pattern="yyyy/MM/dd" /></td>
-															<td class="text-center">${article.authorName }</td>
+															<td class="text-center">${join.guide.id }</td>
+															<td class="text-center">${join.guide.name }</td>
+															<td class="text-center">${join.guide.guideExperience }</td>
+															<td class="text-center">${join.guide.speakingAbility }</td>
+															
 
 														</tr>
-														
+
 														<span style="float: right"><input type="submit"
 															value="선택완료"></span>
-													
+
 													</form>
 
 												</tbody>
