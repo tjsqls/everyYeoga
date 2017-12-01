@@ -35,10 +35,7 @@
 							href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp">여행검색</a></li>
 						<li class="current"><a
 							href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp">모임관리</a></li>
-
-						<li class="current"><a
-							href="${pageContext.request.contextPath}/user/logout.do">로그아웃</a></li>
-
+						<li class="current"><a href="${pageContext.request.contextPath}/user/logout.do">로그아웃</a></li>
 					</ul>
 				</nav>
 			</header>
@@ -54,7 +51,6 @@
 							<!-- Sidebar -->
 							<section>
 								<ul class="style2">
-
 									<li><a
 										href="${pageContext.request.contextPath}/views/user/myPage.jsp"><h3>회원정보</h3></a></li>
 								<li>	<a
@@ -66,16 +62,8 @@
 										href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp"><h3>참여중인
 												모임</h3></a></li>
 									<li><a
-										href="${pageContext.request.contextPath}/views/user/myPage.jsp"><h3>회원정보</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp"><h3>여행
-												검색</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp"><h3>참여중인
-												모임</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/views/travel/myTravelPlan.jsp"><h3>내가올린
-												여행계획</h3></a></li>
+										href="${pageContext.request.contextPath}/views/travel/myTravelPlan.jsp"><h3>내가
+												올린 여행계획</h3></a></li>
 									<li><a
 										href="${pageContext.request.contextPath}/views/history/myTravelerHistory.jsp"><h3>여행
 												내역</h3></a></li>
@@ -83,6 +71,7 @@
 										href="${pageContext.request.contextPath}/views/history/myGuideHistory.jsp"><h3>가이드
 												내역</h3></a></li>
 								</ul>
+							</section>
 
 						</div>
 					</div>
@@ -95,7 +84,6 @@
 
 								<div class="table-responsive">
 									<div class="well">
-
 										<form
 											action="${pageContext.request.contextPath}/report/regist.do"
 											class="bs-example form-horizontal" method="POST">
@@ -105,11 +93,11 @@
 													<table>
 												<tr><td><span style="font-weight:bold">신고 분류</span> &nbsp;&nbsp;&nbsp;
 												<select name="reportCategory">
-																	<option value="ad">광고물 게시</option>
-																	<option value="mock">욕설 및 비방</option>
-																	<option value="porn">음란물 게시</option>
-																	<option value="spread">도배</option>
-																	<option value="etc">기타</option>
+																	<option value="${report.reportType }">광고물 게시</option>
+																	<option value="${report.reportType }">욕설 및 비방</option>
+																	<option value="${report.reportType }">음란물 게시</option>
+																	<option value="${report.reportType }">도배</option>
+																	<option value="${report.reportType }">기타</option>
 															</select>
 															</td>
 														</tr>
@@ -121,27 +109,13 @@
 															id="textArea"></textarea></td></tr>
 													</table>
 
-												<tr><td><p><strong>신고 회원 : </strong> ${reportUser.id }</p></td></tr>
-												<tr><td><p><strong>신고 구분 : </strong> [ 댓글]</p></td></tr>
-
-													<tr><td><p><strong>신고 분류 :</strong></p>
-												<select style="width:50%">
-															<option value="${reportType}">광고물 게시</option>
-															<option value="${reportType}">욕설 및 비방</option>
-															<option value="${reportType}">음란물 게시</option>
-															<option value="${reportType}">도배</option>
-															<option value="${reportType}">기타</option>
-													</select></td></tr> 
-
-													<tr><td><p><strong>신고사유 :</strong></p></td></tr>
-														<tr><td><textarea class="form-control" name="contents" rows="1" style="width:70%"
-															id="textArea" value="${reportReason}"></textarea></td></tr></table>
-												
+												<br /> <br />
 												<div class="form-group">
 													<div class="col-lg-10 col-lg-offset-2">
-														<button type="submit" class="btn btn-pr">신고하기</button>
-														<button type="reset" class="btn btn-default">취소</button>
-
+														<span style="float: center"><button type="submit"
+																class="btn btn-pr">신고하기</button> </span>
+																<span style="float: center"><button type="reset"
+																	class="btn btn-default">취소</button></span>
 													</div>
 												</div>
 											</fieldset>
