@@ -5,7 +5,6 @@
 <mapper namespace="everyYeoga.store.mapper.GuideMapper">
 	
 	<resultMap type="Join" id="JoinMap">
-
 		<id property="joinId" column="joinId"></id>
 		<result property="travelArea" column="travelArea"></result>
 		<result property="speakingAbility" column="speakingAbility"></result>
