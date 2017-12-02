@@ -12,7 +12,6 @@
 <link rel="stylesheet" href="../../assets/css/main.css" />
 
 <script type="text/javascript">
-
 function button_event(){
 if (confirm("정말 삭제하시겠습니까??") == true){    //확인
     location.href="${ctx }/article/remove.do?articleId=${article.articleId}";

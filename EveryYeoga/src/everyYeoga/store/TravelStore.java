@@ -17,6 +17,6 @@ public interface TravelStore {
 	public boolean updateTravelPlan(TravelPlan travelPlanId);//String -> 객체로 변경
 	public boolean deleteTravelPlan(String travelPlanId);
 	public List<TravelPlan> retrieveAllTravelPlans();
-	public TravelPlan retrieveTravelPlanByUserId(String userId);
+	public TravelPlan retrieveTravelPlanByUserId(String travelerId, String gathringStatus); // 2017.12.01 String gathringStatus 파라미터 추가 선빈
 
 }

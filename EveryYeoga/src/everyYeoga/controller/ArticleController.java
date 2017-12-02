@@ -47,11 +47,13 @@ public class ArticleController {
 //	@RequestMapping(value="regist.do", method=RequestMethod.POST)
 //	public ModelAndView registArticle(Article article, HttpServletRequest req, MultipartHttpServletRequest multipartRequest) {
 //		Attachment attachments = new Attachment();
-//		MultipartRequest mpr = 
+//		Iterator<String> it = multipartRequest.getFileNames();
 //		
 //		
 //		groupService.registArticle(article, gorupId ,attachments);
-//		return "redirect:/board/find.do?boardId="+article.getBoardId();
+//		
+//		ModelAndView modelAndView = new ModelAndView("group/groupMain");
+//		return modelAndView;
 //	}
 	@RequestMapping(value="/remove.do", method=RequestMethod.GET)
 	public String removeArticle(HttpServletRequest req, String articleId) {

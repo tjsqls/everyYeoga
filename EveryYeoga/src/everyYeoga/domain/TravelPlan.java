@@ -2,6 +2,10 @@ package everyYeoga.domain;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.stereotype.Repository;
+
+@Repository
 public class TravelPlan {
 
 	@Override
@@ -22,8 +26,9 @@ public class TravelPlan {
 	private String preferGuide;
 	private String selfIntroduction;
 	private String gatheringStatus;
-	private Date startDate;//2011.11.23 Date -> String 진휘
-	private Date endDate;
+	
+	private String startDate;//2011.11.23 Date -> String 진휘
+	private String endDate;
 	
 	private String travelerId; //2017.11.30 User travler 에서 String travelerId로 변경 진휘
 	
@@ -101,19 +106,19 @@ public class TravelPlan {
 		this.gatheringStatus = gatheringStatus;
 	}
 
-	public Date getStartDate() {
+	public String getStartDate() {
 		return startDate;
 	}
 
-	public void setStartDate(Date startDate) {
+	public void setStartDate(String startDate) {
 		this.startDate = startDate;
 	}
 
-	public Date getEndDate() {
+	public String getEndDate() {
 		return endDate;
 	}
 
-	public void setEndDate(Date endDate) {
+	public void setEndDate(String endDate) {
 		this.endDate = endDate;
 	}
 

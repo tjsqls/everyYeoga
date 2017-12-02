@@ -44,7 +44,7 @@ public class GuideController {
 		User user = (User) session.getAttribute("loginedUser");
 		Join join = travelService.searchJoinDetail(joinId);
 		ModelAndView modelAndView = new ModelAndView("guide/joinDetail");
-		modelAndView.addObject("joinId", joinId);
+		modelAndView.addObject("join", join);
 
 		return modelAndView;
 	}

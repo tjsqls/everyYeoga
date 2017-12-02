@@ -13,6 +13,17 @@
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <link rel="stylesheet" href="/resources/demos/style.css">
+<script>
+            $(function() {
+              $.datepicker.setDefaults($.datepicker.regional['ko']); //datepicker 한국어로 사용하기 위한 언어설정
+              $('#startDate').datepicker({dateFormat: 'y/mm/dd'});
+            });
+            $(function() {
+                $.datepicker.setDefaults($.datepicker.regional['ko']); //datepicker 한국어로 사용하기 위한 언어설정
+                $('#endDate').datepicker({dateFormat: 'y/mm/dd'});
+              });
+        </script>
+
 
 </head>
 <body class="left-sidebar">
@@ -89,14 +100,14 @@
 												<div class="form-group">
 
 													<label class="col-lg-2 control-label"><h3>여행
-															시작일</h3></label> <input type="date" id="startDate" name="startDate"
+															시작일</h3></label> <input type="text" id="startDate" name="startDate"
 														placeholder="yyyy/mm/dd" value=""/>
 												</div>
 
 												<div class="form-group">
 
 													<label class="col-lg-2 control-label"><h3>여행
-															종료일</h3></label> <input type="date" id="endDate" name="endDate"
+															종료일</h3></label> <input type="text" id="endDate" name="endDate"
 														placeholder="yyyy/mm/dd" value="" />
 												</div>
 

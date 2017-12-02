@@ -41,7 +41,7 @@ public class TravelController {
 		travelPlan.setTravelerId(user.getId());
 
 		travelService.registTravelPlan(travelPlan);
-		return "travel/travelPlanList";
+		return "redirect:/travel/myTravelPlan.do";
 	}
 
 	@RequestMapping(value = "modify.do", method = RequestMethod.GET)
