@@ -20,6 +20,30 @@ if (confirm("정말 삭제하시겠습니까??") == true){    //확인
     return;
 }
 }
+
+function report_button(){
+	if(confirm("해당 게시글을 신고 하시겠습니까?") == true){		
+		location.href="${ctx}/report/regist.do?classifyId=${article.articleId}&classifyReport=article&userId=${user.id}"
+	}else{
+		return;
+}
+}
+
+function comment_delete(){
+	if(confirm("댓글을 삭제하시겠습니까?") == true){
+		location.href="${ctx }/comment/remove.do?articleId=${article.articleId}&commentId=${comment.commentId}"
+	}else{
+		return;
+	}
+}
+
+function comment_report(){
+	if(confirm("댓글을 신고하시겠습니까?") == true){
+		location.href="${ctx }/report/regist.do?classifyId=${comment.commentId}&classifyReport='comment'&userId=${comment.user.id}"
+	}else{
+		return;
+	}
+}
 </script>
 
 
@@ -56,7 +80,7 @@ if (confirm("정말 삭제하시겠습니까??") == true){    //확인
 											<div class="panel-heading">제목 ${article.title }</div>
 											<div class="panel-body">
 												<div class="post">
-													<strong>작성자 ${user.name }</strong> &nbsp;<span
+													<strong>작성자 ${user.id }</strong> &nbsp;<span
 														class="text-muted"><fmt:formatDate
 																	value="${article.regDate }" pattern="yyyy-MM-dd" /></span> &nbsp; 
 																	
@@ -68,8 +92,7 @@ if (confirm("정말 삭제하시겠습니까??") == true){    //확인
 														style="padding: 10px">수정</a> <br>
 
 													<p style="padding: 20px">${article.content }</p>
-													<a
-														href="${pageContext.request.contextPath}/report/regist.do?classifyId=${article.articleId}"
+													<a onclick="report_button();"
 														class="glyphicon glyphicon-cog pull-right"
 														style="padding: 10px">신고</a>
 
@@ -81,20 +104,18 @@ if (confirm("정말 삭제하시겠습니까??") == true){    //확인
 														<table class="table"
 															style="font-size: 13px; padding: 20px;">
 															<tr>
-																<td><strong>댓글 쓴 사람 ${commentUser.id }</strong></td>
-																<td class="text-right">날짜<fmt:formatDate
+																<td><strong>댓글 작성자 ${commentUser.id }</strong></td>
+																<td class="text-right">댓글 등록일<fmt:formatDate
 																	value="${comment.regDate }" pattern="dd-MM-yyyy" /> <span
 																	style="float: right"> <a
 																		class="glyphicon glyphicon-trash"
 																		href="${ctx }/comment/modify.do?articleId=${article.articleId}&commentId=${comment.commentId}">수정</a>
 
 																		<a class="glyphicon glyphicon-trash"
-																		href="${ctx }/comment/remove.do?articleId=${article.articleId}&commentId=${comment.commentId}">삭제</a>
+																		onclick="comment_delete();">삭제</a>
 
 																		<a class="glyphicon glyphicon-trash"
-																		href="${ctx }/comment/regist.do?articleId=${article.articleId}&commentId=${comment.commentId}">신고</a>
-																</span></td>
-
+																		onclick="comment_report();">신고</a></span></td>
 															</tr>
 															<tr>
 																<td colspan="2">
@@ -108,12 +129,6 @@ if (confirm("정말 삭제하시겠습니까??") == true){    //확인
 
 												<br>
 
-<<<<<<< HEAD
-
-										
-=======
-												
->>>>>>> branch 'master' of https://github.com/tjsqls/everyYeoga.git
 												<div class="panel-footer">
 													<div class="write_area">
 														<form

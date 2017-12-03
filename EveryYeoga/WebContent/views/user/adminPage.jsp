@@ -7,70 +7,24 @@
 <html>
 <head>
 <title>Verti by HTML5 UP</title>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="stylesheet" href="../../assets/css/main.css" />
+<%@ include file="/views/layout/common.jsp" %>
+
 </head>
 <body class="left-sidebar">
 	<div id="page-wrapper">
 
 		<!-- Header -->
-		<div id="header-wrapper">
-			<header id="header" class="container">
-
-				<!-- Logo -->
-				<div id="logo">
-					<h1>
-						<a
-							href="${pageContext.request.contextPath}/views/user/adminPage.jsp">모두의
-							가이드</a>
-					</h1>
-
-				</div>
-
-				<!-- Nav -->
-				<nav id="nav">
-					<ul>
-						<li class="current"><a
-							href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp">여행검색</a></li>
-						<li class="current"><a
-							href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp">모임관리</a></li>
-						<li class="current"><a href="login.html">로그아웃</a></li>
-					</ul>
-				</nav>
-			</header>
-		</div>
-
+		<%@ include file="/views/layout/header.jsp" %>
 			<!-- Header -->
-<%@ include file="/views/layout/header.jsp" %>
-
-
+			
 		<!-- Main -->
 
 		<div id="main-wrapper">
 			<div class="container">
 				<div class="row 50%">
-					<div class="4u 12u$(medium)">
-
-
-						<div id="sidebar">
-
-							<!-- Sidebar -->
-							<section>
-								<ul class="style2">
-									<li><a
-										href="${pageContext.request.contextPath}/views/user/adminPage.jsp"><h3>신고내역
-												관리</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/views/travel/manageTravelPlan.jsp"><h3>여행계획
-												관리</h3></a></li>
-
-								</ul>
-								</footer>
-							</section>
-
-						</div>
-					</div>
+					<%@ include file="/views/layout/sidebar.jsp" %>
+					
+					
 					<div class="8u 12u$(medium) important(medium)">
 						<div id="content">
 							<div class="col-sm-9 col-lg-9">
@@ -113,10 +67,13 @@
 														<c:forEach var="list" items="${reportList }" varStatus="sts">
 															<tr>											
 														<td class="text-center">${sts.count }</td>
+														<c:set var="reportUser" value="${list.reportUser }"/>
+														<c:set var="reportedUser" value="${list.reportedUser }"/>
 																<c:choose>
 																
 																<c:when test="${list.classifyReport == 'article'}">
-																	<td><a href="${pageContext.request.contextPath}/report/searchArticle.do?articleId=${list.classifyId}">게시물</a></td>
+																	<td><a href="${pageContext.request.contextPath}/report/searchArticle.do?articleId=${list.classifyId}
+																	&reportedUserId=${reportedUser.id}&reportUserId=${reportUser.id}">게시물</a></td>
 																</c:when>
 																
 																<c:otherwise>
@@ -125,7 +82,7 @@
 																
 																</c:choose> 
 																 <td class="text-center">${list.reportType }</td>
-																  <td class="text-center">${list.reportUser.id }</td>
+																  <td class="text-center">${reportUser.id }</td>
 																  <td class="text-center">
 														<fmt:formatDate value="${list.regDate }" pattern="yyyy-MM-dd" /></td>
 															</tr>

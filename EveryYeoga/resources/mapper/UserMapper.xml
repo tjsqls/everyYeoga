@@ -45,8 +45,7 @@
 		VALUES(#{id}, #{pw}, #{name}, #{birthDate}, #{phoneNumber}, #{email})
 	</insert>
 
-	<select id="retrieveBlockedUser" parameterType="String"
-		resultType="User">
+	<select id="retrieveBlockedUser" parameterType="String" resultType="User">
 		SELECT id, pw, name, birthDate, phoneNumber, email
 		FROM
 		blocked_user_tb
@@ -70,13 +69,13 @@
 		WHERE id = #{userId}
 	</update>
 
-	<select id="countBlockedNumber" parameterType="String">
+	<select id="countBlockedNumber" parameterType="String" resultType="String">
 		SELECT blockedNumber
 		FROM user_tb
 		WHERE id = #{userId}
 	</select>
 
-	<select id="countReportedNumber" parameterType="String">
+	<select id="countReportedNumber" parameterType="String" resultType="String">
 		SELECT reportedNumber
 		FROM user_tb
 		WHERE id = #{userId}

@@ -15,13 +15,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import everyYeoga.domain.Article;
 import everyYeoga.domain.Report;
 import everyYeoga.domain.User;
 import everyYeoga.service.GroupService;
 import everyYeoga.service.ReportService;
 import everyYeoga.service.UserService;
-
 
 @Controller
 @RequestMapping("report") 
@@ -33,43 +31,42 @@ public class ReportController {
 	private GroupService groupService;
 	@Autowired
 	private UserService userService;
-	
 
 	@RequestMapping(value = "regist.do", method = RequestMethod.GET)
-	public String registReport(HttpServletRequest req, String classifyReport, String classifyId, String userId, Model model) { // userId = 신고당한 회원
-
+	public String registReport(HttpServletRequest req, String classifyReport, String userId, String classifyId, Model model) { // userId = 신고할 회원
+		
 		HttpSession session = req.getSession();
-		if (session == null || session.getAttribute("loginedUser") == null) {
-			return "redirect:/views/user/login.jsp";
-		}
+		Report report = new Report();
 
-		User reportUser = (User) session.getAttribute("loginedUser");
+		User reportUser = (User)session.getAttribute("loginedUser");
 		model.addAttribute("reportUser", reportUser);  // 신고한 회원
+		model.addAttribute("reportedUser", userService.searchByUserId(userId));	
+		
+		report.setClassifyReport(classifyReport);
+		report.setClassifyId(classifyId);
+		
+		model.addAttribute("report", report);
 
-		if (classifyReport.equals("article")) {
-			model.addAttribute("report", groupService.retreiveArticleByArticleId(classifyId)); // classifyId =  comment/article 의 id																									
-
-		} else if (classifyReport.equals("comment")) {			
-			model.addAttribute("report", groupService.retreiveCommentByCommentId(classifyId));
-		}
-		return "redirect:/views/report/report"; /* 신고 작성 페이지로 이동 */
+		return "report/report"; /* 신고 작성 페이지로 이동 */
 	}
 
 	@RequestMapping(value = "regist.do", method = RequestMethod.POST)
-	public String registReport(Report report) {
-
+	public String registReport(Report report, String reportedUserId, String reportUserId) {
 		Date today = new Date(Calendar.getInstance().getTimeInMillis());
 		report.setRegDate(today);
+	
+		reportService.registReport(report, reportedUserId, reportUserId);
 
-		reportService.registReport(report, report.getClassifyId());
-
-		return "redirect:/group/list.do"; /* 모임 메인 */
+		return "redirect:/report/searchAll.do"; 
 	}
 
+
 	@RequestMapping("searchArticle.do") /* 인애 - 2017.11.25 article search 파라미터 String groupId 뺌 */
-	public ModelAndView searchArticleReport(@RequestParam("articleId") String reportedArticleId) { // jsp에서 넘어오는 값의이름이 articleId 면 두고 아니면 빼기																						
+	public ModelAndView searchArticleReport(@RequestParam("articleId") String reportedArticleId, String reportedUserId, String reportUserId) { // jsp에서 넘어오는 값의이름이 articleId 면 두고 아니면 빼기																						
 
 		Report articleReportDetail = reportService.searchArticleReport(reportedArticleId);
+		articleReportDetail.setReportUser(userService.searchByUserId(reportUserId));
+		articleReportDetail.setReportedUser(userService.searchByUserId(reportedUserId));
 
 		ModelAndView modelAndView = new ModelAndView("/report/reportDetail"); // report detail (상세 신고내역)
 		modelAndView.addObject("articleReport", articleReportDetail);
@@ -112,11 +109,14 @@ public class ReportController {
 	}
 	
 	@RequestMapping(value="remove.do", method=RequestMethod.POST)
-	public String removeComment(Report report) {
+	public String removeReported(Report report, String reportedUserId) {
 		if(report.getClassifyReport().equals("article")) {
+			reportService.acceptReport(report, report.getClassifyId(), reportedUserId);
 			groupService.removeArticle(report.getClassifyId());
-		}else {
+		}else if(report.getClassifyReport().equals("comment")){
+			reportService.acceptReport(report, report.getClassifyId(), reportedUserId);
 		groupService.removeComment(report.getClassifyId());
+		
 		}
 		return "redirect:/report/searchAll.do";
 	}

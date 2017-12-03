@@ -7,7 +7,7 @@ public class Comment {
 	private String commentId;
 	private String content;
 	private Date regDate;
-	
+
 	private User user;
 	
 	

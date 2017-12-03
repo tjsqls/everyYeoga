@@ -6,78 +6,36 @@
 
 <html>
 <head>
-<title>Verti by HTML5 UP</title>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="stylesheet" href="../../assets/css/main.css" />
+<title>모두의 여가</title>
+<%@ include file="/views/layout/common.jsp" %>
+
+<script type="text/javascript">
+function report(){
+	if(confirm("신고 하시겠습니까? 해당 신고물은 관리자 확인 후 삭제됩니다.") == true){		
+		document.form.submit;
+	}else{
+document.form.reset;
+}
+}
+</script>
+
 </head>
 <body class="left-sidebar">
 	<div id="page-wrapper">
 
 		<!-- Header -->
-		<div id="header-wrapper">
-			<header id="header" class="container">
 
-				<!-- Logo -->
-				<div id="logo">
-					<h1>
-						<a
-							href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp">모두의
-							가이드</a>
-					</h1>
-
-				</div>
-
-			<!-- Header -->
 <%@ include file="/views/layout/header.jsp" %>
-
-				<!-- Nav -->
-				<nav id="nav">
-					<ul>
-						<li class="current"><a
-							href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp">여행검색</a></li>
-						<li class="current"><a
-							href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp">모임관리</a></li>
-						<li class="current"><a href="${pageContext.request.contextPath}/user/logout.do">로그아웃</a></li>
-					</ul>
-				</nav>
-			</header>
-		</div>
+			<!-- Header -->
 
 		<!-- Main -->
 		<div id="main-wrapper">
 			<div class="container">
 				<div class="row 50%">
-					<div class="4u 12u$(medium)">
-						<div id="sidebar">
-
-							<!-- Sidebar -->
-							<section>
-								<ul class="style2">
-									<li><a
-										href="${pageContext.request.contextPath}/views/user/myPage.jsp"><h3>회원정보</h3></a></li>
-								<li>	<a
-										href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp"><h3>여행
-											검색</h3></a>
-									</li>
-
-									<li><a
-										href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp"><h3>참여중인
-												모임</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/views/travel/myTravelPlan.jsp"><h3>내가
-												올린 여행계획</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/views/history/myTravelerHistory.jsp"><h3>여행
-												내역</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/views/history/myGuideHistory.jsp"><h3>가이드
-												내역</h3></a></li>
-								</ul>
-							</section>
-
-						</div>
-					</div>
+					
+					<!-- sidebar -->
+					<%@ include file="/views/layout/sidebar.jsp" %>
+					
 					<div class="8u 12u$(medium) important(medium)">
 						<div id="content">
 							<div class="col-sm-9 col-lg-9">
@@ -87,41 +45,37 @@
 
 								<div class="table-responsive">
 									<div class="well">
-										<form
-											action="${pageContext.request.contextPath}/report/regist.do"
-											class="bs-example form-horizontal" method="POST" id="regist">
+										<form 
+											action="${pageContext.request.contextPath}/report/regist.do" method="post" >
 											<fieldset>
 											<br />
-													  <input type="hidden" name="reportUser" value="${reportUser.id }">
-													   <input type="hidden" name="reportUser" value="${reportUser.id }">
+											<input type="hidden" name="classifyReport" value="${report.classifyReport }"/>
+											<input type="hidden" name="reportedUserId" value="${reportedUser.id  }"/>
+											<input type="hidden" name="reportUserId" value="${reportUser.id}"/>
+											<input type="hidden" name="classifyId" value="${report.classifyId}"/>
 													<table>
+													<tr><td><span style="font-weight:bold">신고할 회원</span>&nbsp;&nbsp;[ ${reportedUser.id } ]</td></tr>
 												<tr><td><span style="font-weight:bold">신고 분류</span> &nbsp;&nbsp;&nbsp;
-												<select name="reportCategory">
-																	<option value="${report.reportType }">광고물 게시</option>
-																	<option value="${report.reportType }">욕설 및 비방</option>
-																	<option value="${report.reportType }">음란물 게시</option>
-																	<option value="${report.reportType }">도배</option>
-																	<option value="${report.reportType }">기타</option>
+												<select name="reportType">
+																	<option value="광고물 게시">광고물 게시</option>
+																	<option value="욕설 및 비방">욕설 및 비방</option>
+																	<option value="음란물 게시">음란물 게시</option>
+																	<option value="도배">도배</option>
+																	<option value="기타">기타</option>
 															</select>
 															</td>
 														</tr>
-														</table>
-														
-															<table>
 														<tr><td><span style="font-weight:bold">신고 사유 </span></td></tr>
-														<tr><td><textarea placeholder="내용을 입력해주세요." class="form-control" name="contents" rows="2"
-															id="textArea" form="regist"></textarea></td></tr>
-													</table>
+														<tr><td><textarea placeholder="내용을 입력해주세요." class="form-control" rows="2"
+															 name="reportReason"></textarea></td></tr>
+														</table>																									
 
 												<br /> <br />
-												<div class="form-group">
-													<div class="col-lg-10 col-lg-offset-2">
-														<span style="float: center"><button type="submit"
-																class="btn btn-pr">신고하기</button> </span>
+			
+														<span style="float: center"><input type="submit"
+																class="btn btn-pr" value="신고하기" onclick="report();"></span>
 																<span style="float: center"><button type="reset"
 																	class="btn btn-default">취소</button></span>
-													</div>
-												</div>
 											</fieldset>
 										</form>
 									</div>

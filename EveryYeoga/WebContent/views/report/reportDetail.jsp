@@ -7,9 +7,8 @@
 <html>
 	<head>
 		<title>Verti by HTML5 UP</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" href="../../assets/css/main.css" />
+<%@ include file="/views/layout/common.jsp" %>
+
 	</head>
 	<body class="left-sidebar">
 		<div id="page-wrapper">
@@ -21,22 +20,10 @@
 				<div id="main-wrapper">
 					<div class="container">
 						<div class="row 50%">
-							<div class="4u 12u$(medium)">
-								<div id="sidebar">
+							
+<%@ include file="/views/layout/sidebar.jsp" %>
 
-									<!-- Sidebar -->
-										<section>
-											<h2>관리자 페이지</h2>
-										<ul class="style2">
-															<li><a href="${pageContext.request.contextPath}/views/user/adminPage.jsp"><h3>신고내역 관리</h3></a></li>
-										<li><a href="${pageContext.request.contextPath}/views/travel/manageTravelPlan.jsp"><h3>여행계획 관리</h3></a></li>
-				
-											</ul>
-																
-										</section>
 
-								</div>
-							</div>
 							<div class="8u 12u$(medium) important(medium)">
 								<div id="content">
                     <div class="col-sm-9 col-lg-9">
@@ -47,17 +34,18 @@
             <form action="${pageContext.request.contextPath}/report/remove.do"
                   class="bs-example form-horizontal" method="POST">
                 <fieldset>
-                <div class="form-group">
-                     
-                      
-               
-                    <c:choose>
-                    
-                    <c:when test="${articleReport.classifyReport == 'article'}">
-                    
+                <div class="form-group">                  
+
                     	<c:set var="report" value="${articleReport }"/>
+                    	                    <input type="hidden" name="classifyReport" value="${report.classifyReport }"/>
+											<input type="hidden" name="reportedUserId" value="${report.reportedUser.id  }"/>
+											<input type="hidden" name="reportUserId" value="${report.reportUser.id  }"/>
+											<input type="hidden" name="classifyId" value="${report.classifyId}"/>
                     <table class="table table-striped table-bordered table-hover"> 
+                    
                     <tr><td><span style="font-weight:bold">신고일 </span>&nbsp; &nbsp; &nbsp;<fmt:formatDate value="${report.regDate }" pattern="yyyy-MM-dd" /></td></tr>  
+                    <tr> <td><span style="font-weight:bold">신고한 회원</span> &nbsp; &nbsp;${report.reportUser.id}</td></tr>
+                    <tr> <td><span style="font-weight:bold">신고할 회원</span> &nbsp; &nbsp;${report.reportedUser.id }</td></tr>
                          <tr><td><span style="font-weight:bold">신고 구분 </span>&nbsp; &nbsp;게시물</td></tr>
            			<tr> <td><span style="font-weight:bold">신고 분류</span> &nbsp; &nbsp;${report.reportType}</td></tr>
            				   <tr><td><span style="font-weight:bold">신고사유</span></td></tr>
@@ -66,29 +54,13 @@
                       <br />
                     <br />
  					  <br />
-                   
-                    </c:when>
-                    
-                    <c:otherwise>
-                    <c:set var="report" value="${commentReport }"/>
-                        <table class="table table-striped table-bordered table-hover"> 
-                    <tr><td><span style="font-weight:bold">신고일 </span>&nbsp; &nbsp; &nbsp;<fmt:formatDate value="${report.regDate }" pattern="yyyy-MM-dd" /></td></tr>  
-                         <tr><td><span style="font-weight:bold">신고 구분 </span>&nbsp; &nbsp;댓글</td></tr>
-           			<tr> <td><span style="font-weight:bold">신고 분류</span> &nbsp; &nbsp;${report.reportType}</td></tr>
-           				   <tr><td><span style="font-weight:bold">신고사유</span></td></tr>
-					<tr><td>${report.reportReason }</td></tr>
-                    </table>      
-                      <br />
-                    <br />
- 					  <br />
-
-                    </c:otherwise>
-                    </c:choose>
-                     
-                        <div class="form-group">
+ 					  
+                  <div class="form-group">
                         <div class="col-lg-10 col-lg-offset-2">
                             <span style="float:center"><button type="submit" class="btn btn-pr">승인</button>
-                            <span style="float:center"><button type="reset" class="btn btn-default" onclick="location.href='${pageContext.request.contextPath}/report/searchAll.do'">목록으로</button>
+                             
+                            <span style="float:center"><button type="reset" class="btn btn-default" 
+                            onclick="location.href='${pageContext.request.contextPath}/report/searchAll.do'">목록으로</button>
                         </div>
                     </div>
 
