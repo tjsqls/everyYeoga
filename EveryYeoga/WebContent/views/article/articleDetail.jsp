@@ -1,20 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE HTML>
 
 <html>
 <head>
 <title>Verti by HTML5 UP</title>
 <%@ include file="/views/layout/common.jsp" %>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="stylesheet" href="../../assets/css/main.css" />
 
 <script type="text/javascript">
 function button_event(){
 if (confirm("정말 삭제하시겠습니까??") == true){    //확인
     location.href="${ctx }/article/remove.do?articleId=${article.articleId}";
+    
 }else{   //취소
     return;
 }
@@ -25,6 +24,7 @@ if (confirm("정말 삭제하시겠습니까??") == true){    //확인
 
 </head>
 <body class="left-sidebar">
+
 	<div id="page-wrapper">
 
 		<!-- Header -->
@@ -158,11 +158,5 @@ if (confirm("정말 삭제하시겠습니까??") == true){    //확인
 
 			<!-- Scripts -->
 
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.dropotron.min.js"></script>
-			<script src="assets/js/skel.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="assets/js/main.js"></script>
 </body>
 </html>

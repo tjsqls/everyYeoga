@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -24,18 +25,25 @@ public class GuideController {
 	@Autowired
 	private TravelService travelService;
 
-	@RequestMapping("registJoin.do") // registJoin.jsp
-	public String registJoin(HttpServletRequest req, Join join, String travelPlanId) {
+	@RequestMapping(value="registJoin.do", method=RequestMethod.GET) // registJoin.jsp
+	public String registJoin(String travelPlanId, Model model) {
+		//진휘
+		model.addAttribute("travelPlanId", travelPlanId);
+		return "guide/registJoin";
+	}
+	@RequestMapping(value="registJoin.do", method=RequestMethod.POST) // registJoin.jsp
+	public String registJoin(HttpServletRequest req, Join join) {
 		//진휘
 		HttpSession session = req.getSession();
 		User user = (User) session.getAttribute("loginedUser");
 		join.setGuideId(user.getId());
-		travelService.registJoin(join, travelPlanId);
+		travelService.registJoin(join);
+		
 
-		return "guide/registJoin";
+		return "redirect:/travel/searchTravelPlan.do";
 	}
 
-	@RequestMapping("searchJoinDetail.do") // joinDetail.jsp
+	@RequestMapping(value="searchJoinDetail.do", method=RequestMethod.GET) // joinDetail.jsp
 	public ModelAndView searchjoinDetail(HttpServletRequest req, String joinId) {
 		//진휘
 		HttpSession session = req.getSession();
@@ -55,10 +63,7 @@ public class GuideController {
 		HttpSession session = req.getSession();
 		User user = (User) session.getAttribute("loginedUser");
 		List<Join> j = travelService.searchGuide(b);
-		
-		
-		
-		
+
 		ModelAndView modelAndView = new ModelAndView("guide/chooseGuide");
 		modelAndView.addObject("joinList", j);
 		return modelAndView;

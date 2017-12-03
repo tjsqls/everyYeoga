@@ -1,13 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
 <head>
-<meta charset="UTF-8">
 <title>A Pen by Zoltan Kohalmy</title>
 <%@ include file="/views/layout/common.jsp" %>
 
 <title>모두의 여가</title>
 <link rel="stylesheet" href="../../css/style.css">
+
 </head>
 
 <body>

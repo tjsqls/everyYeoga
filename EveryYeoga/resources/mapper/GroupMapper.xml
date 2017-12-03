@@ -7,7 +7,7 @@
 
   <insert id="createGroup" parameterType="Group">
  	INSERT INTO group_tb(groupId, regDate, travelPlanId) 
- 	VALUES(group_seq.NEXTVAL, #{regDate}, #{travelPlanId}) 
+ 	VALUES(#{groupId}, #{regDate}, #{travelPlanId}) 
   </insert>
   
   <insert id="createUserInGroup" parameterType="map">

@@ -6,102 +6,8 @@
 <head>
 <title>Verti by HTML5 UP</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="stylesheet" href="../../assets/css/main.css" />
-<style>
-.star-input>.input, .star-input>.input>label:hover, .star-input>.input>input:focus+label,
-	.star-input>.input>input:checked+label {
-	display: inline-block;
-	vertical-align: middle;
-	background: url('${pageContext.request.contextPath}/img/grade_img.png')
-		no-repeat;
-}
+<%@ include file="/views/layout/common.jsp"%>
 
-.star-input {
-	display: inline-block;
-	white-space: nowrap;
-	width: 225px;
-	height: 40px;
-	padding: 25px;
-	line-height: 30px;
-}
-
-.star-input>.input {
-	display: inline-block;
-	width: 150px;
-	background-size: 150px;
-	height: 28px;
-	white-space: nowrap;
-	overflow: hidden;
-	position: relative;
-}
-
-.star-input>.input>input {
-	position: absolute;
-	width: 1px;
-	height: 1px;
-	opacity: 0;
-}
-
-star-input>.input.focus {
-	outline: 1px dotted #ddd;
-}
-
-.star-input>.input>label {
-	width: 30px;
-	height: 0;
-	padding: 28px 0 0 0;
-	overflow: hidden;
-	float: left;
-	cursor: pointer;
-	position: absolute;
-	top: 0;
-	left: 0;
-}
-
-.star-input>.input>label:hover, .star-input>.input>input:focus+label,
-	.star-input>.input>input:checked+label {
-	background-size: 150px;
-	background-position: 0 bottom;
-}
-
-.star-input>.input>label:hover ~label {
-	background-image: none;
-}
-
-.star-input>.input>label[for="p1"] {
-	width: 30px;
-	z-index: 5;
-}
-
-.star-input>.input>label[for="p2"] {
-	width: 60px;
-	z-index: 4;
-}
-
-.star-input>.input>label[for="p3"] {
-	width: 90px;
-	z-index: 3;
-}
-
-.star-input>.input>label[for="p4"] {
-	width: 120px;
-	z-index: 2;
-}
-
-.star-input>.input>label[for="p5"] {
-	width: 150px;
-	z-index: 1;
-}
-
-.star-input>output {
-	display: inline-block;
-	width: 60px;
-	font-size: 18px;
-	text-align: right;
-	vertical-align: middle;
-}
-</style>
 </head>
 <body class="left-sidebar">
 	<div id="page-wrapper">
@@ -113,37 +19,7 @@ star-input>.input.focus {
 		<div id="main-wrapper">
 			<div class="container">
 				<div class="row 50%">
-					<div class="4u 12u$(medium)">
-						<div id="sidebar">
-
-							<!-- Sidebar -->
-							<section>
-								<ul class="style2">
-									<li><a
-										href="${pageContext.request.contextPath}/user/myPage.jsp"><h3>회원정보</h3></a></li>
-									<a
-										href="${pageContext.request.contextPath}/travel/travelPlanList.jsp"><h3>여행
-											검색</h3></a>
-									</li>
-
-									<li><a
-										href="${pageContext.request.contextPath}/group/joiningGroupList.jsp"><h3>참여중인
-												모임</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/travel/myTravelPlan.jsp"><h3>내가
-												올린 여행계획</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/history/searchTravelerHistory.do"><h3>여행
-												내역</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/history/searchGuideHistory.do"><h3>가이드
-												내역</h3></a></li>
-								</ul>
-								</footer>
-							</section>
-
-						</div>
-					</div>
+					<%@ include file="/views/layout/sidebar.jsp"%>
 					<div class="8u 12u$(medium) important(medium)">
 						<div id="content">
 							<div class="col-sm-9 col-lg-9">

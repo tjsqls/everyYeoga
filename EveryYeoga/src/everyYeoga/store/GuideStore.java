@@ -12,6 +12,7 @@ public interface GuideStore {
 	public Join retrieveJoinDetail(String joinId);
 	public boolean createEvaluation(Evaluation evaluation);
 	public List<Evaluation> retrieveEvaluation(String guideId);
-	public boolean createJoin(@Param("join")Join join, @Param("travelPlanId")String travelPlanId);// 파라미터 travelPlanId 추가
+	public boolean createJoin(Join join);
+	public void deleteJoin(String guideId, String travelPlanId);//2017.12.02 메소드 추가 선빈
 
 }

@@ -12,5 +12,6 @@ public interface GuideMapper {
 	public Join retrieveJoinDetail(String joinId);
 	public boolean createEvaluation(Evaluation evaluation);
 	public List<Evaluation> retrieveEvaluation(String guideId);
-	public boolean createJoin(@Param("join")Join join, @Param("travelPlanId")String travelPlanId);
+	public boolean createJoin(Join join);
+	public void deleteJoin(@Param("guideId")String guideId, @Param("travelPlanId")String travelPlanId);//2017.12.02 메소드 추가 선빈
 }

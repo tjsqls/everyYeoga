@@ -5,9 +5,8 @@
 <html>
 <head>
 <title>Verti by HTML5 UP</title>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="stylesheet" href="../../assets/css/main.css" />
+<%@ include file="/views/layout/common.jsp"%>
+
 </head>
 <body class="left-sidebar">
 	<div id="page-wrapper">
@@ -19,37 +18,7 @@
 		<div id="main-wrapper">
 			<div class="container">
 				<div class="row 50%">
-					<div class="4u 12u$(medium)">
-						<div id="sidebar">
-
-							<!-- Sidebar -->
-							<section>
-								<ul class="style2">
-									<li><a
-										href="${pageContext.request.contextPath}/user/myPage.jsp"><h3>회원정보</h3></a></li>
-									<a
-										href="${pageContext.request.contextPath}/travel/travelPlanList.jsp"><h3>여행
-											검색</h3></a>
-									</li>
-
-									<li><a
-										href="${pageContext.request.contextPath}/group/joiningGroupList.jsp"><h3>참여중인
-												모임</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/travel/myTravelPlan.jsp"><h3>내가
-												올린 여행계획</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/history/searchTravelerHistory.do"><h3>여행
-												내역</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/history/searchGuideHistory.do"><h3>가이드
-												내역</h3></a></li>
-								</ul>
-								</footer>
-							</section>
-
-						</div>
-					</div>
+					<%@ include file="/views/layout/sidebar.jsp"%>
 					<div class="8u 12u$(medium) important(medium)">
 						<div id="content">
 							<div class="col-sm-9 col-lg-9">
@@ -60,26 +29,27 @@
 								<div class="table-responsive">
 									<div class="well">
 										<form
-											action="${pageContext.request.contextPath}/guide/registJoin.do"
+											action="${ctx}/guide/registJoin.do"
 											class="bs-example form-horizontal" method="POST">
 											<fieldset>
+											<input type="hidden" name="travelPlanId" value="${travelPlanId }">
 												<div class="form-group">
-													<label class="col-lg-2 control-label"><h3>지역</h3></label> <input
-														type="text" name="travelArea" value="${join.travelArea}">
+													<label class="col-lg-2 control-label"><h3>지역</h3></label> 
+													<input type="text" name="travelArea" value="">
 													<div class="col-lg-10"></div>
 												</div>
 
 												<div class="form-group">
 													<label class="col-lg-2 control-label"><h3>언어
 															구사 능력</h3></label> <input type="text" name="speakingAbility"
-														value="${join.speakingAbility}">
+														value="">
 													<div class="col-lg-10"></div>
 												</div>
 
 												<div class="form-group">
 													<label class="col-lg-2 control-label"><h3>가이드
-															경험</h3></label> <input type="text" name="preferGuide"
-														value="${join.guideExperience}">
+															경험</h3></label> <input type="text" name="guideExperience"
+														value="">
 													<div class="col-lg-10"></div>
 												</div>
 
@@ -97,7 +67,6 @@
 												<div class="form-group">
 													<label class="col-lg-2 control-label"><h3>신청
 															사유</h3></label>
-
 													<div class="col-lg-10">
 														<textarea class="form-control" name="joinReason" rows="2"
 															id="textArea"></textarea>

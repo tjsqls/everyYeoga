@@ -5,9 +5,8 @@
 <html>
 <head>
 <title>Verti by HTML5 UP</title>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="stylesheet" href="../../assets/css/main.css" />
+		<%@ include file="/views/layout/common.jsp"%>
+
 </head>
 <body class="left-sidebar">
 	<div id="page-wrapper">
@@ -20,40 +19,7 @@
 		<div id="main-wrapper">
 			<div class="container">
 				<div class="row 50%">
-					<div class="4u 12u$(medium)">
-
-
-						<div id="sidebar">
-
-							<!-- Sidebar -->
-							<section>
-								<ul class="style2">
-								 	<li><a
-										href="${pageContext.request.contextPath}/user/myPage.do"><h3>회원정보</h3></a></li>
-									<a
-										href="${pageContext.request.contextPath}/travel/travelPlanList.do"><h3>여행
-											검색</h3></a>
-									</li>
-
-									<li><a
-										href="${pageContext.request.contextPath}/group/joiningGroupList.do"><h3>참여중인
-												모임</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/travel/myTravelPlan.do"><h3>내가
-												올린 여행계획</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/history/searchTravelerHistory.do"><h3>여행
-												내역</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/history/searchGuideHistory.do"><h3>가이드
-												내역</h3></a></li>
-												
-								</ul>
-								</footer>
-							</section>
-
-						</div>
-					</div>
+					<%@ include file="/views/layout/sidebar.jsp"%>
 					<div class="8u 12u$(medium) important(medium)">
 						<div id="content">
 							<div class="col-sm-9 col-lg-9">
@@ -63,9 +29,7 @@
 
 								<div class="table-responsive">
 									<div class="well">
-												<form
-											action="${pageContext.request.contextPath}/guide/searchGuide.do"
-											class="bs-example form-horizontal" method="POST">
+												<form action="${ctx}/group/regist.do" class="bs-example form-horizontal" method="POST">
 													<span style="float: right"><button type="submit"
 															style="padding: 10px">선택완료</button></span> 
 															<span style="float: right" style="padding: 10px"> </span>
@@ -85,6 +49,7 @@
 												<thead>
 													<tr>
 														<th class="text-center">선택</th>
+														<th class="text-center">번호</th>
 														<th class="text-center">가이드 아이디</th>
 														<th class="text-center">가이드경험</th>
 														<th class="text-center">언어능력</th>
@@ -102,13 +67,17 @@
 														<c:otherwise>
 															<c:forEach var="list" items="${joinList}"
 																varStatus="sts">
+																<input type="hidden" name="travelPlanId" value="${list.travelPlanId }">
+																<input type="hidden" name="joinId" value="${list.joinId }">
 																	<tr>
-																		<td class="text-center"><input type="checkbox" name="check" ></td>
+																		
+																		<td class="text-center"><input type="checkbox" name="check" value="${list.guideId }"></td>
+																		<td class="text-center">${sts.count}</td>
 																		<td class="text-center">${list.guideId}</td>
 																		<td class="text-center">${list.guideExperience}</td>
 																		<td class="text-center">${list.speakingAbility}</td>
-																		
-																		<button type="button" href="${pageContext.request.contextPath}/guide/searchJoinDetail.do?joinId=${list.joinId }">상세보기</button>
+						
+																		<td><a href="${ctx}/guide/searchJoinDetail.do?joinId=${list.joinId }">상세보기</a></td>
 																	</tr>
 																</c:forEach> 
 														</c:otherwise>

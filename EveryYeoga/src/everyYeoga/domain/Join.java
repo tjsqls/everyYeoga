@@ -19,11 +19,26 @@ public class Join {
 	private String selfIntroduction;
 	private String joinReason;
 	private String guideGrade;
-
+	private String travelPlanId; //2017.12.02 필드 추가 선빈
 	private String guideId; // 2017.11.30 User guide를 String guideId로 변경
 	private List<Evaluation> evaluations;
 	private List<GuideHistory> guideHistories;
 	private List<Report> reports;
+	
+	public int getNumberOfGuideHistories() {
+		if(guideHistories == null) {
+			return 0;
+		}
+		
+		return guideHistories.size();
+	}
+	public int getNumberOfReports() {
+		if(reports == null) {
+			return 0;
+		}
+		
+		return reports.size();
+	}
 
 	public String getJoinId() {
 		return joinId;
@@ -112,5 +127,12 @@ public class Join {
 	public void setReports(List<Report> reports) {
 		this.reports = reports;
 	}
+	public String getTravelPlanId() {
+		return travelPlanId;
+	}
+	public void setTravelPlanId(String travelPlanId) {
+		this.travelPlanId = travelPlanId;
+	}
+	
 
 }

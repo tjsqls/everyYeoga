@@ -8,14 +8,14 @@
 
 			<ul class="style2">
 				<li><a
-					href="${pageContext.request.contextPath}/user/myPage.do"><h3>회원정보</h3></a></li>
+					href="${pageContext.request.contextPath}/user/detail.do"><h3>회원정보</h3></a></li>
 				<a
 					href="${pageContext.request.contextPath}/travel/travelPlanList.do"><h3>여행
 						검색</h3></a>
 				</li>
 
 				<li><a
-					href="${pageContext.request.contextPath}/group/joiningGroupList.do"><h3>참여중인
+					href="${pageContext.request.contextPath}/group/groupList.do"><h3>참여중인
 							모임</h3></a></li>
 				<li><a
 					href="${pageContext.request.contextPath}/travel/myTravelPlan.do"><h3>내가

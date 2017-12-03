@@ -6,9 +6,7 @@
 <head>
 <title>Verti by HTML5 UP</title>
 <%@ include file="/views/layout/common.jsp"%>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="stylesheet" href="../../assets/css/main.css" />
+
 </head>
 <body class="left-sidebar">
 	<div id="page-wrapper">
@@ -19,7 +17,7 @@
 		<div id="main-wrapper">
 			<div class="container">
 				<div class="row 50%">
-					
+
 					<%@ include file="/views/layout/sidebar.jsp"%>
 					<div class="8u 12u$(medium) important(medium)">
 						<div id="content">
@@ -30,9 +28,6 @@
 
 								<div class="table-responsive">
 									<div class="well">
-										<form
-											action="${pageContext.request.contextPath}/guide/joinDetail.do"
-											class="bs-example form-horizontal" method="POST">
 											<fieldset>
 												<div class="form-group">
 													<label class="col-lg-2 control-label"><h3>지역</h3></label>
@@ -78,30 +73,77 @@
 														<font>${join.joinReason}</font>
 													</div>
 												</div>
-												<c:choose>
-														<c:when test="${empty evaluation}">
+												<div class="form-group">
+													<label class="col-lg-2 control-label"><h3>신고</h3></label>
+
+													<div class="col-lg-10">
+														<font>신고횟수 : <a
+													href="teamPlayerList.do?id=${baseballTeam.teamId }">${join.numberOfReports }</a>회</font>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-lg-2 control-label"><h3>가이드 경험</h3></label>
+
+													<div class="col-lg-10">
+														<font>가이드횟수 : <a
+													href="teamPlayerList.do?id=${baseballTeam.teamId }">${join.numberOfGuideHistories }</a>회</font>
+													</div>
+												</div>
+												
+												
+												<div class="form-group">
+													<label class="col-lg-2 control-label"><h3>평가</h3></label>
+												
+												<div class="table-responsive">
+													<table
+														class="table table-striped table-bordered table-hover">
+														<colgroup>
+															<col width="100" />
+															<col width="*" />
+															<col width="120" />
+															<col width="70" />
+															<col width="50" />
+														</colgroup>
+														<thead>
 															<tr>
-																<th colspan="5" class="text-center"></th>
+																<th class="text-center">평가번호</th>
+																<th class="text-center">별점</th>
+																<th class="text-center">좋았던점</th>
+																<th class="text-center">나빴던점</th>
+
 															</tr>
-														</c:when>
-														<c:otherwise>
-															<c:forEach var="evaluation" items="${evaluation}"
-																varStatus="sts">
+														</thead>
+														<tbody>
+
+															<c:choose>
+																<c:when test="${empty join.evaluations}">
 																	<tr>
-																		<td class="text-center">${evaluation.stars}</td>
-																		<td class="text-center">${evaluation.cons}</td>
-																		<td class="text-center">${evaluation.pros}</td>
-																		
+																		<th colspan="5" class="text-center">평가가 없습니다.</th>
 																	</tr>
-																</c:forEach> 
-														</c:otherwise>
-													</c:choose>
+																</c:when>
+																<c:otherwise>
+																	<c:forEach var="evaluation" items="${join.evaluations}"
+																		varStatus="sts">
+																		<tr>
+																			<td class="text-center">${sts.count}</td>
+																			<td class="text-center">${evaluation.stars}</td>
+																			<td class="text-center">${evaluation.pros}</td>
+																			<td class="text-center">${evaluation.cons}</td>
+																		</tr>
+																	</c:forEach>
+																</c:otherwise>
+															</c:choose>
+														</tbody>
+													</table>
+
+												</div>
+												</div>
 
 												<br /> <br />
 												<div class="form-group"></div>
-												
+
 											</fieldset>
-										</form>
+
 										<input type=button value="확인" onClick="history.back();">
 									</div>
 								</div>

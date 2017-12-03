@@ -70,9 +70,9 @@ public class TravelServiceLogic implements TravelService {
 
 
 	@Override//test완료
-	public boolean registJoin(Join join, String travelPlanId) {
+	public boolean registJoin(Join join) {
 		// 진휘
-		return guideStore.createJoin(join, travelPlanId);
+		return guideStore.createJoin(join);
 	}
 
 
@@ -115,84 +115,7 @@ public class TravelServiceLogic implements TravelService {
 		// 진휘
 		return travelStore.deleteTravelPlan(travelPlanId);
 	}
-		@Test
-		public void testRegistJoin() {
-	/*	TravelPlan t = new TravelPlan();
-		t.setSpeakingAbility("0");
-		t.setPreferGuide("0");
-		t.setTheme("0");
-		t.setTravelArea("0");
-		t.setNumberOfVisits("0");
-		t.setNumberOfTraveler("0");
-		t.setGatheringStatus("0");
-		t.setSelfIntroduction("0");
-		User u = new User();
-		u.setId("0");
-		t.setTraveler(u);
-		service.registTravelPlan(t);*/
-
-	/*	Join j = new Join();
-		User u = new User();
-		TravelPlan travel = new TravelPlan();
-		travel.setTravelPlanId("9999999");
-		u.setId("999999");
-		j.setJoinId("99999");
-		j.setGuide(u);
-		j.setSpeakingAbility("990");
-		j.setTravelArea("990");
-		j.setGuideExperience("990");
-		j.setSelfIntroduction("990");
-		j.setJoinReason("990");
-		service.registJoin(j, travel.getTravelPlanId());
-	 */
-
-//	List<TravelPlan> list = service.searchTravelPlansByTravelPlan("지니", "지니", "17/12/01");
-//	assertEquals("3", list.get(0).getTraveler().getId());
-//	System.out.println(list.size());
 		
-		
-	/*	List<Join> l = service.searchGuide("1");
-		System.out.println("size: "+l.size());
-		System.out.println("theme"+l.get(0).getGuideHistories().get(0).getTheme());
-		System.out.println("이유 "+l.get(0).getReports().get(0).getReportReason());
-		System.out.println("cc "+l.get(0).getEvaluations().get(0).getPros());
-	 */
-	//		Evaluation e = new Evaluation();
-	//		e.setCons("d");
-	//		e.setEvaluationId("2");
-	//		e.setPros("d");
-	//		e.setStars(3);
-	//		User tu = new User();
-	//		User gu = new User();
-	//		gu.setId("2");
-	//		tu.setId("1");
-	//		
-	//		e.setTraveler(tu);
-	//		e.setGuide(gu);
-	//		service.registEvaluation(e);
-
-	//		
-	//		List<Evaluation> list = service.searchEvaluation("2");
-	//		System.out.println(list.size());
-
-	//		TravelPlan t = service.searchTravelPlan("2");
-	//		System.out.println(t.getSpeakingAbility());
-
-	//		assertEquals(true, service.removeTravelPlan("2"));
-
-	//		List<TravelPlan> list = service.searchTravelPlansByTravelPlan("인천", "중간", "17/11/11");
-	//		System.out.println(list.size());
-	//		
-	//		System.out.println("aaaaaaaaaaaaa");
-	//		Join j = service.searchJoinDetail("1");
-	//		System.out.println(j.getGuideExperience());
-			List<Join> list = guideStore.retrieveGuide("0");
-			assertEquals("1", list.get(0).getGuideId());
-			assertEquals("33", list.get(0).getSpeakingAbility());
-		//	System.out.println(list.get(0).get   .toString());
-	
-
-			}
 	@Override //test 완료
 	public List<Join> searchGuide(String travelPlanId) {// 여행계획에 참여신청한 가이드 목록
 		// 진휘
@@ -203,7 +126,9 @@ public class TravelServiceLogic implements TravelService {
 			Join j = new Join();
 			j=js.get(i);
 			List<GuideHistory> cGs = historyStore.retrieveCheckedGuideHistory(j.getGuideId(), "확인");
+			if(historyStore.retrieveUncheckedGuideHistory(j.getGuideId(), "미확인")!=null) {
 			cGs.addAll(historyStore.retrieveUncheckedGuideHistory(j.getGuideId(), "미확인"));
+			}
 			j.setGuideHistories(cGs);
 			j.setReports(reportStore.retrieveReport(j.getGuideId()));
 			j.setEvaluations(guideStore.retrieveEvaluation(j.getGuideId()));
@@ -218,7 +143,6 @@ public class TravelServiceLogic implements TravelService {
 		// 진휘
 		Join join = new Join();
 		Join j = guideStore.retrieveJoinDetail(joinId);
-		j.setGuideId(joinId);
 
 		List<GuideHistory> cGs = historyStore.retrieveCheckedGuideHistory(j.getGuideId(), "확인");
 		cGs.addAll(historyStore.retrieveCheckedGuideHistory(j.getGuideId(), "미확인"));
@@ -251,6 +175,13 @@ public class TravelServiceLogic implements TravelService {
 	public List<TravelPlan> searchAllTravelPlans() {
 		// TODO Auto-generated method stub
 		return travelStore.retrieveAllTravelPlans();
+	}
+
+
+	@Override
+	public void removeJoin(String guideId, String travelPlanId) {
+		// 선빈
+		guideStore.deleteJoin(guideId, travelPlanId);
 	}
 
 
