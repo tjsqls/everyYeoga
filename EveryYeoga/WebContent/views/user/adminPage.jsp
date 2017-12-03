@@ -5,9 +5,11 @@
 <!DOCTYPE HTML>
 
 <html>
+
 <head>
 <title>Verti by HTML5 UP</title>
 <%@ include file="/views/layout/common.jsp" %>
+
 
 </head>
 <body class="left-sidebar">

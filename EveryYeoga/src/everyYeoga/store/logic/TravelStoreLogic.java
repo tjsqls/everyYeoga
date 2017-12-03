@@ -155,13 +155,13 @@ public class TravelStoreLogic implements TravelStore {
 
 
 	@Override
-	public TravelPlan retrieveTravelPlanByUserId(String userId) {
+	public TravelPlan retrieveTravelPlanByUserId(String travelerId, String gathringStatus) {
 		SqlSession session = factory.getSession();
 		TravelPlan travelPlan = null;
 		try {
 			TravelMapper mapper = session.getMapper(TravelMapper.class);
 
-			travelPlan = mapper.retrieveTravelPlanByUserId(userId);
+			travelPlan = mapper.retrieveTravelPlanByUserId(travelerId, gathringStatus);
 		}finally {
 			session.close();
 		}

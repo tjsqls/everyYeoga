@@ -167,6 +167,7 @@ public class GroupServiceLogic implements GroupService{
 		Date today = new Date(Calendar.getInstance().getTimeInMillis());
 		group.setRegDate(today);
 		group.setTravelPlanId(travelPlanId);
+		group.setGroupId(travelPlanId);
 		groupStore.createGroup(group);
 		
 	}
@@ -186,12 +187,8 @@ public class GroupServiceLogic implements GroupService{
 	@Override
 	public List<Group> retrieveJoiningGroupAll(String userId) {
 		// 선빈
-		List<Group> list = groupStore.retrieveJoiningGroupAll(userId);
-		for(int i=0; i<list.size(); i++) {
-			List<Article> articles = articleStore.retreiveAll(list.get(i).getGroupId());
-			list.get(i).setArticles(articles);
-		}
-		return null;
+
+		return groupStore.retrieveJoiningGroupAll(userId);
 	}
 
 

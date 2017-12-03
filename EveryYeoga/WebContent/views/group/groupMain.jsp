@@ -1,26 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE HTML>
 
 <html>
 <head>
 <title>Verti by HTML5 UP</title>
 <%@ include file="/views/layout/common.jsp"%>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="stylesheet" href="${ctx }/assets/css/main.css" />
-
-
-<script type="text/javascript">
-	function button_event() {
-		if (confirm("정말 삭제하시겠습니까??") == true) { //확인
-			document.form.submit();
-		} else { //취소
-			return;
-		}
-	}
-</script>
 
 
 </head>
@@ -42,8 +29,11 @@
 									<h3>모임 게시판*이름변경</h3>
 								</div>
 
-
-								<span style="float: right"><button>추가모집 하기</button> </span>
+					
+	
+										<span style="float: right"><a
+											href="${ctx }/group/groupModifyStatus.do?travelPlanId=${group.travelPlanId}">추가모집
+												하기</a> </span>
 
 								<div class="table-responsive">
 									<div class="well">
@@ -76,8 +66,9 @@
 															</tr>
 														</c:when>
 														<c:otherwise>
-															<c:forEach var="article" items="${articles }" varStatus="sts">
-															
+															<c:forEach var="article" items="${articles }"
+																varStatus="sts">
+
 																<tr>
 																	<td class="text-center">${article.articleId }</td>
 																	<td><a
@@ -91,10 +82,11 @@
 															</c:forEach>
 														</c:otherwise>
 													</c:choose>
-													
+
 												</tbody>
 											</table>
-											<a href="${ctx}/article/regist.do?groupId=${group.groupId}">게시물 올리기 </a>
+											<a href="${ctx}/article/regist.do?groupId=${group.groupId}">게시물
+												올리기 </a>
 										</div>
 									</div>
 								</div>
@@ -136,6 +128,6 @@
 		<script src="assets/js/util.js"></script>
 		<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 		<script src="assets/js/main.js"></script>
-</div>
+	</div>
 </body>
 </html>

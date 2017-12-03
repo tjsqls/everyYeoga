@@ -8,13 +8,7 @@
 <html>
 <head>
 <title>Verti by HTML5 UP</title>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="stylesheet" href="${pageContext.request.contextPath }/assets/css/main.css" />
-<link href="${pageContext.request.contextPath }/resources/css/bootstrap_modify.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath }/resources/css/layout.css" rel="stylesheet">
-<script src="${pageContext.request.contextPath }/resources/js/jquery-2.1.3.js"></script>
-<script src="${pageContext.request.contextPath }/resources/js/jquery.blockUI.js"></script>
+<%@ include file="/views/layout/common.jsp" %>
 
 </head>
 <body class="left-sidebar">
@@ -29,39 +23,7 @@
 		<div id="main-wrapper">
 			<div class="container">
 				<div class="row 50%">
-					<div class="4u 12u$(medium)">
-
-
-						<div id="sidebar">
-
-							<!-- Sidebar -->
-							<section>
-								<ul class="style2">
-									<li><a
-										href="${pageContext.request.contextPath}/user/myPage.jsp"><h3>회원정보</h3></a></li>
-									<a
-										href="${pageContext.request.contextPath}/travel/travelPlanList.do"><h3>여행
-											검색</h3></a>
-									</li>
-
-									<li><a
-										href="${pageContext.request.contextPath}/group/joiningGroupList.do"><h3>참여중인
-												모임</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/travel/myTravelPlan.do"><h3>내가
-												올린 여행계획</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/history/searchTravelerHistory.do"><h3>여행
-												내역</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/history/searchGuideHistory.do"><h3>가이드
-												내역</h3></a></li>
-								</ul>
-								</footer>
-							</section>
-
-						</div>
-					</div>
+					<%@ include file="/views/layout/sidebar.jsp"%>
 					<div class="8u 12u$(medium) important(medium)">
 						<div id="content">
 							<div class="col-sm-9 col-lg-9">

@@ -41,7 +41,7 @@ public class TravelController {
 		travelPlan.setTravelerId(user.getId());
 
 		travelService.registTravelPlan(travelPlan);
-		return "travel/travelPlanList";
+		return "redirect:/travel/myTravelPlan.do";
 	}
 
 	@RequestMapping(value = "modify.do", method = RequestMethod.GET)
@@ -62,17 +62,15 @@ public class TravelController {
 		return "travel/myTravelPlanList"; // --> 처리해야한다.(searchTravelPlan으루)
 	}
 
-	@RequestMapping(value = "myTravelPlan.do")
-	public ModelAndView searchTravelPlanByUserId(HttpServletRequest req) {
+	@RequestMapping(value = "myTravelPlan.do", method=RequestMethod.GET)
+	public String searchTravelPlanByUserId(HttpServletRequest req, Model model) {
 		//진휘
 		HttpSession session = req.getSession();
 		User user = (User) session.getAttribute("loginedUser");
-
+		
 		TravelPlan travelPlan = travelService.searchTravelPlanByUserId(user.getId());
-
-		ModelAndView modelAndView = new ModelAndView("travel/myTravelPlan");
-		modelAndView.addObject("travelPlan", travelPlan);
-		return modelAndView;
+		model.addAttribute("travelPlan", travelPlan);
+		return "travel/myTravelPlan";
 	}
 
 	@RequestMapping(value = "travelPlanList.do")

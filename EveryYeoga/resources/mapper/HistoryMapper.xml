@@ -60,13 +60,13 @@
   	<select id="retrieveUncheckedGuideHistory" parameterType="map" resultMap="guideHistoryMap">
   		SELECT guideHistoryId, travelEndStatus, travelerName, travelArea, startDate, endDate, theme, guideId
   		FROM guideHistory_tb 
-  		WHERE guideId = #{guideId} AND travelEndStatus = '미확인'
+  		WHERE guideId = #{guideId} AND travelEndStatus = #{travelEndStatus}
   	</select>
   	
   	<select id="retrieveCheckedGuideHistory" parameterType="map" resultMap="guideHistoryMap">
   		SELECT guideHistoryId, travelEndStatus, travelerName, travelArea, startDate, endDate, theme, guideId
   		FROM guideHistory_tb 
-  		WHERE guideId = #{guideId} AND travelEndStatus = '확인'
+  		WHERE guideId = #{guideId} AND travelEndStatus = #{travelEndStatus}
   	</select>
   	
   </mapper>

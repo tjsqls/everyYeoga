@@ -8,14 +8,12 @@
 <title>Verti by HTML5 UP</title>
 		<%@ include file="/views/layout/common.jsp"%>
 
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="stylesheet" href="../../assets/css/main.css" />
+
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-<link rel="stylesheet" href="/resources/demos/style.css">
+
 <script>
 $(function() {
 	$("#satartDate").datepicker({
@@ -48,7 +46,7 @@ $(function() {
 										<div class="row">
 											<div class="col-sm-12 col-lg-12">
 												<form
-													action="${pageContext.request.contextPath}/travel/searchTravelPlan.do"
+													action="${ctx}/travel/searchTravelPlan.do"
 													class="bs-example form-horizontal" method="POST">
 													<span style="float: right"><button type="submit"
 															style="padding: 10px">검색</button></span> <span
@@ -92,6 +90,7 @@ $(function() {
 																		<td class="text-center">${travelPlan.theme}</td>
 																		<td class="text-center">${travelPlan.gatheringStatus}</td>
 																		<td class="text-center">${travelPlan.travelerId}</td>
+																		<td class="text-center"><a href="${ctx}/guide/registJoin.do?travelPlanId=${travelPlan.travelPlanId}">참여 신청하기</a> </td>
 																	</tr>
 																</c:forEach>
 														</c:otherwise>
@@ -140,12 +139,7 @@ $(function() {
 
 	<!-- Scripts -->
 
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/jquery.dropotron.min.js"></script>
-	<script src="assets/js/skel.min.js"></script>
-	<script src="assets/js/util.js"></script>
-	<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-	<script src="assets/js/main.js"></script>
+
 
 </body>
 </html>

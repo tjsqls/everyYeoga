@@ -80,17 +80,30 @@ public class GuideStoreLogic implements GuideStore {
 	}
 
 	@Override
-	public boolean createJoin(Join join, String travelPlanId) {
+	public boolean createJoin(Join join) {
 		//진휘
 		SqlSession session = factory.getSession();
 		try {
 			GuideMapper mapper = session.getMapper(GuideMapper.class);
-			mapper.createJoin(join, travelPlanId);
+			mapper.createJoin(join);
 			session.commit();
 		}finally {
 			session.close();
 		}
 		return true;
+	}
+
+	@Override
+	public void deleteJoin(String guideId, String travelPlanId) {
+		// 선빈
+		SqlSession session = factory.getSession();
+		try {
+			GuideMapper mapper = session.getMapper(GuideMapper.class);
+			mapper.deleteJoin(guideId, travelPlanId);
+			session.commit();
+		}finally {
+			session.close();
+		}
 	}
 
 }

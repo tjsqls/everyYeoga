@@ -5,9 +5,8 @@
 <html>
 <head>
 <title>Verti by HTML5 UP</title>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="stylesheet" href="../../assets/css/main.css" />
+<%@ include file="/views/layout/common.jsp"%>
+
 </head>
 <body class="left-sidebar">
 	<div id="page-wrapper">
@@ -18,37 +17,8 @@
 		<div id="main-wrapper">
 			<div class="container">
 				<div class="row 50%">
-					<div class="4u 12u$(medium)">
-						<div id="sidebar">
 
-							<!-- Sidebar -->
-							<section>
-								<ul class="style2">
-									<li><a
-										href="${pageContext.request.contextPath}/user/myPage.do"><h3>회원정보</h3></a></li>
-									<a
-										href="${pageContext.request.contextPath}/travel/travelPlanList.do"><h3>여행
-											검색</h3></a>
-									</li>
-
-									<li><a
-										href="${pageContext.request.contextPath}/group/joiningGroupList.do"><h3>참여중인
-												모임</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/travel/myTravelPlan.do"><h3>내가
-												올린 여행계획</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/history/searchTravelerHistory.do"><h3>여행
-												내역</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/history/searchGuideHistory.do"><h3>가이드
-												내역</h3></a></li>
-								</ul>
-								</footer>
-							</section>
-
-						</div>
-					</div>
+					<%@ include file="/views/layout/sidebar.jsp"%>
 					<div class="8u 12u$(medium) important(medium)">
 						<div id="content">
 							<div class="col-sm-9 col-lg-9">
@@ -58,9 +28,6 @@
 
 								<div class="table-responsive">
 									<div class="well">
-										<form
-											action="${pageContext.request.contextPath}/guide/joinDetail.do"
-											class="bs-example form-horizontal" method="POST">
 											<fieldset>
 												<div class="form-group">
 													<label class="col-lg-2 control-label"><h3>지역</h3></label>
@@ -106,11 +73,78 @@
 														<font>${join.joinReason}</font>
 													</div>
 												</div>
+												<div class="form-group">
+													<label class="col-lg-2 control-label"><h3>신고</h3></label>
+
+													<div class="col-lg-10">
+														<font>신고횟수 : <a
+													href="teamPlayerList.do?id=${baseballTeam.teamId }">${join.numberOfReports }</a>회</font>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-lg-2 control-label"><h3>가이드 경험</h3></label>
+
+													<div class="col-lg-10">
+														<font>가이드횟수 : <a
+													href="teamPlayerList.do?id=${baseballTeam.teamId }">${join.numberOfGuideHistories }</a>회</font>
+													</div>
+												</div>
+												
+												
+												<div class="form-group">
+													<label class="col-lg-2 control-label"><h3>평가</h3></label>
+												
+												<div class="table-responsive">
+													<table
+														class="table table-striped table-bordered table-hover">
+														<colgroup>
+															<col width="100" />
+															<col width="*" />
+															<col width="120" />
+															<col width="70" />
+															<col width="50" />
+														</colgroup>
+														<thead>
+															<tr>
+																<th class="text-center">평가번호</th>
+																<th class="text-center">별점</th>
+																<th class="text-center">좋았던점</th>
+																<th class="text-center">나빴던점</th>
+
+															</tr>
+														</thead>
+														<tbody>
+
+															<c:choose>
+																<c:when test="${empty join.evaluations}">
+																	<tr>
+																		<th colspan="5" class="text-center">평가가 없습니다.</th>
+																	</tr>
+																</c:when>
+																<c:otherwise>
+																	<c:forEach var="evaluation" items="${join.evaluations}"
+																		varStatus="sts">
+																		<tr>
+																			<td class="text-center">${sts.count}</td>
+																			<td class="text-center">${evaluation.stars}</td>
+																			<td class="text-center">${evaluation.pros}</td>
+																			<td class="text-center">${evaluation.cons}</td>
+																		</tr>
+																	</c:forEach>
+																</c:otherwise>
+															</c:choose>
+														</tbody>
+													</table>
+
+												</div>
+												</div>
 
 												<br /> <br />
 												<div class="form-group"></div>
+
 											</fieldset>
-										</form>
+
+										<input type=button value="확인" onClick="history.back();">
 									</div>
 								</div>
 							</div>

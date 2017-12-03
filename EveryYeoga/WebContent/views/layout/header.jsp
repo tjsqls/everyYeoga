@@ -3,7 +3,6 @@
 
 		<div id="header-wrapper">
 			<header id="header" class="container">
-
 				<!-- Logo -->
 				<div id="logo">
 					<h1>
@@ -18,9 +17,9 @@
 				<nav id="nav">
 					<ul>
 						<li class="current"><a
-							href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp">여행검색</a></li>
+							href="${pageContext.request.contextPath}/travel/travelPlanList.do">여행검색</a></li>
 						<li class="current"><a
-							href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp">모임관리</a></li>
+							href="${pageContext.request.contextPath}/group/groupList.do">모임관리</a></li>
 
 						<c:choose>
 							<c:when test="${loginedUser eq null}">

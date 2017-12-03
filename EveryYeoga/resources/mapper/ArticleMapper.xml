@@ -75,7 +75,6 @@
   	SELECT articleId, title, content, writer, regDate, groupId
   	FROM article_tb
   	WHERE groupId = #{groupId}
-  
   </select>
   
   <insert id="createReport" parameterType="map">

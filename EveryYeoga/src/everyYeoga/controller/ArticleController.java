@@ -47,11 +47,13 @@ public class ArticleController {
 //	@RequestMapping(value="regist.do", method=RequestMethod.POST)
 //	public ModelAndView registArticle(Article article, HttpServletRequest req, MultipartHttpServletRequest multipartRequest) {
 //		Attachment attachments = new Attachment();
-//		MultipartRequest mpr = 
+//		Iterator<String> it = multipartRequest.getFileNames();
 //		
 //		
 //		groupService.registArticle(article, gorupId ,attachments);
-//		return "redirect:/board/find.do?boardId="+article.getBoardId();
+//		
+//		ModelAndView modelAndView = new ModelAndView("group/groupMain");
+//		return modelAndView;
 //	}
 	@RequestMapping(value="/remove.do", method=RequestMethod.GET)
 	public String removeArticle(HttpServletRequest req, String articleId) {
@@ -86,7 +88,7 @@ public class ArticleController {
 		Article article = groupService.retreiveArticleByArticleId(articleId);
 		model.addAttribute("article", article);
 		model.addAttribute("user", article.getUser());
-		
+
 		return "article/articleDetail";
 	}
 	
@@ -107,15 +109,10 @@ public class ArticleController {
 	    Iterator<String> itr =  multipartRequest.getFileNames(); //파일들을 Iterator 에 넣는다.
 	 
 	    while (itr.hasNext()) { //파일을 하나씩 불러온다.
-	 
 	        MultipartFile mpf = multipartRequest.getFile(itr.next());
-	 
 	        fileHashMap = new HashMap<String, String>();
-	 
 	        String originalFilename = mpf.getOriginalFilename(); //파일명
-	 
 	        String fileFullPath = filePath+"/"+originalFilename; //파일 전체 경로
-	        
 	        try {
 	            //파일 저장
 	            mpf.transferTo(new File(fileFullPath)); //파일저장
