@@ -92,6 +92,7 @@ $(function() {
 																		<td class="text-center">${travelPlan.travelerId}</td>
 																		<td class="text-center"><a href="${ctx}/guide/registJoin.do?travelPlanId=${travelPlan.travelPlanId}">참여 신청하기</a> </td>
 																	</tr>
+														
 																</c:forEach>
 														</c:otherwise>
 													</c:choose>
