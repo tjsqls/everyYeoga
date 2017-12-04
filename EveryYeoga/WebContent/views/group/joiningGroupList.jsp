@@ -27,17 +27,6 @@
 								</div>
 
 								<div class="table-responsive">
-<<<<<<< HEAD
-									<div class="well">
-							
-						</tbody>
-					</table>
-				</div>
-        </div>
-    </div>
-</div>
-
-=======
 									<div class="well">
 
 
@@ -87,7 +76,6 @@
 										</div>
 									</div>
 
->>>>>>> branch 'master' of https://github.com/tjsqls/everyYeoga.git
 								</div>
 							</div>
 						</div>

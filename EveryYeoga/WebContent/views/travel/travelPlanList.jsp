@@ -6,7 +6,7 @@
 <html>
 <head>
 <title>Verti by HTML5 UP</title>
-		<%@ include file="/views/layout/common.jsp"%>
+<%@ include file="/views/layout/common.jsp"%>
 
 
 <link rel="stylesheet"
@@ -15,11 +15,11 @@
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
 <script>
-$(function() {
-	$("#satartDate").datepicker({
-		dateFormat : 'yy/mm/dd'
+	$(function() {
+		$("#satartDate").datepicker({
+			dateFormat : 'yy/mm/dd'
+		});
 	});
-});
 </script>
 
 </head>
@@ -45,8 +45,7 @@ $(function() {
 									<div class="well">
 										<div class="row">
 											<div class="col-sm-12 col-lg-12">
-												<form
-													action="${ctx}/travel/searchTravelPlan.do"
+												<form action="${ctx}/travel/searchTravelPlan.do"
 													class="bs-example form-horizontal" method="POST">
 													<span style="float: right"><button type="submit"
 															style="padding: 10px">검색</button></span> <span
@@ -54,9 +53,9 @@ $(function() {
 														id="satartDate" name="satartDate" type="text"
 														placeholder="여행 시작 날짜 (yy/mm/dd)" value="" /></span> <span
 														style="float: right" style="padding: 10px"> <input
-														name="speakingAbility" placeholder="언어구사능력" value="" /></span> 
-														<span style="float: right" style="padding: 10px"> 
-														<input name="travelArea" placeholder="지역" value="" /></span>
+														name="speakingAbility" placeholder="언어구사능력" value="" /></span> <span
+														style="float: right" style="padding: 10px"> <input
+														name="travelArea" placeholder="지역" value="" /></span>
 												</form>
 											</div>
 
@@ -84,25 +83,25 @@ $(function() {
 														<c:otherwise>
 															<c:forEach var="travelPlan" items="${list}"
 																varStatus="sts">
-																	<tr>
-																		<td class="text-center">${sts.count}</td>
-																		<td class="text-center">${travelPlan.travelArea}</td>
-																		<td class="text-center">${travelPlan.theme}</td>
-																		<td class="text-center">${travelPlan.gatheringStatus}</td>
-																		<td class="text-center">${travelPlan.travelerId}</td>
-																		<td class="text-center"><a href="${ctx}/guide/registJoin.do?travelPlanId=${travelPlan.travelPlanId}">참여 신청하기</a> </td>
-																	</tr>
-																</c:forEach>
+																<tr>
+																	<td class="text-center">${sts.count}</td>
+																	<td class="text-center">${travelPlan.travelArea}</td>
+																	<td class="text-center">${travelPlan.theme}</td>
+																	<td class="text-center">${travelPlan.gatheringStatus}</td>
+																	<td class="text-center">${travelPlan.travelerId}</td>
+																	<td class="text-center"><a
+																		href="${ctx}/guide/registJoin.do?travelPlanId=${travelPlan.travelPlanId}">참여
+																			신청하기</a></td>
+																</tr>
+															</c:forEach>
 														</c:otherwise>
 													</c:choose>
 												</tbody>
 											</table>
 										</div>
-
 										<span style="float: right"><a
 											href="${pageContext.request.contextPath}/travel/regist.do"><h3>여행계획
 													등록하기</h3></a></span>
-
 
 									</div>
 								</div>

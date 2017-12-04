@@ -1,10 +1,12 @@
-
+ 
 package everyYeoga.controller;
 
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -86,6 +88,9 @@ public class GroupController {
 	
 	@RequestMapping(value="groupList.do", method=RequestMethod.GET)
 	public String joiningGroup(HttpServletRequest req, Model model) {
+	
+
+
 		HttpSession session = req.getSession();
 		User user = (User) session.getAttribute("loginedUser");
 		List<Group> group = groupService.retrieveJoiningGroupAll(user.getId());

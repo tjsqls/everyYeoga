@@ -31,28 +31,28 @@
 		travelArea, numberOfVisits, theme, numberOfTraveler, preferGuide,
 		selfIntroduction, gatheringStatus, startDate,endDate 
 		FROM travelPlan_tb 
-		WHERE travelArea=#{travelArea} </select>
+		WHERE travelArea=#{travelArea}AND gatheringStatus ='모집중'  </select>
 
 	<select id="retrieveTravelPlanByTravelAreaAndStartDate"
 		parameterType="map" resultMap="TravelPlanMap"> SELECT travelPlanId, travelerId,
 		speakingAbility, travelArea, numberOfVisits, theme, numberOfTraveler,
 		preferGuide, selfIntroduction, gatheringStatus, startDate,endDate FROM
 		travelPlan_tb WHERE travelArea = #{travelArea} AND startDate =
-		#{startDate} </select>
+		#{startDate} AND gatheringStatus ='모집중' </select>
 
 	<select id="retrieveTravelPlanByTravelAreaAndSpeakingAbility"
 		parameterType="map" resultMap="TravelPlanMap"> SELECT travelPlanId, travelerId,
 		travelArea, speakingAbility, numberOfVisits, theme, numberOfTraveler,
 		preferGuide, selfIntroduction, gatheringStatus, startDate,endDate FROM
 		travelPlan_tb WHERE travelArea = #{travelArea} AND speakingAbility =
-		#{speakingAbility} </select>
+		#{speakingAbility} AND gatheringStatus ='모집중' </select>
 
 	<select id="retrieveTravelPlanByTravelAreaAndSpeakingAbilityAndStartDate"
 		parameterType="map" resultMap="TravelPlanMap"> SELECT travelPlanId, travelerId,
 		 travelArea,speakingAbility, numberOfVisits, theme, numberOfTraveler,
 		preferGuide, selfIntroduction, gatheringStatus, startDate,endDate FROM
 		travelPlan_tb WHERE travelArea=#{travelArea} AND speakingAbility =
-		#{speakingAbility} AND startDate = #{startDate} </select>
+		#{speakingAbility} AND startDate = #{startDate} AND gatheringStatus ='모집중' </select>
 
 	<select id="retrieveTravelPlan" parameterType="String"
 		resultMap="TravelPlanMap"> SELECT travelPlanId, travelerId, speakingAbility,

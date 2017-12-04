@@ -64,6 +64,7 @@ public class TravelServiceLogic implements TravelService {
    public boolean registTravelPlan(TravelPlan travelPlan) {
       // 진휘
 	   travelPlan.setGatheringStatus("모집중");
+	   
       return travelStore.createTravelPlan(travelPlan);
       
    }

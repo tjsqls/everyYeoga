@@ -6,7 +6,7 @@
 
 <html>
 <head>
-<title>Verti by HTML5 UP</title>
+<title>모두의 여가</title>
 
 <%@ include file="/views/layout/common.jsp"%>
 </head>
@@ -30,7 +30,8 @@
 
 								<div class="table-responsive">
 									<div class="well">
-
+									
+									
 										<fieldset>
 											<div class="form-group">
 												<label class="col-lg-2 control-label"><h3>언어 구사
@@ -39,7 +40,6 @@
 													<font>${travelPlan.speakingAbility}</font>
 												</div>
 											</div>
-
 											<div class="form-group">
 												<label class="col-lg-2 control-label"><h3>여행 지역</h3></label>
 
@@ -63,7 +63,6 @@
 
 												<div class="col-lg-10">
 													<font>${travelPlan.startDate}</font>
-
 												</div>
 											</div>
 
@@ -120,7 +119,6 @@
 											</span> <br /> <br />
 
 										</fieldset>
-
 									</div>
 								</div>
 							</div>
