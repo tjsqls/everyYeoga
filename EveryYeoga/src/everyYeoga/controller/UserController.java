@@ -128,7 +128,7 @@ public class UserController {         // 인애
 				session.invalidate();
 			}
 		}
-		return "main";
+		return "redirect:/travel/searchTravelPlan.do";
 	}
 
 	@RequestMapping(value = "logout.do", method = RequestMethod.GET)
