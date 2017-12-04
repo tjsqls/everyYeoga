@@ -38,7 +38,7 @@ public class UserController {         // 인애
 		if (!registed) {
 			return "redirect:login.do";
 		}
-		return "redirect:main";
+		return "travel/travelPlanList";
 	}
 
 	@RequestMapping(value = "detail.do", method = RequestMethod.GET)
@@ -116,8 +116,9 @@ public class UserController {         // 인애
 					e.printStackTrace();
 				}
 			return "user/login";
+			
 		}
-		}else {
+		
 			User loginedUser = userService.login(user);
 			
 			if (loginedUser != null) {
@@ -128,7 +129,8 @@ public class UserController {         // 인애
 				session.invalidate();
 			}
 		}
-		return "redirect:/travel/searchTravelPlan.do";
+			
+		return "travel/travelPlanList";
 	}
 
 	@RequestMapping(value = "logout.do", method = RequestMethod.GET)

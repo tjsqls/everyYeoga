@@ -11,6 +11,6 @@ public interface HistoryService {
 	public boolean removeTravelerHistory(String travelerHistoryId);
 	public List<GuideHistory> searchGuideHistory(String guideId, String travelEndStatus); //2017.11.24 파라미터 추가 String travelEndStatus 선빈
 	public void registGuideHistory(GuideHistory guideHistory);
-	public void modifyGuideHistory(GuideHistory guideHistory);//2017.11.24 파라미터 변경 String guideHistoryId -> GuideHistory guideHistory  선빈
+	public void modifyGuideHistory(String guideId, String travelerName, String travelEndStatus);//2017.11.24 파라미터 변경 String guideHistoryId -> GuideHistory guideHistory  선빈
 
 }

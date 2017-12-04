@@ -62,9 +62,9 @@ public class HistoryServiceLogic implements HistoryService {
 	}
 
 	@Override
-	public void modifyGuideHistory(GuideHistory guideHistory) {
+	public void modifyGuideHistory(String guideId, String travelerName, String travelEndStatus) {
 		// 선빈
-		historyStore.updateGuideHistory(guideHistory);
+		historyStore.updateGuideHistory(guideId, travelerName, travelEndStatus);
 	}
 	
 	

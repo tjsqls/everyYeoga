@@ -29,12 +29,20 @@
 									<h3>모임 게시판*이름변경</h3>
 								</div>
 
-					
-	
-										<span style="float: right"><a
-											href="${ctx }/group/groupModifyStatus.do?travelPlanId=${group.travelPlanId}">추가모집
-												하기</a> </span>
-
+								<c:choose>
+								<c:when test="${gatheringStatus == '모집완료' && travelUserId == loginedUser.id  }">
+								<span style="float: right"><a
+									href="${ctx }/group/groupModifyStatus.do?travelPlanId=${group.travelPlanId}">추가모집
+										하기</a> </span> 
+								</c:when>
+								<c:otherwise>
+								</c:otherwise>
+								</c:choose>
+										<br>
+										<span style="float: right"><a href="${ctx }/group/groupOut.do?groupId=${group.groupId}">모임탈퇴</a> </span> 
+										<br>
+										<span style="float: right"><a href="${ctx }/group/removeGroup.do?groupId=${group.groupId}">모임종료</a> </span>
+										<br>
 								<div class="table-responsive">
 									<div class="well">
 										<div>
@@ -122,12 +130,7 @@
 
 		<!-- Scripts -->
 
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/jquery.dropotron.min.js"></script>
-		<script src="assets/js/skel.min.js"></script>
-		<script src="assets/js/util.js"></script>
-		<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-		<script src="assets/js/main.js"></script>
+
 	</div>
 </body>
 </html>

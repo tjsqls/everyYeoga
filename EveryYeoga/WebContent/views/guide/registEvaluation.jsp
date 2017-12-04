@@ -33,39 +33,41 @@
 											action="${pageContext.request.contextPath}/guide/registEvaluation.do"
 											class="bs-example form-horizontal" method="POST">
 											<fieldset>
-
-												<label class="col-lg-2 control-label"><h3>가이드:${evaluation.guide.name }</h3></label>
-
+											<c:forEach items="${guideIds}" var="guideId">
+												<label class="col-lg-2 control-label"><h3>가이드:${guideId }</h3></label>
+												<input type="hidden" name="guideId" value="${guideId }">
 
 												<div class="form-group">
 													<label class="col-lg-2 control-label"><h3>좋았던
 															점</h3></label> <input type="text" name="pros"
-														value="${evaluation.pros}">
+														value="">
 													<div class="col-lg-10"></div>
 												</div>
 
 
 												<div class="form-group">
 													<label class="col-lg-2 control-label"><h3>나빴던
-															점</h3></label> <input type="text" name="pros"
-														value="${evaluation.cons}">
+															점</h3></label> <input type="text" name="cons"
+														value="">
 													<div class="col-lg-10"></div>
 												</div>
 
-												<label class="col-lg-2 control-label"><h3>별점</h3></label> <span
-													class="star-input"> <span class="input"> <input
-														type="radio" name="star-input" value="1" id="p1">
-														<label for="p1">1</label> <input type="radio"
-														name="star-input" value="2" id="p2"> <label
-														for="p2">2</label> <input type="radio" name="star-input"
-														value="3" id="p3"> <label for="p3">3</label> <input
-														type="radio" name="star-input" value="4" id="p4">
-														<label for="p4">4</label> <input type="radio"
-														name="star-input" value="5" id="p5"> <label
+												<label class="col-lg-2 control-label"><h3>별점</h3></label>
+												 <span class="star-input"> <span class="input"> 
+														<input type="radio" name="stars" value="1" id="p1"> <label 
+														for="p1">1</label> 
+														<input type="radio" name="stars" value="2" id="p2"> <label
+														for="p2">2</label> 
+														<input type="radio" name="stars" value="3" id="p3"> <label 
+														for="p3">3</label> 
+														<input type="radio" name="stars" value="4" id="p4"> <label 
+														for="p4">4</label> 
+														<input type="radio" name="stars" value="5" id="p5"> <label
 														for="p5">5</label>
-												</span> <output for="star-input">
-														<b>0</b>점
-													</output>
+												</span> 
+													</c:forEach>
+													
+												
 												</span> <br /> <br /> <br /> <br />
 
 												<div class="form-group">

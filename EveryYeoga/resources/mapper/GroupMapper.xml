@@ -13,7 +13,6 @@
   <insert id="createUserInGroup" parameterType="map">
   	INSERT INTO group_user_tb(groupId, userId)
   	VALUES(#{groupId}, #{userId})
-  
   </insert>
   
   <delete id="deleteGroup" parameterType="String">
@@ -40,7 +39,7 @@
  
   
   <select id="retrieveJoiningUserId" parameterType="String" resultType="String">
-  	SELECT groupId, userId
+  	SELECT userId
   	FROM group_user_tb
   	WHERE groupId = #{groupId}
   </select>

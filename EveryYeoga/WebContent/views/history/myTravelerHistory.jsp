@@ -61,10 +61,10 @@
 																<td class="text-center">${travelerHistory.travelArea}</td>
 																<td class="text-center">${travelerHistory.theme}</td>
 																<td class="text-center">${travelerHistory.guideName}</td>
-																<td class="text-center"><fmt:formatDate value="${travelerHistory.startDate}" pattern="yyyy-MM-dd" /></td>
-																<td class="text-center"><fmt:formatDate value="${travelerHistory.endDate}" pattern="yyyy-MM-dd" /></td>
+																<td class="text-center">${travelerHistory.startDate}</td>
+																<td class="text-center">${travelerHistory.endDate}</td>
 																		<td><a
-														href="${pageContext.request.contextPath }/history/remove.do?travelerHistoryId=${travelerHistory.travelerHistoryId}"
+														href="${ctx }/history/remove.do?travelerHistoryId=${travelerHistory.travelerHistoryId}"
 														>삭제</a></td>
 															</tr>
 														</c:forEach>
