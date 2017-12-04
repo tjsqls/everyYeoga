@@ -33,9 +33,9 @@ public class ReportStoreLogicTest {
 
 	@Test
 	public void testRetrieveCommentReport() {
-		//인애
+//		//인애
 //		Report report = store.retrieveCommentReport("7");
-//
+//System.out.println(report);
 //		assertNotNull(report);
 //		assertEquals("도배", report.getReportReason());
 	}
@@ -43,9 +43,9 @@ public class ReportStoreLogicTest {
 	@Test
 	public void testRetrieveReport() {
 		//인애
-//		List<Report> list = store.retrieveReport("22");
+//		List<Report> list = store.retrieveReport("qwe");
 //		
-//		assertEquals(list.get(1).getReportReason(), "음란");
+//		assertEquals(list.get(0).getReportReason(), "도배");
 	}
 
 	@Test

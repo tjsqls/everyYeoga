@@ -21,7 +21,6 @@ import everyYeoga.service.GroupService;
 import everyYeoga.service.ReportService;
 import everyYeoga.service.UserService;
 
-
 @Controller
 @RequestMapping("report") 
 public class ReportController {
@@ -32,48 +31,44 @@ public class ReportController {
 	private GroupService groupService;
 	@Autowired
 	private UserService userService;
-	
 
-	@RequestMapping(value = "/regist.do", method = RequestMethod.GET)
-	public String registReport(HttpServletRequest req, String classifyReport, String classifyId, String userId, Model model) { // userId = 신고당한 회원
-
-		HttpSession session = req.getSession();
-		if (session == null || session.getAttribute("loginedUser") == null) {
-			return "redirect:login";
-		}
-
-		User reportUser = (User) session.getAttribute("loginedUser");
-		model.addAttribute("reportUser", reportUser);  // 신고한 회원
+	@RequestMapping(value = "regist.do", method = RequestMethod.GET)
+	public String registReport(HttpServletRequest req, String classifyReport, String userId, String classifyId, Model model) { // userId = 신고할 회원
 		
-		User reportedUser = userService.searchByUserId(userId);  // 신고 당한 회원
-		model.addAttribute("reportedUser", reportedUser);
+		HttpSession session = req.getSession();
+		Report report = new Report();
 
-		if (classifyReport.equals("article")) {
-			model.addAttribute("reportedArticle", groupService.retreiveArticleByArticleId(classifyId)); // classifyId =  comment/article 의 id																									
+		User reportUser = (User)session.getAttribute("loginedUser");
+		model.addAttribute("reportUser", reportUser);  // 신고한 회원
+		model.addAttribute("reportedUser", userService.searchByUserId(userId));	
+		
+		report.setClassifyReport(classifyReport);
+		report.setClassifyId(classifyId);
+		
+		model.addAttribute("report", report);
 
-		} else if (classifyReport.equals("comment")) {			
-			model.addAttribute("reportedComment", groupService.retreiveCommentByCommentId(classifyId));
-		}
-		return "redirect:report"; /* 신고 작성 페이지로 이동 */
+		return "report/report"; /* 신고 작성 페이지로 이동 */
 	}
 
-	@RequestMapping(value = "/regist.do", method = RequestMethod.POST)
-	public String registReport(Report report) {
-
+	@RequestMapping(value = "regist.do", method = RequestMethod.POST)
+	public String registReport(Report report, String reportedUserId, String reportUserId) {
 		Date today = new Date(Calendar.getInstance().getTimeInMillis());
 		report.setRegDate(today);
+	
+		reportService.registReport(report, reportedUserId, reportUserId);
 
-		reportService.registReport(report, "classifyId");
-
-		return "redirect:groupMain"; /* 모임 메인 */
+		return "redirect:/report/searchAll.do"; 
 	}
 
+
 	@RequestMapping("searchArticle.do") /* 인애 - 2017.11.25 article search 파라미터 String groupId 뺌 */
-	public ModelAndView searchArticleReport(@RequestParam("articleId") String reportedArticleId) { // jsp에서 넘어오는 값의이름이 articleId 면 두고 아니면 빼기																						
+	public ModelAndView searchArticleReport(@RequestParam("articleId") String reportedArticleId, String reportedUserId, String reportUserId) { // jsp에서 넘어오는 값의이름이 articleId 면 두고 아니면 빼기																						
 
 		Report articleReportDetail = reportService.searchArticleReport(reportedArticleId);
+		articleReportDetail.setReportUser(userService.searchByUserId(reportUserId));
+		articleReportDetail.setReportedUser(userService.searchByUserId(reportedUserId));
 
-		ModelAndView modelAndView = new ModelAndView("reportDetail"); // report detail (상세 신고내역)
+		ModelAndView modelAndView = new ModelAndView("/report/reportDetail"); // report detail (상세 신고내역)
 		modelAndView.addObject("articleReport", articleReportDetail);
 
 		return modelAndView;
@@ -86,19 +81,43 @@ public class ReportController {
 
 		Report commentReportDetail = reportService.searchCommentReport(reportedCommentId);
 
-		ModelAndView modelAndView = new ModelAndView("reportDetail"); // report detail (상세 신고내역)
+		ModelAndView modelAndView = new ModelAndView("/report/reportDetail"); // report detail (상세 신고내역)
 		modelAndView.addObject("commentReport", commentReportDetail);
 
+		return modelAndView;
+	}
+	
+	@RequestMapping("searchUserReport.do")
+	public ModelAndView searchReport(String reportedUserId) {  // 2017.11.29 컨트롤러 빠져잇어서 추가 인애
+		List<Report> list = reportService.searchReport(reportedUserId);
+
+		ModelAndView modelAndView = new ModelAndView("/report/reportList"); 
+		modelAndView.addObject("userReport", list);
+		
 		return modelAndView;
 	}
 
 	@RequestMapping("searchAll.do")
 	public ModelAndView searchReportList() {
 
+		
 		List<Report> list = reportService.searchAllReport();
-		ModelAndView modelAndView = new ModelAndView("adminPage"); // 모든 신고내역 보는곳 : 관리자페이지
+		ModelAndView modelAndView = new ModelAndView("/user/adminPage"); // 모든 신고내역 보는곳 : 관리자페이지
 		modelAndView.addObject("reportList", list);
 
 		return modelAndView;
+	}
+	
+	@RequestMapping(value="remove.do", method=RequestMethod.POST)
+	public String removeReported(Report report, String reportedUserId) {
+		if(report.getClassifyReport().equals("article")) {
+			reportService.acceptReport(report, report.getClassifyId(), reportedUserId);
+			groupService.removeArticle(report.getClassifyId());
+		}else if(report.getClassifyReport().equals("comment")){
+			reportService.acceptReport(report, report.getClassifyId(), reportedUserId);
+		groupService.removeComment(report.getClassifyId());
+		
+		}
+		return "redirect:/report/searchAll.do";
 	}
 }

@@ -1,6 +1,10 @@
 package everyYeoga.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -82,19 +86,49 @@ public class UserController {         // 인애
 	}
 
 	@RequestMapping(value = "login.do", method = RequestMethod.POST)
-	public String login(User user, HttpServletRequest req) {
+	public String login(User user, HttpServletRequest req, HttpServletResponse response) {		
 		
-		User loginedUser = userService.login(user);
+		String loginId = req.getParameter("id");
+		String password = req.getParameter("pw");
 		
-		if(loginedUser != null) {
-			HttpSession session = req.getSession();
-			session.setAttribute("loginedUser", loginedUser);
-		}else {
-			HttpSession session = req.getSession();
-			session.invalidate();
-		}
-		return "travel/travelPlanList";
+		 response.setContentType("text/html; charset=UTF-8");
+         PrintWriter out;
+		
+		if(userService.searchByUserId(loginId) == null) {			
+		   
+			try {
+				out = response.getWriter();
+	            out.println("<script>alert('존재하지않는 아이디 입니다.'); history.go(-1);</script>");
+	            out.flush();
 
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			return "user/login";
+		}else if(userService.searchByUserId(loginId) != null){
+			if (!password.equals(userService.searchByUserId(loginId).getPw())) {
+				try {
+					out = response.getWriter();
+		            out.println("<script>alert('비밀번호를 확인 해주세요.'); history.go(-1);</script>");
+		            out.flush();
+
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			return "user/login";
+		}
+		}else {
+			User loginedUser = userService.login(user);
+			
+			if (loginedUser != null) {
+				HttpSession session = req.getSession();
+				session.setAttribute("loginedUser", loginedUser);
+			} else {
+				HttpSession session = req.getSession();
+				session.invalidate();
+			}
+		}
+		return "main";
 	}
 
 	@RequestMapping(value = "logout.do", method = RequestMethod.GET)

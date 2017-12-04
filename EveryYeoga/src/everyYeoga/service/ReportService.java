@@ -9,5 +9,6 @@ public interface ReportService {
 	public Report searchCommentReport(String reportedCommentId);
 	public List<Report> searchReport(String reportedUserId);
 	public List<Report> searchAllReport();
-	public boolean registReport(Report report, String classifyId); // 2017.11.24 파라미터 String classifyId 인애 추가 for 신고 생성
+	public boolean registReport(Report report, String reportedUserId, String reportUserId); 
+	public boolean acceptReport(Report report, String classifyId, String userId); // 2017.12.02 메소드 추가 인애
 }

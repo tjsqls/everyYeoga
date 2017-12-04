@@ -15,6 +15,7 @@ public interface ArticleMapper {
 	public void deleteAttachmentBygroupId(String groupId);
 	public boolean updateArticle(Article article);
 	public boolean deleteArticle(String articleId);
+	public boolean deleteArticleReport(String articleId);
 	public void deleteArticleBygroupId(String groupId);
 	public Article retreiveArticleByArticleId (String articleId); 
 	public List<Article> retreiveAll(String groupId); 

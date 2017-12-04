@@ -48,11 +48,16 @@
   	SET title = #{title}, content = #{content}
   	WHERE articleId = #{articleId}
   </update>
-  
+
 
   
   <delete id="deleteArticle" parameterType="String">
   	DELETE FROM article_tb
+  	WHERE articleId = #{articleId}
+  </delete>
+  
+  <delete id="deleteArticleReport" parameterType="String">
+  	DELETE FROM article_report_tb
   	WHERE articleId = #{articleId}
   </delete>
   

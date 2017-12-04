@@ -117,6 +117,7 @@ public class GroupServiceLogic implements GroupService{
 		// 선빈
 		if(articleStore.retreiveArticleByArticleId(articleId)!=null) {
 		articleStore.deleteArticle(articleId);
+		articleStore.deleteArticleReport(articleId);
 		commentStore.deleteCommentByArticleId(articleId);
 		articleStore.deleteAttachment(articleId);
 		return true;
@@ -147,6 +148,7 @@ public class GroupServiceLogic implements GroupService{
 	@Override
 	public boolean removeComment(String commentId) {
 		// 선빈
+		commentStore.deleteCommentReport(commentId);
 		return commentStore.deleteComment(commentId);
 	}
 

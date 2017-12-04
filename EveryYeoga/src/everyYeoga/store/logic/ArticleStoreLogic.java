@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import everyYeoga.domain.Article;
 import everyYeoga.domain.Attachment;
@@ -163,6 +164,19 @@ public class ArticleStoreLogic implements ArticleStore{
 		try {
 			ArticleMapper mapper = session.getMapper(ArticleMapper.class);
 			mapper.createReport(classifyReport, articleId);
+			session.commit();
+		}finally {
+			session.close();
+		}
+		return false;
+	}
+
+	@Override
+	public boolean deleteArticleReport(String articleId) {
+		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
+		try {
+			ArticleMapper mapper = session.getMapper(ArticleMapper.class);
+			mapper.deleteArticleReport(articleId);
 			session.commit();
 		}finally {
 			session.close();
