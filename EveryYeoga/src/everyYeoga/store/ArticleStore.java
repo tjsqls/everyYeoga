@@ -8,7 +8,7 @@ import everyYeoga.domain.Article;
 import everyYeoga.domain.Attachment;
 
 public interface ArticleStore {
-	public boolean createArticle(String groupId, Article article);
+	public boolean createArticle(Article article); // 2017.12.04 파라미터 수정 String groupId 제거
 	public boolean createAttachment(String groupId, String articleId, Attachment attachment); //2017.11.23 선빈 수정
 	public Attachment retreiveAttachmentByArticleId(String articleId); 
 	public boolean deleteAttachment(String articleId);

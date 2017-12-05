@@ -138,12 +138,12 @@ function comment_report(){
 																placeholder="댓글쓰기"></textarea>
 															<span style="float: right"> <input type="submit"
 																class="comment_submit" value="댓글 등록">
-
 															</span>
 														</form>
+														
 													</div>
 												</div>
-
+<input type=button value="목록" onClick="history.back();">
 											</div>
 										</div>
 									</div>

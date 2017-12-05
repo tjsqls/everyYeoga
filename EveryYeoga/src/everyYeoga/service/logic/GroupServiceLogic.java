@@ -147,13 +147,14 @@ public class GroupServiceLogic implements GroupService {
 	public boolean registArticle(Article article, String groupId, List<Attachment> attachments) {
 		// 선빈
 		if (article != null) {
-			String userId = article.getUser().getId();
-			article.setUser(userStore.retrieveByUserId(userId));
 			Date today = new Date(Calendar.getInstance().getTimeInMillis());
 			article.setRegDate(today);
-			articleStore.createArticle(groupId, article);
+			articleStore.createArticle(article);
+			String articleId = article.getArticleId();
+			if(attachments != null) {
 			for (int i = 0; i < attachments.size(); i++) {
-				articleStore.createAttachment(groupId, article.getArticleId(), attachments.get(i));
+				articleStore.createAttachment(groupId, articleId, attachments.get(i));
+			}
 			}
 			return true;
 		}
