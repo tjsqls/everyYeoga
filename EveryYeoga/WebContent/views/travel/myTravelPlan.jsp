@@ -6,7 +6,7 @@
 
 <html>
 <head>
-<title>Verti by HTML5 UP</title>
+<title>모두의 여가</title>
 
 <%@ include file="/views/layout/common.jsp"%>
 </head>
@@ -30,97 +30,38 @@
 
 								<div class="table-responsive">
 									<div class="well">
-
-										<fieldset>
-											<div class="form-group">
-												<label class="col-lg-2 control-label"><h3>언어 구사
-														능력</h3></label>
-												<div class="col-lg-10">
-													<font>${travelPlan.speakingAbility}</font>
-												</div>
-											</div>
-
-											<div class="form-group">
-												<label class="col-lg-2 control-label"><h3>여행 지역</h3></label>
-
-												<div class="col-lg-10">
-													<font>${travelPlan.travelArea}</font>
-												</div>
-											</div>
-
-											<div class="form-group">
-												<label class="col-lg-2 control-label"><h3>여행 지역
-														방문 횟수</h3></label>
-												<div class="col-lg-10">
-													<font>${travelPlan.numberOfVisits}</font>
-												</div>
-											</div>
-
-
-											<div class="form-group">
-												<label class="col-lg-2 control-label"><h3>여행
-														시작일</h3></label>
-
-												<div class="col-lg-10">
-													<font>${travelPlan.startDate}</font>
-
-												</div>
-											</div>
-
-											<div class="form-group">
-												<label class="col-lg-2 control-label"><h3>여행
-														종료일</h3></label>
-
-												<div class="col-lg-10">
-													<font>${travelPlan.endDate}</font>
-												</div>
-											</div>
-
-
-											<div class="form-group">
-												<label class="col-lg-2 control-label"><h3>여행 테마</h3></label>
-
-
-												<div class="col-lg-10">
-													<font>${travelPlan.theme}</font>
-												</div>
-											</div>
-
-
-											<div class="form-group">
-												<label class="col-lg-2 control-label"><h3>여행 인원</h3></label>
-
-												<div class="col-lg-10">
-													<font>${travelPlan.numberOfTraveler}</font>
-												</div>
-											</div>
-
-
-
-											<div class="form-group">
-												<label class="col-lg-2 control-label"><h3>선호
-														가이드</h3></label>
-												<div class="col-lg-10">
-													<font>${travelPlan.preferGuide}</font>
-												</div>
-											</div>
-
-
-											<div class="form-group">
-												<label class="col-lg-2 control-label"><h3>자기 소개</h3></label>
-
-												<div class="col-lg-10">
-													<font>${travelPlan.selfIntroduction }</font>
-												</div>
-											</div>
-											<span style="float: right">
+									
+									<table class="table table-striped table-bordered table-hover">
+									<thead>
+													<tr>
+														<th class="text-left">언어구사능력</th>
+														<th class="text-center">${travelPlan.speakingAbility}</th><tr>
+														<th class="text-left">여행지역</th>
+														<th class="text-center">${travelPlan.travelArea}</th><tr>
+														<th class="text-left">여행지역방문횟수</th>
+														<th class="text-center">${travelPlan.numberOfVisits}</th><tr>
+														<th class="text-left">여행시작일</th>
+														<th class="text-center">${travelPlan.startDate}</th><tr>
+														<th class="text-left">여행종료일</th>
+														<th class="text-center">${travelPlan.endDate}</th><tr>
+														<th class="text-left">여행테마</th>
+														<th class="text-center">${travelPlan.theme}</th><tr>
+														<th class="text-left">여행인원</th>
+														<th class="text-center">${travelPlan.numberOfTraveler}</th><tr>
+														<th class="text-left">선호가이드</th>
+														<th class="text-center">${travelPlan.preferGuide}</th><tr>
+														<th class="text-left">자기소개</th>
+														<th class="text-center">${travelPlan.selfIntroduction}</th><tr>
+													</tr>
+													<tr>
+											
+									
+									</table>
+									<span style="float: right">
 												<button type="button"
 													onclick="location.href='${pageContext.request.contextPath}/guide/searchGuide.do?travelPlanId=${travelPlan.travelPlanId }' ">가이드
 													보기</button>
 											</span> <br /> <br />
-
-										</fieldset>
-
 									</div>
 								</div>
 							</div>

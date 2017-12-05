@@ -122,6 +122,7 @@ public class GroupServiceLogic implements GroupService {
 	@Override
 	public Group retreiveJoiningGroup(String travelerId, String travelPlanId) {
 		// 선빈
+		
 		TravelPlan travelPlan = travelStore.retrieveTravelPlan(travelPlanId);
 		User traveler = new User();
 		Group group = groupStore.retreiveJoiningGroup(travelPlanId);

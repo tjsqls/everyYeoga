@@ -28,32 +28,28 @@
 
 								<div class="table-responsive">
 									<div class="well">
-										<form
-											action="${ctx}/guide/registJoin.do"
+										<form action="${ctx}/guide/registJoin.do"
 											class="bs-example form-horizontal" method="POST">
 											<fieldset>
-											<input type="hidden" name="travelPlanId" value="${travelPlanId }">
+												<input type="hidden" name="travelPlanId"
+													value="${travelPlanId }">
 												<div class="form-group">
-													<label class="col-lg-2 control-label"><h3>지역</h3></label> 
-													<input type="text" name="travelArea" value="">
+													<label class="col-lg-2 control-label"><h3>지역</h3></label> <input
+														type="text" name="travelArea" value="">
 													<div class="col-lg-10"></div>
 												</div>
 
 												<div class="form-group">
-													<label class="col-lg-2 control-label"><h3>언어
-															구사 능력</h3></label> <input type="text" name="speakingAbility"
-														value="">
+													<label class="col-lg-2 control-label"><h3>언어구사능력</h3></label>
+													<input type="text" name="speakingAbility" value="">
 													<div class="col-lg-10"></div>
 												</div>
 
 												<div class="form-group">
-													<label class="col-lg-2 control-label"><h3>가이드
-															경험</h3></label> <input type="text" name="guideExperience"
-														value="">
+													<label class="col-lg-2 control-label"><h3>가이드경험</h3></label>
+													<input type="text" name="guideExperience" value="">
 													<div class="col-lg-10"></div>
 												</div>
-
-
 												<div class="form-group">
 													<label class="col-lg-2 control-label"><h3>자기소개</h3></label>
 
@@ -65,8 +61,7 @@
 
 
 												<div class="form-group">
-													<label class="col-lg-2 control-label"><h3>신청
-															사유</h3></label>
+													<label class="col-lg-2 control-label"><h3>신청사유</h3></label>
 													<div class="col-lg-10">
 														<textarea class="form-control" name="joinReason" rows="2"
 															id="textArea"></textarea>
