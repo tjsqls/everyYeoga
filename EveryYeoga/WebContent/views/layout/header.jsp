@@ -37,7 +37,7 @@ width: 80%;
 <header>
 
  <div class="left col-xs-6">
-<h1 style="font-weight: bolder; margin-left: 200px; font-size: 40px; font-family: monospace; ">모두의 여가</h1>
+<h1 style="font-weight: bolder; margin-left: 200px; font-size: 40px; font-family: monospace; "> TITLE // 고칠부분: 평가하기 페이지, comment 에서의 writer 넘어가는거</h1>
  </div>
  
   <div class="right col-xs-6" >
@@ -77,7 +77,7 @@ width: 80%;
 				<c:choose>
 			<c:when test="${loginedUser.id == 'admin'}">
 		<li id="top">
-		<a href="${pageContext.request.contextPath}/travel/travelPlanList.do">HOME</a>&nbsp; &nbsp; &nbsp; 
+		<a href="${pageContext.request.contextPath}/views/main.jsp">HOME</a>&nbsp; &nbsp; &nbsp; 
 		<a href="${pageContext.request.contextPath}/travel/travelPlanList.do">여행검색</a> &nbsp; &nbsp; &nbsp; 
 		<a href="${pageContext.request.contextPath}/group/groupList.do">모임관리</a> &nbsp; &nbsp; &nbsp; 
 					<a href="${pageContext.request.contextPath}/user/searchAll.do">관리자 페이지</a></li>
@@ -85,7 +85,7 @@ width: 80%;
 			<c:otherwise>
 			
 				<li id="top">
-				<a href="${pageContext.request.contextPath}/travel/travelPlanList.do">HOME</a>&nbsp; &nbsp; &nbsp; 
+				<a href="${pageContext.request.contextPath}/views/main.jsp">HOME</a>&nbsp; &nbsp; &nbsp; 
 				<a href="${pageContext.request.contextPath}/travel/travelPlanList.do">여행검색</a>&nbsp; &nbsp; &nbsp; 
 						<a href="${pageContext.request.contextPath}/travel/regist.do">여행계획등록</a> &nbsp; &nbsp; &nbsp;
 						<a href="${pageContext.request.contextPath}/group/groupList.do">모임관리</a> </li>

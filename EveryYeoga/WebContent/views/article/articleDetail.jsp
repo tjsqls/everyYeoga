@@ -137,21 +137,23 @@ function comment_report(){
 														<tr>
 														<td>
 															<textarea class="input_write_comment" name="content"
+
 																placeholder="댓글쓰기" style="width: 450px;" rows="1"></textarea></td>
 															<td> <input type="submit"
 																class="comment_submit" value="등록" style="width: 80px; text-align: left; font-size: 17px; background-color: purple;"></td>
 																</tr>
 															</table>
+
 														</form>
-		
 													</div>
 												</div>
 												<br/>
 												<ul >
 												<li style="text-align: center;">
-<input type="button" class="comment_submit" value="목록" style="width: 80px; text-align: left; font-size: 17px; background-color: gray;"
-onclick="location.href=#">
+<input type="button" class="comment_submit" value="목록" style="width: 80px; text-align: left; font-size: 17px; background-color: gray; "
+onClick="history.back();">
 </li></ul>
+
 											</div>
 										</div>
 									</div>

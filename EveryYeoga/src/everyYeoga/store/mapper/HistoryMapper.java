@@ -3,6 +3,7 @@ package everyYeoga.store.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
+import org.junit.runners.Parameterized.Parameters;
 
 import everyYeoga.domain.GuideHistory;
 import everyYeoga.domain.TravelerHistory;
@@ -14,6 +15,6 @@ public interface HistoryMapper {
 	public List<GuideHistory> retrieveCheckedGuideHistory(@Param("guideId") String guideId, @Param("travelEndStatus")String travelEndStatus);
 	public List<GuideHistory> retrieveUncheckedGuideHistory(@Param("guideId") String guideId, @Param("travelEndStatus")String travelEndStatus);
 	public void createGuideHistory(GuideHistory guideHistory);
-	public void updateGuideHistory(GuideHistory guideHistory);
+	public void updateGuideHistory(@Param("guideId")String guideId, @Param("travelerName")String travelerName, @Param("travelEndStatus")String travelEndStatus);
 	public GuideHistory retrieveByGuideHistoryId(String guideHistoryId);//2017.11.23 메소드 추가 선빈
 }

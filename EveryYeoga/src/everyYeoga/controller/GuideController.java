@@ -1,5 +1,6 @@
 package everyYeoga.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -8,14 +9,18 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import everyYeoga.domain.Evaluation;
+import everyYeoga.domain.EvaluationList;
 import everyYeoga.domain.Join;
 import everyYeoga.domain.TravelPlan;
 import everyYeoga.domain.User;
+import everyYeoga.service.GroupService;
 import everyYeoga.service.TravelService;
 
 @Controller
@@ -24,6 +29,8 @@ public class GuideController {
 
 	@Autowired
 	private TravelService travelService;
+	@Autowired
+	private GroupService groupService;
 
 	@RequestMapping(value="registJoin.do", method=RequestMethod.GET) // registJoin.jsp
 	public String registJoin(String travelPlanId, Model model) {
@@ -70,18 +77,29 @@ public class GuideController {
 	}
 
 	@RequestMapping(value = "registEvaluation.do", method = RequestMethod.GET)
-	public String registEvaluation(HttpServletRequest req) {
+	public String registEvaluation(HttpServletRequest req, String groupId, Model model) {
 		//진휘
+		List<String> userIds = groupService.searchJoiningUserId(groupId);
+		List<String> guideIds = new ArrayList<>();
+		for(int i=0; i<userIds.size(); i++) {
+			if(!travelService.searchTravelPlan(groupId).getTravelerId().equals(userIds.get(i))) {
+			String guideId = userIds.get(i);
+			guideIds.add(guideId);
+			}
+		}
+		model.addAttribute("guideIds", guideIds);
 		return "guide/registEvaluation";
 	}
 
 	@RequestMapping(value = "registEvaluation.do", method = RequestMethod.POST)
-	public String registEvaluation(HttpServletRequest req, Evaluation evaluation) {
+	public String registEvaluation(HttpServletRequest req, EvaluationList list) {
 		//진휘
 		HttpSession session = req.getSession();
 		User user = (User) session.getAttribute("loginedUser");
-		evaluation.setTravelerId(user.getId());
-		travelService.registEvaluation(evaluation);
+		for(int i=0; i<list.getList().size(); i++) {
+		list.getList().get(i).setTravelerId(user.getId());
+		travelService.registEvaluation(list.getList().get(i));
+		}
 		return "travel/travelPlanList";
 	}
 

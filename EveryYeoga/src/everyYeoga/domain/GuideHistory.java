@@ -9,8 +9,8 @@ public class GuideHistory {
 	private String travelerName;
 	private String travelArea;
 	private String theme;
-	private Date startDate;
-	private Date endDate;
+	private String startDate; // 2017.12.04 Date -> String 변경 선빈
+	private String endDate;// 2017.12.04 Date -> String 변경 선빈
 	
 	private User guide; 
 	
@@ -55,19 +55,19 @@ public class GuideHistory {
 		this.theme = theme;
 	}
 
-	public Date getStartDate() {
+	public String getStartDate() {
 		return startDate;
 	}
 
-	public void setStartDate(Date startDate) {
+	public void setStartDate(String startDate) {
 		this.startDate = startDate;
 	}
 
-	public Date getEndDate() {
+	public String getEndDate() {
 		return endDate;
 	}
 
-	public void setEndDate(Date endDate) {
+	public void setEndDate(String endDate) {
 		this.endDate = endDate;
 	}
 

@@ -25,14 +25,14 @@ public class HistoryController {
 	@Autowired
 	private HistoryService historyService;
 
-	@RequestMapping(value = "/searchTravelerHistory.do", method = RequestMethod.GET)
+	@RequestMapping(value = "searchTravelerHistory.do", method = RequestMethod.GET)
 	public String searchTravelerHistoryList(HttpServletRequest req, Model model) {
 		HttpSession session = req.getSession();
 		User user = (User) session.getAttribute("loginedUser");
 
 		List<TravelerHistory> list = historyService.searchTravelerHistory(user.getId());
 		model.addAttribute("list", list);
-		return "/history/myTravelerHistory";
+		return "history/myTravelerHistory";
 	}
 
 	@RequestMapping(value = "remove.do", method = RequestMethod.GET)
@@ -41,7 +41,7 @@ public class HistoryController {
 		return "redirect:/history/searchTravelerHistory.do";
 	}
 
-	@RequestMapping(value = "/searchGuideHistory.do", method = RequestMethod.GET)
+	@RequestMapping(value = "searchGuideHistory.do", method = RequestMethod.GET)
 	public String searchGuideHistoryList(HttpServletRequest req, Model model) {
 		HttpSession session = req.getSession();
 		User user = (User) session.getAttribute("loginedUser");
@@ -49,6 +49,6 @@ public class HistoryController {
 		List<GuideHistory> flist = historyService.searchGuideHistory(user.getId(), "미확인");
 		model.addAttribute("tlist", tlist);
 		model.addAttribute("flist", flist);
-		return "/history/myGuideHistory";
+		return "history/myGuideHistory";
 	}
 }

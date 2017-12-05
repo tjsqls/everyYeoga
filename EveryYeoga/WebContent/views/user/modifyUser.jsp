@@ -55,7 +55,7 @@ function button_cancel(){
 									
 										<tr>
 											<td><label>ID</label></td>
-											<td><input style="height: 35px;" type="text" name="id" value="${user.id}"> </td>
+											<td><input style="height: 35px;" type="text" name="id" value="${user.id}" disabled="disabled"> </td>
 										</tr>
 
 
@@ -94,31 +94,11 @@ function button_cancel(){
 			</div>
 		</div>
 
-		<!-- Footer -->
-		<div id="footer-wrapper">
-			<footer id="footer" class="container">
-				<div class="row">
-					<div class="3u 6u(medium) 12u$(small)"></div>
-					<div class="3u 6u$(medium) 12u$(small)"></div>
-					<div class="3u 6u(medium) 12u$(small)"></div>
-					<div class="3u 6u$(medium) 12u$(small)"></div>
-				</div>
-				<div class="row">
-					<div class="12u">
-						<div id="copyright">
-							<ul class="menu">
-								<li>&copy; Untitled. All rights reserved</li>
-								<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</footer>
+		
 		</div>
 	<!-- Footer -->
 		<%@ include file="/views/layout/footer.jsp" %>
 
-	</div>
 
 	<!-- Scripts -->
 

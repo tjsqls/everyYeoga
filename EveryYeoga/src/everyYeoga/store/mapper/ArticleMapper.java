@@ -8,7 +8,7 @@ import everyYeoga.domain.Article;
 import everyYeoga.domain.Attachment;
 
 public interface ArticleMapper {
-	public boolean createArticle(@Param("groupId")String groupId, @Param("article")Article article);
+	public boolean createArticle(Article article);
 	public boolean createAttachment(@Param("groupId")String groupId, @Param("articleId")String articleId, @Param("attachment")Attachment attachment); //2017.11.23 선빈 수정
 	public Attachment retreiveAttachmentByArticleId(String articleId); 
 	public boolean deleteAttachment(String articleId);

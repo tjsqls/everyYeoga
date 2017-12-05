@@ -73,11 +73,8 @@
 																	<td class="text-center">${guideHistory.travelerName}</td>
 																	<td class="text-center">${guideHistory.travelArea}</td>
 																	<td class="text-center">${guideHistory.theme}</td>
-																	<td class="text-center"><fmt:formatDate
-																			value="${guideHistory.startDate}"
-																			pattern="yyyy-MM-dd" /></td>
-																	<td class="text-center"><fmt:formatDate
-																			value="${guideHistory.endDate}" pattern="yyyy-MM-dd" /></td>
+																	<td class="text-center">${guideHistory.startDate}</td>
+																	<td class="text-center">${guideHistory.endDate}</td>
 																</tr>
 															</c:forEach>
 														</c:otherwise>
@@ -121,11 +118,8 @@
 																	<td class="text-center">${tguideHistory.travelerName}</td>
 																	<td class="text-center">${tguideHistory.travelArea}</td>
 																	<td class="text-center">${tguideHistory.theme}</td>
-																	<td class="text-center"><fmt:formatDate
-																			value="${tguideHistory.startDate}"
-																			pattern="yyyy-MM-dd" /></td>
-																	<td class="text-center"><fmt:formatDate
-																			value="${tguideHistory.endDate}" pattern="yyyy-MM-dd" /></td>
+																	<td class="text-center">${tguideHistory.startDate}</td>
+																	<td class="text-center">${tguideHistory.endDate}</td>
 																</tr>
 															</c:forEach>
 														</c:otherwise>

@@ -17,9 +17,12 @@
    </resultMap>
 
   	
-  	<insert id="createArticle" parameterType="map">
+  	<insert id="createArticle" parameterType="Article">
+  		<selectKey keyProperty="articleId" resultType="string" order="BEFORE">
+			SELECT article_seq.NEXTVAL FROM dual
+		</selectKey>
   		INSERT INTO article_tb(articleId, title, content, writer, regDate, groupId)
-		VALUES(article_seq.NEXTVAL, #{article.title}, #{article.content}, #{article.writer}, #{article.regDate}, #{groupId})  	
+		VALUES(#{articleId}, #{title}, #{content}, #{writer}, #{regDate}, #{groupId})  	
   	</insert>
   	
   	<insert id="createAttachment" parameterType="map">

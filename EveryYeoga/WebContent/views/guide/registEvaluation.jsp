@@ -3,70 +3,68 @@
 <!DOCTYPE HTML>
 
 <html>
-<head>
-<title>Verti by HTML5 UP</title>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <%@ include file="/views/layout/common.jsp"%>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
 </head>
 <body class="left-sidebar">
 	<div id="page-wrapper">
-
+	
 		<!-- Header -->
-		<%@ include file="/views/layout/header.jsp"%>
-
-		<!-- Main -->
-		<div id="main-wrapper">
+		<%@ include file="/views/layout/header.jsp" %>
+			<div id="main-wrapper">
 			<div class="container">
-				<div class="row 50%">
-					<%@ include file="/views/layout/sidebar.jsp"%>
+				<div class="row 70%">
+		<%@ include file="/views/layout/sidebar.jsp" %>
+
 					<div class="8u 12u$(medium) important(medium)">
 						<div id="content">
 							<div class="col-sm-9 col-lg-9">
 								<div>
 									<h2>가이드 평가</h2>
+									<hr>
 								</div>
 
-								<div class="table-responsive">
-									<div class="well">
+								<div class="table-responsive" style="width: 800px;">
+								
 										<form
 											action="${pageContext.request.contextPath}/guide/registEvaluation.do"
 											class="bs-example form-horizontal" method="POST">
 											<fieldset>
-
-												<label class="col-lg-2 control-label"><h3>가이드:${evaluation.guide.name }</h3></label>
-
+											<c:forEach items="${guideIds}" var="guideId">
+												<label class="col-lg-2 control-label"><h3>가이드:${guideId }</h3></label>
+												<input type="hidden" name="guideId" value="${guideId }">
 
 												<div class="form-group">
 													<label class="col-lg-2 control-label"><h3>좋았던
 															점</h3></label> <input type="text" name="pros"
-														value="${evaluation.pros}">
+														value="">
 													<div class="col-lg-10"></div>
 												</div>
 
 
 												<div class="form-group">
 													<label class="col-lg-2 control-label"><h3>나빴던
-															점</h3></label> <input type="text" name="pros"
-														value="${evaluation.cons}">
+															점</h3></label> <input type="text" name="cons"
+														value="">
 													<div class="col-lg-10"></div>
 												</div>
 
-												<label class="col-lg-2 control-label"><h3>별점</h3></label> <span
-													class="star-input"> <span class="input"> <input
-														type="radio" name="star-input" value="1" id="p1">
-														<label for="p1">1</label> <input type="radio"
-														name="star-input" value="2" id="p2"> <label
-														for="p2">2</label> <input type="radio" name="star-input"
-														value="3" id="p3"> <label for="p3">3</label> <input
-														type="radio" name="star-input" value="4" id="p4">
-														<label for="p4">4</label> <input type="radio"
-														name="star-input" value="5" id="p5"> <label
+												<label class="col-lg-2 control-label"><h3>별점</h3></label>
+												 <span class="star-input"> <span class="input"> 
+														<input type="radio" name="stars" value="1" id="p1"> <label 
+														for="p1">1</label> 
+														<input type="radio" name="stars" value="2" id="p2"> <label
+														for="p2">2</label> 
+														<input type="radio" name="stars" value="3" id="p3"> <label 
+														for="p3">3</label> 
+														<input type="radio" name="stars" value="4" id="p4"> <label 
+														for="p4">4</label> 
+														<input type="radio" name="stars" value="5" id="p5"> <label
 														for="p5">5</label>
-												</span> <output for="star-input">
-														<b>0</b>점
-													</output>
-												</span> <br /> <br /> <br /> <br />
+												</span> 
+													</c:forEach>
 
 												<div class="form-group">
 													<div class="col-lg-10 col-lg-offset-2">
@@ -88,33 +86,10 @@
 		</div>
 
 		<!-- Footer -->
-		<div id="footer-wrapper">
-			<footer id="footer" class="container">
-				<div class="row">
-					<div class="3u 6u(medium) 12u$(small)"></div>
-					<div class="3u 6u$(medium) 12u$(small)"></div>
-					<div class="3u 6u(medium) 12u$(small)"></div>
-					<div class="3u 6u$(medium) 12u$(small)"></div>
-				</div>
-				<div class="row">
-					<div class="12u">
-						<div id="copyright">
-							<ul class="menu">
-								<li>&copy; Untitled. All rights reserved</li>
-								<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</footer>
-		</div>
-
-	</div>
+		<%@ include file="/views/layout/footer.jsp" %>
 
 	<!-- Scripts -->
-	<script
-		src="${pageContext.request.contextPath}/js/jquery-1.11.3.min.js"></script>
-	<script src="${pageContext.request.contextPath}/js/star.js"></script>
+
 	<script src="assets/js/jquery.min.js"></script>
 	<script src="assets/js/jquery.dropotron.min.js"></script>
 	<script src="assets/js/skel.min.js"></script>

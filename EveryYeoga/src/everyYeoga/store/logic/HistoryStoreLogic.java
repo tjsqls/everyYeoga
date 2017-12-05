@@ -101,12 +101,12 @@ public class HistoryStoreLogic implements HistoryStore {
 	}
 
 	@Override
-	public void updateGuideHistory(GuideHistory guideHistory) {
+	public void updateGuideHistory(String guideId, String travelerName, String travelEndStatus) {
 		// 선빈
 		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
 		try {
 			HistoryMapper mapper = session.getMapper(HistoryMapper.class);
-			mapper.updateGuideHistory(guideHistory);
+			mapper.updateGuideHistory(guideId, travelerName, travelEndStatus);
 			session.commit();
 		}finally {
 			session.close();

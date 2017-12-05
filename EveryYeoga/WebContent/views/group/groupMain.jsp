@@ -24,19 +24,23 @@
 			<div class="container">
 				<div class="row 70%">
 					<ul id="navii">
-			<legend> 내 모임 </legend>
-				<li><label style="color: tomato;">참여중인 여행자</label></li>
-				<li class="group"><a href="${pageContext.request.contextPath}/report/searchAll.do">신고내역 관리</a></li>
+			<legend style="font-weight: bold;"> 내 모임 </legend>
+				<li><label style="color: #8f5138;">참여중인 여행자</label></li>
+				<li class="group"><a href="#">xxxxxx</a></li>
 				<br>
-				<li><label style="color: #0080c0;">참여중인 가이드</label></li>
-				<li class="group"><a href="${pageContext.request.contextPath}/history/searchTravelerHistory.do">여행내역 관리</a></li>
+				<li><label style="color: #bb6333;">참여중인 가이드</label></li>
+				<li class="group"><a href="#">xxxxxx</a></li>
 				
 				<hr>
-				<li><input type="button" onclick="location.href='${ctx }/group/groupModifyStatus.do?travelPlanId=${group.travelPlanId}'" value="추가모집 하기" 
-				style="background-color: pink; height: 50%; margin-bottom: 10px;"></li>
 				<li><input type="button" onclick="location.href='${ctx}/article/regist.do?groupId=${group.groupId}'" value="게시물 올리기" 
-				style="background-color: gray;"></li>
-				
+				style="background-color: #fff0dd; height: 30px; width: 100px; font-size: 10px; color: gray;"></li>
+				<br/>
+				<li><input type="button" onclick="location.href='${ctx }/group/removeGroup.do?groupId=${group.groupId}'" value="모임 종료" 
+				style="background-color: #ffe6c6; height: 30px; width: 100px; font-size: 10px; color: gray;"></li>
+				<br/>
+				<li><input type="button" onclick="location.href='${ctx }/group/groupOut.do?groupId=${group.groupId}'" value="모임 탈퇴" 
+				style="background-color: #ffd9aa; height: 30px; width: 100px; font-size: 10px; color: gray;"></li>
+
 			</ul>
 
 					
@@ -47,10 +51,6 @@
 									<h3>내 모임</h3>
 									<hr>
 								</div>
-
-					
-	
-										
 
 								<div class="table-responsive">
 								
@@ -99,7 +99,15 @@
 															</c:forEach>
 														</c:otherwise>
 													</c:choose>
-
+<c:choose>
+								<c:when test="${gatheringStatus == '모집완료' && travelUserId == loginedUser.id  }">
+								<input type="button" onclick="location.href='${ctx }/group/groupModifyStatus.do?travelPlanId=${group.travelPlanId}'" value="가이드 추가 모집" 
+				style="background-color: #ff8040; height: 30px; width: 100px; font-size: 10px; margin-bottom: 20px;">
+							
+								</c:when>
+								<c:otherwise>
+								</c:otherwise>
+								</c:choose>
 												</tbody>
 											</table>
 											

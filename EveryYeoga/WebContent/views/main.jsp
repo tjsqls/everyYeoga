@@ -2,8 +2,8 @@
 <!DOCTYPE html>
 <html lang="ko">
 
-<head>
 		<%@ include file="/views/layout/common.jsp"%>
+<head>
 
 
 <link rel="stylesheet"
@@ -24,39 +24,46 @@ $(function() {
 		<!-- Header -->
 	<%@ include file="/views/layout/header.jsp" %>
 <br/>
-						<div id="content">
-							<div class="col-sm-19 col-lg-19">											
-								
-										<div class="row" style="margin-left: 300px;">
+					<div id="content" style="margin-left: 400px; width: 1000px;">
+							<div class="col-sm-19 col-lg-19">	
+							<div style="font-weight: bold; width: 800px;">
+									<h3 class="glyphicon glyphicon-search"> 여행검색하기</h3>
+									<hr>
+								</div>
+							
+							<div class="table-responsive">
+										<div class="row">
 											<div class="col-sm-12 col-lg-12">
-													<form
+												<form
 													action="${ctx}/travel/searchTravelPlan.do"
-													class="bs-example form-horizontal" method="POST">
-										<fieldset>
-										<legend style="width: 700px;">여행 계획 검색</legend>
+													class="bs-example form-horizontal" method="POST" style="width: 1000px;">
+
+											<table style=" width: 400px;">
+													<tr><td><span style="color: red; font-weight: bold; size: 8px; margin-bottom: 10px;">* 지역은 필수 선택 입니다.</span></td></tr>				
+													<tr><td><input type="text" name="travelArea" placeholder="지역" value="" style="width: 400px;" /></td></tr>
 													
-													<input style="width: 700px; height:40px;" id="satartDate" name="satartDate" type="text" placeholder="여행 시작 날짜 (yy/mm/dd)" value="" />
-													<br/>
-														<input  style="width: 700px; height:40px;"type="text" name="speakingAbility" placeholder="언어구사능력" value="" />
-														<br/>
-													<input  style="width: 700px; height:40px;" type="text" name="travelArea" placeholder="지역" value="" />
-													<br/>
-														<button style="background-color: tomato; margin-left: 620px;" type="submit">검색</button>
+													<tr><td style="margin-top: 5px;"> <input style="width: 300px;" id="satartDate" name="satartDate" type="text"
+														placeholder="여행 시작 날짜 (yy/mm/dd)" value="" /></td>
+					<td style="margin-top: 10px;"> <input type="text" name="speakingAbility" placeholder="언어구사능력" style="width: 300px;" value="" /></td></tr>
+					   									</table><table>
+														<tr><td style="text-align: center;" ><button type="submit" style="width: 200px; background-color: tomato;">검색</button></td></tr>
 														
-											</fieldset>
+											</table>
+
 												</form>
-												<br/><br/>
 											</div>
 
 										</div>
-							
 							</div>
-						</div>
-				
+							</div>
+							</div>
+							
 	
 <br/><br/>
 <hr>
 
+	<!-- Footer -->
+		<%@ include file="/views/layout/footer.jsp" %>
 
 
 	<!-- Scripts -->
@@ -67,6 +74,6 @@ $(function() {
 	<script src="assets/js/util.js"></script>
 	<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 	<script src="assets/js/main.js"></script>
+
 </body>
-<%@ include file="/views/layout/footer.jsp" %>
 </html>

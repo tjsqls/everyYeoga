@@ -17,12 +17,12 @@ import everyYeoga.store.mapper.ArticleMapper;
 public class ArticleStoreLogic implements ArticleStore{
 
 	@Override
-	public boolean createArticle(String groupId, Article article) {
+	public boolean createArticle(Article article) {
 		//선빈
 		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
 		try {
 			ArticleMapper mapper = session.getMapper(ArticleMapper.class);
-			mapper.createArticle(groupId, article);
+			mapper.createArticle(article);
 			session.commit();
 		}finally {
 			session.close();

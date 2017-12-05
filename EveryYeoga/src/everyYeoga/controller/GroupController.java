@@ -1,10 +1,12 @@
-
+ 
 package everyYeoga.controller;
 
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +33,7 @@ public class GroupController {
 	GroupService groupService;
 	@Autowired
 	TravelService travelService;
+	
 	 
 	@RequestMapping(value = "regist.do", method = RequestMethod.POST)
 	public String registGroup(String travelPlanId,HttpServletRequest req) {
@@ -43,24 +46,32 @@ public class GroupController {
 			userIds.add(guideId);
 			travelService.removeJoin(guideId, travelPlanId);
 		}
-		userIds.add(user.getId());
-		
+
+		if(groupService.retreiveJoiningGroup(user.getId(), travelPlanId)==null) {
 		groupService.registGroup(travelPlanId);
+		userIds.add(user.getId());
 		groupService.registUserInGroup(travelPlanId, userIds);
 		groupService.modifyGroupStatus(travelPlanId, "모집완료");
-		
+		}else {
+		groupService.registUserInGroup(travelPlanId, userIds);
+		groupService.modifyGroupStatus(travelPlanId, "모집완료");
+		}
 		return "redirect:/group/list.do?groupId="+travelPlanId;
 	}
 
-	@RequestMapping(value = "list.do")
+	@RequestMapping(value = "list.do", method=RequestMethod.GET)
 	public String groupMain(HttpServletRequest req, String groupId, Model model) {
 		HttpSession session = req.getSession();
 		User user = (User) session.getAttribute("loginedUser");
 		List<Article> articles = groupService.searchAll(groupId);
 		String travelerId = user.getId();
 		Group group = groupService.retreiveJoiningGroup(travelerId, groupId);
-
+		TravelPlan travelPlan = travelService.searchTravelPlan(groupId);
+		String gatheringStatus = travelPlan.getGatheringStatus();
+		String travelUserId = travelPlan.getTravelerId();
+		model.addAttribute("gatheringStatus", gatheringStatus);
 		model.addAttribute("group", group);
+		model.addAttribute("travelUserId", travelUserId);
 		model.addAttribute("articles", articles);
 		
 		return "group/groupMain";
@@ -86,10 +97,35 @@ public class GroupController {
 	
 	@RequestMapping(value="groupList.do", method=RequestMethod.GET)
 	public String joiningGroup(HttpServletRequest req, Model model) {
+	
+
+
 		HttpSession session = req.getSession();
 		User user = (User) session.getAttribute("loginedUser");
 		List<Group> group = groupService.retrieveJoiningGroupAll(user.getId());
 		model.addAttribute("groups", group);
 		return "group/joiningGroupList";
+	}
+	
+	@RequestMapping(value="groupOut.do", method=RequestMethod.GET)
+	public String groupOut(HttpServletRequest req, String groupId) {
+		HttpSession session = req.getSession();
+		User user = (User) session.getAttribute("loginedUser");
+		groupService.groupOut(groupId, user.getId());
+		return "redirect:/group/groupList.do";
+	}
+	@RequestMapping(value="removeGroup.do", method=RequestMethod.GET)
+	public String removeGroup(HttpServletRequest req, String groupId) {
+		HttpSession session = req.getSession();
+		User user = (User) session.getAttribute("loginedUser");
+		if(travelService.searchTravelPlan(groupId).getTravelerId().equals(user.getId())) {
+		groupService.removeGroup(user.getId(), groupId);
+		
+		return "redirect:/guide/registEvaluation.do?groupId="+groupId;
+		}
+		else {
+			groupService.removeGroup(user.getId(), groupId);
+		}
+		return "redirect:/group/groupList.do";
 	}
 }
