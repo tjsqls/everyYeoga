@@ -48,14 +48,16 @@
 												<form action="${ctx}/travel/searchTravelPlan.do"
 													class="bs-example form-horizontal" method="POST">
 													<span style="float: right"><button type="submit"
-															style="padding: 10px">검색</button></span> <span
-														style="float: right" style="padding: 10px"> <input
-														id="satartDate" name="satartDate" type="text"
-														placeholder="여행 시작 날짜 (yy/mm/dd)" value="" /></span> <span
-														style="float: right" style="padding: 10px"> <input
-														name="speakingAbility" placeholder="언어구사능력" value="" /></span> <span
-														style="float: right" style="padding: 10px"> <input
-														name="travelArea" placeholder="지역" value="" /></span>
+															style="padding: 10px">검색</button>
+															</span> <span
+														style="float: right" style="padding: 10px">
+														 <input id="satartDate" name="satartDate" type="text" placeholder="여행 시작 날짜 (yy/mm/dd)" value="" />
+														</span> 
+														<span style="float: right" style="padding: 10px">
+														 <input name="speakingAbility" placeholder="언어구사능력" value="" />
+														</span> 
+														<span style="float: right" style="padding: 10px"> 
+														<input name="travelArea" placeholder="지역" value="" /></span>
 												</form>
 											</div>
 
@@ -89,9 +91,7 @@
 																	<td class="text-center">${travelPlan.theme}</td>
 																	<td class="text-center">${travelPlan.gatheringStatus}</td>
 																	<td class="text-center">${travelPlan.travelerId}</td>
-																	<td class="text-center"><a
-																		href="${ctx}/guide/registJoin.do?travelPlanId=${travelPlan.travelPlanId}">참여
-																			신청하기</a></td>
+																	<td class="text-center"><a href="${ctx}/guide/registJoin.do?travelPlanId=${travelPlan.travelPlanId}">참여신청하기</a></td>
 																</tr>
 															</c:forEach>
 														</c:otherwise>

@@ -29,70 +29,36 @@
 								<div class="table-responsive">
 									<div class="well">
 											<fieldset>
-												<div class="form-group">
-													<label class="col-lg-2 control-label"><h3>지역</h3></label>
-
-													<div class="col-lg-10">
-														<font>${join.travelArea}</font>
-													</div>
-												</div>
-
-												<div class="form-group">
-													<label class="col-lg-2 control-label"><h3>언어
-															구사 능력</h3></label>
-
-													<div class="col-lg-10">
-														<font>${join.speakingAbility}</font>
-													</div>
-												</div>
-
-												<div class="form-group">
-													<label class="col-lg-2 control-label"><h3>가이드
-															경험</h3></label>
-
-													<div class="col-lg-10">
-														<font>${join.guideExperience}</font>
-													</div>
-												</div>
-
-
-												<div class="form-group">
-													<label class="col-lg-2 control-label"><h3>자기소개</h3></label>
-
-													<div class="col-lg-10">
-														<font>${join.selfIntroduction}</font>
-													</div>
-												</div>
-
-
-												<div class="form-group">
-													<label class="col-lg-2 control-label"><h3>신청
-															사유</h3></label>
-
-													<div class="col-lg-10">
-														<font>${join.joinReason}</font>
-													</div>
-												</div>
-												<div class="form-group">
-													<label class="col-lg-2 control-label"><h3>신고</h3></label>
-
-													<div class="col-lg-10">
-														<font>신고횟수 : <a
-													href="teamPlayerList.do?id=${baseballTeam.teamId }">${join.numberOfReports }</a>회</font>
-													</div>
-												</div>
-												<div class="form-group">
-													<label class="col-lg-2 control-label"><h3>가이드 경험</h3></label>
-
-													<div class="col-lg-10">
-														<font>가이드횟수 : <a
-													href="teamPlayerList.do?id=${baseballTeam.teamId }">${join.numberOfGuideHistories }</a>회</font>
-													</div>
-												</div>
+												<table class="table table-striped table-bordered table-hover">
+									<thead>
+													<tr>
+														<th class="text-left">언어구사능력</th>
+														<th class="text-center">${join.speakingAbility}</th><tr>
+														<th class="text-left">여행지역</th>
+														<th class="text-center">${join.travelArea}</th><tr>
+														<th class="text-left">가이드경험</th>
+														<th class="text-center">${join.guideExperience}</th><tr>
+														<th class="text-left">자기소개</th>
+														<th class="text-center">${join.selfIntroduction}</th><tr>
+														<th class="text-left" style="padding-bottom:20px">신청사유</th>
+														<th class="text-center"style="padding-bottom:20px">${join.joinReason}</th><tr><br><br>
 												
-												
-												<div class="form-group">
-													<label class="col-lg-2 control-label"><h3>평가</h3></label>
+														<th class="text-left"style="padding-bottom:20px">신고</th><tr><tr>
+														
+														<th class="text-left" style="padding-bottom:20px">신고횟수</th>
+														<th class="text-center" style="padding-bottom:20px"><a
+													href="teamPlayerList.do?id=${baseballTeam.teamId }">${join.numberOfReports }</a>회</th><tr>
+													
+													<th class="text-left" style="padding-bottom:20px">가이드경험</th><tr>
+													
+														<th class="text-left" style="padding-bottom:20px">가이드횟수</th>
+														<th class="text-center" style="padding-bottom:20px"><a
+													href="teamPlayerList.do?id=${baseballTeam.teamId }">${join.numberOfGuideHistories }</a>회</th><tr>
+														<th class="text-left">평가</th>
+													</tr>
+													<tr>
+											
+											
 												
 												<div class="table-responsive">
 													<table
@@ -141,7 +107,7 @@
 
 												<br /> <br />
 												<div class="form-group"></div>
-
+</table>
 											</fieldset>
 
 										<input type=button value="확인" onClick="history.back();">
