@@ -17,15 +17,13 @@
 										function() {
 											var fileListView = "";
 											var formData = new FormData(); //ajax로 넘길 data             
-											var fileInput = document
-													.getElementById("test_file"); //id로 파일 태그를 호출             
+											var fileInput = document.getElementById("test_file"); //id로 파일 태그를 호출             
 											var files = fileInput.files; //업로드한 파일들의 정보를 넣는다.             
 											for (var i = 0; i < files.length; i++) {
 												formData.append('file-' + i,
 														files[i]); //업로드한 파일을 하나하나 읽어서 FormData 안에 넣는다.
 											}
-											$
-													.ajax({
+											$.ajax({
 														url : 'http://localhost:8080/EveryYeoga/article/save.do',
 														data : formData,
 														processData : false,

@@ -78,7 +78,7 @@
 																varStatus="sts">
 
 																<tr>
-																	<td class="text-center">${article.articleId }</td>
+																	<td class="text-center">${sts.count }</td>
 																	<td><a
 																		href="${ctx}/article/articleDetail.do?articleId=${article.articleId}">${article.title}
 																	</a></td>

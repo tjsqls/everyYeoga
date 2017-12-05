@@ -80,21 +80,30 @@ function comment_report(){
 											<div class="panel-body">
 												<div class="post">
 													<strong>작성자 ${user.id }</strong> &nbsp;<span
-														class="text-muted"><fmt:formatDate
-																	value="${article.regDate }" pattern="yyyy-MM-dd" /></span> &nbsp; 
+														class="text-muted"><fmt:formatDate value="${article.regDate }" pattern="yyyy-MM-dd" /></span> &nbsp; 
 																	
 																	<a class="glyphicon glyphicon-cog pull-right" 
 																	onclick="button_event();" style="padding: 10px">삭제</a>
-																	 <a
-														href="${ctx }/article/modify.do?articleId=${article.articleId}"
-														class="glyphicon glyphicon-cog pull-right"
+																	 <a href="${ctx }/article/modify.do?articleId=${article.articleId}" class="glyphicon glyphicon-cog pull-right"
 														style="padding: 10px">수정</a> <br>
-
+														
+														<br>
+														파일리스트 &nbsp;
+														<c:forEach items="${attachmentList }" var="attachment">
+															<table class="table"
+															style="font-size: 13px; padding: 20px;">
+																<tr><td><a href="${ctx }/downLoad.do?path=${attachment.filePath }&fileName=${attachment.fileName}"> ${attachment.fileName }</a>&nbsp;</td>
+																
+														</tr>
+														</table>
+															</c:forEach>
+														
+														
 													<p style="padding: 20px">${article.content }</p>
 													<a onclick="report_button();"
 														class="glyphicon glyphicon-cog pull-right"
 														style="padding: 10px">신고</a>
-
+														
 
 
 
@@ -116,6 +125,7 @@ function comment_report(){
 																		<a class="glyphicon glyphicon-trash"
 																		onclick="comment_report();">신고</a></span></td>
 															</tr>
+															
 															<tr>
 																<td colspan="2">
 																	<p class="txt">${comment.content }</p>
@@ -129,7 +139,7 @@ function comment_report(){
 												<br>
 
 												<div class="panel-footer">
-													<div class="write_area">
+									
 														<form
 															action="${ctx }/comment/regist.do" method="POST">
 															<input type="hidden" name="articleId" value="${article.articleId }">
