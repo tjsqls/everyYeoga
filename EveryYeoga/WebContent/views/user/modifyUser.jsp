@@ -5,54 +5,84 @@
 
 <html>
 <head>
-<title>Verti by HTML5 UP</title>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="stylesheet" href="${pageContext.request.contextPath }/assets/css/main.css" />
-<link href="${pageContext.request.contextPath }/resources/css/bootstrap_modify.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath }/resources/css/layout.css" rel="stylesheet">
-<script src="${pageContext.request.contextPath }/resources/js/jquery-2.1.3.js"></script>
-<script src="${pageContext.request.contextPath }/resources/js/jquery.blockUI.js"></script>
+<%@ include file="/views/layout/common.jsp"%>
+<style type="text/css">
+
+input[type=text]:enabled {
+    background: #ffffff;
+}
+
+input[type=text]:disabled {
+    background: #edeeec;
+}
+</style>
+
+
+<script type="text/javascript">
+
+function button_cancel(){
+	if (confirm("회원정보 수정을 취소하시겠습니까?") == true){    //확인
+	    location.href="${pageContext.request.contextPath}/user/detail.do?userId=${user.id}";
+	    
+	}else{   //취소
+	    return;
+	}
+	}
+</script>
 </head>
 <body class="left-sidebar">
 	<div id="page-wrapper">
+	
+	
 
 		<!-- Header -->
-		<%@ include file="/views/layout/header.jsp"%>
-
-		<!-- Main -->
-		<div id="main-wrapper">
+		<%@ include file="/views/layout/header.jsp" %>
+			<div id="main-wrapper">
 			<div class="container">
-				<div class="row 50%">
-					<%@ include file="/views/layout/sidebar.jsp"%>
+				<div class="row 70%">
+		<%@ include file="/views/layout/sidebar.jsp" %>
 					<div class="8u 12u$(medium) important(medium)">
 						<div id="content">
 							<div class="col-sm-9 col-lg-9">
 								<div>
 									<h3>내 정보</h3>
+									<hr>
 								</div>
 
 								<form action="${pageContext.request.contextPath}/user/modify.do" method="post">
-									<table>
 										<input type="hidden" name="pw" value="${user.pw}">
-										<tr><td>ID </td>
-										<td><input type="text" name="id" value="${user.id}"> </td>
-										</tr>
-										<tr><td>이름 </td>
-										<td><input type="text" name="name" value="${user.name}"></td>
-										</tr>
-										<tr><td>생년월일 </td>
-										<td><input type="text" name="birthDate" value="${user.birthDate}"></td>
-										</tr>
-										<tr><td>이메일 </td>
-										<td><input type="text" name="email" value="${user.email}"></td>
-										</tr>
-										<tr><td>휴대폰 번호 </td>
-										<td><input type="text" name="phoneNumber" value="${user.phoneNumber}"></td>
-										</tr>
+									<table>
+									
 										<tr>
-										<button type="submit">저장</button>
-                    					<a href="#">취소</a>
+											<td><label>ID</label></td>
+											<td><input style="height: 35px;" type="text" name="id" value="${user.id}" disabled="disabled"> </td>
+										</tr>
+
+
+										<tr>
+											<td><label>이름</label></td>
+											<td><input style="height: 35px;" type="text"  name="name" value="${user.name}"> </td>
+										</tr>
+
+										<tr>
+											<td><label>생년월일</label></td>
+											<td><input style="height: 35px;" type="text"  name="birthDate" value="${user.birthDate}"> </td>
+										</tr>
+
+										<tr>
+											<td><label>이메일</label></td>
+											<td><input style="height: 35px;" type="text" name="email"  value="${user.email}"> </td>
+										</tr>
+
+										<tr>
+											<td><label>휴대폰번호</label></td>
+												<td><input style="height: 35px;" type="text" name="phoneNumber" value="${user.phoneNumber}"> </td>
+										</tr>
+										</table>
+										<table style="margin-left: 100px;">
+										<tr>
+										<td><button type="submit" style="background-color: tomato; height: 35px; width:80px; font-size: 15px; text-align: center;"">저장</button></td>
+											<td><button type="submit" style="background-color: orange; height: 35px; width:80px; font-size: 15px; text-align: center;" onclick="button_cancel();">취소</button></td>
 										</tr>
 										
 									</table>
@@ -64,29 +94,11 @@
 			</div>
 		</div>
 
-		<!-- Footer -->
-		<div id="footer-wrapper">
-			<footer id="footer" class="container">
-				<div class="row">
-					<div class="3u 6u(medium) 12u$(small)"></div>
-					<div class="3u 6u$(medium) 12u$(small)"></div>
-					<div class="3u 6u(medium) 12u$(small)"></div>
-					<div class="3u 6u$(medium) 12u$(small)"></div>
-				</div>
-				<div class="row">
-					<div class="12u">
-						<div id="copyright">
-							<ul class="menu">
-								<li>&copy; Untitled. All rights reserved</li>
-								<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</footer>
+		
 		</div>
+	<!-- Footer -->
+		<%@ include file="/views/layout/footer.jsp" %>
 
-	</div>
 
 	<!-- Scripts -->
 

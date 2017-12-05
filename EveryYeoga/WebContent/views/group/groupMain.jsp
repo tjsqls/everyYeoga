@@ -5,46 +5,55 @@
 <!DOCTYPE HTML>
 
 <html>
+<%@ include file="/views/layout/common.jsp" %>
 <head>
-<title>Verti by HTML5 UP</title>
-<%@ include file="/views/layout/common.jsp"%>
-
-
 </head>
+
 <body class="left-sidebar">
 	<div id="page-wrapper">
+	
+	
 
 		<!-- Header -->
-		<%@ include file="/views/layout/header.jsp"%>
-
+		<%@ include file="/views/layout/header.jsp" %>
+			<!-- Header -->
+			
 		<!-- Main -->
+
 		<div id="main-wrapper">
 			<div class="container">
-				<div class="row 50%">
-					<%@ include file="/views/layout/sidebar.jsp"%>
+				<div class="row 70%">
+					<ul id="navii">
+			<legend style="font-weight: bold;"> 내 모임 </legend>
+				<li><label style="color: #8f5138;">참여중인 여행자</label></li>
+				<li class="group"><a href="#">xxxxxx</a></li>
+				<br>
+				<li><label style="color: #bb6333;">참여중인 가이드</label></li>
+				<li class="group"><a href="#">xxxxxx</a></li>
+				
+				<hr>
+				<li><input type="button" onclick="location.href='${ctx}/article/regist.do?groupId=${group.groupId}'" value="게시물 올리기" 
+				style="background-color: #fff0dd; height: 30px; width: 100px; font-size: 10px; color: gray;"></li>
+				<br/>
+				<li><input type="button" onclick="location.href='${ctx }/group/removeGroup.do?groupId=${group.groupId}'" value="모임 종료" 
+				style="background-color: #ffe6c6; height: 30px; width: 100px; font-size: 10px; color: gray;"></li>
+				<br/>
+				<li><input type="button" onclick="location.href='${ctx }/group/groupOut.do?groupId=${group.groupId}'" value="모임 탈퇴" 
+				style="background-color: #ffd9aa; height: 30px; width: 100px; font-size: 10px; color: gray;"></li>
+
+			</ul>
+
+					
 					<div class="8u 12u$(medium) important(medium)">
-						<div id="content">
+						<div id="content" style="margin-left: 70px; width: 1050px;">
 							<div class="col-sm-9 col-lg-9">
 								<div>
-									<h3>모임 게시판*이름변경</h3>
+									<h3>내 모임</h3>
+									<hr>
 								</div>
 
-								<c:choose>
-								<c:when test="${gatheringStatus == '모집완료' && travelUserId == loginedUser.id  }">
-								<span style="float: right"><a
-									href="${ctx }/group/groupModifyStatus.do?travelPlanId=${group.travelPlanId}">추가모집
-										하기</a> </span> 
-								</c:when>
-								<c:otherwise>
-								</c:otherwise>
-								</c:choose>
-										<br>
-										<span style="float: right"><a href="${ctx }/group/groupOut.do?groupId=${group.groupId}">모임탈퇴</a> </span> 
-										<br>
-										<span style="float: right"><a href="${ctx }/group/removeGroup.do?groupId=${group.groupId}">모임종료</a> </span>
-										<br>
 								<div class="table-responsive">
-									<div class="well">
+								
 										<div>
 											<h3>${boardDetail.name }</h3>
 										</div>
@@ -59,10 +68,10 @@
 												</colgroup>
 												<thead>
 													<tr>
-														<th class="text-center">번호</th>
-														<th class="text-center">제목</th>
-														<th class="text-center">작성일</th>
-														<th class="text-center">작성자</th>
+														<th class="text-center" style="width: 10%; font-weight: bold">번호</th>
+														<th class="text-center" style="width: 40%; font-weight: bold">제목</th>
+														<th class="text-center" style="width: 30%; font-weight: bold">작성일</th>
+														<th class="text-center"style="width: 20%; font-weight: bold">작성자</th>
 
 													</tr>
 												</thead>
@@ -90,11 +99,18 @@
 															</c:forEach>
 														</c:otherwise>
 													</c:choose>
-
+<c:choose>
+								<c:when test="${gatheringStatus == '모집완료' && travelUserId == loginedUser.id  }">
+								<input type="button" onclick="location.href='${ctx }/group/groupModifyStatus.do?travelPlanId=${group.travelPlanId}'" value="가이드 추가 모집" 
+				style="background-color: #ff8040; height: 30px; width: 100px; font-size: 10px; margin-bottom: 20px;">
+							
+								</c:when>
+								<c:otherwise>
+								</c:otherwise>
+								</c:choose>
 												</tbody>
 											</table>
-											<a href="${ctx}/article/regist.do?groupId=${group.groupId}">게시물
-												올리기 </a>
+											
 										</div>
 									</div>
 								</div>
@@ -103,34 +119,21 @@
 					</div>
 				</div>
 			</div>
-
-			<!-- Footer -->
-			<div id="footer-wrapper">
-				<footer id="footer" class="container">
-					<div class="row">
-						<div class="3u 6u(medium) 12u$(small)"></div>
-						<div class="3u 6u$(medium) 12u$(small)"></div>
-						<div class="3u 6u(medium) 12u$(small)"></div>
-						<div class="3u 6u$(medium) 12u$(small)"></div>
-					</div>
-					<div class="row">
-						<div class="12u">
-							<div id="copyright">
-								<ul class="menu">
-									<li>&copy; Untitled. All rights reserved</li>
-									<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</footer>
-			</div>
-
-		</div>
-
-		<!-- Scripts -->
-
-
 	</div>
+			<!-- Footer -->
+			<%@ include file="/views/layout/footer.jsp" %>
+
+
+
+
+	<!-- Scripts -->
+
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.dropotron.min.js"></script>
+	<script src="assets/js/skel.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+	<script src="assets/js/main.js"></script>
+
 </body>
 </html>

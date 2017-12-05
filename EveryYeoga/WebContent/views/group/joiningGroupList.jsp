@@ -3,34 +3,31 @@
 <!DOCTYPE HTML>
 
 <html>
-<head>
-<title>Verti by HTML5 UP</title>
 <%@ include file="/views/layout/common.jsp"%>
+<head>
 
 </head>
 <body class="left-sidebar">
 	<div id="page-wrapper">
+	
+	
 
 		<!-- Header -->
-		<%@ include file="/views/layout/header.jsp"%>
-		<!-- Main -->
-
-		<div id="main-wrapper">
+		<%@ include file="/views/layout/header.jsp" %>
+			<div id="main-wrapper">
 			<div class="container">
-				<div class="row 50%">
-					<%@ include file="/views/layout/sidebar.jsp"%>
+				<div class="row 70%">
+		<%@ include file="/views/layout/sidebar.jsp" %>
+
 					<div class="8u 12u$(medium) important(medium)">
-						<div id="content">
+						<div id="content" style="margin-left: 70px; width: 1050px;">
 							<div class="col-sm-9 col-lg-9">
 								<div>
 									<h3>참여중인 모임</h3>
+									<hr>
 								</div>
 
 								<div class="table-responsive">
-
-									<div class="well">
-
-
 
 
 										<div class="table-responsive">
@@ -44,10 +41,10 @@
 												</colgroup>
 												<thead>
 													<tr>
-														<th class="text-center">번호</th>
-														<th class="text-center">생성날짜</th>
-														<th class="text-center">여행계획번호</th>
-
+														<th class="text-center" style="width: 20%; font-weight: bold">번호</th>
+														<th class="text-center" style="width: 40%; font-weight: bold">생성날짜</th>
+														<th class="text-center" style="width: 20%; font-weight: bold">여행계획번호</th>
+														<th class="text-center" style="width: 20%; font-weight: bold">모임 확인</th>
 													</tr>
 												</thead>
 
@@ -66,7 +63,7 @@
 																	<td class="text-center"><fmt:formatDate
 																			value="${group.regDate }" pattern="dd/MM/yyyy" /></td>
 																	<td class="text-center">${group.travelPlanId }</td>
-																	<td class="text-center"><a href="${ctx }/group/list.do?groupId=${group.groupId}">모임으로</a></td>	
+																	<td class="text-center"><a href="${ctx }/group/list.do?groupId=${group.groupId}">모임 상세</a></td>	
 																</tr>
 															</c:forEach>
 														</c:otherwise>
@@ -76,6 +73,8 @@
 											</table>
 										</div>
 									</div>
+
+
 								</div>
 							</div>
 						</div>
@@ -83,30 +82,9 @@
 				</div>
 			</div>
 		</div>
-
 		<!-- Footer -->
-		<div id="footer-wrapper">
-			<footer id="footer" class="container">
-				<div class="row">
-					<div class="3u 6u(medium) 12u$(small)"></div>
-					<div class="3u 6u$(medium) 12u$(small)"></div>
-					<div class="3u 6u(medium) 12u$(small)"></div>
-					<div class="3u 6u$(medium) 12u$(small)"></div>
-				</div>
-				<div class="row">
-					<div class="12u">
-						<div id="copyright">
-							<ul class="menu">
-								<li>&copy; Untitled. All rights reserved</li>
-								<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</footer>
-		</div>
+		<%@ include file="/views/layout/footer.jsp" %>
 
-	</div>
 
 	<!-- Scripts -->
 

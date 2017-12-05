@@ -1,34 +1,41 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<div class="4u 12u$(medium)">
-	<div id="sidebar">
-		<!-- ㅁㄴㅇ -->
-		<!-- Sidebar -->
-		<section>
+	
+	<style type="text/css">
 
-			<ul class="style2">
-				<li><a
-					href="${pageContext.request.contextPath}/user/detail.do"><h3>회원정보</h3></a></li>
-				<a
-					href="${pageContext.request.contextPath}/travel/travelPlanList.do"><h3>여행
-						검색</h3></a>
-				</li>
+    ul#navii {
 
-				<li><a
-					href="${pageContext.request.contextPath}/group/groupList.do"><h3>참여중인
-							모임</h3></a></li>
-				<li><a
-					href="${pageContext.request.contextPath}/travel/myTravelPlan.do"><h3>내가
-							올린 여행계획</h3></a></li>
-				<li><a
-					href="${pageContext.request.contextPath}/history/searchTravelerHistory.do"><h3>여행
-							내역</h3></a></li>
-				<li><a
-					href="${pageContext.request.contextPath}/history/searchGuideHistory.do"><h3>가이드
-							내역</h3></a></li>
+        width: 200px;
+        text-indent: 10px;
+        background-color: white;
+
+}
+    ul#navii, ul#navii ul {
+        margin:1;
+        padding:0;
+        list-style:none;
+        border-bottom-color: gray;
+}
+    li.group {
+        margin-bottom: 10px;
+
+}
+
+
+</style>
+			<ul id="navii">
+			<legend> 마이페이지 </legend>
+
+				<li class="group" style=""><a href="${pageContext.request.contextPath}/user/detail.do">회원정보</a></li>
+				<li class="group"><a href="${pageContext.request.contextPath}/group/groupList.do">참여중인 모임</a></li>
+				<li class="group"><a href="${pageContext.request.contextPath}/travel/myTravelPlan.do">내가 올린 여행계획</a></li>
+				<li class="group"><a href="${pageContext.request.contextPath}/history/searchTravelerHistory.do">여행 내역</a></li>
+				<li class="group"><a href="${pageContext.request.contextPath}/history/searchGuideHistory.do">가이드 내역</a></li>
 			</ul>
 
-		</section>
 
-	</div>
-</div>
+
+
+
+
+

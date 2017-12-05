@@ -3,32 +3,31 @@
 <!DOCTYPE HTML>
 
 <html>
-<head>
-<title>Verti by HTML5 UP</title>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <%@ include file="/views/layout/common.jsp"%>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
 </head>
 <body class="left-sidebar">
 	<div id="page-wrapper">
-
+	
 		<!-- Header -->
-		<%@ include file="/views/layout/header.jsp"%>
-
-		<!-- Main -->
-		<div id="main-wrapper">
+		<%@ include file="/views/layout/header.jsp" %>
+			<div id="main-wrapper">
 			<div class="container">
-				<div class="row 50%">
-					<%@ include file="/views/layout/sidebar.jsp"%>
+				<div class="row 70%">
+		<%@ include file="/views/layout/sidebar.jsp" %>
+
 					<div class="8u 12u$(medium) important(medium)">
 						<div id="content">
 							<div class="col-sm-9 col-lg-9">
 								<div>
 									<h2>가이드 평가</h2>
+									<hr>
 								</div>
 
-								<div class="table-responsive">
-									<div class="well">
+								<div class="table-responsive" style="width: 800px;">
+								
 										<form
 											action="${pageContext.request.contextPath}/guide/registEvaluation.do"
 											class="bs-example form-horizontal" method="POST">
@@ -66,9 +65,6 @@
 														for="p5">5</label>
 												</span> 
 													</c:forEach>
-													
-												
-												</span> <br /> <br /> <br /> <br />
 
 												<div class="form-group">
 													<div class="col-lg-10 col-lg-offset-2">
@@ -90,33 +86,10 @@
 		</div>
 
 		<!-- Footer -->
-		<div id="footer-wrapper">
-			<footer id="footer" class="container">
-				<div class="row">
-					<div class="3u 6u(medium) 12u$(small)"></div>
-					<div class="3u 6u$(medium) 12u$(small)"></div>
-					<div class="3u 6u(medium) 12u$(small)"></div>
-					<div class="3u 6u$(medium) 12u$(small)"></div>
-				</div>
-				<div class="row">
-					<div class="12u">
-						<div id="copyright">
-							<ul class="menu">
-								<li>&copy; Untitled. All rights reserved</li>
-								<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</footer>
-		</div>
-
-	</div>
+		<%@ include file="/views/layout/footer.jsp" %>
 
 	<!-- Scripts -->
-	<script
-		src="${pageContext.request.contextPath}/js/jquery-1.11.3.min.js"></script>
-	<script src="${pageContext.request.contextPath}/js/star.js"></script>
+
 	<script src="assets/js/jquery.min.js"></script>
 	<script src="assets/js/jquery.dropotron.min.js"></script>
 	<script src="assets/js/skel.min.js"></script>

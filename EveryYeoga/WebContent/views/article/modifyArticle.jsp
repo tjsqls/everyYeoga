@@ -2,38 +2,51 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+<%@ include file="/views/layout/common.jsp"%>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
 
-<%@ include file="/views/layout/common.jsp"%>
 </head>
-<body>
-	<!-- Header -->
-	<%@ include file="/views/layout/header.jsp"%>
-	<%@ include file="/views/layout/sidebar.jsp"%>
 
-	<div class="8u 12u$(medium) important(medium)">
-		<div id="content">
-			<div class="col-sm-9 col-lg-9">
+	<!-- Header -->
+<body>
+
+	<div id="page-wrapper">
+
+		<!-- Header -->
+<%@ include file="/views/layout/header.jsp" %>
+
+		<!-- Main -->
+		
+		<div id="main-wrapper">
+			<div class="container">
+				<div class="row 50%">
+
+
+					<div class="8u 12u$(medium) important(medium)">
+						<div id="content" style="margin-left: 200px; width: 1000px;">
+							<div class="col-sm-9 col-lg-9">
 				<div>
 					<h3>게시물 수정</h3>
+					<hr>
 				</div>
 
 				<div class="table-responsive">
-					<div class="well">
+			
 						<div>
 							<h3>${boardDetail.name }</h3>
 						</div>
 						<form action="${ctx}/article/modify.do " method="post">
 							<div class="panel panel-default">
 								<div class="panel-heading">
-								<input type="hidden" name="articleId" value="${article.articleId}">
-									제목 <input type="text" name="title" value="${article.title }">
+								<table>
+								<tr><td><input type="hidden" name="articleId" value="${article.articleId}"></td>
+								<td style="font-weight: bold;">제목 : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> <td><input style="width: 600px; height: 30px;" type="text" name="title" value="${article.title }"></td></tr>
+									</table>
 								</div>
 								<div class="panel-body">
 									<div class="post">
-										<strong>작성자 ${user.name }</strong> &nbsp;<span
+										<strong>작성자 : ${user.name }</strong> &nbsp;<span
 											class="text-muted"><fmt:formatDate
 												value="${article.regDate }" pattern="yyyy-MM-dd" /></span> &nbsp;
 
@@ -42,18 +55,32 @@
 										</p>
 
 									</div>
+</div>
 
-									<br>
-								</div>
+								<table>
+						<tr align="center"><td>
+							<button type="submit" class="btn btn-primary" style="background-color: tomato;">확인</button></td>
+							<td><button type="reset" class="btn btn-default" style="background-color: gray;">취소</button></td>
+							</tr>
+							</table>
 							</div>
-							<button type="submit" class="btn btn-primary">확인</button>
-							<button type="reset" class="btn btn-default">취소</button>
 						</form>
 
 					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+				</div></div></div></div></div>
+		</div></div>
+<%@ include file="/views/layout/footer.jsp" %>
+
+
+
+	<!-- Scripts -->
+
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.dropotron.min.js"></script>
+	<script src="assets/js/skel.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+	<script src="assets/js/main.js"></script>
+
 </body>
 </html>

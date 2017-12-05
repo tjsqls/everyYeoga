@@ -2,10 +2,10 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
 <html>
+<%@ include file="/views/layout/common.jsp"%>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-<%@ include file="/views/layout/common.jsp"%>
+
 
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <script type="text/javascript">
@@ -76,25 +76,30 @@
 </script>
 
 </head>
-<body>
-	<!-- Header -->
-	<%@ include file="/views/layout/header.jsp"%>
+<body class="left-sidebar">
+
+	<div id="page-wrapper">
+
+		<!-- Header -->
+<%@ include file="/views/layout/header.jsp" %>
+
+		<!-- Main -->
+		
+		<div id="main-wrapper">
+			<div class="container">
+				<div class="row 50%">
 
 
-	<!-- Main -->
-	<div id="main-wrapper">
-		<div class="container">
-			<div class="row 50%">
-				<%@ include file="/views/layout/sidebar.jsp"%>
-				<div class="8u 12u$(medium) important(medium)">
-					<div id="content">
-						<div class="col-sm-9 col-lg-9">
+					<div class="8u 12u$(medium) important(medium)">
+						<div id="content" style="margin-left: 200px; width: 1000px;">
+							<div class="col-sm-9 col-lg-9">
 							<div>
 								<h3>게시물 작성</h3>
+								<hr>
 							</div>
 
 							<div class="table-responsive">
-								<div class="well">
+								
 									<div>
 										<h3>${boardDetail.name }</h3>
 									</div>
@@ -102,16 +107,15 @@
 										enctype="multipart/form-data">
 										<div class="panel panel-default">
 											<div class="panel-heading">
-												<input type="hidden" name="groupId" value="${groupId }">
-												<input type="text" name="title" value=""
-													placeholder="제목을 입력해주세요.">
-											</div>
-											<br> <input type="file" id="test_file" name="file" multiple="multiple">
-											<!-- 복수개의 파일을 선택 -->
-											<br> 파일 리스트 <br>
-											<div id="file_view_list"></div>
-											
 
+											<input type="hidden" name="groupId" value="${groupId }">
+											<table>
+												<tr><td style="font-weight: bold;">제목 : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td><input type="text" name="title" value=""
+													placeholder="제목을 입력해주세요." style="width: 600px; height: 30px;"></td></tr>
+													
+													</table>
+											</div>						
+											
 											<div class="panel-body">
 												<div class="post">
 													<input type="hidden" name="writer" value="${loginedUser.id }" />
@@ -121,12 +125,22 @@
 															placeholder="내용을 입력해주세요."></textarea>
 													</p>
 												</div>
-
+												<fieldset>
+												<legend style="font-size: 20px; font-weight: bold;">파일 리스트</legend>
+												<input type="file" id="test_file" name="file[]" multiple="multiple">
+											<!-- 복수개의 파일을 선택 -->
+											<br>
+											<br>
+											<div id="file_view_list"></div>
+												</fieldset>
 												<br>
 											</div>
 										</div>
-										<button type="submit" class="btn btn-primary">확인</button>
-										<button type="reset" class="btn btn-default">취소</button>
+										<table>
+						<tr align="center"><td>
+										<button type="submit" class="btn btn-primary" style="background-color: green;">확인</button></td>
+										<td><button type="reset" class="btn btn-default">취소</button></td></tr>
+										</table>
 									</form>
 								</div>
 							</div>
@@ -136,36 +150,12 @@
 			</div>
 
 			<!-- Footer -->
-			<div id="footer-wrapper">
-				<footer id="footer" class="container">
-					<div class="row">
-						<div class="3u 6u(medium) 12u$(small)"></div>
-						<div class="3u 6u$(medium) 12u$(small)"></div>
-						<div class="3u 6u(medium) 12u$(small)"></div>
-						<div class="3u 6u$(medium) 12u$(small)"></div>
-					</div>
-					<div class="row">
-						<div class="12u">
-							<div id="copyright">
-								<ul class="menu">
-									<li>&copy; Untitled. All rights reserved</li>
-									<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</footer>
-			</div>
+			
 
 		</div>
 	</div>
 
-
-
-
-
-
-
+	<%@ include file="/views/layout/footer.jsp" %>
 
 
 
@@ -177,5 +167,6 @@
 	<script src="assets/js/util.js"></script>
 	<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 	<script src="assets/js/main.js"></script>
+
 </body>
 </html>
