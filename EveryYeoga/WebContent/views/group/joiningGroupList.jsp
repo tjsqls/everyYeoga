@@ -44,7 +44,7 @@
 														<th class="text-center" style="width: 20%; font-weight: bold">번호</th>
 														<th class="text-center" style="width: 40%; font-weight: bold">생성날짜</th>
 														<th class="text-center" style="width: 20%; font-weight: bold">여행계획번호</th>
-
+														<th class="text-center" style="width: 20%; font-weight: bold">모임 확인</th>
 													</tr>
 												</thead>
 
@@ -63,7 +63,7 @@
 																	<td class="text-center"><fmt:formatDate
 																			value="${group.regDate }" pattern="dd/MM/yyyy" /></td>
 																	<td class="text-center">${group.travelPlanId }</td>
-																	<td class="text-center"><a href="${ctx }/group/list.do?groupId=${group.groupId}">모임으로</a></td>	
+																	<td class="text-center"><a href="${ctx }/group/list.do?groupId=${group.groupId}">모임 상세</a></td>	
 																</tr>
 															</c:forEach>
 														</c:otherwise>
