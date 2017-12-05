@@ -12,7 +12,7 @@
 </head>
 
 <body>
-	<form action="${pageContext.request.contextPath}/user/login.do" method="post" style="margin-top: 200px;">
+	<form action="${pageContext.request.contextPath}/views/main.jsp" method="post" style="margin-top: 200px;">
 		<header>Login</header>
 		<label>아이디 <span>*</span></label> <input id="id"  name="id" class="form-control" type="text" value="" placeholder="아이디를 입력해주세요.">
 		<div class="help">At least 6 character</div>
