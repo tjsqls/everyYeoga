@@ -6,51 +6,48 @@
 <!DOCTYPE HTML>
 
 <html>
-<head>
-<title>Verti by HTML5 UP</title>
 <%@ include file="/views/layout/common.jsp" %>
+<head>
 
 </head>
 <body class="left-sidebar">
 	<div id="page-wrapper">
+	
+	
 
 		<!-- Header -->
-
-<%@ include file="/views/layout/header.jsp" %>
-
-		<!-- Main -->
-
-		<div id="main-wrapper">
+		<%@ include file="/views/layout/header.jsp" %>
+			<div id="main-wrapper">
 			<div class="container">
-				<div class="row 50%">
-					<%@ include file="/views/layout/sidebar.jsp"%>
+				<div class="row 70%">
+		<%@ include file="/views/layout/sidebar.jsp" %>
+
 					<div class="8u 12u$(medium) important(medium)">
 						<div id="content">
 							<div class="col-sm-9 col-lg-9">
 								<div>
 									<h3>여행 내역</h3>
+									<hr>
 								</div>
 
-								<div class="table-responsive">
-									<div class="well">
-
+								<div class="table-responsive" style="width: 900px;">
 										<div class="table-responsive">
 											<table class="table table-striped table-bordered table-hover">
 												
 												<thead>
 													<tr>
-														<th class="text-center">번호</th>
-														<th class="text-center">여행지역</th>
-														<th class="text-center">테마</th>
-														<th class="text-center">가이드</th>
-														<th class="text-center">출발날짜</th>
-														<th class="text-center">도착날짜</th>
+														<th class="text-center" style="width: 10%; font-weight: bold">번호</th>
+														<th class="text-center" style="width: 10%; font-weight: bold">여행지역</th>
+														<th class="text-center" style="width: 20%; font-weight: bold">테마</th>
+														<th class="text-center" style="width: 30%; font-weight: bold">가이드</th>
+														<th class="text-center" style="width: 15%; font-weight: bold">출발날짜</th>
+														<th class="text-center" style="width: 15%; font-weight: bold">도착날짜</th>
 													</tr>
 												</thead>
 												<c:choose>
 													<c:when test="${empty list }">
 														<tr>
-															<th colspan="5" class="text-center">여행 내역이 존재하지
+															<th colspan="8" class="text-center">여행 내역이 존재하지
 																않습니다.</th>
 														</tr>
 													</c:when>
@@ -82,28 +79,8 @@
 		</div>
 
 		<!-- Footer -->
-		<div id="footer-wrapper">
-			<footer id="footer" class="container">
-				<div class="row">
-					<div class="3u 6u(medium) 12u$(small)"></div>
-					<div class="3u 6u$(medium) 12u$(small)"></div>
-					<div class="3u 6u(medium) 12u$(small)"></div>
-					<div class="3u 6u$(medium) 12u$(small)"></div>
-				</div>
-				<div class="row">
-					<div class="12u">
-						<div id="copyright">
-							<ul class="menu">
-								<li>&copy; Untitled. All rights reserved</li>
-								<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</footer>
-		</div>
+	<%@ include file="/views/layout/footer.jsp" %>
 
-	</div>
 
 	<!-- Scripts -->
 

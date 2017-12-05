@@ -5,7 +5,6 @@
 
 <html>
 <head>
-<title>Verti by HTML5 UP</title>
 		<%@ include file="/views/layout/common.jsp"%>
 
 
@@ -23,21 +22,19 @@ $(function() {
 </script>
 
 </head>
-<body class="left-sidebar">
-	<div id="page-wrapper">
+
 
 		<!-- Header -->
 		<%@ include file="/views/layout/header.jsp"%>
 		<!-- Main -->
 
-		<div id="main-wrapper">
+	<div id="main-wrapper">
 			<div class="container">
 				<div class="row 50%">
-					<%@ include file="/views/layout/sidebar.jsp"%>
 					<div class="8u 12u$(medium) important(medium)">
 						<div id="content">
 							<div class="col-sm-9 col-lg-9">
-								<div>
+								<div style="margin-left: 310px;">
 									<h3>여행 검색</h3>
 								</div>
 
@@ -48,20 +45,22 @@ $(function() {
 												<form
 													action="${ctx}/travel/searchTravelPlan.do"
 													class="bs-example form-horizontal" method="POST">
-													<span style="float: right"><button type="submit"
-															style="padding: 10px">검색</button></span> <span
-														style="float: right" style="padding: 10px"> <input
-														id="satartDate" name="satartDate" type="text"
-														placeholder="여행 시작 날짜 (yy/mm/dd)" value="" /></span> <span
-														style="float: right" style="padding: 10px"> <input
-														name="speakingAbility" placeholder="언어구사능력" value="" /></span> 
-														<span style="float: right" style="padding: 10px"> 
-														<input name="travelArea" placeholder="지역" value="" /></span>
+											<ul>
+													
+													<li style="margin-top: 5px;"> <input id="satartDate" name="satartDate" type="text"
+														placeholder="여행 시작 날짜 (yy/mm/dd)" value="" /></li>
+														 
+														<li style="margin-top: 10px;"> <input name="speakingAbility" placeholder="언어구사능력" value="" /> </li>
+														
+														<li style="margin-top: 10px;"><input name="travelArea" placeholder="지역" value="" /></li>
+														<li style="margin-top: 10px; text-align: right;"><button type="submit">검색</button></li>
+														
+											</ul>
 												</form>
 											</div>
 
 										</div>
-
+<br/>
 
 										<div class="table-responsive">
 											<table class="table table-striped table-bordered table-hover">
@@ -99,10 +98,6 @@ $(function() {
 											</table>
 										</div>
 
-										<span style="float: right"><a
-											href="${pageContext.request.contextPath}/travel/regist.do"><h3>여행계획
-													등록하기</h3></a></span>
-
 
 									</div>
 								</div>
@@ -110,36 +105,20 @@ $(function() {
 						</div>
 					</div>
 				</div>
-			</div>
-		</div>
-
-		<!-- Footer -->
-		<div id="footer-wrapper">
-			<footer id="footer" class="container">
-				<div class="row">
-					<div class="3u 6u(medium) 12u$(small)"></div>
-					<div class="3u 6u$(medium) 12u$(small)"></div>
-					<div class="3u 6u(medium) 12u$(small)"></div>
-					<div class="3u 6u$(medium) 12u$(small)"></div>
-				</div>
-				<div class="row">
-					<div class="12u">
-						<div id="copyright">
-							<ul class="menu">
-								<li>&copy; Untitled. All rights reserved</li>
-								<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-							</ul>
-						</div>
+								</div>
 					</div>
-				</div>
-			</footer>
-		</div>
-
-	</div>
+			
+</body>
+		<%@ include file="/views/layout/footer.jsp" %>
 
 	<!-- Scripts -->
 
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.dropotron.min.js"></script>
+	<script src="assets/js/skel.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+	<script src="assets/js/main.js"></script>
 
 
-</body>
 </html>

@@ -5,9 +5,9 @@
 <!DOCTYPE HTML>
 
 <html>
-<head>
-<title>모두의 여가</title>
+
 <%@ include file="/views/layout/common.jsp" %>
+<head>
 
 <script type="text/javascript">
 function report(){
@@ -20,27 +20,26 @@ document.form.reset;
 </script>
 
 </head>
-<body class="left-sidebar">
+<body>
+
 	<div id="page-wrapper">
 
 		<!-- Header -->
-
 <%@ include file="/views/layout/header.jsp" %>
-			<!-- Header -->
 
 		<!-- Main -->
+		
 		<div id="main-wrapper">
 			<div class="container">
 				<div class="row 50%">
-					
-					<!-- sidebar -->
-					<%@ include file="/views/layout/sidebar.jsp" %>
-					
+
+
 					<div class="8u 12u$(medium) important(medium)">
-						<div id="content">
+						<div id="content" style="width: 900px;">
 							<div class="col-sm-9 col-lg-9">
-								<div>
+								<div style="margin-left: 300px;">
 									<h3>신고 하기</h3>
+									<hr>
 								</div>
 
 								<div class="table-responsive">
@@ -55,8 +54,10 @@ document.form.reset;
 											<input type="hidden" name="classifyId" value="${report.classifyId}"/>
 													<table>
 													<tr><td><span style="font-weight:bold">신고할 회원</span>&nbsp;&nbsp;[ ${reportedUser.id } ]</td></tr>
-												<tr><td><span style="font-weight:bold">신고 분류</span> &nbsp;&nbsp;&nbsp;
-												<select name="reportType">
+													</table>
+													<table>
+												<tr><td><span style="font-weight:bold">신고 분류</span></td> </tr>
+											<tr><td>	<select name="reportType" style="width: 550px; height: 40px;">
 																	<option value="광고물 게시">광고물 게시</option>
 																	<option value="욕설 및 비방">욕설 및 비방</option>
 																	<option value="음란물 게시">음란물 게시</option>
@@ -65,17 +66,21 @@ document.form.reset;
 															</select>
 															</td>
 														</tr>
+														</table>
+														<table>
 														<tr><td><span style="font-weight:bold">신고 사유 </span></td></tr>
 														<tr><td><textarea placeholder="내용을 입력해주세요." class="form-control" rows="2"
-															 name="reportReason"></textarea></td></tr>
+															 name="reportReason" style="width: 550px;"></textarea></td></tr>
 														</table>																									
 
 												<br /> <br />
-			
-														<span style="float: center"><input type="submit"
-																class="btn btn-pr" value="신고하기" onclick="report();"></span>
-																<span style="float: center"><button type="reset"
-																	class="btn btn-default">취소</button></span>
+												<table>
+														<tr style="text-align: center;"><td><span style="float: center"><input type="submit"
+																class="btn btn-pr" value="신고" onclick="report();"></span></td>
+																<td><span style="float: center">
+																<input type="button"
+																class="btn btn-pr" value="취소" style="background-color: gray;" onclick="location.href='#'"></span></td></tr>
+																	</table>
 											</fieldset>
 										</form>
 									</div>
@@ -87,27 +92,9 @@ document.form.reset;
 			</div>
 		</div>
 
-		<!-- Footer -->
-		<div id="footer-wrapper">
-			<footer id="footer" class="container">
-				<div class="row">
-					<div class="3u 6u(medium) 12u$(small)"></div>
-					<div class="3u 6u$(medium) 12u$(small)"></div>
-					<div class="3u 6u(medium) 12u$(small)"></div>
-					<div class="3u 6u$(medium) 12u$(small)"></div>
-				</div>
-				<div class="row">
-					<div class="12u">
-						<div id="copyright">
-							<ul class="menu">
-								<li>&copy; Untitled. All rights reserved</li>
-								<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</footer>
-		</div>
+			<!-- Footer -->
+			<%@ include file="/views/layout/footer.jsp" %>
+
 
 	</div>
 

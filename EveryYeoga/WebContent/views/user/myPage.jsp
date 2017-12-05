@@ -5,28 +5,59 @@
 
 <html>
 <head>
-<title>Verti by HTML5 UP</title>
+<style type="text/css">
+
+input[type=text]:enabled {
+    background: #ffffff;
+}
+
+input[type=text]:disabled {
+    background: #edeeec;
+}
+</style>
 
 <%@ include file="/views/layout/common.jsp"%>
+
+<script type="text/javascript">
+function button_modify(){
+if (confirm("회원 정보를 수정 하시겠습니까?") == true){    //확인
+    location.href="${pageContext.request.contextPath}/user/modify.do?userId=${user.id}";
+    
+}else{   //취소
+    return;
+}
+}
+
+function button_delete(){
+	if (confirm("회원 탈퇴를 진행 하시겠습니까?") == true){    //확인
+	    location.href="${pageContext.request.contextPath}/user/remove.do?userId=${user.id}";
+	    
+	}else{   //취소
+	    return;
+	}
+	}
+</script>
 </head>
+
+
 <body class="left-sidebar">
 	<div id="page-wrapper">
+	
+	
 
 		<!-- Header -->
-
-		<%@ include file="/views/layout/header.jsp"%>
-
-		<!-- Main -->
-		<div id="main-wrapper">
+		<%@ include file="/views/layout/header.jsp" %>
+			<div id="main-wrapper">
 			<div class="container">
-				<div class="row 50%">
-				<%@ include file="/views/layout/sidebar.jsp"%>
+				<div class="row 70%">
+		<%@ include file="/views/layout/sidebar.jsp" %>
 
 					<div class="8u 12u$(medium) important(medium)">
 						<div id="content">
 							<div class="col-sm-9 col-lg-9">
 								<div>
 									<h3>내 정보</h3>
+									<hr>
 								</div>
 
 								<form>
@@ -34,35 +65,35 @@
 
 									<table>
 										<tr>
-											<td>ID</td>
-											<td>${user.id}</td>
+											<td><label>ID</label></td>
+											<td><input style="height: 35px;" type="text" name="id" value="${user.id}" disabled="disabled"> </td>
 										</tr>
 
 
 										<tr>
-											<td>이름</td>
-											<td>${user.name}</td>
+											<td><label>이름</label></td>
+											<td><input style="height: 35px;" type="text"  name="name" value="${user.name}" disabled="disabled"> </td>
 										</tr>
 
 										<tr>
-											<td>생년월일</td>
-											<td>${user.birthDate}</td>
+											<td><label>생년월일</label></td>
+											<td><input style="height: 35px;" type="text"  name="birthDate" value="${user.birthDate}" disabled="disabled"> </td>
 										</tr>
 
 										<tr>
-											<td>이메일</td>
-											<td>${user.email}</td>
+											<td><label>이메일</label></td>
+											<td><input style="height: 35px;" type="text" name="email"  value="${user.email}" disabled="disabled"> </td>
 										</tr>
 
 										<tr>
-											<td>휴대폰 번호</td>
-											<td>${user.phoneNumber}</td>
+											<td><label>휴대폰번호</label></td>
+												<td><input style="height: 35px;" type="text" name="phoneNumber" value="${user.phoneNumber}" disabled="disabled"> </td>
 										</tr>
+										</table>
+										<table style="margin-left: 100px;">
 										<tr>
-											<td><a
-												href="${pageContext.request.contextPath}/user/modify.do?userId=${user.id}">수정</a></td>
-											<td><a
-												href="${pageContext.request.contextPath}/user/remove.do?userId=${user.id}">삭제</a></td>
+										<td><input style="background-color: pink; height: 35px; width:70px; font-size: 15px; text-align: center;" type="button" onclick="button_modify();" value="수정"></td>
+											<td><input style="background-color: #408080; height: 35px; width:70px; font-size: 15px; text-align: center;" type="button" onclick="button_delete();" value="탈퇴"></td>
 										</tr>
 
 
@@ -76,26 +107,7 @@
 		</div>
 
 		<!-- Footer -->
-		<div id="footer-wrapper">
-			<footer id="footer" class="container">
-				<div class="row">
-					<div class="3u 6u(medium) 12u$(small)"></div>
-					<div class="3u 6u$(medium) 12u$(small)"></div>
-					<div class="3u 6u(medium) 12u$(small)"></div>
-					<div class="3u 6u$(medium) 12u$(small)"></div>
-				</div>
-				<div class="row">
-					<div class="12u">
-						<div id="copyright">
-							<ul class="menu">
-								<li>&copy; Untitled. All rights reserved</li>
-								<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</footer>
-		</div>
+		<%@ include file="/views/layout/footer.jsp" %>
 
 	</div>
 
