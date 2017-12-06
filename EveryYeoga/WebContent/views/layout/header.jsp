@@ -37,7 +37,9 @@ width: 80%;
 <header>
 
  <div class="left col-xs-6">
-<h1 style="font-weight: bolder; margin-left: 200px; font-size: 40px; font-family: monospace; "> TITLE // 고칠부분: 평가하기 페이지, comment 에서의 writer 넘어가는거</h1>
+<h1 style="font-weight: bolder; margin-left: 200px; font-size: 40px; font-family: monospace; "> 
+<img alt="모두의 여가" src="${pageContext.request.contextPath}/images/1111.jpg">
+</h1>
  </div>
  
   <div class="right col-xs-6" >
