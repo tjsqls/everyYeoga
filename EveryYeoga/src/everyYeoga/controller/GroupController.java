@@ -36,8 +36,10 @@ public class GroupController {
 	
 	 
 	@RequestMapping(value = "regist.do", method = RequestMethod.POST)
-	public String registGroup(String travelPlanId,HttpServletRequest req) {
+	public String registGroup(HttpServletRequest req) {
 		HttpSession session = req.getSession();
+		String travelPlanId = req.getParameter("travelPlanId");
+		System.out.println(travelPlanId);
 		User user = (User) session.getAttribute("loginedUser");
 		String[] guideIds = req.getParameterValues("check"); 
 		List<String> userIds = new ArrayList<>();
@@ -46,7 +48,6 @@ public class GroupController {
 			userIds.add(guideId);
 			travelService.removeJoin(guideId, travelPlanId);
 		}
-
 		if(groupService.retreiveJoiningGroup(user.getId(), travelPlanId)==null) {
 		groupService.registGroup(travelPlanId);
 		userIds.add(user.getId());
@@ -73,7 +74,8 @@ public class GroupController {
 		model.addAttribute("group", group);
 		model.addAttribute("travelUserId", travelUserId);
 		model.addAttribute("articles", articles);
-		
+		model.addAttribute("traveler", group.getTraveler());
+		model.addAttribute("guides", group.getGuides());
 		return "group/groupMain";
 	}
 
@@ -97,9 +99,6 @@ public class GroupController {
 	
 	@RequestMapping(value="groupList.do", method=RequestMethod.GET)
 	public String joiningGroup(HttpServletRequest req, Model model) {
-	
-
-
 		HttpSession session = req.getSession();
 		User user = (User) session.getAttribute("loginedUser");
 		List<Group> group = groupService.retrieveJoiningGroupAll(user.getId());

@@ -83,12 +83,10 @@ public class GroupServiceLogic implements GroupService {
 				travelerHistory.setTheme(travelPlan.getTheme());
 				travelerHistory.setTravelArea(travelPlan.getTravelArea());
 				travelerHistory.setTraveler(userStore.retrieveByUserId(userId));
-				
-
-				
+	
 				for (int i = 0; i < userIds.size(); i++) {
-					if(groupStore.retrieveJoiningUserId(groupId).get(i).equals("미확인")) {
-						historyStore.updateGuideHistory(travelPlan.getTravelerId(), userIds.get(i), "확인");
+					if(groupStore.retrieveJoiningUserId(groupId).get(i).equals("unconfirm")) {
+						historyStore.updateGuideHistory(travelPlan.getTravelerId(), userIds.get(i), "confirm");
 					}
 					GuideHistory guideHistory = new GuideHistory();
 					groupStore.groupOut(groupId, userIds.get(i));
@@ -97,7 +95,7 @@ public class GroupServiceLogic implements GroupService {
 					guideHistory.setStartDate(travelPlan.getStartDate());
 					guideHistory.setTheme(travelPlan.getTheme());
 					guideHistory.setTravelArea(travelPlan.getTravelArea());
-					guideHistory.setTravelEndStatus("확인");
+					guideHistory.setTravelEndStatus("confirm");
 					guideHistory.setTravelerName(userId);
 					historyStore.createGuideHistory(guideHistory);
 				}//end for
@@ -111,7 +109,7 @@ public class GroupServiceLogic implements GroupService {
 			guideHistory.setStartDate(travelPlan.getStartDate());
 			guideHistory.setTheme(travelPlan.getTheme());
 			guideHistory.setTravelArea(travelPlan.getTravelArea());
-			guideHistory.setTravelEndStatus("미확인");
+			guideHistory.setTravelEndStatus("unconfirm");
 			guideHistory.setTravelerName(userId);
 			historyStore.createGuideHistory(guideHistory);
 			return true;
@@ -122,17 +120,17 @@ public class GroupServiceLogic implements GroupService {
 	@Override
 	public Group retreiveJoiningGroup(String travelerId, String travelPlanId) {
 		// 선빈
-		
 		TravelPlan travelPlan = travelStore.retrieveTravelPlan(travelPlanId);
 		User traveler = new User();
 		Group group = groupStore.retreiveJoiningGroup(travelPlanId);
 		List<String> userIds = groupStore.retrieveJoiningUserId(travelPlanId);
+
 		if (travelPlan.getTravelerId().equals(travelerId)) {
 			traveler = userStore.retrieveByUserId(travelerId);
 		}
 		List<User> guides = new ArrayList<User>();
 		for (int i = 0; i < userIds.size(); i++) {
-			if (userIds.get(i) != traveler.getId()) {
+			if (!userIds.get(i).equals(traveler.getId())) {
 				User guide = userStore.retrieveByUserId(userIds.get(i));
 				guides.add(guide);
 			}

@@ -14,17 +14,10 @@ import everyYeoga.store.mapper.TravelMapper;
 @Repository
 public class TravelStoreLogic implements TravelStore {
 
-	private EveryYeogaSqlSessionFactory factory;
-
-	public TravelStoreLogic() {
-		factory = EveryYeogaSqlSessionFactory.getInstance();
-	}
-
-
 	@Override
 	public boolean createTravelPlan(TravelPlan travelPlan) {
 		//진휘
-		SqlSession session = factory.getSession();
+		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
 		try {
 			TravelMapper mapper = session.getMapper(TravelMapper.class);
 			mapper.createTravelPlan(travelPlan);
@@ -39,7 +32,7 @@ public class TravelStoreLogic implements TravelStore {
 	@Override
 	public List<TravelPlan> retrieveTravelPlanByTravelArea(String travelArea) {
 		//진휘
-		SqlSession session = factory.getSession();
+		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
 		List<TravelPlan> list = null;
 		try {
 			TravelMapper mapper = session.getMapper(TravelMapper.class);
@@ -53,7 +46,7 @@ public class TravelStoreLogic implements TravelStore {
 	@Override
 	public List<TravelPlan> retrieveTravelPlanByTravelAreaAndStartDate(String travelArea, String startDate) {
 		//진휘
-		SqlSession session = factory.getSession();
+		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
 		List<TravelPlan> list = null;
 		try {
 			TravelMapper mapper = session.getMapper(TravelMapper.class);
@@ -68,7 +61,7 @@ public class TravelStoreLogic implements TravelStore {
 	@Override
 	public List<TravelPlan> retrieveTravelPlanByTravelAreaAndSpeakingAbility(String travelArea, String speakingAbility) {
 		//진휘
-		SqlSession session = factory.getSession();
+		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
 		List<TravelPlan> list = null;
 		try {
 			TravelMapper mapper = session.getMapper(TravelMapper.class);
@@ -85,7 +78,7 @@ public class TravelStoreLogic implements TravelStore {
 	public List<TravelPlan> retrieveTravelPlanByTravelAreaAndSpeakingAbilityAndStartDate(String travelArea,
 			String speakingAbility, String startDate) {
 		//진휘
-		SqlSession session = factory.getSession();
+		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
 		List<TravelPlan> list = null;
 		try {
 			TravelMapper mapper = session.getMapper(TravelMapper.class);
@@ -100,10 +93,9 @@ public class TravelStoreLogic implements TravelStore {
 	@Override
 	public TravelPlan retrieveTravelPlan(String travelPlanId) {
 		//진휘
-		SqlSession session = factory.getSession();
-		TravelPlan travelPlan;
+		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
+		TravelPlan travelPlan = null;
 		try {
-			travelPlan = new TravelPlan();
 			TravelMapper mapper = session.getMapper(TravelMapper.class);
 			travelPlan = mapper.retrieveTravelPlan(travelPlanId);
 		}finally {
@@ -115,7 +107,7 @@ public class TravelStoreLogic implements TravelStore {
 	@Override
 	public boolean updateTravelPlan(TravelPlan travelPlan) {
 		//진휘
-		SqlSession session = factory.getSession();
+		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
 		try {
 			TravelMapper mapper = session.getMapper(TravelMapper.class);
 			mapper.updateTravelPlan(travelPlan);//mapper수정완료
@@ -129,7 +121,7 @@ public class TravelStoreLogic implements TravelStore {
 	@Override
 	public boolean deleteTravelPlan(String travelPlanId) {
 		//진휘
-		SqlSession session = factory.getSession();
+		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
 		try {
 			TravelMapper mapper = session.getMapper(TravelMapper.class);
 			mapper.deleteTravelPlan(travelPlanId);
@@ -142,7 +134,7 @@ public class TravelStoreLogic implements TravelStore {
 
 	@Override
 	public List<TravelPlan> retrieveAllTravelPlans() {
-		SqlSession session = factory.getSession();
+		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
 		List<TravelPlan> list = null;
 		try {
 			TravelMapper mapper = session.getMapper(TravelMapper.class);
@@ -156,11 +148,10 @@ public class TravelStoreLogic implements TravelStore {
 
 	@Override
 	public TravelPlan retrieveTravelPlanByUserId(String travelerId, String gathringStatus) {
-		SqlSession session = factory.getSession();
+		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
 		TravelPlan travelPlan = null;
 		try {
 			TravelMapper mapper = session.getMapper(TravelMapper.class);
-
 			travelPlan = mapper.retrieveTravelPlanByUserId(travelerId, gathringStatus);
 		}finally {
 			session.close();

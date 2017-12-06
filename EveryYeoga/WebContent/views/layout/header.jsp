@@ -57,8 +57,10 @@ text-shadow: 0px 1px 5px gray;
 		<c:choose>
 					<c:when test="${loginedUser eq null}">
 					<li id="top-header">
-					<a href="${pageContext.request.contextPath}/views/user/login.jsp">로그인</a> &nbsp;&nbsp;
-							<a href="${pageContext.request.contextPath}/views/user/registUser.jsp">회원가입</a></li>
+
+					<a href="${pageContext.request.contextPath}/user/login.do">로그인</a> &nbsp;&nbsp;
+							<a href="${pageContext.request.contextPath}/user/regist.do">회원가입</a></li>
+
 					</c:when>
 					<c:otherwise>
 					<li id="top-header">
