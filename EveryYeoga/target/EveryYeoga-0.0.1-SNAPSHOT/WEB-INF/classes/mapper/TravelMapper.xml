@@ -5,33 +5,25 @@
 <mapper namespace="everyYeoga.store.mapper.TravelMapper">
 
 	<resultMap id="TravelPlanMap" type="TravelPlan">
-
 		<id column="travelPlanId" property="travelPlanId" />
-
 		<result column="speakingAbility" property="speakingAbility" />
-
 		<result column="travelArea" property="travelArea" />
-
 		<result column="numberOfVisits" property="numberOfVisits" />
-
+		<result column="startDate" property="startDate" />
+		<result column="endDate" property="endDate" />
 		<result column="theme" property="theme" />
-
 		<result column="numberOfTraveler" property="numberOfTraveler" />
-
 		<result column="preferGuide" property="preferGuide" />
-
 		<result column="selfIntroduction" property="selfIntroduction" />
-
 		<result column="gatheringStatus" property="gatheringStatus" />
 	</resultMap>
 
-	<insert id="createTravelPlan" parameterType="travelPlan"> INSERT INTO
-		travelPlan_tb(travelPlanId, travelerId, speakingAbility, travelArea,
-		numberOfVisits, theme, numberOfTraveler, preferGuide,
-		selfIntroduction, gatheringStatus) VALUES(travelPlan_seq.NEXTVAL,
-		#{traveler.id}, #{speakingAbility}, #{travelArea}, #{numberOfVisits},
-		#{theme}, #{numberOfTraveler}, #{preferGuide}, #{selfIntroduction},
-		'true') </insert>
+	<insert id="createTravelPlan" parameterType="travelPlan"> 
+		INSERT INTO travelPlan_tb(travelPlanId, travelerId, speakingAbility, travelArea,
+		numberOfVisits, startDate, endDate, theme, numberOfTraveler, preferGuide,
+		selfIntroduction, gatheringStatus) 
+		VALUES(travelPlan_seq.NEXTVAL, #{travelerId}, #{speakingAbility}, #{travelArea}, #{numberOfVisits},
+		#{startDate}, #{endDate}, #{theme}, #{numberOfTraveler}, #{preferGuide}, #{selfIntroduction},#{gatheringStatus}) </insert>
 
 	<select id="retrieveTravelPlanByTravelArea" parameterType="String"
 		resultMap="TravelPlanMap"> 
@@ -39,34 +31,35 @@
 		travelArea, numberOfVisits, theme, numberOfTraveler, preferGuide,
 		selfIntroduction, gatheringStatus, startDate,endDate 
 		FROM travelPlan_tb 
-		WHERE travelArea=#{travelArea} </select>
+		WHERE travelArea=#{travelArea}AND gatheringStatus ='모집중'  </select>
 
 	<select id="retrieveTravelPlanByTravelAreaAndStartDate"
 		parameterType="map" resultMap="TravelPlanMap"> SELECT travelPlanId, travelerId,
 		speakingAbility, travelArea, numberOfVisits, theme, numberOfTraveler,
 		preferGuide, selfIntroduction, gatheringStatus, startDate,endDate FROM
 		travelPlan_tb WHERE travelArea = #{travelArea} AND startDate =
-		#{startDate} </select>
+		#{startDate} AND gatheringStatus ='모집중' </select>
 
 	<select id="retrieveTravelPlanByTravelAreaAndSpeakingAbility"
 		parameterType="map" resultMap="TravelPlanMap"> SELECT travelPlanId, travelerId,
 		travelArea, speakingAbility, numberOfVisits, theme, numberOfTraveler,
 		preferGuide, selfIntroduction, gatheringStatus, startDate,endDate FROM
 		travelPlan_tb WHERE travelArea = #{travelArea} AND speakingAbility =
-		#{speakingAbility} </select>
+		#{speakingAbility} AND gatheringStatus ='모집중' </select>
 
 	<select id="retrieveTravelPlanByTravelAreaAndSpeakingAbilityAndStartDate"
 		parameterType="map" resultMap="TravelPlanMap"> SELECT travelPlanId, travelerId,
 		 travelArea,speakingAbility, numberOfVisits, theme, numberOfTraveler,
 		preferGuide, selfIntroduction, gatheringStatus, startDate,endDate FROM
 		travelPlan_tb WHERE travelArea=#{travelArea} AND speakingAbility =
-		#{speakingAbility} AND startDate = #{startDate} </select>
+		#{speakingAbility} AND startDate = #{startDate} AND gatheringStatus ='모집중' </select>
 
 	<select id="retrieveTravelPlan" parameterType="String"
 		resultMap="TravelPlanMap"> SELECT travelPlanId, travelerId, speakingAbility,
 		travelArea, numberOfVisits, theme, numberOfTraveler, preferGuide,
-		selfIntroduction, gatheringStatus, startDate,endDate FROM
-		travelPlan_tb WHERE travelPlanId=#{travelPlanId} </select>
+		selfIntroduction, gatheringStatus, startDate,endDate 
+		FROM travelPlan_tb 
+		WHERE travelPlanId = #{travelPlanId} </select>
 
 	<update id="updateTravelPlan" parameterType="TravelPlan"> 
 		UPDATE	travelPlan_tb 
@@ -94,12 +87,11 @@
 	</select>
 		
 
-	<select id="retrieveTravelPlanByUserId"	parameterType="String" resultMap="TravelPlanMap"> 
-	SELECT travelPlanId, travelerId, speakingAbility,
-		travelArea, numberOfVisits, theme, numberOfTraveler, preferGuide,
-		selfIntroduction, gatheringStatus, startDate,endDate 
+	<select id="retrieveTravelPlanByUserId"	parameterType="map" resultMap="TravelPlanMap"> 
+	SELECT travelPlanId, travelerId, speakingAbility, travelArea, numberOfVisits, theme, numberOfTraveler, preferGuide,
+		selfIntroduction, gatheringStatus, startDate, endDate 
 	FROM travelPlan_tb
-	WHERE travelerId=#{traveler.id} AND gatheringStatus='true'
+	WHERE travelerId=#{travelerId} AND gatheringStatus = #{gatheringStatus}
 	</select>
 
 </mapper>

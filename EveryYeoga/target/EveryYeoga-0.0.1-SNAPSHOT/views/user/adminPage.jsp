@@ -5,82 +5,63 @@
 <!DOCTYPE HTML>
 
 <html>
+	<style type="text/css">
+
+    ul#navii {
+
+        width: 200px;
+        text-indent: 10px;
+        background-color: white;
+
+}
+    ul#navii, ul#navii ul {
+        margin:1;
+        padding:0;
+        list-style:none;
+        border-bottom-color: gray;
+}
+    li.group {
+        margin-bottom: 10px;
+
+}
+
+
+</style>
+
 <head>
-<title>Verti by HTML5 UP</title>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="stylesheet" href="../../assets/css/main.css" />
+<%@ include file="/views/layout/common.jsp" %>
 </head>
+
 <body class="left-sidebar">
 	<div id="page-wrapper">
+	
+	
 
 		<!-- Header -->
-		<div id="header-wrapper">
-			<header id="header" class="container">
-
-				<!-- Logo -->
-				<div id="logo">
-					<h1>
-						<a
-							href="${pageContext.request.contextPath}/views/user/adminPage.jsp">모두의
-							가이드</a>
-					</h1>
-
-				</div>
-
-				<!-- Nav -->
-				<nav id="nav">
-					<ul>
-						<li class="current"><a
-							href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp">여행검색</a></li>
-						<li class="current"><a
-							href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp">모임관리</a></li>
-						<li class="current"><a href="login.html">로그아웃</a></li>
-					</ul>
-				</nav>
-			</header>
-		</div>
-
+		<%@ include file="/views/layout/header.jsp" %>
 			<!-- Header -->
-<%@ include file="/views/layout/header.jsp" %>
-
-
+			
 		<!-- Main -->
 
 		<div id="main-wrapper">
 			<div class="container">
-				<div class="row 50%">
-					<div class="4u 12u$(medium)">
+				<div class="row 70%">
+					<ul id="navii">
+			<legend> 관리자 페이지 </legend>
 
+				<li class="group" style=""><a href="${pageContext.request.contextPath}/report/searchAll.do">신고내역 관리</a></li>
+			</ul>
 
-						<div id="sidebar">
-
-							<!-- Sidebar -->
-							<section>
-								<ul class="style2">
-									<li><a
-										href="${pageContext.request.contextPath}/views/user/adminPage.jsp"><h3>신고내역
-												관리</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/views/travel/manageTravelPlan.jsp"><h3>여행계획
-												관리</h3></a></li>
-
-								</ul>
-								</footer>
-							</section>
-
-						</div>
-					</div>
+					
 					<div class="8u 12u$(medium) important(medium)">
-						<div id="content">
+						<div id="content" style="width: 1000px;">
 							<div class="col-sm-9 col-lg-9">
 								<div>
 									<h3>신고 목록</h3>
+									<hr>
 								</div>
 
-								<div class="table-responsive">
-									<div class="well">
-
+								<div class="table-responsive" style="width: 900px;">
 
 										<div class="table-responsive">
 											<table class="table table-striped table-bordered table-hover">
@@ -93,11 +74,11 @@
 												</colgroup>
 												<thead>
 													<tr>
-														<th class="text-center" style="width: 3%">번호</th>
-														<th class="text-center" style="width: 5%">게시물/댓글</th>
-														<th class="text-center" style="width: 5%">신고분류</th>
-														<th class="text-center" style="width: 7%">신고자</th>
-														<th class="text-center" style="width: 10%">신고일</th>
+														<th class="text-center" style="width: 10%; font-weight: bold">번호</th>
+														<th class="text-center" style="width: 15%; font-weight: bold">신고구분</th>
+														<th class="text-center" style="width: 15%; font-weight: bold">신고분류</th>
+														<th class="text-center" style="width: 20%; font-weight: bold">신고자</th>
+														<th class="text-center" style="width: 20%; font-weight: bold">신고일</th>
 													</tr>
 
 												</thead>
@@ -113,10 +94,13 @@
 														<c:forEach var="list" items="${reportList }" varStatus="sts">
 															<tr>											
 														<td class="text-center">${sts.count }</td>
+														<c:set var="reportUser" value="${list.reportUser }"/>
+														<c:set var="reportedUser" value="${list.reportedUser }"/>
 																<c:choose>
 																
 																<c:when test="${list.classifyReport == 'article'}">
-																	<td><a href="${pageContext.request.contextPath}/report/searchArticle.do?articleId=${list.classifyId}">게시물</a></td>
+																	<td><a href="${pageContext.request.contextPath}/report/searchArticle.do?articleId=${list.classifyId}
+																	&reportedUserId=${reportedUser.id}&reportUserId=${reportUser.id}">게시물</a></td>
 																</c:when>
 																
 																<c:otherwise>
@@ -125,7 +109,7 @@
 																
 																</c:choose> 
 																 <td class="text-center">${list.reportType }</td>
-																  <td class="text-center">${list.reportUser.id }</td>
+																  <td class="text-center">${reportUser.id }</td>
 																  <td class="text-center">
 														<fmt:formatDate value="${list.regDate }" pattern="yyyy-MM-dd" /></td>
 															</tr>
@@ -148,28 +132,8 @@
 		</div>
 
 		<!-- Footer -->
-		<div id="footer-wrapper">
-			<footer id="footer" class="container">
-				<div class="row">
-					<div class="3u 6u(medium) 12u$(small)"></div>
-					<div class="3u 6u$(medium) 12u$(small)"></div>
-					<div class="3u 6u(medium) 12u$(small)"></div>
-					<div class="3u 6u$(medium) 12u$(small)"></div>
-				</div>
-				<div class="row">
-					<div class="12u">
-						<div id="copyright">
-							<ul class="menu">
-								<li>&copy; Untitled. All rights reserved</li>
-								<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</footer>
-		</div>
+		<%@ include file="/views/layout/footer.jsp" %>
 
-	</div>
 
 	<!-- Scripts -->
 

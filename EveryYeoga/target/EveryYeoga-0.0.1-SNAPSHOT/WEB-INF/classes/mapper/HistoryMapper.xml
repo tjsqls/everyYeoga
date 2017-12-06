@@ -10,8 +10,11 @@
       <result property="endDate" column="EndDate" />
       <result property="theme" column="theme" />
       <result property="guideName" column="guideName" />
-      <association property="traveler" column="travelerId" select="everyYeoga.store.mapper.UserMapper.retrieveByUserId" javaType="User"></association>
+      <association property="traveler" column="traveledUserId" select="everyYeoga.store.mapper.UserMapper.retrieveByUserId" javaType="User"></association>
    </resultMap> 
+   
+   
+   
      <resultMap type="GuideHistory" id="guideHistoryMap">
       <id property="guideHistoryId" column="guideHistoryId"></id>
       <result property="travelEndStatus" column="travelEndStatus"></result>
@@ -42,13 +45,13 @@
   	
   	<insert id="createGuideHistory" parameterType="GuideHistory">
   		INSERT INTO guideHistory_tb(guideHistoryId, travelEndStatus, travelerName, travelArea, startDate, endDate, theme, guideId)
-  		VALUES(guideHistory_seq.NEXTVAL,#{travelEndStatus}, #{travelerName}, #{travelArea}, #{startDate}, #{endDate}, #{theme}, #{guide.name})
+  		VALUES(guideHistory_seq.NEXTVAL,#{travelEndStatus}, #{travelerName}, #{travelArea}, #{startDate}, #{endDate}, #{theme}, #{guide.id})
   	</insert>
   	
   	<update id="updateGuideHistory" parameterType="GuideHistory">
   		UPDATE guideHistory_tb
   		SET travelEndStatus = #{travelEndStatus}
-  		WHERE guideHistoryId = #{guideHistoryId}
+  		WHERE travelerName = #{travelerName} AND guideId = #{guideId}
   	</update>
   	
   	<select id="retrieveByGuideHistoryId" parameterType="String" resultMap="guideHistoryMap">
@@ -60,13 +63,13 @@
   	<select id="retrieveUncheckedGuideHistory" parameterType="map" resultMap="guideHistoryMap">
   		SELECT guideHistoryId, travelEndStatus, travelerName, travelArea, startDate, endDate, theme, guideId
   		FROM guideHistory_tb 
-  		WHERE guideId = #{guideId} AND travelEndStatus = '미확인'
+  		WHERE guideId = #{guideId} AND travelEndStatus = #{travelEndStatus}
   	</select>
   	
   	<select id="retrieveCheckedGuideHistory" parameterType="map" resultMap="guideHistoryMap">
   		SELECT guideHistoryId, travelEndStatus, travelerName, travelArea, startDate, endDate, theme, guideId
   		FROM guideHistory_tb 
-  		WHERE guideId = #{guideId} AND travelEndStatus = '확인'
+  		WHERE guideId = #{guideId} AND travelEndStatus = #{travelEndStatus}
   	</select>
   	
   </mapper>

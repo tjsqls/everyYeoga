@@ -4,103 +4,82 @@
 <!DOCTYPE HTML>
 
 <html>
+		<%@ include file="/views/layout/common.jsp"%>
 <head>
-<title>Verti by HTML5 UP</title>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="stylesheet" href="../../assets/css/main.css" />
+
+
+
+
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-<link rel="stylesheet" href="/resources/demos/style.css">
+
 <script>
 	$(function() {
-		$("#datepicker").datepicker();
+		$("#satartDate").datepicker({
+			dateFormat : 'yy/mm/dd'
+		});
 	});
 </script>
+
 </head>
 <body class="left-sidebar">
+
 	<div id="page-wrapper">
 
 		<!-- Header -->
-		<%@ include file="/views/layout/header.jsp"%>
+<%@ include file="/views/layout/header.jsp" %>
 
 		<!-- Main -->
-
+		
 		<div id="main-wrapper">
 			<div class="container">
 				<div class="row 50%">
-					<div class="4u 12u$(medium)">
 
 
-						<div id="sidebar">
-
-							<!-- Sidebar -->
-							<section>
-								<ul class="style2">
-									<li><a
-										href="${pageContext.request.contextPath}/user/myPage.do"><h3>회원정보</h3></a></li>
-									<a
-										href="${pageContext.request.contextPath}/travel/searchTravelPlan.do"><h3>여행
-											검색</h3></a>
-									</li>
-
-									<li><a
-										href="${pageContext.request.contextPath}/group/joiningGroupList.do"><h3>참여중인
-												모임</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/travel/myTravelPlan.do"><h3>내가
-												올린 여행계획</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/history/myTravelerHistory.do"><h3>여행
-												내역</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/history/myGuideHistory.do"><h3>가이드
-												내역</h3></a></li>
-								</ul>
-								</footer>
-							</section>
-
-						</div>
-					</div>
 					<div class="8u 12u$(medium) important(medium)">
-						<div id="content">
+						<div id="content" style="margin-left: 200px; width: 1000px;">
 							<div class="col-sm-9 col-lg-9">
 								<div>
-									<h3>여행 검색</h3>
+									<h3 class="glyphicon glyphicon-search"> 여행검색하기</h3>
+									<hr>
 								</div>
 
 								<div class="table-responsive">
-									<div class="well">
 										<div class="row">
 											<div class="col-sm-12 col-lg-12">
-												<form
-													action="${pageContext.request.contextPath}/travel/searchTravelPlan.do"
-													class="bs-example form-horizontal" method="POST">
-													<span style="float: right"><button type="submit"
-															style="padding: 10px">검색</button></span> <span
-														style="float: right" style="padding: 10px"> <input
-														name="satartDate" type="text"
-														placeholder="여행 시작 날짜 (yy/mm/dd)" value="" /></span> <span
-														style="float: right" style="padding: 10px"> <input
-														name="speakingAbility" placeholder="언어구사능력" value="" /></span> <input
-														name="travelArea" placeholder="지역" value="" /></span>
+												<form action="${ctx}/travel/searchTravelPlan.do"
+													class="bs-example form-horizontal" method="POST" style="width: 1000px;">
+
+											<table style=" width: 400px;">
+													<tr><td><span style="color: red; font-weight: bold; size: 8px;">* 지역은 필수 선택 입니다.</span></td></tr>				
+													<tr><td><input type="text" name="travelArea" placeholder="지역" value="" style="width: 400px;" /></td></tr>
+													
+													<tr><td style="margin-top: 5px;"> <input style="width: 300px;" id="satartDate" name="satartDate" type="text"
+														placeholder="여행 시작 날짜 (yy/mm/dd)" value="" /></td>
+					<td style="margin-top: 10px;"> <input type="text" name="speakingAbility" placeholder="언어구사능력" style="width: 300px;" value="" /></td></tr>
+					   									</table><table>
+														<tr><td style="text-align: center;" ><button type="submit" style="width: 200px; background-color: orange;">검색</button></td></tr>
+														
+											</table>
+
 												</form>
 											</div>
 
 										</div>
-
+<br/>
+<hr>
 
 										<div class="table-responsive">
 											<table class="table table-striped table-bordered table-hover">
 												<thead>
 													<tr>
-														<th class="text-center">번호</th>
-														<th class="text-center">여행지역</th>
-														<th class="text-center">테마</th>
-														<th class="text-center">모집상태</th>
-														<th class="text-center">여행자ID</th>
+														<th class="text-center" style="font-weight: bold; width: 10%">번호</th>
+														<th class="text-center" style="font-weight: bold; width: 30%">여행지역</th>
+														<th class="text-center" style="font-weight: bold; width: 25%">테마</th>
+														<th class="text-center" style="font-weight: bold; width: 15%">모집상태</th>
+														<th class="text-center" style="font-weight: bold; width: 20%">여행자ID</th>
 													</tr>
 												</thead>
 												<tbody>
@@ -113,24 +92,23 @@
 														<c:otherwise>
 															<c:forEach var="travelPlan" items="${list}"
 																varStatus="sts">
+
 																	<tr>
 																		<td class="text-center">${sts.count}</td>
 																		<td class="text-center">${travelPlan.travelArea}</td>
 																		<td class="text-center">${travelPlan.theme}</td>
 																		<td class="text-center">${travelPlan.gatheringStatus}</td>
 																		<td class="text-center">${travelPlan.travelerId}</td>
+																		<td class="text-center"><a href="${ctx}/guide/registJoin.do?travelPlanId=${travelPlan.travelPlanId}">참여 신청하기</a> </td>
 																	</tr>
+														
 																</c:forEach>
+
 														</c:otherwise>
 													</c:choose>
 												</tbody>
 											</table>
 										</div>
-
-										<span style="float: right"><a
-											href="${pageContext.request.contextPath}/travel/regist.do"><h3>여행계획
-													등록하기</h3></a></span>
-
 
 									</div>
 								</div>
@@ -138,32 +116,13 @@
 						</div>
 					</div>
 				</div>
-			</div>
-		</div>
-
-		<!-- Footer -->
-		<div id="footer-wrapper">
-			<footer id="footer" class="container">
-				<div class="row">
-					<div class="3u 6u(medium) 12u$(small)"></div>
-					<div class="3u 6u$(medium) 12u$(small)"></div>
-					<div class="3u 6u(medium) 12u$(small)"></div>
-					<div class="3u 6u$(medium) 12u$(small)"></div>
-				</div>
-				<div class="row">
-					<div class="12u">
-						<div id="copyright">
-							<ul class="menu">
-								<li>&copy; Untitled. All rights reserved</li>
-								<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-							</ul>
-						</div>
+								</div>
 					</div>
-				</div>
-			</footer>
-		</div>
+			
+<!-- Footer -->
+		<%@ include file="/views/layout/footer.jsp" %>
 
-	</div>
+
 
 	<!-- Scripts -->
 

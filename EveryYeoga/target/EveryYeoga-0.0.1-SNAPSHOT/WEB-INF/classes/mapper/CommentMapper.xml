@@ -19,7 +19,7 @@
 	<insert id="createComment" parameterType="map">  
 		INSERT INTO comment_tb
 		(commentId, content, regDate, writer, articleId, groupId)
-		VALUES(comment_seq.NEXTVAL, #{comment.content}, #{comment.regDate}, #{comment.user.name}, #{articleId}, #{groupId})
+		VALUES(comment_seq.NEXTVAL, #{comment.content}, #{comment.regDate}, #{comment.user.id}, #{articleId}, #{groupId})
 	</insert> 
 
 	<delete id="deleteComment" parameterType="String">
