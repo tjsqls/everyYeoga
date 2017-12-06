@@ -32,53 +32,50 @@
 										<form
 											action="${pageContext.request.contextPath}/guide/registEvaluation.do"
 											class="bs-example form-horizontal" method="POST">
-											<fieldset>
 											<c:forEach items="${guideIds}" var="guideId">
-												<label class="col-lg-2 control-label"><h3>가이드:${guideId }</h3></label>
+												<h2>가이드아이디:${guideId }</h2>
 												<input type="hidden" name="guideId" value="${guideId }">
+												<br><br>
+												<fieldset>
+													<div class="form-group">
 
-												<div class="form-group">
-													<label class="col-lg-2 control-label"><h3>좋았던
-															점</h3></label> <input type="text" name="pros"
-														value="">
-													<div class="col-lg-10"></div>
-												</div>
-
-
-												<div class="form-group">
-													<label class="col-lg-2 control-label"><h3>나빴던
-															점</h3></label> <input type="text" name="cons"
-														value="">
-													<div class="col-lg-10"></div>
-												</div>
-
-												<label class="col-lg-2 control-label"><h3>별점</h3></label>
-												 <span class="star-input"> <span class="input"> 
-														<input type="radio" name="stars" value="1" id="p1"> <label 
-														for="p1">1</label> 
-														<input type="radio" name="stars" value="2" id="p2"> <label
-														for="p2">2</label> 
-														<input type="radio" name="stars" value="3" id="p3"> <label 
-														for="p3">3</label> 
-														<input type="radio" name="stars" value="4" id="p4"> <label 
-														for="p4">4</label> 
-														<input type="radio" name="stars" value="5" id="p5"> <label
-														for="p5">5</label>
-												</span> 
-													</c:forEach>
-													
-												
-												</span> <br /> <br /> <br /> <br />
-
-												<div class="form-group">
-													<div class="col-lg-10 col-lg-offset-2">
-														<span style="float: center"><button type="submit"
-																class="btn btn-pr">평가 완료</button> <span
-															style="float: center"><button type="reset"
-																	class="btn btn-default">취소</button>
+														<h3>좋았던점</h3></label> 
+														<input type="text" name="pros" value="">
 													</div>
-												</div>
-											</fieldset>
+
+													<div class="form-group">
+
+														<h3>나빴던점</h3></label> 
+														<input type="text" name="cons" value="">
+													</div>
+
+													<div class="form-group">
+
+														<h3>별점</h3><span class="input"> 
+														<input  type="radio" name="stars" value="1" id="p1"> <label 
+														for="p1">1</label> 
+														<input  type="radio" name="stars" value="2" id="p2"> <label
+														for="p2">2</label> 
+														<input  type="radio" name="stars" value="3" id="p3"> <label 
+														for="p3">3</label> 
+														<input  type="radio" name="stars" value="4" id="p4"> <label 
+														for="p4">4</label> 
+														<input  type="radio" name="stars" value="5" id="p5"> <label
+														for="p5">5</label>
+														</span>
+													</div>
+
+													<br /> <br />
+													<div class="form-group">
+														<div class="col-lg-10 col-lg-offset-2">
+															<span style="float: center"><button type="submit"
+																	class="btn btn-pr">평가완료</button> <span
+																style="float: center"><button type="reset"
+																		class="btn btn-default">취소</button>
+														</div>
+													</div>
+												</fieldset>
+											</c:forEach>
 										</form>
 									</div>
 								</div>

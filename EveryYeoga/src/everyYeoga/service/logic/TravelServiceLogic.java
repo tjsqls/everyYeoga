@@ -37,9 +37,9 @@ import everyYeoga.store.TravelStore;
 import everyYeoga.store.UserStore;
 import everyYeoga.store.logic.TravelStoreLogic;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@WebAppConfiguration
-@ContextConfiguration(locations = {"file:WebContent/WEB-INF/dispatcher-servlet.xml"})
+//@RunWith(SpringJUnit4ClassRunner.class)
+//@WebAppConfiguration
+//@ContextConfiguration(locations = {"file:WebContent/WEB-INF/dispatcher-servlet.xml"})
 
 @Service
 public class TravelServiceLogic implements TravelService {
@@ -174,7 +174,7 @@ public class TravelServiceLogic implements TravelService {
 
 	@Override
 	public List<TravelPlan> searchAllTravelPlans() {
-		// TODO Auto-generated method stub
+		//진휘
 		return travelStore.retrieveAllTravelPlans();
 	}
 

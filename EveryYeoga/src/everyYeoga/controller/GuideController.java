@@ -45,7 +45,7 @@ public class GuideController {
 		User user = (User) session.getAttribute("loginedUser");
 		join.setGuideId(user.getId());
 		travelService.registJoin(join);
-		
+
 
 		return "redirect:/travel/searchTravelPlan.do";
 	}
@@ -83,22 +83,23 @@ public class GuideController {
 		List<String> guideIds = new ArrayList<>();
 		for(int i=0; i<userIds.size(); i++) {
 			if(!travelService.searchTravelPlan(groupId).getTravelerId().equals(userIds.get(i))) {
-			String guideId = userIds.get(i);
-			guideIds.add(guideId);
+				String guideId = userIds.get(i);
+				guideIds.add(guideId);
 			}
 		}
-		model.addAttribute("guideIds", guideIds);
+		model.addAttribute("guideIds", groupId);
 		return "guide/registEvaluation";
 	}
 
 	@RequestMapping(value = "registEvaluation.do", method = RequestMethod.POST)
-	public String registEvaluation(HttpServletRequest req, EvaluationList list) {
+	public String registEvaluation(HttpServletRequest req, List<Evaluation> list, String groupId) {
 		//진휘
 		HttpSession session = req.getSession();
 		User user = (User) session.getAttribute("loginedUser");
-		for(int i=0; i<list.getList().size(); i++) {
-		list.getList().get(i).setTravelerId(user.getId());
-		travelService.registEvaluation(list.getList().get(i));
+		
+		for(int i=0; i<list.size(); i++) {
+			list.get(i).setTravelerId(user.getId());
+			travelService.registEvaluation(list.get(i));
 		}
 		return "travel/travelPlanList";
 	}
