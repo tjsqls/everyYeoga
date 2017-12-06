@@ -63,10 +63,10 @@
 												<td><input placeholder="해당 지역에 방문했던 횟수를 적어주세요." type="text" name="numberOfVisits" value=""style="width: 550px; height:40px; background-color: #fff8ec;"></td></tr>
 												
 													<tr><td><label  class="text-right" style="font-size: 18px; padding-top: 10px;">여행 시작일&nbsp;</label> </td>
-												<td><input placeholder="yyyy/mm/dd" type="text" name="startDate" value=""style="width: 550px; height:40px;"></td></tr>
+												<td><input placeholder="yyyy/mm/dd" type="text" id="startDate" name="startDate" value=""style="width: 550px; height:40px;"></td></tr>
 												
 												<tr><td><label  class="text-right" style="font-size: 18px; padding-top: 10px;">여행 종료일&nbsp;</label> </td>
-												<td><input placeholder="yyyy/mm/dd" type="text" name="endDate" value=""style="width: 550px; height:40px; background-color: #fff8ec;"></td></tr>
+												<td><input placeholder="yyyy/mm/dd" type="text" id="endDate" name="endDate" value=""style="width: 550px; height:40px; background-color: #fff8ec;"></td></tr>
 												
 												<tr><td><label  class="text-right" style="font-size: 18px; padding-top: 10px;">여행 테마&nbsp;</label> </td>
 												<td><input placeholder="여행시 원하는 테마를 적어주세요." type="text" name="theme" value=""style="width: 550px; height:40px;"></td></tr>

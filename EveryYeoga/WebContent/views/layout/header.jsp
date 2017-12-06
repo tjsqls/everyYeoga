@@ -45,7 +45,7 @@ width: 80%;
 		<c:choose>
 					<c:when test="${loginedUser eq null}">
 					<li id="top-header">
-					<a href="${pageContext.request.contextPath}/views/user/login.jsp">로그인</a> &nbsp;&nbsp;
+					<a href="${pageContext.request.contextPath}/user/login.do">로그인</a> &nbsp;&nbsp;
 							<a href="${pageContext.request.contextPath}/user/regist.do">회원가입</a></li>
 					</c:when>
 					<c:otherwise>
