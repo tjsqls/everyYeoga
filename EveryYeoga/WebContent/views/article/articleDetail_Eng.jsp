@@ -11,7 +11,7 @@
 
 <script type="text/javascript">
 function button_event(){
-if (confirm("정말 삭제하시겠습니까??") == true){    //확인
+if (confirm("Do you want to delete this Article?") == true){    //확인
     location.href="${ctx }/article/remove.do?articleId=${article.articleId}";
     
 }else{   //취소
@@ -20,7 +20,7 @@ if (confirm("정말 삭제하시겠습니까??") == true){    //확인
 }
 
 function report_button(){
-	if(confirm("해당 게시글을 신고 하시겠습니까?") == true){		
+	if(confirm("Do you want to report this Article?") == true){		
 		location.href="${ctx}/report/regist.do?classifyId=${article.articleId}&classifyReport=article&userId=${user.id}"
 	}else{
 		return;
@@ -28,7 +28,7 @@ function report_button(){
 }
 
 function comment_delete(){
-	if(confirm("댓글을 삭제하시겠습니까?") == true){
+	if(confirm("Do you want to delete this Comment?") == true){
 		location.href="${ctx }/comment/remove.do?articleId=${article.articleId}&commentId=${comment.commentId}"
 	}else{
 		return;
@@ -36,7 +36,7 @@ function comment_delete(){
 }
 
 function comment_report(){
-	if(confirm("댓글을 신고하시겠습니까?") == true){
+	if(confirm("Do you want to report this Comment?") == true){
 		location.href="${ctx }/report/regist.do?classifyId=${comment.commentId}&classifyReport='comment'&userId=${comment.user.id}"
 	}else{
 		return;
@@ -76,16 +76,16 @@ function comment_report(){
 											<div class="panel-body">
 												<div class="post">
 
-													<strong>작성자 ${user.id }</strong> &nbsp;<span
+													<strong>written by. ${user.id }</strong> &nbsp;<span
 														class="text-muted"><fmt:formatDate value="${article.regDate }" pattern="yyyy-MM-dd" /></span> &nbsp; 
 																	
 																	<a class="glyphicon glyphicon-cog pull-right" 
-																	onclick="button_event();" style="padding: 10px">삭제</a>
+																	onclick="button_event();" style="padding: 10px">Delete</a>
 																	 <a href="${ctx }/article/modify.do?articleId=${article.articleId}" class="glyphicon glyphicon-cog pull-right"
-														style="padding: 10px">수정</a> <br>
+														style="padding: 10px">Modify</a> <br>
 														
 														<br>
-														파일리스트 &nbsp;
+														File List &nbsp;
 														<c:forEach items="${attachmentList }" var="attachment">
 															<table class="table"
 															style="font-size: 13px; padding: 20px;">
@@ -99,15 +99,15 @@ function comment_report(){
 													<p style="padding: 20px">${article.content }</p>
 													<a onclick="report_button();"
 														class="glyphicon glyphicon-cog pull-right"
-														style="padding: 10px">신고</a>
+														style="padding: 10px">Report</a>
 														
 													<c:forEach items="${article.comments }" var="comment">
 													<c:set var="commentUser" value="${comment.user}"/>
 														<table class="table"
 															style="font-size: 13px; padding: 10px;">
 															<tr>
-																<td><strong>댓글 작성자 : ${commentUser.id }</strong></td>
-																<td class="text-right">댓글 등록일 :&nbsp; <fmt:formatDate
+																<td><strong>writer : ${commentUser.id }</strong></td>
+																<td class="text-right">Posted Date :&nbsp; <fmt:formatDate
 																	value="${comment.regDate }" pattern="dd-MM-yyyy" /> </td>
 															</tr>
 															
@@ -117,13 +117,13 @@ function comment_report(){
 																	<span
 																	style="float: right"> <a
 																		class="glyphicon glyphicon-pencil" style="color: gray;"
-																		href="${ctx }/comment/modify.do?articleId=${article.articleId}&commentId=${comment.commentId}">수정</a>
+																		href="${ctx }/comment/modify.do?articleId=${article.articleId}&commentId=${comment.commentId}">Modify</a>
 
 																	&nbsp;	<a class="glyphicon glyphicon-trash"
-																		onclick="comment_delete();" style="color: gray;">삭제</a>
+																		onclick="comment_delete();" style="color: gray;">Delete</a>
 
 																		&nbsp;<a class="glyphicon glyphicon-lock"
-																		onclick="comment_report();" style="color: gray;">신고</a></span>
+																		onclick="comment_report();" style="color: gray;">Report</a></span>
 																</td>
 															</tr>
 														</table>
@@ -134,7 +134,7 @@ function comment_report(){
 												<br>
 
 												<div class="panel-footer">
-									
+				
 														<form
 															action="${ctx }/comment/regist.do" method="POST">
 
@@ -146,9 +146,9 @@ function comment_report(){
 														<td>
 															<textarea class="input_write_comment" name="content"
 
-																placeholder="댓글쓰기" style="width: 450px;" rows="1"></textarea></td>
+																placeholder="write comment" style="width: 450px;" rows="1"></textarea></td>
 															<td> <input type="submit"
-																class="comment_submit" value="등록" style="width: 80px; text-align: left; font-size: 17px; background-color: purple;"></td>
+																class="comment_submit" value="submit" style="width: 80px; text-align: left; font-size: 17px; background-color: purple;"></td>
 																</tr>
 															</table>
 
@@ -158,7 +158,7 @@ function comment_report(){
 												<br/>
 												<ul >
 												<li style="text-align: center;">
-<input type="button" class="comment_submit" value="목록" style="width: 80px; text-align: left; font-size: 17px; background-color: gray; "
+<input type="button" class="comment_submit" value="Back to List" style="width: 80px; text-align: left; font-size: 17px; background-color: gray; "
 onClick="history.back();">
 </li></ul>
 

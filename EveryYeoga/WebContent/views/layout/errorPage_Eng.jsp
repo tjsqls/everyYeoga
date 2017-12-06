@@ -57,7 +57,7 @@
 
     <!-- header -->
     <div class="error-header">
-        <h2 class="error-heading">에러</h2>
+        <h2 class="error-heading">Error</h2>
     </div>
 
     <!-- body -->
@@ -67,13 +67,13 @@
         <p>${pageContext.exception.message}</p>
 
         <div class="row error-btn">
-            <button onclick="history.back();" class="btn btn-large btn-default">이전으로 이동</button>
+            <button onclick="history.back();" class="btn btn-large btn-default">previous Page</button>
         </div>
     </div>
 
     <!-- footer -->
     <div class="error-footer">
-        <p>Mid four Niun.2017</p>
+        <p>Mid four Niun 2017.</p>
     </div>
 </div>
 </body>

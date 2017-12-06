@@ -1,0 +1,122 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<!DOCTYPE HTML>
+
+<html>
+<style type="text/css">
+
+    ul#navii {
+
+        width: 200px;
+        text-indent: 10px;
+        background-color: white;
+
+}
+    ul#navii, ul#navii ul {
+        margin:1;
+        padding:0;
+        list-style:none;
+        border-bottom-color: gray;
+}
+    li.group {
+        margin-bottom: 10px;
+
+}
+
+
+</style>
+
+<%@ include file="/views/layout/common.jsp" %>
+<head>
+</head>
+
+<body class="left-sidebar">
+	<div id="page-wrapper">
+	
+	
+
+		<!-- Header -->
+		<%@ include file="/views/layout/header_Eng.jsp" %>
+			<!-- Header -->
+			
+		<!-- Main -->
+
+		<div id="main-wrapper">
+			<div class="container">
+				<div class="row 70%">
+					
+					<div class="8u 12u$(medium) important(medium)">
+						<div id="content">
+							<div class="col-sm-9 col-lg-9">
+								<div>
+									<h3>List of reports</h3>
+									<hr>
+								</div>
+
+								<div class="table-responsive" style="width: 900px;" >
+						
+
+										<div class="table-responsive">
+											<table class="table table-striped table-bordered table-hover">
+												<colgroup>
+														<col width="100" />
+													<col width="*" />
+													<col width="120" />
+													<col width="70" />
+													<col width="50" />
+												</colgroup>
+												<thead>
+													<tr>
+														<th class="text-center" style="width: 10%">No.</th>
+														<th class="text-center" style="width: 30%">Article/Comment</th>
+														<th class="text-center" style="width: 20%">Report Type</th>
+														<th class="text-center" style="width: 20%">Reported Date</th>
+														<th class="text-center" style="width: 30%">Reported User</th>
+													</tr>
+												</thead>
+												<tbody>
+											<c:forEach var="report" items="${userReport }" varStatus="sts">
+													<tr>
+														<td class="text-center" style="width: 10%">${sts.count}</td>
+														<td class="text-center" style="width: 30%">${report.classifyReport }</td>
+														<td class="text-center" style="width: 20%">${report.reportType }</td>
+														<td class="text-center" style="width: 30%">
+														<fmt:formatDate value="${report.regDate }" pattern="yyyy-MM-dd" /></td>
+														<td class="text-center" style="width: 20%">${report.reportedUser.id }</td>
+													</tr>
+													</c:forEach>													
+
+												</tbody>
+											</table>
+										</div>
+										<div class="text-center">
+                <a href=" 특정 가이드의 참여신청 정보 페이지로 이동">
+                 <center><button type="button" class="btn btn-default" style="height:45px; width:78px; font-size:12px;">previous page</button></center>
+                </a>
+            </div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+
+		<!-- Footer -->
+		<%@ include file="/views/layout/footer_Eng.jsp" %>
+
+	<!-- Scripts -->
+
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.dropotron.min.js"></script>
+	<script src="assets/js/skel.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+	<script src="assets/js/main.js"></script>
+
+</body>
+</html>

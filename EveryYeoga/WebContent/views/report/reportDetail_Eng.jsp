@@ -29,7 +29,7 @@
 </style>
 <%@ include file="/views/layout/common.jsp" %>
 	<head>
-<%@ include file="/views/layout/header.jsp" %>
+<%@ include file="/views/layout/header_Eng.jsp" %>
 	</head>
 	<body class="left-sidebar">
 	<div id="page-wrapper">
@@ -46,16 +46,17 @@
 			<div class="container">
 				<div class="row 70%">
 					<ul id="navii">
-			<legend> 관리자 페이지 </legend>
+			<legend> Admin Page </legend>
 
-				<li class="group" style=""><a href="${pageContext.request.contextPath}/report/searchAll.do">신고내역 관리</a></li>
+				<li class="group"><a href="${pageContext.request.contextPath}/report/searchAll.do">Manage Reports</a></li>
+		
 			</ul>
 
 					
 					<div class="8u 12u$(medium) important(medium)">
 						<div id="contents" style="width: 1000px;">
 							<div class="col-sm-9 col-lg-9">
-                      <div><h3>신고 상세</h3>
+                      <div><h3>Report Detail</h3>
                       <hr>
                       </div>
 
@@ -73,12 +74,12 @@
 											<input type="hidden" name="classifyId" value="${report.classifyId}"/>
                     <table class="table table-striped table-bordered table-hover" style="border: 2; cellpadding:20; cellspacing:0; "> 
               
-                    <tr><td><span style="font-weight:bold">신고일 </span>&nbsp; &nbsp; &nbsp;<fmt:formatDate value="${report.regDate }" pattern="yyyy-MM-dd" /></td></tr>                  
-                    <tr> <td><span style="font-weight:bold">신고한 회원</span> &nbsp; &nbsp;${report.reportUser.id}</td></tr>
-                    <tr> <td><span style="font-weight:bold">신고할 회원</span> &nbsp; &nbsp;${report.reportedUser.id }</td></tr>
-                         <tr><td><span style="font-weight:bold">신고 구분 </span>&nbsp; &nbsp;게시물</td></tr>
-           			<tr> <td><span style="font-weight:bold">신고 분류</span> &nbsp; &nbsp;${report.reportType}</td></tr>
-           				   <tr><td><span style="font-weight:bold">신고사유</span></td></tr>
+                    <tr><td><span style="font-weight:bold">reported date </span>&nbsp; &nbsp; &nbsp;<fmt:formatDate value="${report.regDate }" pattern="yyyy-MM-dd" /></td></tr>                  
+                    <tr> <td><span style="font-weight:bold">user who reports</span> &nbsp; &nbsp;${report.reportUser.id}</td></tr>
+                    <tr> <td><span style="font-weight:bold">user who got reported</span> &nbsp; &nbsp;${report.reportedUser.id }</td></tr>
+                         <tr><td><span style="font-weight:bold">Report Type</span>&nbsp; &nbsp;Article</td></tr>
+           			<tr> <td><span style="font-weight:bold">Classify Report</span> &nbsp; &nbsp;${report.reportType}</td></tr>
+           				   <tr><td><span style="font-weight:bold">Report Reason</span></td></tr>
 					<tr><td><textarea  rows="3">${report.reportReason }</textarea></td></tr>
                     </table>                  
                       <br />
@@ -87,10 +88,10 @@
  					  
                   <div class="form-group">
                         <div class="col-lg-10 col-lg-offset-2">
-                            <span style="float:center; margin-left: 100px;"><button type="submit" class="btn btn-pr">승인</button></span>
+                            <span style="float:center; margin-left: 100px;"><button type="submit" class="btn btn-pr">confirm</button></span>
                              
                             <span style="float:center; margin-left: 50px;"><button type="reset" class="btn btn-default" 
-                            onclick="location.href='${pageContext.request.contextPath}/report/searchAll.do'">목록으로</button></span>
+                            onclick="location.href='${pageContext.request.contextPath}/report/searchAll.do'">previous page</button></span>
                         </div>
                     </div>
 
@@ -108,7 +109,7 @@
 				</div>
 
 			<!-- Footer -->
-		<%@ include file="/views/layout/footer.jsp" %>
+		<%@ include file="/views/layout/footer_Eng.jsp" %>
 
 	<!-- Scripts -->
 

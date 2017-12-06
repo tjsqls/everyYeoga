@@ -75,10 +75,10 @@
 												<td><input placeholder="희망하는 인원을 적어주세요." type="text" name="numberOfTraveler" value=""style="width: 550px; height:40px; background-color: #fff8ec;"></td></tr>
 												
 												<tr><td><label  class="text-right" style="font-size: 18px; padding-top: 10px;">선호 가이드&nbsp;</label> </td>
-												<td><input placeholder="희망하는 인원을 적어주세요." type="text" name="preferGuide" value=""style="width: 550px; height:40px;"></td></tr>
+												<td><input placeholder="선호하는 가이드를 설명해주세요." type="text" name="preferGuide" value=""style="width: 550px; height:40px;"></td></tr>
 												
 												<tr><td><label  class="text-right" style="font-size: 18px; padding-top: 10px;">자기소개&nbsp;</label> </td>
-												<td><input placeholder="희망하는 인원을 적어주세요." type="text" name="selfIntroduction" value=""style="width: 550px; height:40px; background-color: #fff8ec;"></td></tr>
+												<td><input placeholder="자기소개를 해주세요." type="text" name="selfIntroduction" value=""style="width: 550px; height:40px; background-color: #fff8ec;"></td></tr>
 												
 				</table>
 

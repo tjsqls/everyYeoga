@@ -21,7 +21,7 @@ input[type=text]:disabled {
 <script type="text/javascript">
 
 function button_cancel(){
-	if (confirm("회원정보 수정을 취소하시겠습니까?") == true){    //확인
+	if (confirm("Do you want to cancel Modify?") == true){    //확인
 	    location.href="${pageContext.request.contextPath}/user/detail.do?userId=${user.id}";
 	    
 	}else{   //취소
@@ -36,16 +36,16 @@ function button_cancel(){
 	
 
 		<!-- Header -->
-		<%@ include file="/views/layout/header.jsp" %>
+		<%@ include file="/views/layout/header_Eng.jsp" %>
 			<div id="main-wrapper">
 			<div class="container">
 				<div class="row 70%">
-		<%@ include file="/views/layout/sidebar.jsp" %>
+		<%@ include file="/views/layout/sidebar_Eng.jsp" %>
 					<div class="8u 12u$(medium) important(medium)">
 						<div id="content">
 							<div class="col-sm-9 col-lg-9">
 								<div>
-									<h3>내 정보</h3>
+									<h3>Personal Information</h3>
 									<hr>
 								</div>
 
@@ -60,29 +60,29 @@ function button_cancel(){
 
 
 										<tr>
-											<td><label>이름</label></td>
+											<td><label>Name</label></td>
 											<td><input style="height: 35px;" type="text"  name="name" value="${user.name}"> </td>
 										</tr>
 
 										<tr>
-											<td><label>생년월일</label></td>
+											<td><label>Date Of Birth</label></td>
 											<td><input style="height: 35px;" type="text"  name="birthDate" value="${user.birthDate}"> </td>
 										</tr>
 
 										<tr>
-											<td><label>이메일</label></td>
+											<td><label>Email</label></td>
 											<td><input style="height: 35px;" type="text" name="email"  value="${user.email}"> </td>
 										</tr>
 
 										<tr>
-											<td><label>휴대폰번호</label></td>
+											<td><label>Phone Number</label></td>
 												<td><input style="height: 35px;" type="text" name="phoneNumber" value="${user.phoneNumber}"> </td>
 										</tr>
 										</table>
 										<table style="margin-left: 100px;">
 										<tr>
-										<td><button type="submit" style="background-color: tomato; height: 35px; width:80px; font-size: 15px; text-align: center;">저장</button></td>
-											<td><button type="submit" style="background-color: orange; height: 35px; width:80px; font-size: 15px; text-align: center;" onclick="button_cancel();">취소</button></td>
+										<td><button type="submit" style="background-color: tomato; height: 35px; width:80px; font-size: 15px; text-align: center;">save</button></td>
+											<td><button type="submit" style="background-color: orange; height: 35px; width:80px; font-size: 15px; text-align: center;" onclick="button_cancel();">cancel</button></td>
 										</tr>
 										
 									</table>
@@ -97,7 +97,7 @@ function button_cancel(){
 		
 		</div>
 	<!-- Footer -->
-		<%@ include file="/views/layout/footer.jsp" %>
+		<%@ include file="/views/layout/footer_Eng.jsp" %>
 
 
 	<!-- Scripts -->
