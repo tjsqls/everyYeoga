@@ -46,17 +46,17 @@ public class ArticleStoreLogic implements ArticleStore{
 	}
 
 	@Override
-	public Attachment retreiveAttachmentByArticleId(String articleId) {
+	public List<Attachment> retreiveAttachmentByArticleId(String articleId) {
 		// 선빈
 		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
-		Attachment attachment = null;
+		List<Attachment> attachments = null;
 		try {
 			ArticleMapper mapper = session.getMapper(ArticleMapper.class);
-			attachment = mapper.retreiveAttachmentByArticleId(articleId);
+			attachments = mapper.retreiveAttachmentByArticleId(articleId);
 		}finally {
 			session.close();
 		}
-		return attachment;
+		return attachments;
 	}
 
 	@Override
@@ -182,6 +182,20 @@ public class ArticleStoreLogic implements ArticleStore{
 			session.close();
 		}
 		return false;
+	}
+
+	@Override
+	public Attachment retrieveAttachmentByFileName(String fileName, String filePath) {
+		// 선빈
+		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
+		Attachment attachment = null;
+		try {
+			ArticleMapper mapper = session.getMapper(ArticleMapper.class);
+			attachment = mapper.retrieveAttachmentByFileName(fileName, filePath);
+		}finally {
+			session.close();
+		}
+		return attachment;
 	}
 
 }

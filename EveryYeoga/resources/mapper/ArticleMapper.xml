@@ -36,6 +36,12 @@
   	WHERE articleId = #{articleId}
   </select>
   
+  <select id="retrieveAttachmentByFileName" parameterType="String" resultType="Attachment">
+  	SELECT fileName, filePath
+  	FROM attachment_tb
+  	WHERE fileName=${fileName} AND filePath=${filePath}
+  </select>
+  
   <delete id="deleteAttachment" parameterType="String">
   	DELETE FROM attachment_tb
   	WHERE articleId = #{articleId}

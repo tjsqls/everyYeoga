@@ -10,7 +10,7 @@ import everyYeoga.domain.Attachment;
 public interface ArticleStore {
 	public boolean createArticle(Article article); // 2017.12.04 파라미터 수정 String groupId 제거
 	public boolean createAttachment(String groupId, String articleId, Attachment attachment); //2017.11.23 선빈 수정
-	public Attachment retreiveAttachmentByArticleId(String articleId); 
+	public List<Attachment> retreiveAttachmentByArticleId(String articleId); 
 	public boolean deleteAttachment(String articleId);
 	public void deleteAttachmentBygroupId(String groupId);
 	public boolean updateArticle(Article article);
@@ -20,5 +20,6 @@ public interface ArticleStore {
 	public Article retreiveArticleByArticleId (String articleId); 
 	public List<Article> retreiveAll(String groupId); 
 	public boolean createReport(String classifyReport, String articleId);
+	public Attachment retrieveAttachmentByFileName(String fileName, String filePath);//2017.12.05 메소드 추가 선빈
 
 }

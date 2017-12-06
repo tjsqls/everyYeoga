@@ -3,75 +3,36 @@
 <!DOCTYPE HTML>
 
 <html>
+<%@ include file="/views/layout/common.jsp" %>
 <head>
-<title>Verti by HTML5 UP</title>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="stylesheet" href="../../assets/css/main.css" />
+
+
 </head>
 <body class="left-sidebar">
+
 	<div id="page-wrapper">
 
 		<!-- Header -->
-		<%@ include file="/views/layout/header.jsp"%>
+<%@ include file="/views/layout/header.jsp" %>
 
 		<!-- Main -->
-
+		
 		<div id="main-wrapper">
 			<div class="container">
 				<div class="row 50%">
-					<div class="4u 12u$(medium)">
 
 
-						<div id="sidebar">
-
-							<!-- Sidebar -->
-							<section>
-								<ul class="style2">
-								 	<li><a
-										href="${pageContext.request.contextPath}/user/myPage.do"><h3>회원정보</h3></a></li>
-									<a
-										href="${pageContext.request.contextPath}/travel/travelPlanList.do"><h3>여행
-											검색</h3></a>
-									</li>
-
-									<li><a
-										href="${pageContext.request.contextPath}/group/joiningGroupList.do"><h3>참여중인
-												모임</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/travel/myTravelPlan.do"><h3>내가
-												올린 여행계획</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/history/searchTravelerHistory.do"><h3>여행
-												내역</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/history/searchGuideHistory.do"><h3>가이드
-												내역</h3></a></li>
-												
-								</ul>
-								</footer>
-							</section>
-
-						</div>
-					</div>
 					<div class="8u 12u$(medium) important(medium)">
-						<div id="content">
+						<div id="content" style="margin-left: 200px; width: 1000px;">
 							<div class="col-sm-9 col-lg-9">
 								<div>
 									<h3>가이드 선택</h3>
+									<hr>
 								</div>
 
-								<div class="table-responsive">
-									<div class="well">
-												<form
-											action="${pageContext.request.contextPath}/guide/searchGuide.do"
-											class="bs-example form-horizontal" method="POST">
-													<span style="float: right"><button type="submit"
-															style="padding: 10px">선택완료</button></span> 
-															<span style="float: right" style="padding: 10px"> </span>
-													
-											
-
+								<div class="table-responsive" style="width: 900px;">
+								
+												<form action="${ctx}/group/regist.do" class="bs-example form-horizontal" method="POST">
 
 										<div class="table-responsive">
 											<table class="table table-striped table-bordered table-hover">
@@ -84,11 +45,12 @@
 												</colgroup>
 												<thead>
 													<tr>
-														<th class="text-center">선택</th>
-														<th class="text-center">가이드 아이디</th>
-														<th class="text-center">가이드경험</th>
-														<th class="text-center">언어능력</th>
-
+														<th class="text-center" style="width: 7%; font-weight: bold">선택</th>
+														<th class="text-center" style="width: 7%; font-weight: bold">번호</th>
+														<th class="text-center" style="width: 20%; font-weight: bold">가이드 아이디</th>
+														<th class="text-center" style="width: 30%; font-weight: bold">가이드경험</th>
+														<th class="text-center" style="width: 26%; font-weight: bold">언어능력</th>
+														<th class="text-center" style="width: 10%; font-weight: bold">상세보기</th>
 													</tr>
 												</thead>
 												<tbody>
@@ -102,15 +64,24 @@
 														<c:otherwise>
 															<c:forEach var="list" items="${joinList}"
 																varStatus="sts">
+																<input type="hidden" name="travelPlanId" value="${list.travelPlanId }">
+																<input type="hidden" name="joinId" value="${list.joinId }">
 																	<tr>
-																		<td class="text-center"><input type="checkbox" name="check" ></td>
+																		
+																		<td class="text-center"><input type="checkbox" name="check" value="${list.guideId }"></td>
+																		<td class="text-center">${sts.count}</td>
 																		<td class="text-center">${list.guideId}</td>
 																		<td class="text-center">${list.guideExperience}</td>
 																		<td class="text-center">${list.speakingAbility}</td>
+						
+																		<td><a href="${ctx}/guide/searchJoinDetail.do?joinId=${list.joinId }">상세보기</a></td>
 																	</tr>
-																</c:forEach>
+																</c:forEach> 
 														</c:otherwise>
 													</c:choose>
+													<table></table>
+											<tr><td>	<span style="float: right"><button type="submit" style="padding: 10px">선택완료</button></span> </td></tr>
+															</table>
 												</tbody>
 											</table>
 										</div>
@@ -126,29 +97,10 @@
 			</div>
 		</div>
 
-		<!-- Footer -->
-		<div id="footer-wrapper">
-			<footer id="footer" class="container">
-				<div class="row">
-					<div class="3u 6u(medium) 12u$(small)"></div>
-					<div class="3u 6u$(medium) 12u$(small)"></div>
-					<div class="3u 6u(medium) 12u$(small)"></div>
-					<div class="3u 6u$(medium) 12u$(small)"></div>
-				</div>
-				<div class="row">
-					<div class="12u">
-						<div id="copyright">
-							<ul class="menu">
-								<li>&copy; Untitled. All rights reserved</li>
-								<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</footer>
-		</div>
+			<!-- Footer -->
+		<%@ include file="/views/layout/footer.jsp" %>
 
-	</div>
+
 
 	<!-- Scripts -->
 

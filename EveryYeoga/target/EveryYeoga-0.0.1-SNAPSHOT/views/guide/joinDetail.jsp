@@ -3,114 +3,110 @@
 <!DOCTYPE HTML>
 
 <html>
+<%@ include file="/views/layout/common.jsp" %>
 <head>
-<title>Verti by HTML5 UP</title>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="stylesheet" href="../../assets/css/main.css" />
+
 </head>
 <body class="left-sidebar">
 	<div id="page-wrapper">
+	
+	
 
 		<!-- Header -->
-		<%@ include file="/views/layout/header.jsp"%>
-		<!-- Main -->
-		<div id="main-wrapper">
+		<%@ include file="/views/layout/header.jsp" %>
+			<div id="main-wrapper">
 			<div class="container">
-				<div class="row 50%">
-					<div class="4u 12u$(medium)">
-						<div id="sidebar">
+				<div class="row 70%">
 
-							<!-- Sidebar -->
-							<section>
-								<ul class="style2">
-									<li><a
-										href="${pageContext.request.contextPath}/user/myPage.do"><h3>회원정보</h3></a></li>
-									<a
-										href="${pageContext.request.contextPath}/travel/travelPlanList.do"><h3>여행
-											검색</h3></a>
-									</li>
-
-									<li><a
-										href="${pageContext.request.contextPath}/group/joiningGroupList.do"><h3>참여중인
-												모임</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/travel/myTravelPlan.do"><h3>내가
-												올린 여행계획</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/history/searchTravelerHistory.do"><h3>여행
-												내역</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/history/searchGuideHistory.do"><h3>가이드
-												내역</h3></a></li>
-								</ul>
-								</footer>
-							</section>
-
-						</div>
-					</div>
 					<div class="8u 12u$(medium) important(medium)">
 						<div id="content">
 							<div class="col-sm-9 col-lg-9">
-								<div>
+								<div style="margin-left: 100px;">
 									<h3>참여 신청 정보</h3>
+									<hr>
 								</div>
 
-								<div class="table-responsive">
-									<div class="well">
-										<form
-											action="${pageContext.request.contextPath}/guide/joinDetail.do"
-											class="bs-example form-horizontal" method="POST">
+								<div class="table-responsive" style="width: 700px; margin-left: 100px; background-color: #e3e3e3;">
+									
 											<fieldset>
-												<div class="form-group">
-													<label class="col-lg-2 control-label"><h3>지역</h3></label>
+												<table class="table table-striped table-bordered table-hover">
+									<thead>
+													<tr>
+														<td class="text-left" style="font-weight: bold; width:25%;">언어구사능력</td>
+														<td class="text-left" >${join.speakingAbility}</td></tr>
+														<tr><td class="text-left" style="font-weight: bold; width:25%;">여행지역</td>
+														<td class="text-left">${join.travelArea}</td></tr>
+														<tr><td class="text-left" style="font-weight: bold; width:25%;">가이드경험</td>
+														<td class="text-left">${join.guideExperience}</td></tr>
+														<tr><td class="text-left" style="font-weight: bold; width:25%;">가이드횟수</td>
+														<td class="text-left" style="padding-bottom:20px"><a
+													href="teamPlayerList.do?id=${baseballTeam.teamId }">${join.numberOfGuideHistories }</a>&nbsp;&nbsp;<b>회</b></td></tr>
+														<tr><td class="text-left" style="font-weight: bold; width:25%;">자기소개</td>
+														<td class="text-left">${join.selfIntroduction}</td></tr>
+														<tr><td class="text-left" style="font-weight: bold; width:25%;">신청사유</td>
+														<td class="text-left"style="padding-bottom:20px">${join.joinReason}</td></tr>
+												</thead>
+												<tbody>
+														<tr><td  class="text-center" colspan="2" style="font-weight: bold; background-color: #b2b2b2;">신고</td></tr>
+														<tr><td class="text-left" style="font-weight: bold; width:25%;">신고횟수</td>
+														<td class="text-left" style="padding-bottom:20px"><a
+													href="teamPlayerList.do?id=${baseballTeam.teamId }">${join.numberOfReports }</a>&nbsp;<b>회</b></td><tr>												
+											
+													</tbody>
+													</table>
+											
+											
+												
+												
+													<table
+														class="table table-striped table-bordered table-hover">
+														<colgroup>
+															<col width="100" />
+															<col width="*" />
+															<col width="120" />
+															<col width="70" />
+															<col width="50" />
+														</colgroup>
+														<thead>
+															<tr><td  class="text-center" colspan="4" style="font-weight: bold; background-color: #b2b2b2;">평가</td></tr>
+															<tr>
+																<th class="text-center" style="width: 15%; font-weight: bold">평가번호</th>
+																<th class="text-center" style="width: 25%; font-weight: bold">별점</th>
+																<th class="text-center" style="width: 30%; font-weight: bold">좋았던점</th>
+																<th class="text-center" style="width: 30%; font-weight: bold">나빴던점</th>
 
-													<div class="col-lg-10">
-														<font>${join.travelArea}</font>
-													</div>
-												</div>
+															</tr>
+														</thead>
+														<tbody>
 
-												<div class="form-group">
-													<label class="col-lg-2 control-label"><h3>언어
-															구사 능력</h3></label>
-
-													<div class="col-lg-10">
-														<font>${join.speakingAbility}</font>
-													</div>
-												</div>
-
-												<div class="form-group">
-													<label class="col-lg-2 control-label"><h3>가이드
-															경험</h3></label>
-
-													<div class="col-lg-10">
-														<font>${join.guideExperience}</font>
-													</div>
-												</div>
-
-
-												<div class="form-group">
-													<label class="col-lg-2 control-label"><h3>자기소개</h3></label>
-
-													<div class="col-lg-10">
-														<font>${join.selfIntroduction}</font>
-													</div>
-												</div>
-
-
-												<div class="form-group">
-													<label class="col-lg-2 control-label"><h3>신청
-															사유</h3></label>
-
-													<div class="col-lg-10">
-														<font>${join.joinReason}</font>
-													</div>
-												</div>
-
-												<br /> <br />
-												<div class="form-group"></div>
-											</fieldset>
-										</form>
+															<c:choose>
+																<c:when test="${empty join.evaluations}">
+																	<tr>
+																		<th colspan="5" class="text-center">평가가 없습니다.</th>
+																	</tr>
+																</c:when>
+																<c:otherwise>
+																	<c:forEach var="evaluation" items="${join.evaluations}"
+																		varStatus="sts">
+																		<tr>
+																			<td class="text-center">${sts.count}</td>
+																			<td class="text-center">${evaluation.stars}</td>
+																			<td class="text-center">${evaluation.pros}</td>
+																			<td class="text-center">${evaluation.cons}</td>
+																		</tr>
+																	</c:forEach>
+																</c:otherwise>
+															</c:choose>
+														</tbody>
+													</table>
+													</fieldset>
+													<ul>
+													<li style="text-align: center;">
+						<input type=button value="확인" onClick="history.back();" style="font-size: 16px; background-color: gray; text-align: center;">											
+													</li>
+													</ul>
+</div>
+					
 									</div>
 								</div>
 							</div>
@@ -118,31 +114,9 @@
 					</div>
 				</div>
 			</div>
-		</div>
 
-		<!-- Footer -->
-		<div id="footer-wrapper">
-			<footer id="footer" class="container">
-				<div class="row">
-					<div class="3u 6u(medium) 12u$(small)"></div>
-					<div class="3u 6u$(medium) 12u$(small)"></div>
-					<div class="3u 6u(medium) 12u$(small)"></div>
-					<div class="3u 6u$(medium) 12u$(small)"></div>
-				</div>
-				<div class="row">
-					<div class="12u">
-						<div id="copyright">
-							<ul class="menu">
-								<li>&copy; Untitled. All rights reserved</li>
-								<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</footer>
-		</div>
-
-	</div>
+			<!-- Footer -->
+		<%@ include file="/views/layout/footer.jsp" %>
 
 	<!-- Scripts -->
 

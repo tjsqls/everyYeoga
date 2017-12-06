@@ -55,7 +55,7 @@ public class ArticleController {
 			String fileFullPath = filePath + "/" + originalFilename; // 파일 전체 경로
 			try {
 				attachment.setFileName(originalFilename);
-				attachment.setFilePath(fileFullPath);
+				attachment.setFilePath(filePath);
 				
 				attachments.add(attachment);
 				System.out.println(attachment.getFileName());
@@ -101,8 +101,10 @@ public class ArticleController {
 	public String searchArticleDetail(String articleId, Model model) {
 		// 선빈
 		Article article = groupService.retreiveArticleByArticleId(articleId);
+		List<Attachment> attachmentList = groupService.searchAttachmentByArticleId(articleId);
 		model.addAttribute("article", article);
 		model.addAttribute("user", article.getUser());
+		model.addAttribute("attachmentList", attachmentList);
 
 		return "article/articleDetail";
 	}

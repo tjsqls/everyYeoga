@@ -1,122 +1,129 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE HTML>
 
 <html>
+<%@ include file="/views/layout/common.jsp" %>
 <head>
-<title>Verti by HTML5 UP</title>
 
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="stylesheet" href="../../assets/css/main.css" />
 
 <script type="text/javascript">
-	function button_event() {
-		if (confirm("정말 삭제하시겠습니까??") == true) { //확인
-			document.form.submit();
-		} else { //취소
-			return;
-		}
+function button_event(){
+if (confirm("정말 삭제하시겠습니까??") == true){    //확인
+    location.href="${ctx }/article/remove.do?articleId=${article.articleId}";
+    
+}else{   //취소
+    return;
+}
+}
+
+function report_button(){
+	if(confirm("해당 게시글을 신고 하시겠습니까?") == true){		
+		location.href="${ctx}/report/regist.do?classifyId=${article.articleId}&classifyReport=article&userId=${user.id}"
+	}else{
+		return;
+}
+}
+
+function comment_delete(){
+	if(confirm("댓글을 삭제하시겠습니까?") == true){
+		location.href="${ctx }/comment/remove.do?articleId=${article.articleId}&commentId=${comment.commentId}"
+	}else{
+		return;
 	}
+}
+
+function comment_report(){
+	if(confirm("댓글을 신고하시겠습니까?") == true){
+		location.href="${ctx }/report/regist.do?classifyId=${comment.commentId}&classifyReport='comment'&userId=${comment.user.id}"
+	}else{
+		return;
+	}
+}
 </script>
+
 
 
 </head>
 <body class="left-sidebar">
+
 	<div id="page-wrapper">
 
 		<!-- Header -->
 <%@ include file="/views/layout/header.jsp" %>
 
 		<!-- Main -->
+		
 		<div id="main-wrapper">
 			<div class="container">
 				<div class="row 50%">
-					<div class="4u 12u$(medium)">
-						<div id="sidebar">
-							<!-- ㅁㄴㅇ -->
-							<!-- Sidebar -->
-							<section>
 
-								<ul class="style2">
-									<li><a
-										href="${pageContext.request.contextPath}/views/user/myPage.jsp"><h3>회원정보</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp"><h3>여행 검색</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp"><h3>참여중인모임</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/views/travel/myTravelPlan.jsp"><h3>내가
-												올린 여행계획</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/views/history/myTravelerHistory.jsp"><h3>여행
-												내역</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/views/history/myGuideHistory.jsp"><h3>가이드
-												내역</h3></a></li>
-								</ul>
 
-								</footer>
-							</section>
-
-						</div>
-					</div>
 					<div class="8u 12u$(medium) important(medium)">
-						<div id="content">
+						<div id="content" style="margin-left: 200px; width: 1000px;">
 							<div class="col-sm-9 col-lg-9">
-								<div>
-									<h3>게시물 상세</h3>
-								</div>
 
 								<div class="table-responsive">
-									<div class="well">
+							
 										<div>
 											<h3>${boardDetail.name }</h3>
 										</div>
 
 										<div class="panel panel-default">
-											<div class="panel-heading">${article.title }</div>
+											<div class="panel-heading"><h2 class="glyphicon glyphicon-plane">&nbsp;${article.title }</h2></div>
 											<div class="panel-body">
 												<div class="post">
-													<strong>작성자${article.user.name }</strong> &nbsp;<span
-														class="text-muted">${article.regDate }</span> &nbsp; <a
-														href="${ctx }/article/remove.do?articleId=${article.articleId}"
-														class="glyphicon glyphicon-cog pull-right"
-														onclick="button_event();" style="padding: 10px">삭제</a> <a
-														href="${ctx }/article/modify.do?articleId=${article.articleId}"
-														class="glyphicon glyphicon-cog pull-right"
-														style="padding: 10px">수정</a> <br>
 
-													<p style="padding: 20px">내용${article.content }</p>
-													<a
-														href="${ctx }/report/regist.do?articleId=${article.articleId}"
+													<strong>작성자 ${user.id }</strong> &nbsp;<span
+														class="text-muted"><fmt:formatDate value="${article.regDate }" pattern="yyyy-MM-dd" /></span> &nbsp; 
+																	
+																	<a class="glyphicon glyphicon-cog pull-right" 
+																	onclick="button_event();" style="padding: 10px">삭제</a>
+																	 <a href="${ctx }/article/modify.do?articleId=${article.articleId}" class="glyphicon glyphicon-cog pull-right"
+														style="padding: 10px">수정</a> <br>
+														
+														<br>
+														파일리스트 &nbsp;
+														<c:forEach items="${attachmentList }" var="attachment">
+															<table class="table"
+															style="font-size: 13px; padding: 20px;">
+																<tr><td><a href="${ctx }/downLoad.do?path=${attachment.filePath }&fileName=${attachment.fileName}"> ${attachment.fileName }</a>&nbsp;</td>
+																
+														</tr>
+														</table>
+															</c:forEach>
+														
+														
+													<p style="padding: 20px">${article.content }</p>
+													<a onclick="report_button();"
 														class="glyphicon glyphicon-cog pull-right"
 														style="padding: 10px">신고</a>
-
-
-
-
+														
 													<c:forEach items="${article.comments }" var="comment">
+													<c:set var="commentUser" value="${comment.user}"/>
 														<table class="table"
-															style="font-size: 13px; padding: 20px;">
+															style="font-size: 13px; padding: 10px;">
 															<tr>
-																<td><strong>댓글 쓴 사람${comment.user.id }</strong></td>
-																<td class="text-right">날짜${comment.regDate } <span
-																	style="float: right"> <a
-																		class="glyphicon glyphicon-trash"
-																		href="${ctx }/comment/remove.do?articleId=${article.articleId}&commentId=${comment.commentId}">수정</a>
-
-																		<a class="glyphicon glyphicon-trash"
-																		href="${ctx }/comment/remove.do?articleId=${article.articleId}&commentId=${comment.commentId}">삭제</a>
-
-																		<a class="glyphicon glyphicon-trash"
-																		href="${ctx }/comment/regist.do?articleId=${article.articleId}&commentId=${comment.commentId}">신고</a>
-																</span></td>
-
+																<td><strong>댓글 작성자 : ${commentUser.id }</strong></td>
+																<td class="text-right">댓글 등록일 :&nbsp; <fmt:formatDate
+																	value="${comment.regDate }" pattern="dd-MM-yyyy" /> </td>
 															</tr>
+															
 															<tr>
 																<td colspan="2">
 																	<p class="txt">${comment.content }</p>
+																	<span
+																	style="float: right"> <a
+																		class="glyphicon glyphicon-pencil" style="color: gray;"
+																		href="${ctx }/comment/modify.do?articleId=${article.articleId}&commentId=${comment.commentId}">수정</a>
+
+																	&nbsp;	<a class="glyphicon glyphicon-trash"
+																		onclick="comment_delete();" style="color: gray;">삭제</a>
+
+																		&nbsp;<a class="glyphicon glyphicon-lock"
+																		onclick="comment_report();" style="color: gray;">신고</a></span>
 																</td>
 															</tr>
 														</table>
@@ -126,36 +133,37 @@
 
 												<br>
 
-												<p style="padding: 20px">${article.content }</p>
-
-												<c:forEach items="${article.comments }" var="comment">
-													<table class="table"
-														style="font-size: 13px; padding: 20px;">
-														<tr>
-															<td><strong>댓글 쓴 사람${comment.user.id }</strong></td>
-															<td class="text-right">댓글 날짜${comment.regDate }
-															<span style="float:right">
-															<a
-																class="glyphicon glyphicon-trash"
-																href="${pageContext.request.contextPath }/comment/remove.do?articleId=${article.articleId}&commentId=${comment.commentId}">삭제</a>
-													</table>
-													</c:forEach>
 												<div class="panel-footer">
-													<div class="write_area">
+<<<<<<< HEAD
+									
 														<form
-															action="${pageContext.request.contextPath }/comment/regist.do"
-															method="POST">
-															<input type="hidden" name="articleId"
-																value="${article.articleId }">
-															<textarea class="input_write_comment" name="comments"
-																placeholder="댓글쓰기"></textarea>
-															<span style="float: right"> <input type="submit"
-																class="comment_submit" value="댓글 등록">
+															action="${ctx }/comment/regist.do" method="POST">
+=======
+													<div>
+														<form action="${ctx }/comment/regist.do" method="POST">													
+>>>>>>> branch 'master' of https://github.com/tjsqls/everyYeoga.git
+															<input type="hidden" name="articleId" value="${article.articleId }">
+															<input type="hidden" name="groupId" value="${article.groupId }">
+														<table>
+														<tr>
+														<td>
+															<textarea class="input_write_comment" name="content"
 
-															</span>
+																placeholder="댓글쓰기" style="width: 450px;" rows="1"></textarea></td>
+															<td> <input type="submit"
+																class="comment_submit" value="등록" style="width: 80px; text-align: left; font-size: 17px; background-color: purple;"></td>
+																</tr>
+															</table>
+
 														</form>
 													</div>
 												</div>
+												<br/>
+												<ul >
+												<li style="text-align: center;">
+<input type="button" class="comment_submit" value="목록" style="width: 80px; text-align: left; font-size: 17px; background-color: gray; "
+onClick="history.back();">
+</li></ul>
 
 											</div>
 										</div>
@@ -165,38 +173,20 @@
 						</div>
 					</div>
 				</div>
-
+</div></div>
 				<!-- Footer -->
-				<div id="footer-wrapper">
-					<footer id="footer" class="container">
-						<div class="row">
-							<div class="3u 6u(medium) 12u$(small)"></div>
-							<div class="3u 6u$(medium) 12u$(small)"></div>
-							<div class="3u 6u(medium) 12u$(small)"></div>
-							<div class="3u 6u$(medium) 12u$(small)"></div>
-						</div>
-						<div class="row">
-							<div class="12u">
-								<div id="copyright">
-									<ul class="menu">
-										<li>&copy; Untitled. All rights reserved</li>
-										<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</footer>
-				</div>
+		<%@ include file="/views/layout/footer.jsp" %>
 
-			</div>
 
-			<!-- Scripts -->
 
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.dropotron.min.js"></script>
-			<script src="assets/js/skel.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="assets/js/main.js"></script>
+	<!-- Scripts -->
+
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.dropotron.min.js"></script>
+	<script src="assets/js/skel.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+	<script src="assets/js/main.js"></script>
+
 </body>
 </html>

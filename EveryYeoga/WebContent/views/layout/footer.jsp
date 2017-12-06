@@ -7,17 +7,16 @@
 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
+
 <footer>
-    <hr>
+
     <ul class="nav nav-pills">
         <li class="pull-right"><a href="#top">위로 이동</a></li>
-        <li><a href="#">커뮤니티 홈</a>
+        <li><a href="${ctx }/views/main.jsp"> 홈</a>
         </li>
-        <li><a href="#">RSS</a></li>
-        <li><a href="#">이용약관</a></li>
         <li><a href="#">도움말</a></li>
-        <li><a href="#">회원탈퇴</a></li>
+        <li><a href="${ctx }/user/detail.do">회원탈퇴</a></li>
     </ul>
-    <p>© NamooSori 2015.</p>
+    <center><p>© Mid four Nieun 2017.</p></center>
      
 </footer>

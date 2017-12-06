@@ -122,7 +122,8 @@ public class GroupController {
 			return "redirect:/guide/registEvaluation.do?groupId=" + groupId;
 		} else {
 			groupService.removeGroup(user.getId(), groupId);
+			return "redirect:/group/groupList.do";
 		}
-		return "redirect:/group/groupList.do";
+		
 	}
 }

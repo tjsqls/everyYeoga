@@ -5,9 +5,9 @@
 <!DOCTYPE HTML>
 
 <html>
-<head>
-<title>Verti by HTML5 UP</title>
 <%@ include file="/views/layout/common.jsp" %>
+<head>
+
 
 <script type="text/javascript">
 function button_event(){
@@ -60,65 +60,70 @@ function comment_report(){
 			<div class="container">
 				<div class="row 50%">
 
-					<%@ include file="/views/layout/sidebar.jsp" %>
 
 					<div class="8u 12u$(medium) important(medium)">
-						<div id="content">
+						<div id="content" style="margin-left: 200px; width: 1000px;">
 							<div class="col-sm-9 col-lg-9">
-								<div>
-									<h3>게시물 상세</h3>
-								</div>
 
 								<div class="table-responsive">
-									<div class="well">
+							
 										<div>
 											<h3>${boardDetail.name }</h3>
 										</div>
 
 										<div class="panel panel-default">
-											<div class="panel-heading">제목 ${article.title }</div>
+											<div class="panel-heading"><h2 class="glyphicon glyphicon-plane">&nbsp;${article.title }</h2></div>
 											<div class="panel-body">
 												<div class="post">
+
 													<strong>작성자 ${user.id }</strong> &nbsp;<span
-														class="text-muted"><fmt:formatDate
-																	value="${article.regDate }" pattern="yyyy-MM-dd" /></span> &nbsp; 
+														class="text-muted"><fmt:formatDate value="${article.regDate }" pattern="yyyy-MM-dd" /></span> &nbsp; 
 																	
 																	<a class="glyphicon glyphicon-cog pull-right" 
 																	onclick="button_event();" style="padding: 10px">삭제</a>
-																	 <a
-														href="${ctx }/article/modify.do?articleId=${article.articleId}"
-														class="glyphicon glyphicon-cog pull-right"
+																	 <a href="${ctx }/article/modify.do?articleId=${article.articleId}" class="glyphicon glyphicon-cog pull-right"
 														style="padding: 10px">수정</a> <br>
-
+														
+														<br>
+														파일리스트 &nbsp;
+														<c:forEach items="${attachmentList }" var="attachment">
+															<table class="table"
+															style="font-size: 13px; padding: 20px;">
+																<tr><td><a href="${ctx }/downLoad.do?path=${attachment.filePath }&fileName=${attachment.fileName}"> ${attachment.fileName }</a>&nbsp;</td>
+																
+														</tr>
+														</table>
+															</c:forEach>
+														
+														
 													<p style="padding: 20px">${article.content }</p>
 													<a onclick="report_button();"
 														class="glyphicon glyphicon-cog pull-right"
 														style="padding: 10px">신고</a>
-
-
-
-
+														
 													<c:forEach items="${article.comments }" var="comment">
 													<c:set var="commentUser" value="${comment.user}"/>
 														<table class="table"
-															style="font-size: 13px; padding: 20px;">
+															style="font-size: 13px; padding: 10px;">
 															<tr>
-																<td><strong>댓글 작성자 ${commentUser.id }</strong></td>
-																<td class="text-right">댓글 등록일<fmt:formatDate
-																	value="${comment.regDate }" pattern="dd-MM-yyyy" /> <span
-																	style="float: right"> <a
-																		class="glyphicon glyphicon-trash"
-																		href="${ctx }/comment/modify.do?articleId=${article.articleId}&commentId=${comment.commentId}">수정</a>
-
-																		<a class="glyphicon glyphicon-trash"
-																		onclick="comment_delete();">삭제</a>
-
-																		<a class="glyphicon glyphicon-trash"
-																		onclick="comment_report();">신고</a></span></td>
+																<td><strong>댓글 작성자 : ${commentUser.id }</strong></td>
+																<td class="text-right">댓글 등록일 :&nbsp; <fmt:formatDate
+																	value="${comment.regDate }" pattern="dd-MM-yyyy" /> </td>
 															</tr>
+															
 															<tr>
 																<td colspan="2">
 																	<p class="txt">${comment.content }</p>
+																	<span
+																	style="float: right"> <a
+																		class="glyphicon glyphicon-pencil" style="color: gray;"
+																		href="${ctx }/comment/modify.do?articleId=${article.articleId}&commentId=${comment.commentId}">수정</a>
+
+																	&nbsp;	<a class="glyphicon glyphicon-trash"
+																		onclick="comment_delete();" style="color: gray;">삭제</a>
+
+																		&nbsp;<a class="glyphicon glyphicon-lock"
+																		onclick="comment_report();" style="color: gray;">신고</a></span>
 																</td>
 															</tr>
 														</table>
@@ -129,21 +134,33 @@ function comment_report(){
 												<br>
 
 												<div class="panel-footer">
-													<div class="write_area">
+									
 														<form
 															action="${ctx }/comment/regist.do" method="POST">
+
 															<input type="hidden" name="articleId" value="${article.articleId }">
 															<input type="hidden" name="groupId" value="${article.groupId }">
+														<table>
+														<tr>
+														<td>
 															<textarea class="input_write_comment" name="content"
-																placeholder="댓글쓰기"></textarea>
-															<span style="float: right"> <input type="submit"
-																class="comment_submit" value="댓글 등록">
-															</span>
+
+																placeholder="댓글쓰기" style="width: 450px;" rows="1"></textarea></td>
+															<td> <input type="submit"
+																class="comment_submit" value="등록" style="width: 80px; text-align: left; font-size: 17px; background-color: purple;"></td>
+																</tr>
+															</table>
+
 														</form>
-														
 													</div>
 												</div>
-<input type=button value="목록" onClick="history.back();">
+												<br/>
+												<ul >
+												<li style="text-align: center;">
+<input type="button" class="comment_submit" value="목록" style="width: 80px; text-align: left; font-size: 17px; background-color: gray; "
+onClick="history.back();">
+</li></ul>
+
 											</div>
 										</div>
 									</div>
@@ -152,33 +169,20 @@ function comment_report(){
 						</div>
 					</div>
 				</div>
-
+</div>
 				<!-- Footer -->
-				<div id="footer-wrapper">
-					<footer id="footer" class="container">
-						<div class="row">
-							<div class="3u 6u(medium) 12u$(small)"></div>
-							<div class="3u 6u$(medium) 12u$(small)"></div>
-							<div class="3u 6u(medium) 12u$(small)"></div>
-							<div class="3u 6u$(medium) 12u$(small)"></div>
-						</div>
-						<div class="row">
-							<div class="12u">
-								<div id="copyright">
-									<ul class="menu">
-										<li>&copy; Untitled. All rights reserved</li>
-										<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</footer>
-				</div>
+		<%@ include file="/views/layout/footer.jsp" %>
 
-			</div>
-			</div>
 
-			<!-- Scripts -->
+
+	<!-- Scripts -->
+
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.dropotron.min.js"></script>
+	<script src="assets/js/skel.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+	<script src="assets/js/main.js"></script>
 
 </body>
 </html>

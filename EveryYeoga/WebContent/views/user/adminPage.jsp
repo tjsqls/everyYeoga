@@ -5,15 +5,37 @@
 <!DOCTYPE HTML>
 
 <html>
+	<style type="text/css">
+
+    ul#navii {
+
+        width: 200px;
+        text-indent: 10px;
+        background-color: white;
+
+}
+    ul#navii, ul#navii ul {
+        margin:1;
+        padding:0;
+        list-style:none;
+        border-bottom-color: gray;
+}
+    li.group {
+        margin-bottom: 10px;
+
+}
+
+
+</style>
 
 <head>
-<title>Verti by HTML5 UP</title>
 <%@ include file="/views/layout/common.jsp" %>
-
-
 </head>
+
 <body class="left-sidebar">
 	<div id="page-wrapper">
+	
+	
 
 		<!-- Header -->
 		<%@ include file="/views/layout/header.jsp" %>
@@ -23,20 +45,23 @@
 
 		<div id="main-wrapper">
 			<div class="container">
-				<div class="row 50%">
-					<%@ include file="/views/layout/sidebar.jsp" %>
-					
+				<div class="row 70%">
+					<ul id="navii">
+			<legend> 관리자 페이지 </legend>
+
+				<li class="group" style=""><a href="${pageContext.request.contextPath}/report/searchAll.do">신고내역 관리</a></li>
+			</ul>
+
 					
 					<div class="8u 12u$(medium) important(medium)">
-						<div id="content">
+						<div id="content" style="width: 1000px;">
 							<div class="col-sm-9 col-lg-9">
 								<div>
 									<h3>신고 목록</h3>
+									<hr>
 								</div>
 
-								<div class="table-responsive">
-									<div class="well">
-
+								<div class="table-responsive" style="width: 900px;">
 
 										<div class="table-responsive">
 											<table class="table table-striped table-bordered table-hover">
@@ -49,11 +74,11 @@
 												</colgroup>
 												<thead>
 													<tr>
-														<th class="text-center" style="width: 3%">번호</th>
-														<th class="text-center" style="width: 5%">게시물/댓글</th>
-														<th class="text-center" style="width: 5%">신고분류</th>
-														<th class="text-center" style="width: 7%">신고자</th>
-														<th class="text-center" style="width: 10%">신고일</th>
+														<th class="text-center" style="width: 10%; font-weight: bold">번호</th>
+														<th class="text-center" style="width: 15%; font-weight: bold">신고구분</th>
+														<th class="text-center" style="width: 15%; font-weight: bold">신고분류</th>
+														<th class="text-center" style="width: 20%; font-weight: bold">신고자</th>
+														<th class="text-center" style="width: 20%; font-weight: bold">신고일</th>
 													</tr>
 
 												</thead>
@@ -107,28 +132,8 @@
 		</div>
 
 		<!-- Footer -->
-		<div id="footer-wrapper">
-			<footer id="footer" class="container">
-				<div class="row">
-					<div class="3u 6u(medium) 12u$(small)"></div>
-					<div class="3u 6u$(medium) 12u$(small)"></div>
-					<div class="3u 6u(medium) 12u$(small)"></div>
-					<div class="3u 6u$(medium) 12u$(small)"></div>
-				</div>
-				<div class="row">
-					<div class="12u">
-						<div id="copyright">
-							<ul class="menu">
-								<li>&copy; Untitled. All rights reserved</li>
-								<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</footer>
-		</div>
+		<%@ include file="/views/layout/footer.jsp" %>
 
-	</div>
 
 	<!-- Scripts -->
 

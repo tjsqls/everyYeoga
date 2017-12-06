@@ -3,9 +3,9 @@
 <!DOCTYPE HTML>
 
 <html>
-<head>
-<title>Verti by HTML5 UP</title>
 <%@ include file="/views/layout/common.jsp"%>
+<head>
+
 
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
@@ -26,96 +26,67 @@
 
 </head>
 <body class="left-sidebar">
+
 	<div id="page-wrapper">
 
 		<!-- Header -->
-		<%@ include file="/views/layout/header.jsp"%>
+<%@ include file="/views/layout/header.jsp" %>
 
 		<!-- Main -->
+		
 		<div id="main-wrapper">
 			<div class="container">
 				<div class="row 50%">
-					<%@ include file="/views/layout/sidebar.jsp"%>
+
+
 					<div class="8u 12u$(medium) important(medium)">
-						<div id="content">
+						<div id="content" style="margin-left: 200px; width: 1000px;">
 							<div class="col-sm-9 col-lg-9">
 								<div>
 									<h3>여행 계획 등록</h3>
+									<hr>
 								</div>
 
 								<div class="table-responsive">
-									<div class="well">
-										<form action="${ctx}/travel/regist.do" class="bs-example form-horizontal" method="post">
+								
+										<form action="${ctx}/travel/regist.do" class="bs-example form-horizontal" method="post" style="width: 800px;">
 											<fieldset>
-												<div class="form-group">
+											
+											<table class="form-group">
+												<tr><td><label  class="text-right" style="font-size: 18px; padding-top: 50px;">언어구사능력&nbsp;</label> </td>
+												<td><input placeholder="사용할수있는 언어를 구체적으로 적어주세요." type="text" name="speakingAbility" value=""style="width: 550px; height:40px; background-color: #fff8ec;"></td></tr>
+				
+												<tr><td><label  class="text-right" style="font-size: 18px; padding-top: 10px;">여행지역&nbsp;</label> </td>
+												<td><input placeholder="해당 지역에 대해 알고있는 내용을 적어주세요." type="text" name="travelArea" value=""style="width: 550px; height:40px;"></td></tr>
+				
+									<tr><td><label  class="text-right" style="font-size: 18px; padding-top: 10px;">여행지역 방문횟수&nbsp;</label> </td>
+												<td><input placeholder="해당 지역에 방문했던 횟수를 적어주세요." type="text" name="numberOfVisits" value=""style="width: 550px; height:40px; background-color: #fff8ec;"></td></tr>
+												
+													<tr><td><label  class="text-right" style="font-size: 18px; padding-top: 10px;">여행 시작일&nbsp;</label> </td>
+												<td><input placeholder="yyyy/mm/dd" type="text" name="startDate" value=""style="width: 550px; height:40px;"></td></tr>
+												
+												<tr><td><label  class="text-right" style="font-size: 18px; padding-top: 10px;">여행 종료일&nbsp;</label> </td>
+												<td><input placeholder="yyyy/mm/dd" type="text" name="endDate" value=""style="width: 550px; height:40px; background-color: #fff8ec;"></td></tr>
+												
+												<tr><td><label  class="text-right" style="font-size: 18px; padding-top: 10px;">여행 테마&nbsp;</label> </td>
+												<td><input placeholder="여행시 원하는 테마를 적어주세요." type="text" name="theme" value=""style="width: 550px; height:40px;"></td></tr>
+												
+												<tr><td><label  class="text-right" style="font-size: 18px; padding-top: 10px;">여행인원&nbsp;</label> </td>
+												<td><input placeholder="희망하는 인원을 적어주세요." type="text" name="numberOfTraveler" value=""style="width: 550px; height:40px; background-color: #fff8ec;"></td></tr>
+												
+												<tr><td><label  class="text-right" style="font-size: 18px; padding-top: 10px;">선호 가이드&nbsp;</label> </td>
+												<td><input placeholder="희망하는 인원을 적어주세요." type="text" name="preferGuide" value=""style="width: 550px; height:40px;"></td></tr>
+												
+												<tr><td><label  class="text-right" style="font-size: 18px; padding-top: 10px;">자기소개&nbsp;</label> </td>
+												<td><input placeholder="희망하는 인원을 적어주세요." type="text" name="selfIntroduction" value=""style="width: 550px; height:40px; background-color: #fff8ec;"></td></tr>
+												
+				</table>
 
-													<label class="col-lg-2 control-label"><h3>언어
-															구사 능력</h3></label> <input type="text" name="speakingAbility" value="">
-												</div>
-
-												<div class="form-group">
-
-													<label class="col-lg-2 control-label"><h3>여행
-															지역</h3></label> <input type="text" name="travelArea" value="">
-												</div>
-
-												<div class="form-group">
-
-													<label class="col-lg-2 control-label"><h3>여행
-															지역 방문 횟수</h3></label> <input type="text" name="numberOfVisits"
-														value="">
-												</div>
-
-
-												<div class="form-group">
-
-													<label class="col-lg-2 control-label"><h3>여행
-															시작일</h3></label> <input type="text" id="startDate" name="startDate"
-														placeholder="yyyy/mm/dd" value=""/>
-												</div>
-
-												<div class="form-group">
-
-													<label class="col-lg-2 control-label"><h3>여행
-															종료일</h3></label> <input type="text" id="endDate" name="endDate"
-														placeholder="yyyy/mm/dd" value="" />
-												</div>
-
-
-												<div class="form-group">
-
-													<label class="col-lg-2 control-label"><h3>여행
-															테마</h3></label> <input type="text" name="theme" value="">
-												</div>
-
-
-												<div class="form-group">
-
-													<label class="col-lg-2 control-label"><h3>여행
-															인원</h3></label> <input type="text" name="numberOfTraveler" value="">
-												</div>
-
-
-
-												<div class="form-group">
-
-													<label class="col-lg-2 control-label"><h3>선호
-															가이드</h3></label> <input type="text" name="preferGuide" value="">
-												</div>
-
-
-
-												<div class="form-group">
-
-													<label class="col-lg-2 control-label"><h3>자기
-															소개</h3></label> <input type="text" name="selfIntroduction" value="">
-
-												</div>
 												<br /> <br />
 												<div class="form-group">
 													<div class="col-lg-10 col-lg-offset-2">
-														<span style="float: center"><button type="submit" class="btn btn-pr">여행계획 등록</button> 
-														<span style="float: center"><button type="reset" class="btn btn-default">취소</button>
+														<button type="submit" class="btn btn-pr" style="background-color: #007171;">여행계획 등록</button> 
+														<button type="reset" class="btn btn-default" onClick="location.href='history.back();''">취소</button>
 													</div>
 												</div>
 											</fieldset>
@@ -129,29 +100,10 @@
 			</div>
 		</div>
 
-		<!-- Footer -->
-		<div id="footer-wrapper">
-			<footer id="footer" class="container">
-				<div class="row">
-					<div class="3u 6u(medium) 12u$(small)"></div>
-					<div class="3u 6u$(medium) 12u$(small)"></div>
-					<div class="3u 6u(medium) 12u$(small)"></div>
-					<div class="3u 6u$(medium) 12u$(small)"></div>
-				</div>
-				<div class="row">
-					<div class="12u">
-						<div id="copyright">
-							<ul class="menu">
-								<li>&copy; Untitled. All rights reserved</li>
-								<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</footer>
-		</div>
+				<!-- Footer -->
+		<%@ include file="/views/layout/footer.jsp" %>
 
-	</div>
+
 
 	<!-- Scripts -->
 

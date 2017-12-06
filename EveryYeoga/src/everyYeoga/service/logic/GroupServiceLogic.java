@@ -253,4 +253,10 @@ public class GroupServiceLogic implements GroupService {
 		return groupStore.retrieveJoiningUserId(groupId);
 	}
 
+	@Override
+	public List<Attachment> searchAttachmentByArticleId(String articleId) {
+		// 선빈
+		return articleStore.retreiveAttachmentByArticleId(articleId);
+	}
+	
 }
