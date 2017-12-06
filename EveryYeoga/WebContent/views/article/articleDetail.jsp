@@ -134,14 +134,10 @@ function comment_report(){
 												<br>
 
 												<div class="panel-footer">
-<<<<<<< HEAD
 									
 														<form
 															action="${ctx }/comment/regist.do" method="POST">
-=======
-													<div>
-														<form action="${ctx }/comment/regist.do" method="POST">													
->>>>>>> branch 'master' of https://github.com/tjsqls/everyYeoga.git
+
 															<input type="hidden" name="articleId" value="${article.articleId }">
 															<input type="hidden" name="groupId" value="${article.groupId }">
 														<table>
@@ -173,7 +169,7 @@ onClick="history.back();">
 						</div>
 					</div>
 				</div>
-</div></div>
+</div>
 				<!-- Footer -->
 		<%@ include file="/views/layout/footer.jsp" %>
 

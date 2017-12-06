@@ -6,9 +6,9 @@
 <title>모두의 여가</title>
 		<%@ include file="/views/layout/common.jsp"%>
 </head>
-	<%@ include file="/views/layout/header.jsp" %>
+	
 <body>
-
+<%@ include file="/views/layout/header.jsp" %>
 	<form action="${pageContext.request.contextPath}/user/regist.do" method="post">
 
 		<fieldset style="width: 50%; margin-left: 400px; margin-top: 50px;" >

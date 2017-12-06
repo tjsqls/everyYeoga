@@ -5,15 +5,24 @@
   <mapper namespace="everyYeoga.store.mapper.ArticleMapper">
   	
   	<resultMap type="Article" id="articleMap">
+		<id property="articleId" column="articleId"></id>
+      <result property="title" column="title"></result>
+      <result property="content" column="content" />
+      <result property="regDate" column="regDate" />
+      <result property="writer" column="writer" />
+		<result property="groupId" column="groupId" />
       <association property="user" column="writer" select="everyYeoga.store.mapper.UserMapper.retrieveByUserId" javaType="User" jdbcType="VARCHAR"/>
       <collection property="comments" column="articleId" select="everyYeoga.store.mapper.CommentMapper.retrieveComment" javaType="ArrayList" jdbcType="NUMERIC"/>
       <collection property="attachments" column="articleId" select="everyYeoga.store.mapper.ArticleMapper.retreiveAttachmentByArticleId" javaType="ArrayList" jdbcType="NUMERIC"/>
    </resultMap>
 
   	
-  	<insert id="createArticle" parameterType="map">
+  	<insert id="createArticle" parameterType="Article">
+  		<selectKey keyProperty="articleId" resultType="string" order="BEFORE">
+			SELECT article_seq.NEXTVAL FROM dual
+		</selectKey>
   		INSERT INTO article_tb(articleId, title, content, writer, regDate, groupId)
-		VALUES(article_seq.NEXTVAL, #{article.title}, #{article.content}, #{article.user.id}, #{article.regDate}, #{groupId})  	
+		VALUES(#{articleId}, #{title}, #{content}, #{writer}, #{regDate}, #{groupId})  	
   	</insert>
   	
   	<insert id="createAttachment" parameterType="map">
@@ -25,6 +34,12 @@
   	SELECT fileName,filePath
   	FROM attachment_tb
   	WHERE articleId = #{articleId}
+  </select>
+  
+  <select id="retrieveAttachmentByFileName" parameterType="String" resultType="Attachment">
+  	SELECT fileName, filePath
+  	FROM attachment_tb
+  	WHERE fileName=${fileName} AND filePath=${filePath}
   </select>
   
   <delete id="deleteAttachment" parameterType="String">
@@ -69,7 +84,6 @@
   	SELECT articleId, title, content, writer, regDate, groupId
   	FROM article_tb
   	WHERE groupId = #{groupId}
-  
   </select>
   
   <insert id="createReport" parameterType="map">

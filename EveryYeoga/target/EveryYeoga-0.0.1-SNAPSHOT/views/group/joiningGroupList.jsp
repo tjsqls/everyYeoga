@@ -3,65 +3,31 @@
 <!DOCTYPE HTML>
 
 <html>
+<%@ include file="/views/layout/common.jsp"%>
 <head>
-<title>Verti by HTML5 UP</title>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="stylesheet" href="../../assets/css/main.css" />
+
 </head>
 <body class="left-sidebar">
 	<div id="page-wrapper">
+	
+	
 
 		<!-- Header -->
-		<%@ include file="/views/layout/header.jsp"%>
-		<!-- Main -->
-
-		<div id="main-wrapper">
+		<%@ include file="/views/layout/header.jsp" %>
+			<div id="main-wrapper">
 			<div class="container">
-				<div class="row 50%">
-					<div class="4u 12u$(medium)">
+				<div class="row 70%">
+		<%@ include file="/views/layout/sidebar.jsp" %>
 
-
-						<div id="sidebar">
-
-							<!-- Sidebar -->
-							<section>
-								<ul class="style2">
-									<li><a
-										href="${pageContext.request.contextPath}/user/myPage.do"><h3>회원정보</h3></a></li>
-									<a
-										href="${pageContext.request.contextPath}/travel/travelPlanList.do"><h3>여행
-											검색</h3></a>
-									</li>
-
-									<li><a
-										href="${pageContext.request.contextPath}/group/joiningGroupList.do"><h3>참여중인
-												모임</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/travel/myTravelPlan.do"><h3>내가
-												올린 여행계획</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/history/myTravelerHistory.do"><h3>여행
-												내역</h3></a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/history/myGuideHistory.do"><h3>가이드
-												내역</h3></a></li>
-								</ul>
-								</footer>
-							</section>
-
-						</div>
-					</div>
 					<div class="8u 12u$(medium) important(medium)">
-						<div id="content">
+						<div id="content" style="margin-left: 70px; width: 1050px;">
 							<div class="col-sm-9 col-lg-9">
 								<div>
 									<h3>참여중인 모임</h3>
+									<hr>
 								</div>
 
 								<div class="table-responsive">
-									<div class="well">
-
 
 
 										<div class="table-responsive">
@@ -75,49 +41,40 @@
 												</colgroup>
 												<thead>
 													<tr>
-														<th class="text-center">번호</th>
-														<th class="text-center">테마</th>
-														<th class="text-center">모집상태</th>
-														<th class="text-center">인원</th>
+														<th class="text-center" style="width: 20%; font-weight: bold">번호</th>
+														<th class="text-center" style="width: 40%; font-weight: bold">생성날짜</th>
+														<th class="text-center" style="width: 20%; font-weight: bold">여행계획번호</th>
+														<th class="text-center" style="width: 20%; font-weight: bold">모임 확인</th>
 													</tr>
 												</thead>
+
 												<tbody>
+													<c:choose>
+														<c:when test="${empty groups }">
+															<tr>
+																<th colspan="5" class="text-center">참여중인 모임이 존재하지 않습니다.</th>
+															</tr>
+														</c:when>
+														<c:otherwise>
+															<c:forEach var="group" items="${groups }" varStatus="sts">
+																<tr>
+																	<td class="text-center">${sts.count }</td>
+																	
+																	<td class="text-center"><fmt:formatDate
+																			value="${group.regDate }" pattern="dd/MM/yyyy" /></td>
+																	<td class="text-center">${group.travelPlanId }</td>
+																	<td class="text-center"><a href="${ctx }/group/list.do?groupId=${group.groupId}">모임 상세</a></td>	
+																</tr>
+															</c:forEach>
+														</c:otherwise>
+													</c:choose>
 
-													<tr>
-														<td class="text-center">${join.joinId }</td>
-														<td class="text-center">${join.theme }</td>
-														<td class="text-center">${join.gatheringStatus }</td>
-														<td class="text-center">${join.numberOfTraveler }</td>
-
-													</tr>
-
-													<!-- 						
-	<c:choose>
-								<c:when test="${empty boardDetail.articles }">
-									<tr>
-										<th colspan="5" class="text-center">게시물이 존재하지 않습니다.</th>
-									</tr>
-								</c:when>
-								<c:otherwise>
-									<c:forEach var="article" items="${boardDetail.articles }">
-										<tr>
-											<td class="text-center">${article.articleId }</td>
-											<td><a
-												href="${ctx}/article/find.do?articleId=${article.articleId}">${article.title}
-											</a></td>
-											<td class="text-center"><fmt:formatDate
-													value="${article.regDate }" pattern="yyyy-MM-dd" /></td>
-											<td class="text-center">${article.authorName }</td>
-											<td class="text-center">110</td>
-										</tr>
-									</c:forEach>
-								</c:otherwise>
-							</c:choose>
-		 -->
 												</tbody>
 											</table>
 										</div>
 									</div>
+
+
 								</div>
 							</div>
 						</div>
@@ -125,30 +82,9 @@
 				</div>
 			</div>
 		</div>
-
 		<!-- Footer -->
-		<div id="footer-wrapper">
-			<footer id="footer" class="container">
-				<div class="row">
-					<div class="3u 6u(medium) 12u$(small)"></div>
-					<div class="3u 6u$(medium) 12u$(small)"></div>
-					<div class="3u 6u(medium) 12u$(small)"></div>
-					<div class="3u 6u$(medium) 12u$(small)"></div>
-				</div>
-				<div class="row">
-					<div class="12u">
-						<div id="copyright">
-							<ul class="menu">
-								<li>&copy; Untitled. All rights reserved</li>
-								<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</footer>
-		</div>
+		<%@ include file="/views/layout/footer.jsp" %>
 
-	</div>
 
 	<!-- Scripts -->
 

@@ -5,56 +5,58 @@
 <!DOCTYPE HTML>
 
 <html>
+<style type="text/css">
+
+    ul#navii {
+
+        width: 200px;
+        text-indent: 10px;
+        background-color: white;
+
+}
+    ul#navii, ul#navii ul {
+        margin:1;
+        padding:0;
+        list-style:none;
+        border-bottom-color: gray;
+}
+    li.group {
+        margin-bottom: 10px;
+
+}
+
+
+</style>
+
+<%@ include file="/views/layout/common.jsp" %>
 <head>
-<title>Verti by HTML5 UP</title>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="stylesheet" href="../../assets/css/main.css" />
 </head>
+
 <body class="left-sidebar">
 	<div id="page-wrapper">
+	
+	
 
 		<!-- Header -->
-
-		<div id="header-wrapper">
-			<header id="header" class="container">
-
-				<!-- Logo -->
-				<div id="logo">
-					<h1>
-						<a href="${pageContext.request.contextPath}/views/user/adminPage.jsp">모두의 가이드</a>
-					</h1>
-
-				</div>
-
-				<!-- Nav -->
-				<nav id="nav">
-					<ul>
-						<li class="current"><a href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp">여행검색</a></li>
-					<li class="current"><a href="${pageContext.request.contextPath}/views/group/joiningGroupList.jsp">모임관리</a></li>
-						<li class="current"><a href="${pageContext.request.contextPath}/user/logout.do">로그아웃</a></li>
-					</ul>
-				</nav>
-			</header>
-		</div>
-
-<%@ include file="/views/layout/header.jsp" %>
-
-
+		<%@ include file="/views/layout/header.jsp" %>
+			<!-- Header -->
+			
 		<!-- Main -->
 
 		<div id="main-wrapper">
 			<div class="container">
-				<div class="row 50%">
+				<div class="row 70%">
+					
 					<div class="8u 12u$(medium) important(medium)">
 						<div id="content">
 							<div class="col-sm-9 col-lg-9">
 								<div>
 									<h3>신고 목록</h3>
+									<hr>
 								</div>
 
-								<div class="table-responsive" >
-									<div class="well">
+								<div class="table-responsive" style="width: 900px;" >
+						
 
 										<div class="table-responsive">
 											<table class="table table-striped table-bordered table-hover">
@@ -70,9 +72,8 @@
 														<th class="text-center" style="width: 10%">번호</th>
 														<th class="text-center" style="width: 30%">게시물/댓글</th>
 														<th class="text-center" style="width: 20%">신고분류</th>
-														<th class="text-center" style="width: 30%">신고된 날짜</th>
-														<th class="text-center" style="width: 20%">신고자</th>
-														<th class="text-center"></th>
+														<th class="text-center" style="width: 20%">신고된 날짜</th>
+														<th class="text-center" style="width: 30%">신고자</th>
 													</tr>
 												</thead>
 												<tbody>
@@ -106,28 +107,7 @@
 		</div>
 
 		<!-- Footer -->
-		<div id="footer-wrapper">
-			<footer id="footer" class="container">
-				<div class="row">
-					<div class="3u 6u(medium) 12u$(small)"></div>
-					<div class="3u 6u$(medium) 12u$(small)"></div>
-					<div class="3u 6u(medium) 12u$(small)"></div>
-					<div class="3u 6u$(medium) 12u$(small)"></div>
-				</div>
-				<div class="row">
-					<div class="12u">
-						<div id="copyright">
-							<ul class="menu">
-								<li>&copy; Untitled. All rights reserved</li>
-								<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</footer>
-		</div>
-
-	</div>
+		<%@ include file="/views/layout/footer.jsp" %>
 
 	<!-- Scripts -->
 

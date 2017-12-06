@@ -12,6 +12,7 @@
 		<result property="selfIntroduction" column="selfIntroduction"></result>
 		<result property="joinReason" column="joinReason"></result>
 		<result property="guideId" column="guideId"></result>
+		<result property="travelPlanId" column="travelPlanId"></result>
 	</resultMap>
 	
 	<resultMap type="Evaluation" id="EvaluationMap">
@@ -56,13 +57,16 @@
 	</select>
 
 
-	<insert id="createJoin" parameterType="map">
+	<insert id="createJoin" parameterType="Join">
 		INSERT INTO join_tb(joinId, guideId, speakingAbility,travelArea, guideExperience,selfIntroduction, joinReason, travelPlanId)
-		VALUES(join_seq.NEXTVAL, #{join.guideId}, #{join.speakingAbility}, #{join.travelArea}, #{join.guideExperience},#{join.selfIntroduction}, 
-		#{join.joinReason}, #{travelPlanId}) 
+		VALUES(join_seq.NEXTVAL, #{guideId}, #{speakingAbility}, #{travelArea}, #{guideExperience},#{selfIntroduction}, 
+		#{joinReason}, #{travelPlanId}) 
 	</insert>
 
-
+	<delete id="deleteJoin" parameterType="map">
+		DELETE FROM join_tb
+		WHERE guideId = #{guideId} AND travelPlanId = #{travelPlanId}
+	</delete>
 
 
 </mapper>
