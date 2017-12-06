@@ -73,7 +73,7 @@
 
     <!-- footer -->
     <div class="error-footer">
-        <p>NamooSori 2015.</p>
+        <p>Mid four Niun.2017</p>
     </div>
 </div>
 </body>

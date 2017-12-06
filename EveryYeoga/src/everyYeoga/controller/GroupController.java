@@ -35,8 +35,11 @@ public class GroupController {
 	TravelService travelService;
 
 	@RequestMapping(value = "regist.do", method = RequestMethod.POST)
-	public String registGroup(String travelPlanId, HttpServletRequest req) {
+
+	public String registGroup(HttpServletRequest req) {
 		HttpSession session = req.getSession();
+		String travelPlanId = req.getParameter("travelPlanId");
+		System.out.println(travelPlanId);
 		User user = (User) session.getAttribute("loginedUser");
 		String[] guideIds = req.getParameterValues("check");
 		List<String> userIds = new ArrayList<>();
@@ -46,14 +49,14 @@ public class GroupController {
 			travelService.removeJoin(guideId, travelPlanId);
 		}
 
-		if (groupService.retreiveJoiningGroup(user.getId(), travelPlanId) == null) {
-			groupService.registGroup(travelPlanId);
-			userIds.add(user.getId());
-			groupService.registUserInGroup(travelPlanId, userIds);
-			groupService.modifyGroupStatus(travelPlanId, "모집완료");
-		} else {
-			groupService.registUserInGroup(travelPlanId, userIds);
-			groupService.modifyGroupStatus(travelPlanId, "모집완료");
+		if(groupService.retreiveJoiningGroup(user.getId(), travelPlanId)==null) {
+		groupService.registGroup(travelPlanId);
+		userIds.add(user.getId());
+		groupService.registUserInGroup(travelPlanId, userIds);
+		groupService.modifyGroupStatus(travelPlanId, "모집완료");
+		}else {
+		groupService.registUserInGroup(travelPlanId, userIds);
+		groupService.modifyGroupStatus(travelPlanId, "모집완료");
 		}
 		return "redirect:/group/list.do?groupId=" + travelPlanId;
 	}
@@ -72,7 +75,8 @@ public class GroupController {
 		model.addAttribute("group", group);
 		model.addAttribute("travelUserId", travelUserId);
 		model.addAttribute("articles", articles);
-
+		model.addAttribute("traveler", group.getTraveler());
+		model.addAttribute("guides", group.getGuides());
 		return "group/groupMain";
 	}
 
@@ -94,9 +98,9 @@ public class GroupController {
 		return "redirect:/group/list.do?groupId=" + travelPlanId;
 	}
 
-	@RequestMapping(value = "groupList.do", method = RequestMethod.GET)
+	
+	@RequestMapping(value="groupList.do", method=RequestMethod.GET)
 	public String joiningGroup(HttpServletRequest req, Model model) {
-
 		HttpSession session = req.getSession();
 		User user = (User) session.getAttribute("loginedUser");
 		List<Group> group = groupService.retrieveJoiningGroupAll(user.getId());

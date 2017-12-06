@@ -60,7 +60,7 @@
 </script>
 
 
-<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">페이스북으로 로그인
 </fb:login-button>
 
 <div id="status">

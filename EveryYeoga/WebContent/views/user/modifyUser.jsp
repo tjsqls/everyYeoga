@@ -13,7 +13,7 @@ input[type=text]:enabled {
 }
 
 input[type=text]:disabled {
-    background: #edeeec;
+    background: #f1f1f1;
 }
 </style>
 
@@ -22,7 +22,7 @@ input[type=text]:disabled {
 
 function button_cancel(){
 	if (confirm("회원정보 수정을 취소하시겠습니까?") == true){    //확인
-	    location.href="${pageContext.request.contextPath}/user/detail.do?userId=${user.id}";
+	    location.href="${pageContext.request.contextPath}/user/detail.do";
 	    
 	}else{   //취소
 	    return;
@@ -51,6 +51,7 @@ function button_cancel(){
 
 								<form action="${pageContext.request.contextPath}/user/modify.do" method="post">
 										<input type="hidden" name="pw" value="${user.pw}">
+										<input type="hidden" name="id" value="${user.id}">
 									<table>
 									
 										<tr>
@@ -81,8 +82,8 @@ function button_cancel(){
 										</table>
 										<table style="margin-left: 100px;">
 										<tr>
-										<td><button type="submit" style="background-color: tomato; height: 35px; width:80px; font-size: 15px; text-align: center;"">저장</button></td>
-											<td><button type="submit" style="background-color: orange; height: 35px; width:80px; font-size: 15px; text-align: center;" onclick="button_cancel();">취소</button></td>
+										<td><button type="submit" style="background-color: tomato; height: 35px; width:80px; font-size: 15px; text-align: center;">저장</button></td>
+											<td><button type="reset" style="background-color: orange; height: 35px; width:80px; font-size: 15px; text-align: center;" onclick="button_cancel();">취소</button></td>
 										</tr>
 										
 									</table>

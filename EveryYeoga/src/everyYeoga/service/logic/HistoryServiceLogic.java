@@ -48,7 +48,7 @@ public class HistoryServiceLogic implements HistoryService {
 	@Override
 	public List<GuideHistory> searchGuideHistory(String guideId, String travelEndStatus) {
 		// 선빈
-		if(travelEndStatus =="확인") {
+		if(travelEndStatus =="confirm") {
 			return historyStore.retrieveCheckedGuideHistory(guideId, travelEndStatus);
 		}
 		

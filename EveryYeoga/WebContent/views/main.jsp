@@ -17,6 +17,7 @@ $(function() {
 		dateFormat : 'yy/mm/dd'
 	});
 });
+
 </script>
 </head>
 
@@ -57,8 +58,7 @@ $(function() {
 							</div>
 							</div>
 							</div>
-							
-	
+
 <br/><br/>
 <hr>
 

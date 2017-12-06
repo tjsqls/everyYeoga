@@ -63,10 +63,10 @@
 												<td><input placeholder="해당 지역에 방문했던 횟수를 적어주세요." type="text" name="numberOfVisits" value=""style="width: 550px; height:40px; background-color: #fff8ec;"></td></tr>
 												
 													<tr><td><label  class="text-right" style="font-size: 18px; padding-top: 10px;">여행 시작일&nbsp;</label> </td>
-												<td><input placeholder="yyyy/mm/dd" type="text" name="startDate" value=""style="width: 550px; height:40px;"></td></tr>
+												<td><input placeholder="yyyy/mm/dd" type="text" id="startDate" name="startDate" value=""style="width: 550px; height:40px;"></td></tr>
 												
 												<tr><td><label  class="text-right" style="font-size: 18px; padding-top: 10px;">여행 종료일&nbsp;</label> </td>
-												<td><input placeholder="yyyy/mm/dd" type="text" name="endDate" value=""style="width: 550px; height:40px; background-color: #fff8ec;"></td></tr>
+												<td><input placeholder="yyyy/mm/dd" type="text" id="endDate" name="endDate" value=""style="width: 550px; height:40px; background-color: #fff8ec;"></td></tr>
 												
 												<tr><td><label  class="text-right" style="font-size: 18px; padding-top: 10px;">여행 테마&nbsp;</label> </td>
 												<td><input placeholder="여행시 원하는 테마를 적어주세요." type="text" name="theme" value=""style="width: 550px; height:40px;"></td></tr>
@@ -75,10 +75,10 @@
 												<td><input placeholder="희망하는 인원을 적어주세요." type="text" name="numberOfTraveler" value=""style="width: 550px; height:40px; background-color: #fff8ec;"></td></tr>
 												
 												<tr><td><label  class="text-right" style="font-size: 18px; padding-top: 10px;">선호 가이드&nbsp;</label> </td>
-												<td><input placeholder="희망하는 인원을 적어주세요." type="text" name="preferGuide" value=""style="width: 550px; height:40px;"></td></tr>
+												<td><input placeholder="선호하는 가이드를 설명해주세요." type="text" name="preferGuide" value=""style="width: 550px; height:40px;"></td></tr>
 												
 												<tr><td><label  class="text-right" style="font-size: 18px; padding-top: 10px;">자기소개&nbsp;</label> </td>
-												<td><input placeholder="희망하는 인원을 적어주세요." type="text" name="selfIntroduction" value=""style="width: 550px; height:40px; background-color: #fff8ec;"></td></tr>
+												<td><input placeholder="자기소개를 해주세요." type="text" name="selfIntroduction" value=""style="width: 550px; height:40px; background-color: #fff8ec;"></td></tr>
 												
 				</table>
 

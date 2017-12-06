@@ -4,7 +4,7 @@
 	<style type="text/css">
 
     ul#navii {
-
+		
         width: 200px;
         text-indent: 10px;
         background-color: white;
@@ -16,17 +16,16 @@
         list-style:none;
         border-bottom-color: gray;
 }
-    li.group {
-        margin-bottom: 10px;
 
+.group{
+margin-bottom: 10px;
 }
-
 
 </style>
 			<ul id="navii">
 			<legend> 마이페이지 </legend>
 
-				<li class="group" style=""><a href="${pageContext.request.contextPath}/user/detail.do">회원정보</a></li>
+				<li class="group"><a href="${pageContext.request.contextPath}/user/detail.do">회원정보</a></li>
 				<li class="group"><a href="${pageContext.request.contextPath}/group/groupList.do">참여중인 모임</a></li>
 				<li class="group"><a href="${pageContext.request.contextPath}/travel/myTravelPlan.do">내가 올린 여행계획</a></li>
 				<li class="group"><a href="${pageContext.request.contextPath}/history/searchTravelerHistory.do">여행 내역</a></li>

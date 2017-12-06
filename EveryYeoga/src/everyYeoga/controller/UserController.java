@@ -28,7 +28,7 @@ public class UserController {         // 인애
 
 	@RequestMapping(value="regist.do", method = RequestMethod.GET)
 	public String showRegistUser(User user) {
-		return "redirect:registUser";
+		return "user/registUser";
 	}
 
 	@RequestMapping(value="regist.do", method = RequestMethod.POST)
@@ -38,7 +38,7 @@ public class UserController {         // 인애
 		if (!registed) {
 			return "redirect:login.do";
 		}
-		return "travel/travelPlanList";
+		return "main";
 	}
 
 	@RequestMapping(value = "detail.do", method = RequestMethod.GET)
@@ -47,7 +47,7 @@ public class UserController {         // 인애
 		HttpSession session = req.getSession();
 		User user = (User)session.getAttribute("loginedUser");
 		User user1 = userService.searchByUserId(user.getId());
-		ModelAndView modelAndView = new ModelAndView("/user/myPage");
+		ModelAndView modelAndView = new ModelAndView("user/myPage");
 		modelAndView.addObject("user", user1);
 		
 		return modelAndView;
@@ -58,7 +58,7 @@ public class UserController {         // 인애
 		
 		User user = userService.searchByUserId(userId);
 		
-		ModelAndView modelAndView = new ModelAndView("/user/createUser");
+		ModelAndView modelAndView = new ModelAndView("user/modifyUser");
 		modelAndView.addObject("user", user);
 		
 		return modelAndView;
@@ -68,7 +68,7 @@ public class UserController {         // 인애
 	public ModelAndView modifyUser(User user) {   
 		userService.modifyUser(user);
 		User user1 = userService.searchByUserId(user.getId());
-		ModelAndView modelAndView = new ModelAndView("/user/myPage");
+		ModelAndView modelAndView = new ModelAndView("user/myPage");
 		modelAndView.addObject("user", user1);
 		
 		return modelAndView;
@@ -130,14 +130,14 @@ public class UserController {         // 인애
 			}
 		}
 			
-		return "travel/travelPlanList";
+		return "main";
 	}
 
-	@RequestMapping(value = "logout.do", method = RequestMethod.GET)
+	@RequestMapping(value = "logout.do")
 	public String logout(HttpServletRequest req) {
 
 		HttpSession session = req.getSession();
 		session.invalidate();
-		return "redirect:login.do";
+		return "user/login";
 	}
 }
