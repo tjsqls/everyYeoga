@@ -27,7 +27,7 @@ $(function() {
 					<div id="content" style="margin-left: 400px; width: 1000px;">
 							<div class="col-sm-19 col-lg-19">	
 							<div style="font-weight: bold; width: 800px;">
-									<h3 class="glyphicon glyphicon-search"> Search Travel Plan</h3>
+									<h3 class="glyphicon glyphicon-search"> Search Travel</h3>
 									<hr>
 								</div>
 							

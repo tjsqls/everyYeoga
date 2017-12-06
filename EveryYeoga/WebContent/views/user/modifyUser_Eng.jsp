@@ -51,6 +51,7 @@ function button_cancel(){
 
 								<form action="${pageContext.request.contextPath}/user/modify.do" method="post">
 										<input type="hidden" name="pw" value="${user.pw}">
+										<input type="hidden" name="id" value="${user.id}">
 									<table>
 									
 										<tr>

@@ -13,7 +13,7 @@ input[type=text]:enabled {
 }
 
 input[type=text]:disabled {
-    background: #edeeec;
+    background: #f1f1f1;
 }
 </style>
 
@@ -51,6 +51,7 @@ function button_cancel(){
 
 								<form action="${pageContext.request.contextPath}/user/modify.do" method="post">
 										<input type="hidden" name="pw" value="${user.pw}">
+										<input type="hidden" name="id" value="${user.id}">
 									<table>
 									
 										<tr>

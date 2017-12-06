@@ -14,7 +14,7 @@
 	<div id="page-wrapper">
 
 		<!-- Header -->
-<%@ include file="/views/layout/header.jsp" %>
+<%@ include file="/views/layout/header_Eng.jsp" %>
 
 		<!-- Main -->
 		
@@ -36,7 +36,7 @@
 						<div>
 							<h3>${boardDetail.name }</h3>
 						</div>
-						<form action="${ctx}/article/modify.do " method="post">
+						<form action="${ctx}/engarticle/modify.do " method="post">
 							<div class="panel panel-default">
 								<div class="panel-heading">
 								<table>
@@ -69,7 +69,7 @@
 					</div>
 				</div></div></div></div></div>
 		</div></div>
-<%@ include file="/views/layout/footer.jsp" %>
+<%@ include file="/views/layout/footer_Eng.jsp" %>
 
 
 

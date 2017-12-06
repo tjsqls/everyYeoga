@@ -1,4 +1,4 @@
-package everyYeoga.controller;
+package everyYeoga.controller.english;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -18,8 +18,8 @@ import everyYeoga.service.GroupService;
 import everyYeoga.service.UserService;
 
 @Controller
-@RequestMapping("user")
-public class UserController {         // 인애
+@RequestMapping("enguser")
+public class UserControllerEng {         // 인애
 
 	@Autowired
 	UserService userService;
@@ -28,7 +28,7 @@ public class UserController {         // 인애
 
 	@RequestMapping(value="regist.do", method = RequestMethod.GET)
 	public String showRegistUser(User user) {
-		return "user/registUser";
+		return "user/registUser_Eng";
 	}
 
 	@RequestMapping(value="regist.do", method = RequestMethod.POST)
@@ -36,9 +36,9 @@ public class UserController {         // 인애
 
 		boolean registed = userService.registUser(user);
 		if (!registed) {
-			return "redirect:login.do";
+			return "redirect:enguser/login.do";
 		}
-		return "main";
+		return "main_Eng";
 	}
 
 	@RequestMapping(value = "detail.do", method = RequestMethod.GET)
@@ -47,7 +47,7 @@ public class UserController {         // 인애
 		HttpSession session = req.getSession();
 		User user = (User)session.getAttribute("loginedUser");
 		User user1 = userService.searchByUserId(user.getId());
-		ModelAndView modelAndView = new ModelAndView("user/myPage");
+		ModelAndView modelAndView = new ModelAndView("user/myPage_Eng");
 		modelAndView.addObject("user", user1);
 		
 		return modelAndView;
@@ -58,7 +58,7 @@ public class UserController {         // 인애
 		
 		User user = userService.searchByUserId(userId);
 		
-		ModelAndView modelAndView = new ModelAndView("user/modifyUser");
+		ModelAndView modelAndView = new ModelAndView("user/modifyUser_Eng");
 		modelAndView.addObject("user", user);
 		
 		return modelAndView;
@@ -68,7 +68,7 @@ public class UserController {         // 인애
 	public ModelAndView modifyUser(User user) {   
 		userService.modifyUser(user);
 		User user1 = userService.searchByUserId(user.getId());
-		ModelAndView modelAndView = new ModelAndView("user/myPage");
+		ModelAndView modelAndView = new ModelAndView("user/myPage_Eng");
 		modelAndView.addObject("user", user1);
 		
 		return modelAndView;
@@ -77,12 +77,12 @@ public class UserController {         // 인애
 	@RequestMapping("remove.do")
 	public String removeUser(String userId) {
 		userService.removeUser(userId);
-		return "redirect:/user/login.do";
+		return "redirect:enguser/login.do";
 	}
 
 	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
 	public String showLogin(User user) {
-		return "user/login";
+		return "user/login_Eng";
 	}
 
 	@RequestMapping(value = "login.do", method = RequestMethod.POST)
@@ -98,24 +98,24 @@ public class UserController {         // 인애
 		   
 			try {
 				out = response.getWriter();
-	            out.println("<script>alert('존재하지않는 아이디 입니다.'); history.go(-1);</script>");
+	            out.println("<script>alert('Inputted ID doesn't exist.'); history.go(-1);</script>");
 	            out.flush();
 
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			return "user/login";
+			return "user/login_Eng";
 		}else if(userService.searchByUserId(loginId) != null){
 			if (!password.equals(userService.searchByUserId(loginId).getPw())) {
 				try {
 					out = response.getWriter();
-		            out.println("<script>alert('비밀번호를 확인 해주세요.'); history.go(-1);</script>");
+		            out.println("<script>alert('Please check your password.'); history.go(-1);</script>");
 		            out.flush();
 
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
-			return "user/login";
+			return "user/login_Eng";
 			
 		}
 		
@@ -130,7 +130,7 @@ public class UserController {         // 인애
 			}
 		}
 			
-		return "main";
+		return "main_Eng";
 	}
 
 	@RequestMapping(value = "logout.do")
@@ -138,6 +138,6 @@ public class UserController {         // 인애
 
 		HttpSession session = req.getSession();
 		session.invalidate();
-		return "user/login";
+		return "user/login_Eng";
 	}
 }

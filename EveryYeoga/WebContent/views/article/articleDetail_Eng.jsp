@@ -12,7 +12,7 @@
 <script type="text/javascript">
 function button_event(){
 if (confirm("Do you want to delete this Article?") == true){    //확인
-    location.href="${ctx }/article/remove.do?articleId=${article.articleId}";
+    location.href="${ctx }/engarticle/remove.do?articleId=${article.articleId}";
     
 }else{   //취소
     return;
@@ -21,7 +21,7 @@ if (confirm("Do you want to delete this Article?") == true){    //확인
 
 function report_button(){
 	if(confirm("Do you want to report this Article?") == true){		
-		location.href="${ctx}/report/regist.do?classifyId=${article.articleId}&classifyReport=article&userId=${user.id}"
+		location.href="${ctx}/engreport/regist.do?classifyId=${article.articleId}&classifyReport=article&userId=${user.id}"
 	}else{
 		return;
 }
@@ -29,7 +29,7 @@ function report_button(){
 
 function comment_delete(){
 	if(confirm("Do you want to delete this Comment?") == true){
-		location.href="${ctx }/comment/remove.do?articleId=${article.articleId}&commentId=${comment.commentId}"
+		location.href="${ctx }/engcomment/remove.do?articleId=${article.articleId}&commentId=${comment.commentId}"
 	}else{
 		return;
 	}
@@ -37,7 +37,7 @@ function comment_delete(){
 
 function comment_report(){
 	if(confirm("Do you want to report this Comment?") == true){
-		location.href="${ctx }/report/regist.do?classifyId=${comment.commentId}&classifyReport='comment'&userId=${comment.user.id}"
+		location.href="${ctx }/engreport/regist.do?classifyId=${comment.commentId}&classifyReport='comment'&userId=${comment.user.id}"
 	}else{
 		return;
 	}
@@ -52,7 +52,7 @@ function comment_report(){
 	<div id="page-wrapper">
 
 		<!-- Header -->
-<%@ include file="/views/layout/header.jsp" %>
+<%@ include file="/views/layout/header_Eng.jsp" %>
 
 		<!-- Main -->
 		
@@ -81,7 +81,7 @@ function comment_report(){
 																	
 																	<a class="glyphicon glyphicon-cog pull-right" 
 																	onclick="button_event();" style="padding: 10px">Delete</a>
-																	 <a href="${ctx }/article/modify.do?articleId=${article.articleId}" class="glyphicon glyphicon-cog pull-right"
+																	 <a href="${ctx }/engarticle/modify.do?articleId=${article.articleId}" class="glyphicon glyphicon-cog pull-right"
 														style="padding: 10px">Modify</a> <br>
 														
 														<br>
@@ -117,7 +117,7 @@ function comment_report(){
 																	<span
 																	style="float: right"> <a
 																		class="glyphicon glyphicon-pencil" style="color: gray;"
-																		href="${ctx }/comment/modify.do?articleId=${article.articleId}&commentId=${comment.commentId}">Modify</a>
+																		href="${ctx }/engcomment/modify.do?articleId=${article.articleId}&commentId=${comment.commentId}">Modify</a>
 
 																	&nbsp;	<a class="glyphicon glyphicon-trash"
 																		onclick="comment_delete();" style="color: gray;">Delete</a>
@@ -136,7 +136,7 @@ function comment_report(){
 												<div class="panel-footer">
 				
 														<form
-															action="${ctx }/comment/regist.do" method="POST">
+															action="${ctx }/engcomment/regist.do" method="POST">
 
 
 															<input type="hidden" name="articleId" value="${article.articleId }">
@@ -172,7 +172,7 @@ onClick="history.back();">
 				</div>
 </div></div>
 				<!-- Footer -->
-		<%@ include file="/views/layout/footer.jsp" %>
+		<%@ include file="/views/layout/footer_Eng.jsp" %>
 
 
 
