@@ -18,18 +18,6 @@ $(function() {
 	});
 });
 
-
-function loadDoc() {
-	  var xhttp = new XMLHttpRequest();
-	  xhttp.onreadystatechange = function() {
-	    if (this.readyState == 4 && this.status == 200) {
-	      document.getElementById("demo").innerHTML =
-	      this.responseText;
-	    }
-	  };
-	  xhttp.open("GET", "safe_trip.txt", true);
-	  xhttp.send();
-	}
 </script>
 </head>
 
@@ -69,20 +57,8 @@ function loadDoc() {
 										</div>
 							</div>
 							</div>
-							
-							<div id="demo">
-							<ul>
-		<li><span style="color: gray;">*안전한 여행을 준비하세요!*</span>
-		<button type="button" onclick="loadDoc()"> 알아보기 ღ'ᴗ'ღ</button></li>
-		</ul>
-		</div>
-					
-					
 							</div>
-							
-							
-				
-	
+
 <br/><br/>
 <hr>
 

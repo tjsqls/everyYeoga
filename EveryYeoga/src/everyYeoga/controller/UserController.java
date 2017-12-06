@@ -58,7 +58,7 @@ public class UserController {         // 인애
 		
 		User user = userService.searchByUserId(userId);
 		
-		ModelAndView modelAndView = new ModelAndView("/user/createUser");
+		ModelAndView modelAndView = new ModelAndView("/user/modifyUser");
 		modelAndView.addObject("user", user);
 		
 		return modelAndView;
@@ -130,7 +130,7 @@ public class UserController {         // 인애
 			}
 		}
 			
-		return "travel/travelPlanList";
+		return "main";
 	}
 
 	@RequestMapping(value = "logout.do", method = RequestMethod.GET)

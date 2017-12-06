@@ -20,7 +20,7 @@ font-weight: bold;
 }
 
 #top{
-background:#d1dedc;
+background:#edf1f0;
 font-weight: bold;
 color: white;
 padding-top: 6px;
@@ -28,9 +28,9 @@ margin-right: 20px;
 font-size: 14px;
 border-radius: 20px;
 border-color: #a0bac7;
-margin-left: 200px;
-width: 80%;
+margin-left: 200p;
 }
+
 
 
 </style>
@@ -38,7 +38,8 @@ width: 80%;
 
  <div class="left col-xs-6">
 <h1 style="font-weight: bolder; margin-left: 200px; font-size: 40px; font-family: monospace; "> 
-<img alt="모두의 여가" src="${pageContext.request.contextPath}/images/1111.jpg">
+<img alt="모두의 여가" src='http://www.travelweekly.com/uploadedImages/All_TW_Art/2016/032816/T0328COVERILLO2_HR.jpg?n=3385&width=1540&height=866&mode=crop&Anchor=MiddleCenter' width="260px" height="103px">
+<span style="font-weight:bolder; font-family: fantasy;">모두의 여가</span>
 </h1>
  </div>
  
@@ -48,7 +49,7 @@ width: 80%;
 					<c:when test="${loginedUser eq null}">
 					<li id="top-header">
 					<a href="${pageContext.request.contextPath}/views/user/login.jsp">로그인</a> &nbsp;&nbsp;
-							<a href="${pageContext.request.contextPath}/user/regist.do">회원가입</a></li>
+							<a href="${pageContext.request.contextPath}/views/user/regist.jsp">회원가입</a></li>
 					</c:when>
 					<c:otherwise>
 					<li id="top-header">
@@ -61,10 +62,10 @@ width: 80%;
 		<ul>
 			<li id="chooseLanguage">
 			<img src='https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/1280px-Flag_of_the_United_States.svg.png' width="20px" height="10px" >
-			<a href="${pageContext.request.contextPath}/travel/travelPlanList.do">English</a>
+			<a href="${pageContext.request.contextPath}/views/main_Eng.jsp">English</a>
 				&nbsp; &nbsp; &nbsp; 
 				<img src='https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Flag_of_South_Korea.svg/2000px-Flag_of_South_Korea.svg.png' width="28px" height="12px" >
-				<a href="${pageContext.request.contextPath}/group/groupList.do">한국어</a>
+				<a href="${pageContext.request.contextPath}/views/main.jsp">한국어</a>
 			</li>
 		</ul>
 		

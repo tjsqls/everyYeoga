@@ -27,7 +27,7 @@ $(function() {
 					<div id="content" style="margin-left: 400px; width: 1000px;">
 							<div class="col-sm-19 col-lg-19">	
 							<div style="font-weight: bold; width: 800px;">
-									<h3 class="glyphicon glyphicon-search">Search Travel Plan</h3>
+									<h3 class="glyphicon glyphicon-search"> Search Travel Plan</h3>
 									<hr>
 								</div>
 							
@@ -39,11 +39,11 @@ $(function() {
 													class="bs-example form-horizontal" method="POST" style="width: 1000px;">
 
 											<table style=" width: 400px;">
-													<tr><td><span style="color: red; font-weight: bold; size: 8px; margin-bottom: 10px;">* area must be required</span></td></tr>				
+													<tr><td><span style="color: red; font-weight: bold; size: 8px; margin-bottom: 10px;">* Travel area must be filled to search</span></td></tr>				
 													<tr><td><input type="text" name="travelArea" placeholder="Travel Area" value="" style="width: 400px;" /></td></tr>
 													
 													<tr><td style="margin-top: 5px;"> <input style="width: 300px;" id="satartDate" name="satartDate" type="text"
-														placeholder="Travel Starts(yy/mm/dd)" value="" /></td>
+														placeholder="Travel Starts (yy/mm/dd)" value="" /></td>
 					<td style="margin-top: 10px;"> <input type="text" name="speakingAbility" placeholder="languages" style="width: 300px;" value="" /></td></tr>
 					   									</table><table>
 														<tr><td style="text-align: center;" ><button type="submit" style="width: 200px; background-color: tomato;">search</button></td></tr>

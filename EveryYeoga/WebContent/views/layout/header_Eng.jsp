@@ -45,8 +45,8 @@ width: 80%;
 		<c:choose>
 					<c:when test="${loginedUser eq null}">
 					<li id="top-header">
-					<a href="${pageContext.request.contextPath}/views/user/login_Eng.jsp">Sign in</a> &nbsp;&nbsp;
-							<a href="${pageContext.request.contextPath}/user/regist.do">Register</a></li>
+					<a href="${pageContext.request.contextPath}/views/user/login.jsp">Sign in</a> &nbsp;&nbsp;
+							<a href="${pageContext.request.contextPath}/views/user/registUser.jsp">Register</a></li>
 					</c:when>
 					<c:otherwise>
 					<li id="top-header">
