@@ -62,12 +62,11 @@
 															</tr>
 														</c:when>
 														<c:otherwise>
-															<c:forEach var="list" items="${joinList}"
-																varStatus="sts">
+														
+															<c:forEach var="list" items="${joinList}" varStatus="sts">
 																<input type="hidden" name="travelPlanId" value="${list.travelPlanId }">
 																<input type="hidden" name="joinId" value="${list.joinId }">
 																	<tr>
-																		
 																		<td class="text-center"><input type="checkbox" name="check" value="${list.guideId }"></td>
 																		<td class="text-center">${sts.count}</td>
 																		<td class="text-center">${list.guideId}</td>
@@ -103,13 +102,6 @@
 
 
 	<!-- Scripts -->
-
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/jquery.dropotron.min.js"></script>
-	<script src="assets/js/skel.min.js"></script>
-	<script src="assets/js/util.js"></script>
-	<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-	<script src="assets/js/main.js"></script>
 
 </body>
 </html>

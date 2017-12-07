@@ -7,7 +7,7 @@ public class Comment {
 	private String commentId;
 	private String content;
 	private Date regDate;
-
+	private String writer; // 2017.12.07 필드 추가 선빈
 	private User user;
 	
 	
@@ -34,6 +34,12 @@ public class Comment {
 	}
 	public void setUser(User user) {
 		this.user = user;
+	}
+	public String getWriter() {
+		return writer;
+	}
+	public void setWriter(String writer) {
+		this.writer = writer;
 	}
 	
 	

@@ -28,11 +28,11 @@
 			
 				<li><label style="color: #8f5138;">참여중인 여행자</label></li>
 				<li class="group"><a href="#">${traveler.id }</a></li>
-				<br>
+				<hr>
 				<li><label style="color: #bb6333;">참여중인 가이드</label></li>
 				<c:forEach items="${guides }" var="guide">
 				<li class="group"><a href="#">${guide.id }</a></li>
-				<hr>
+				
 				</c:forEach>
 				<li><input type="button" onclick="location.href='${ctx}/article/regist.do?groupId=${group.groupId}'" value="게시물 올리기" 
 				style="background-color: #fff0dd; height: 30px; width: 100px; font-size: 10px; color: gray;"></li>
