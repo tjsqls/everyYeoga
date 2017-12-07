@@ -97,6 +97,15 @@ public class GuideController {
 		HttpSession session = req.getSession();
 		User user = (User) session.getAttribute("loginedUser");
 		List<String> userIds = groupService.searchJoiningUserId(groupId);
+		
+		for(int i=0; i < userIds.size(); i++) {
+			if(userIds.get(i).equals(user.getId())) {
+				userIds.remove(i);
+			}
+		}
+		
+		
+		
 		for (int i = 0; i < userIds.size(); i++) {
 			list.getList().get(i).setTravelerId(user.getId());
 			travelService.registEvaluation(list.getList().get(i));

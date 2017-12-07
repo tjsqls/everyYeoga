@@ -85,8 +85,8 @@ public class GroupServiceLogic implements GroupService {
 				travelerHistory.setTraveler(userStore.retrieveByUserId(userId));
 	
 				for (int i = 0; i < userIds.size(); i++) {
-					if(groupStore.retrieveJoiningUserId(groupId).get(i).equals("unconfirm")) {
-						historyStore.updateGuideHistory(travelPlan.getTravelerId(), userIds.get(i), "confirm");
+					if(groupStore.retrieveJoiningUserId(groupId).get(i).equals("미확인")) {
+						historyStore.updateGuideHistory(travelPlan.getTravelerId(), userIds.get(i), "확인");
 					}
 					GuideHistory guideHistory = new GuideHistory();
 					groupStore.groupOut(groupId, userIds.get(i));
@@ -95,7 +95,7 @@ public class GroupServiceLogic implements GroupService {
 					guideHistory.setStartDate(travelPlan.getStartDate());
 					guideHistory.setTheme(travelPlan.getTheme());
 					guideHistory.setTravelArea(travelPlan.getTravelArea());
-					guideHistory.setTravelEndStatus("confirm");
+					guideHistory.setTravelEndStatus("확인");
 					guideHistory.setTravelerName(userId);
 					historyStore.createGuideHistory(guideHistory);
 				}//end for
@@ -109,7 +109,7 @@ public class GroupServiceLogic implements GroupService {
 			guideHistory.setStartDate(travelPlan.getStartDate());
 			guideHistory.setTheme(travelPlan.getTheme());
 			guideHistory.setTravelArea(travelPlan.getTravelArea());
-			guideHistory.setTravelEndStatus("unconfirm");
+			guideHistory.setTravelEndStatus("미확인");
 			guideHistory.setTravelerName(userId);
 			historyStore.createGuideHistory(guideHistory);
 			return true;

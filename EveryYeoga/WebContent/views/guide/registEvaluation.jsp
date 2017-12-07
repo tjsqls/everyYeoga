@@ -35,7 +35,7 @@
 
 											<c:forEach items="${guideIds}" var="guideIds">
 												<h2>가이드아이디:${guideIds}</h2>
-												<input type="hidden" name="guideId" value="${guideId }">
+												<input type="hidden" name="groupId" value="${groupId }">
 												<br>
 												<br>
 												<div class="form-group">
