@@ -27,6 +27,11 @@
 		<servlet-name>dispatcher</servlet-name>
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
+	
+	<context-param>
+	<param-name>contextConfigLocation</param-name>
+	<param-value></param-value>
+	</context-param>
 
 	<servlet-mapping>
 		<servlet-name>dispatcher</servlet-name>
