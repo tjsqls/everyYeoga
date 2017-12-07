@@ -28,16 +28,20 @@ function report_button(){
 }
 
 function comment_delete(){
+	var commentId = document.getElementById("commentId").value;
 	if(confirm("댓글을 삭제하시겠습니까?") == true){
-		location.href="${ctx }/comment/remove.do?articleId=${article.articleId}&commentId=${comment.commentId}"
+		location.href="${ctx }/comment/remove.do?articleId=${article.articleId}&commentId="+commentId
 	}else{
 		return;
 	}
 }
 
 function comment_report(){
+	var commentId = document.getElementById("commentId").value;
+	var writer = document.getElementById("writer").value;
+	alert(writer);
 	if(confirm("댓글을 신고하시겠습니까?") == true){
-		location.href="${ctx }/report/regist.do?classifyId=${comment.commentId}&classifyReport='comment'&userId=${comment.user.id}"
+		location.href="${ctx }/report/regist.do?classifyId="+commentId+"&classifyReport='comment'&userId="+writer
 	}else{
 		return;
 	}
@@ -101,12 +105,14 @@ function comment_report(){
 														class="glyphicon glyphicon-cog pull-right"
 														style="padding: 10px">신고</a>
 														
-													<c:forEach items="${article.comments }" var="comment">
-													<c:set var="commentUser" value="${comment.user}"/>
+													<c:forEach items="${comments }" var="comment">
+													<input type="hidden" id="commentId" value="${comment.commentId }">
+													<input type="hidden" id="writer" value="${comment.writer }">
 														<table class="table"
 															style="font-size: 13px; padding: 10px;">
+															
 															<tr>
-																<td><strong>댓글 작성자 : ${commentUser.id }</strong></td>
+																<td><strong>댓글 작성자 : ${comment.writer }</strong></td>
 																<td class="text-right">댓글 등록일 :&nbsp; <fmt:formatDate
 																	value="${comment.regDate }" pattern="dd-MM-yyyy" /> </td>
 															</tr>
@@ -138,9 +144,9 @@ function comment_report(){
 														<form
 															action="${ctx }/comment/regist.do" method="POST">
 
-
 															<input type="hidden" name="articleId" value="${article.articleId }">
 															<input type="hidden" name="groupId" value="${article.groupId }">
+															<input type="hidden" name="writer" value="${loginedUser.id }">
 														<table>
 														<tr>
 														<td>

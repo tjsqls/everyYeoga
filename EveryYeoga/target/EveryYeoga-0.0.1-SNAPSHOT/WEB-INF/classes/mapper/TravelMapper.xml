@@ -54,12 +54,11 @@
 		travelPlan_tb WHERE travelArea=#{travelArea} AND speakingAbility =
 		#{speakingAbility} AND startDate = #{startDate} AND gatheringStatus ='모집중' </select>
 
-	<select id="retrieveTravelPlan" parameterType="String"
-		resultMap="TravelPlanMap"> SELECT travelPlanId, travelerId, speakingAbility,
-		travelArea, numberOfVisits, theme, numberOfTraveler, preferGuide,
-		selfIntroduction, gatheringStatus, startDate,endDate 
-		FROM travelPlan_tb 
-		WHERE travelPlanId = #{travelPlanId} </select>
+	<select id="retrieveTravelPlan" parameterType="String" resultType="TravelPlan">
+		SELECT travelPlanId, travelerId, speakingAbility, travelArea, numberOfVisits, startDate, endDate, theme, numberOfTraveler, preferGuide, selfIntroduction, gatheringStatus
+		FROM travelPlan_tb
+		WHERE travelPlanId = #{travelPlanId}
+	</select>
 
 	<update id="updateTravelPlan" parameterType="TravelPlan"> 
 		UPDATE	travelPlan_tb 

@@ -72,7 +72,7 @@ function button_more(){
 				<li><label style="color: #bb6333;">참여중인 가이드</label></li>
 				<c:forEach items="${guides }" var="guide">
 				<li class="group"><a href="#">${guide.id }</a></li>
-				<br/>
+
 				</c:forEach>
 				<li><input type="button" onclick="button_post();" value="게시물 올리기" 
 				style="background-color: tomato; height: 30px; width: 100px; font-size: 10px; color: black;"></li>

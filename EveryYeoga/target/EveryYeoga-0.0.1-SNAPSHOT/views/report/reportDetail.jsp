@@ -49,7 +49,6 @@
 			<legend> 관리자 페이지 </legend>
 
 				<li class="group" style=""><a href="${pageContext.request.contextPath}/report/searchAll.do">신고내역 관리</a></li>
-				<li class="group"><a href="${pageContext.request.contextPath}/history/searchTravelerHistory.do">여행내역 관리</a></li>
 			</ul>
 
 					
