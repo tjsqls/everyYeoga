@@ -42,14 +42,14 @@
 						<div id="content" style="margin-left: 200px; width: 1000px;">
 							<div class="col-sm-9 col-lg-9">
 								<div>
-									<h3 class="glyphicon glyphicon-search">Search Travel Plan</h3>
+									<h3 class="glyphicon glyphicon-search">Search Travel</h3>
 									<hr>
 								</div>
 
 								<div class="table-responsive">
 										<div class="row">
 											<div class="col-sm-12 col-lg-12">
-												<form action="${ctx}/travel/searchTravelPlan.do"
+												<form action="${ctx}/engtravel/searchTravelPlan.do"
 													class="bs-example form-horizontal" method="POST" style="width: 1000px;">
 
 											<table style=" width: 400px;">
@@ -77,8 +77,8 @@
 													<tr>
 														<th class="text-center" style="font-weight: bold; width: 10%">No.</th>
 														<th class="text-center" style="font-weight: bold; width: 30%">Travel Area</th>
-														<th class="text-center" style="font-weight: bold; width: 25%">Travel Theme</th>
-														<th class="text-center" style="font-weight: bold; width: 15%">Gathering Status</th>
+														<th class="text-center" style="font-weight: bold; width: 20%">Travel Theme</th>
+														<th class="text-center" style="font-weight: bold; width: 20%">Gathering Status</th>
 														<th class="text-center" style="font-weight: bold; width: 20%">Traveler's ID</th>
 													</tr>
 												</thead>
@@ -99,7 +99,7 @@
 																		<td class="text-center">${travelPlan.theme}</td>
 																		<td class="text-center">${travelPlan.gatheringStatus}</td>
 																		<td class="text-center">${travelPlan.travelerId}</td>
-																		<td class="text-center"><a href="${ctx}/guide/registJoin.do?travelPlanId=${travelPlan.travelPlanId}">참여 신청하기</a> </td>
+																		<td class="text-center"><a href="${ctx}/engguide/registJoin.do?travelPlanId=${travelPlan.travelPlanId}">참여 신청하기</a> </td>
 																	</tr>
 														
 																</c:forEach>

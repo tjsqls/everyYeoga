@@ -24,13 +24,13 @@
 
 </style>
 			<ul id="navii">
-			<legend> My Page </legend>
+			<legend style="font-weight: bold;"> My Page </legend>
 
-				<li class="group" style=""><a href="${pageContext.request.contextPath}/user/detail.do">User Information</a></li>
-				<li class="group"><a href="${pageContext.request.contextPath}/group/groupList.do">Joining Group</a></li>
-				<li class="group"><a href="${pageContext.request.contextPath}/travel/myTravelPlan.do">My Travel Plans</a></li>
-				<li class="group"><a href="${pageContext.request.contextPath}/history/searchTravelerHistory.do">History as a Traveler</a></li>
-				<li class="group"><a href="${pageContext.request.contextPath}/history/searchGuideHistory.do">History as a Guide</a></li>
+				<li class="group" style=""><a href="${pageContext.request.contextPath}/enguser/detail.do">User Information</a></li>
+				<li class="group"><a href="${pageContext.request.contextPath}/enggroup/groupList.do">Joining Group</a></li>
+				<li class="group"><a href="${pageContext.request.contextPath}/engtravel/myTravelPlan.do">My Travel Plans</a></li>
+				<li class="group"><a href="${pageContext.request.contextPath}/enghistory/searchTravelerHistory.do">History as a Traveler</a></li>
+				<li class="group"><a href="${pageContext.request.contextPath}/enghistory/searchGuideHistory.do">History as a Guide</a></li>
 			</ul>
 
 

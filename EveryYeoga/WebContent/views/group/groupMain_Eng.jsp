@@ -7,6 +7,41 @@
 <html>
 <%@ include file="/views/layout/common.jsp" %>
 <head>
+
+<script type="text/javascript">
+function button_post(){
+if (confirm("Do you want to post an Article?") == true){    //확인
+    location.href="${ctx}/engarticle/regist.do?groupId=${group.groupId}"; 
+}else{   //취소
+    return;
+}
+}
+
+function button_finish(){
+	if (confirm("Do you want to end the group? \n(Please press the button after the travel had finished.)") == true){    //확인
+	    location.href="${ctx }/enggroup/removeGroup.do?groupId=${group.groupId}"; 
+	}else{   //취소
+	    return;
+	}
+	}
+	
+function button_out(){
+	if (confirm("Are you sure you want to leave the group?") == true){    //확인
+	    location.href="${ctx }/enggroup/groupOut.do?groupId=${group.groupId}"; 
+	}else{   //취소
+	    return;
+	}
+	}
+	
+function button_more(){
+	if (confirm("Do you want to gather more guides to the group?") == true){    //확인
+	    location.href="${ctx }/enggroup/groupModifyStatus.do?travelPlanId=${group.travelPlanId}"; 
+	}else{   //취소
+	    return;
+	}
+	}
+
+</script>
 </head>
 
 <body class="left-sidebar">
@@ -15,7 +50,7 @@
 	
 
 		<!-- Header -->
-		<%@ include file="/views/layout/header.jsp" %>
+		<%@ include file="/views/layout/header_Eng.jsp" %>
 			<!-- Header -->
 			
 		<!-- Main -->
@@ -24,22 +59,24 @@
 			<div class="container">
 				<div class="row 70%">
 					<ul id="navii">
-			<legend style="font-weight: bold;"> My Group </legend>
+			<legend style="font-weight: bold;">MY Group </legend>
+			
 				<li><label style="color: #8f5138;">Joining Traveler</label></li>
-				<li class="group"><a href="#">xxxxxx</a></li>
-				<br>
-				<li><label style="color: #bb6333;">Joining Guide</label></li>
-				<li class="group"><a href="#">xxxxxx</a></li>
-				
+				<li class="group"><a href="#">${traveler.id }</a></li>
 				<hr>
-				<li><input type="button" onclick="location.href='${ctx}/article/regist.do?groupId=${group.groupId}'" value="post an article" 
-				style="background-color: #fff0dd; height: 30px; width: 100px; font-size: 10px; color: gray;"></li>
+				<li><label style="color: #bb6333;">Joining Guide</label></li>
+				<c:forEach items="${guides }" var="guide">
+				<li class="group"><a href="#">${guide.id }</a></li>
 				<br/>
-				<li><input type="button" onclick="location.href='${ctx }/group/removeGroup.do?groupId=${group.groupId}'" value="End My Group" 
-				style="background-color: #ffe6c6; height: 30px; width: 100px; font-size: 10px; color: gray;"></li>
+				</c:forEach>
+				<li><input type="button" onclick="button_post();" value="post an article" 
+				style="background-color: tomato; height: 30px; width: 100px; font-size: 10px; color: black;"></li>
 				<br/>
-				<li><input type="button" onclick="location.href='${ctx }/group/groupOut.do?groupId=${group.groupId}'" value="Leave My Group" 
-				style="background-color: #ffd9aa; height: 30px; width: 100px; font-size: 10px; color: gray;"></li>
+				<li><input type="button" onclick="button_finish();" value="Finish My Group" 
+				style="background-color: #ffe6c6; height: 30px; width: 100px; font-size: 10px; color: black;"></li>
+				<br/>
+				<li><input type="button" onclick="button_out();" value="Leave My Group" 
+				style="background-color: #ffd9aa; height: 30px; width: 100px; font-size: 10px; color: black;"></li>
 
 			</ul>
 
@@ -70,8 +107,8 @@
 													<tr>
 														<th class="text-center" style="width: 10%; font-weight: bold">No.</th>
 														<th class="text-center" style="width: 40%; font-weight: bold">Title</th>
-														<th class="text-center" style="width: 30%; font-weight: bold">Written Date</th>
-														<th class="text-center"style="width: 20%; font-weight: bold">Writer</th>
+														<th class="text-center" style="width: 30%; font-weight: bold">Posted Date</th>
+														<th class="text-center"style="width: 20%; font-weight: bold">writer</th>
 
 													</tr>
 												</thead>
@@ -89,7 +126,7 @@
 																<tr>
 																	<td class="text-center">${sts.count }</td>
 																	<td><a
-																		href="${ctx}/article/articleDetail.do?articleId=${article.articleId}">${article.title}
+																		href="${ctx}/engarticle/articleDetail.do?articleId=${article.articleId}">${article.title}
 																	</a></td>
 																	<td class="text-center"><fmt:formatDate
 																			value="${article.regDate }" pattern="dd/MM/yyyy" /></td>
@@ -101,7 +138,7 @@
 													</c:choose>
 <c:choose>
 								<c:when test="${gatheringStatus == '모집완료' && travelUserId == loginedUser.id  }">
-								<input type="button" onclick="location.href='${ctx }/group/groupModifyStatus.do?travelPlanId=${group.travelPlanId}'" value="Gather More Guides" 
+								<input type="button" onclick="button_more();" value="Gather More Guides" 
 				style="background-color: #ff8040; height: 30px; width: 100px; font-size: 10px; margin-bottom: 20px;">
 							
 								</c:when>
@@ -121,7 +158,7 @@
 			</div>
 	</div>
 			<!-- Footer -->
-			<%@ include file="/views/layout/footer.jsp" %>
+			<%@ include file="/views/layout/footer_Eng.jsp" %>
 
 
 

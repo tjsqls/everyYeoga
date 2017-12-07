@@ -28,7 +28,7 @@
 								<div class="table-responsive">
 							
 										<form
-											action="${pageContext.request.contextPath}/travel/modify.do"
+											action="${pageContext.request.contextPath}/engtravel/modify.do"
 											class="bs-example form-horizontal" method="POST" style="width: 800px;">
 											<fieldset>
 											<ul> 

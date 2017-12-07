@@ -19,7 +19,7 @@
 		<tr><th>비밀번호 </th><td><input style="margin-top:20px; width: 300px; height: 40px;" id="pw"  name="pw"  type="password" value="" placeholder="PW를 입력해주세요."> </td>  </tr>
 		<tr><th>비밀번호 확인 </th><td><input style="margin-top:20px; width: 300px; height: 40px;" id="pw"  name="pw"  type="password" value="" placeholder="PW를 입력해주세요."> </td>  </tr>
 		<tr><th>이름 </th><td><input style="margin-top:20px; width: 300px; height: 40px;" id="name"  name="name"  type="text" value="" placeholder="이름를 입력해주세요.">  </td>  </tr>
-		<tr><th>생년월일 </th><td><input style="margin-top:20px; width: 300px; height: 40px;" id="birthDate"  name="birthDate"  type="text" value="" placeholder="생년월일를 입력해주세요.">  </td> </tr>
+		<tr><th>생년월일 </th><td><input style="margin-top:20px; width: 300px; height: 40px;" id="birthDate"  name="birthDate"  type="text" value="" placeholder="yyyy/mm/dd">  </td> </tr>
 		<tr><th>핸드폰번호</th><td><input style="margin-top:20px; width: 300px; height: 40px;" id="phoneNumber"  name="phoneNumber" type="text" value="" placeholder="휴대폰 번호를 입력해주세요."></td> </tr>
 		<tr><th>이메일 </th><td><input style="margin-top:20px; width: 300px; height: 40px;" id="email" name="email" type="text" value=""></td><td>@</td><td><select name="selectMail">
 					<option value="">naver.com</option>

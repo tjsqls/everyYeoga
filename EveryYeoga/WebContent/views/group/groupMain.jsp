@@ -7,6 +7,46 @@
 <html>
 <%@ include file="/views/layout/common.jsp" %>
 <head>
+
+<script type="text/javascript">
+function button_post(){
+if (confirm("게시물을 올리시겠습니까?") == true){    //확인
+    location.href="${ctx}/article/regist.do?groupId=${group.groupId}"; 
+}else{   //취소
+    return;
+}
+}
+
+function button_finish(){
+	if (confirm("모임을 종료 하시겠습니까? (여행이 종료된 후 눌러주시기 바랍니다.)") == true){    //확인
+	    location.href="${ctx }/group/removeGroup.do?groupId=${group.groupId}"; 
+	}else{   //취소
+	    return;
+	}
+	}
+	
+function button_out(){
+	if (confirm("모임에서 나가시겠습니까?") == true){    //확인
+	    location.href="${ctx }/group/groupOut.do?groupId=${group.groupId}"; 
+	}else{   //취소
+	    return;
+	}
+	}
+	
+function button_more(){
+	if (confirm("모임에 가이드를 더 추가하시겠습니까?") == true){    //확인
+	    location.href="${ctx }/group/groupModifyStatus.do?travelPlanId=${group.travelPlanId}"; 
+	}else{   //취소
+	    return;
+	}
+	}
+
+
+
+</script>
+
+
+
 </head>
 
 <body class="left-sidebar">
@@ -28,20 +68,20 @@
 			
 				<li><label style="color: #8f5138;">참여중인 여행자</label></li>
 				<li class="group"><a href="#">${traveler.id }</a></li>
-				<br>
+				<hr>
 				<li><label style="color: #bb6333;">참여중인 가이드</label></li>
 				<c:forEach items="${guides }" var="guide">
 				<li class="group"><a href="#">${guide.id }</a></li>
-				<hr>
+				<br/>
 				</c:forEach>
-				<li><input type="button" onclick="location.href='${ctx}/article/regist.do?groupId=${group.groupId}'" value="게시물 올리기" 
-				style="background-color: #fff0dd; height: 30px; width: 100px; font-size: 10px; color: gray;"></li>
+				<li><input type="button" onclick="button_post();" value="게시물 올리기" 
+				style="background-color: tomato; height: 30px; width: 100px; font-size: 10px; color: black;"></li>
 				<br/>
-				<li><input type="button" onclick="location.href='${ctx }/group/removeGroup.do?groupId=${group.groupId}'" value="모임 종료" 
-				style="background-color: #ffe6c6; height: 30px; width: 100px; font-size: 10px; color: gray;"></li>
+				<li><input type="button" onclick="button_finish();" value="모임 종료" 
+				style="background-color: #ffe6c6; height: 30px; width: 100px; font-size: 10px; color: black;"></li>
 				<br/>
-				<li><input type="button" onclick="location.href='${ctx }/group/groupOut.do?groupId=${group.groupId}'" value="모임 탈퇴" 
-				style="background-color: #ffd9aa; height: 30px; width: 100px; font-size: 10px; color: gray;"></li>
+				<li><input type="button" onclick="button_out();" value="모임 탈퇴" 
+				style="background-color: #ffd9aa; height: 30px; width: 100px; font-size: 10px; color: black;"></li>
 
 			</ul>
 
@@ -103,7 +143,7 @@
 													</c:choose>
 <c:choose>
 								<c:when test="${gatheringStatus == '모집완료' && travelUserId == loginedUser.id  }">
-								<input type="button" onclick="location.href='${ctx }/group/groupModifyStatus.do?travelPlanId=${group.travelPlanId}'" value="가이드 추가 모집" 
+								<input type="button" onclick="button_more();" value="가이드 추가 모집" 
 				style="background-color: #ff8040; height: 30px; width: 100px; font-size: 10px; margin-bottom: 20px;">
 							
 								</c:when>

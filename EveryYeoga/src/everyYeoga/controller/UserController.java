@@ -77,15 +77,15 @@ public class UserController {         // 인애
 	@RequestMapping("remove.do")
 	public String removeUser(String userId) {
 		userService.removeUser(userId);
-		return "redirect:/user/login.do";
+		return "main";
 	}
 
-	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/login.do")
 	public String showLogin(User user) {
 		return "user/login";
 	}
 
-	@RequestMapping(value = "login.do", method = RequestMethod.POST)
+	@RequestMapping(value = "login.do", method=RequestMethod.POST)
 	public String login(User user, HttpServletRequest req, HttpServletResponse response) {		
 		
 		String loginId = req.getParameter("id");
@@ -138,6 +138,6 @@ public class UserController {         // 인애
 
 		HttpSession session = req.getSession();
 		session.invalidate();
-		return "user/login";
+		return "main";
 	}
 }

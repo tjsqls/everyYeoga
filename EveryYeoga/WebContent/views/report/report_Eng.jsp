@@ -45,7 +45,7 @@ document.form.reset;
 								<div class="table-responsive">
 									<div class="well">
 										<form 
-											action="${pageContext.request.contextPath}/report/regist.do" method="post" >
+											action="${pageContext.request.contextPath}/engreport/regist.do" method="post" >
 											<fieldset>
 											<br />
 											<input type="hidden" name="classifyReport" value="${report.classifyReport }"/>
@@ -79,7 +79,7 @@ document.form.reset;
 																class="btn btn-pr" value="report" onclick="report();"></span></td>
 																<td><span style="float: center">
 																<input type="button"
-																class="btn btn-pr" value="cancel" style="background-color: gray;" onclick="location.href='#'"></span></td></tr>
+																class="btn btn-pr" value="cancel" style="background-color: gray;" onclick="history.back();"></span></td></tr>
 																	</table>
 											</fieldset>
 										</form>

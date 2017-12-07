@@ -86,7 +86,7 @@
 												<div class="form-group">
 													<div class="col-lg-10 col-lg-offset-2">
 														<button type="submit" class="btn btn-pr" style="background-color: #007171;">여행계획 등록</button> 
-														<button type="reset" class="btn btn-default" onClick="location.href='history.back();''">취소</button>
+														<button type="reset" class="btn btn-default" onClick="history.back();">취소</button>
 													</div>
 												</div>
 											</fieldset>

@@ -34,7 +34,7 @@
 								<div class="table-responsive">
 								
 										<form action="${ctx}/guide/registJoin.do"
-											class="bs-example form-horizontal" method="POST" style="background-color: #e3e3e3; width: 800px;">
+											class="bs-example form-horizontal" method="POST" style="background-color: #e3e3e3; width: 850px;">
 											<fieldset>
 												<input type="hidden" name="travelPlanId"
 													value="${travelPlanId }">

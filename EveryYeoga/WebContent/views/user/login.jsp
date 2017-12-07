@@ -13,13 +13,13 @@
 <body>
 
 	<form action="${pageContext.request.contextPath}/user/login.do" method="post" style="margin-top: 200px;">
-		<header>Sign In</header>
+		<header>로그인</header>
 		<label>ID <span>*</span></label> <input id="id"  name="id" class="form-control" type="text" value="" placeholder="Please input user Id">
 		<div class="help"></div>
 		<label>Password <span>*</span></label> <input id="pw"  name="pw" class="form-control" type="password" value="" placeholder="please input password">
 		<div class="help">대문자 입력에 유의하시기 바랍니다.</div>
-		<button type="submit">sign in</button>
-
+		<button type="submit">로그인</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<button type="button" style="background-color: red;" onclick="location.href='${pageContext.request.contextPath}/views/user/registUser.jsp'">회원가입</button>
 	</form>
 </body>
 </html>

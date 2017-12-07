@@ -23,7 +23,7 @@ margin-bottom: 10px;
 
 </style>
 			<ul id="navii">
-			<legend> 마이페이지 </legend>
+			<legend style="font-weight: bold;"> 마이페이지 </legend>
 
 				<li class="group"><a href="${pageContext.request.contextPath}/user/detail.do">회원정보</a></li>
 				<li class="group"><a href="${pageContext.request.contextPath}/group/groupList.do">참여중인 모임</a></li>
