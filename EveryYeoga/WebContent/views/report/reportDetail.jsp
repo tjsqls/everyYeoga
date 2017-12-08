@@ -79,7 +79,7 @@
                          <tr><td><span style="font-weight:bold">신고 구분 </span>&nbsp; &nbsp;게시물</td></tr>
            			<tr> <td><span style="font-weight:bold">신고 분류</span> &nbsp; &nbsp;${report.reportType}</td></tr>
            				   <tr><td><span style="font-weight:bold">신고사유</span></td></tr>
-					<tr><td><textarea  rows="3">${report.reportReason }</textarea></td></tr>
+					<tr><td><textarea  rows="3" disabled="disabled">${report.reportReason }</textarea></td></tr>
                     </table>                  
                       <br />
                     <br />

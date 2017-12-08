@@ -60,7 +60,7 @@
 								<table>
 						<tr align="center"><td>
 							<button type="submit" class="btn btn-primary" style="background-color: tomato;">confirm</button></td>
-							<td><button type="reset" class="btn btn-default" style="background-color: gray;">cancel</button></td>
+							<td><button type="reset" class="btn btn-default" style="background-color: gray;" onclick="history.back();">cancel</button></td>
 							</tr>
 							</table>
 							</div>

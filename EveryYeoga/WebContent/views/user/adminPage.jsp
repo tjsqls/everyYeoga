@@ -49,7 +49,7 @@
 					<ul id="navii">
 			<legend  style="font-weight: bold;"> 관리자 페이지 </legend>
 
-				<li class="group" style=""><a href="${pageContext.request.contextPath}/report/searchAll.do">신고내역 관리</a></li>
+				<li class="group"><a href="${pageContext.request.contextPath}/report/searchAll.do">신고내역 관리</a></li>
 			</ul>
 
 					
@@ -96,18 +96,21 @@
 														<td class="text-center">${sts.count }</td>
 														<c:set var="reportUser" value="${list.reportUser }"/>
 														<c:set var="reportedUser" value="${list.reportedUser }"/>
+														
 																<c:choose>
 																
 																<c:when test="${list.classifyReport == 'article'}">
 																	<td><a href="${pageContext.request.contextPath}/report/searchArticle.do?articleId=${list.classifyId}
-																	&reportedUserId=${reportedUser.id}&reportUserId=${reportUser.id}">게시물</a></td>
+																	&reportId=${list.reportId }&classifyReport=${list.classifyReport}&reportedUserId=${reportedUser.id}&reportUserId=${reportUser.id}">게시물</a></td>
 																</c:when>
 																
 																<c:otherwise>
-																	<td><a href="${pageContext.request.contextPath}/report/searchComment.do?commentId=${list.classifyId}">댓글</a></td>
+																	<td><a href="${pageContext.request.contextPath}/report/searchComment.do?commentId=${list.classifyId}
+																	&reportId=${list.reportId }&classifyReport=${list.classifyReport}&reportedUserId=${reportedUser.id}&reportUserId=${reportUser.id}">댓글</a></td>
 																</c:otherwise>															
 																
 																</c:choose> 
+																
 																 <td class="text-center">${list.reportType }</td>
 																  <td class="text-center">${reportUser.id }</td>
 																  <td class="text-center">

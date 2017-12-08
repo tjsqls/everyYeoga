@@ -21,6 +21,7 @@
 		INSERT INTO comment_tb(commentId, content, regDate, writer, articleId, groupId)
 		VALUES(comment_seq.NEXTVAL, #{comment.content}, #{comment.regDate}, #{comment.writer}, #{articleId}, #{groupId})
 	</insert>
+	
 
 	<delete id="deleteComment" parameterType="String">
 		DELETE FROM comment_tb
@@ -57,13 +58,6 @@
 		comment_tb
 		WHERE groupId = #{groupId}
 	</delete>
-
-	<insert id="createReport" parameterType="map">
-		INSERT INTO
-		comment_report_tb(classifyReport, commentId)
-		VALUES(#{classifyReport},
-		#{commentId})
-	</insert>
 
 	<select id="retreiveCommentByCommentId" parameterType="String"
 		resultMap="commentMap">

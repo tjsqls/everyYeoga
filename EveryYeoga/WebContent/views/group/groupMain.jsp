@@ -71,11 +71,14 @@ function button_more(){
 				<hr>
 				<li><label style="color: #bb6333;">참여중인 가이드</label></li>
 				<c:forEach items="${guides }" var="guide">
-				<li class="group"><a href="#">${guide.id }</a></li>
-
+				<li class="group"><a href="#">${guide.id }</a></li>				
 				</c:forEach>
-				<li><input type="button" onclick="button_post();" value="게시물 올리기" 
-				style="background-color: tomato; height: 30px; width: 100px; font-size: 10px; color: black;"></li>
+				<br/>
+				<li>	<c:choose>
+								<c:when test="${gatheringStatus == '모집완료' && travelUserId == loginedUser.id  }">
+								<input type="button" onclick="button_more();" value="가이드 추가 모집" 
+				style="background-color: #ff8040; height: 30px; width: 100px; font-size: 10px; margin-bottom: 20px;">
+				</c:when><c:otherwise></c:otherwise></c:choose></li>
 				<br/>
 				<li><input type="button" onclick="button_finish();" value="모임 종료" 
 				style="background-color: #ffe6c6; height: 30px; width: 100px; font-size: 10px; color: black;"></li>
@@ -99,8 +102,12 @@ function button_more(){
 										<div>
 											<h3>${boardDetail.name }</h3>
 										</div>
+										<input type="button" onclick="button_post();" value="게시물 올리기" 
+				style="background-color: tomato; height: 30px; width: 100px; font-size: 10px; color: black;">
+				<br/><br/>
 										<div class="table-responsive">
 											<table class="table table-striped table-bordered table-hover">
+											
 												<colgroup>
 													<col width="100" />
 													<col width="*" />
@@ -141,15 +148,9 @@ function button_more(){
 															</c:forEach>
 														</c:otherwise>
 													</c:choose>
-<c:choose>
-								<c:when test="${gatheringStatus == '모집완료' && travelUserId == loginedUser.id  }">
-								<input type="button" onclick="button_more();" value="가이드 추가 모집" 
-				style="background-color: #ff8040; height: 30px; width: 100px; font-size: 10px; margin-bottom: 20px;">
+						
 							
-								</c:when>
-								<c:otherwise>
-								</c:otherwise>
-								</c:choose>
+							
 												</tbody>
 											</table>
 											

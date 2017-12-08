@@ -13,29 +13,15 @@ import everyYeoga.store.mapper.ReportMapper;
 @Repository
 public class ReportStoreLogic implements ReportStore {
 
-	@Override
-	public Report retrieveArticleReport(String reportedArticleId) {
-		// 인애
-		Report report = null;
-		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
-		try {
-			ReportMapper mapper = session.getMapper(ReportMapper.class);
-			report = mapper.retrieveArticleReport(reportedArticleId);
-			session.commit();
-		} finally {
-			session.close();
-		}
-		return report;
-	}
 
 	@Override
-	public Report retrieveCommentReport(String reportedCommentId) {
+	public Report retrieveReportDetail(String reportId) {
 		// 인애
 		Report report = null;
 		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
 		try {
 			ReportMapper mapper = session.getMapper(ReportMapper.class);
-			report = mapper.retrieveCommentReport(reportedCommentId);
+			report = mapper.retrieveReportDetail(reportId);
 			session.commit();
 		} finally {
 			session.close();
@@ -86,5 +72,6 @@ public class ReportStoreLogic implements ReportStore {
 		}
 		return false;
 	}
+
 
 }
