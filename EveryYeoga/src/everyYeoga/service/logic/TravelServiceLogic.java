@@ -15,12 +15,6 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.objenesis.instantiator.sun.MagicInstantiator;
 import org.springframework.stereotype.Service;
-//import org.springframework.test.context.ContextConfiguration;
-//import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-//import org.springframework.test.context.web.WebAppConfiguration;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
 
 import everyYeoga.domain.Evaluation;
 import everyYeoga.domain.GuideHistory;
@@ -37,9 +31,6 @@ import everyYeoga.store.TravelStore;
 import everyYeoga.store.UserStore;
 import everyYeoga.store.logic.TravelStoreLogic;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@WebAppConfiguration
-@ContextConfiguration(locations = {"file:WebContent/WEB-INF/dispatcher-servlet.xml"})
 
 @Service
 public class TravelServiceLogic implements TravelService {
@@ -126,9 +117,9 @@ public class TravelServiceLogic implements TravelService {
 		for (int i=0; i<js.size(); i++ ) {
 			Join j = new Join();
 			j=js.get(i);
-			List<GuideHistory> cGs = historyStore.retrieveCheckedGuideHistory(j.getGuideId(), "확인");
-			if(historyStore.retrieveUncheckedGuideHistory(j.getGuideId(), "미확인")!=null) {
-			cGs.addAll(historyStore.retrieveUncheckedGuideHistory(j.getGuideId(), "미확인"));
+			List<GuideHistory> cGs = historyStore.retrieveCheckedGuideHistory(j.getGuideId(), "confirm");
+			if(historyStore.retrieveUncheckedGuideHistory(j.getGuideId(), "unconfirm")!=null) {
+			cGs.addAll(historyStore.retrieveUncheckedGuideHistory(j.getGuideId(), "unconfirm"));
 			}
 			j.setGuideHistories(cGs);
 			j.setReports(reportStore.retrieveReport(j.getGuideId()));
@@ -145,8 +136,8 @@ public class TravelServiceLogic implements TravelService {
 		Join join = new Join();
 		Join j = guideStore.retrieveJoinDetail(joinId);
 
-		List<GuideHistory> cGs = historyStore.retrieveCheckedGuideHistory(j.getGuideId(), "확인");
-		cGs.addAll(historyStore.retrieveCheckedGuideHistory(j.getGuideId(), "미확인"));
+		List<GuideHistory> cGs = historyStore.retrieveCheckedGuideHistory(j.getGuideId(), "confirm");
+		cGs.addAll(historyStore.retrieveCheckedGuideHistory(j.getGuideId(), "unconfirm"));
 		j.setGuideHistories(cGs);
 		j.setReports(reportStore.retrieveReport(j.getGuideId()));
 		j.setEvaluations(guideStore.retrieveEvaluation(j.getGuideId()));

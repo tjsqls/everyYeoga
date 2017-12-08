@@ -32,6 +32,12 @@ function capsLock(e){
 		<div class="help">대문자 입력에 유의하시기 바랍니다.</div>
 		<button type="submit">로그인</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<button type="button" style="background-color: red;" onclick="location.href='${pageContext.request.contextPath}/views/user/registUser.jsp'">회원가입</button>
+
 	</form>
+	<form action="${pageContext.request.contextPath}/connect/" method="post" id="facebook-form"> 
+	<input type="hidden" name="scope" value="public_profile, email"/> 
+	<button type="submit">Sign In with Facebook</button> 
+	</form>
+
 </body>
 </html>

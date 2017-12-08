@@ -6,7 +6,7 @@
 </head>
 <body>
 
-	<c:redirect url="/views/user/login.jsp"/>
+   <c:redirect url="/views/user/login.jsp"/>
 
 </body>
 </html>

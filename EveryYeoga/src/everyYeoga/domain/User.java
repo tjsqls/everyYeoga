@@ -1,5 +1,6 @@
 package everyYeoga.domain;
 
+
 public class User {
 
 	@Override
@@ -14,6 +15,7 @@ public class User {
 	private String phoneNumber;
 	private String email;
 	
+
 	
 	public String getId() {
 		return id;
@@ -51,5 +53,7 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
+	
 	
 }
