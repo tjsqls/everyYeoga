@@ -8,15 +8,6 @@
 <%@ include file="/views/layout/common.jsp" %>
 <head>
 
-<script type="text/javascript">
-	function button_event() {
-		if (confirm("Are you sure you want to delete this history?") == true) { //확인
-			document.form.submit();
-		} else { //취소
-			return;
-		}
-	}
-</script>
 
 </head>
 <body class="left-sidebar">
@@ -25,11 +16,11 @@
 	
 
 		<!-- Header -->
-		<%@ include file="/views/layout/header.jsp" %>
+		<%@ include file="/views/layout/header_Eng.jsp" %>
 			<div id="main-wrapper">
 			<div class="container">
 				<div class="row 70%">
-		<%@ include file="/views/layout/sidebar.jsp" %>
+		<%@ include file="/views/layout/sidebar_Eng.jsp" %>
 
 					<div class="8u 12u$(medium) important(medium)">
 						<div id="content">
@@ -47,11 +38,11 @@
 											<table class="table table-striped table-bordered table-hover">
 												<thead>
 													<tr>
-														<th class="text-center" style="width: 10%; font-weight: bold">No.</th>
-														<th class="text-center" style="width: 10%; font-weight: bold">Confirmed by Traveler</th>
-														<th class="text-center" style="width: 20%; font-weight: bold">Name of Traveler</th>
-														<th class="text-center" style="width: 10%; font-weight: bold">Travel Area</th>
-														<th class="text-center" style="width: 20%; font-weight: bold">Theme</th>
+														<th class="text-center" style="width: 8%; font-weight: bold">No.</th>
+														<th class="text-center" style="width: 12%; font-weight: bold">Confirmed</th>
+														<th class="text-center" style="width: 17%; font-weight: bold">Name of Traveler</th>
+														<th class="text-center" style="width: 18%; font-weight: bold">Travel Area</th>
+														<th class="text-center" style="width: 15%; font-weight: bold">Theme</th>
 														<th class="text-center" style="width: 15%; font-weight: bold">Depart Date</th>
 														<th class="text-center" style="width: 15%; font-weight: bold">Return Date</th>
 													</tr>
@@ -90,11 +81,11 @@
 												</colgroup>
 												<thead>
 													<tr>
-														<th class="text-center" style="width: 10%; font-weight: bold">No.</th>
-														<th class="text-center" style="width: 10%; font-weight: bold">Confirmed by Traveler</th>
-														<th class="text-center" style="width: 20%; font-weight: bold">Name of Traveler</th>
-														<th class="text-center" style="width: 10%; font-weight: bold">Travel Area</th>
-														<th class="text-center" style="width: 20%; font-weight: bold">Theme</th>
+														<th class="text-center" style="width: 8%; font-weight: bold">No.</th>
+														<th class="text-center" style="width: 12%; font-weight: bold">Confirmed</th>
+														<th class="text-center" style="width: 17%; font-weight: bold">Name of Traveler</th>
+														<th class="text-center" style="width: 18%; font-weight: bold">Travel Area</th>
+														<th class="text-center" style="width: 15%; font-weight: bold">Theme</th>
 														<th class="text-center" style="width: 15%; font-weight: bold">Depart Date</th>
 														<th class="text-center" style="width: 15%; font-weight: bold">Return Date</th>
 													</tr>
@@ -134,7 +125,7 @@
 			</div>
 		</div>
 		<!-- Footer -->
-		<%@ include file="/views/layout/footer.jsp" %>
+		<%@ include file="/views/layout/footer_Eng.jsp" %>
 
 	<!-- Scripts -->
 

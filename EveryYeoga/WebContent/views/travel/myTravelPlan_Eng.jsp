@@ -64,8 +64,8 @@
 									</table>
 									<span style="float: right">
 												<button type="button"
-													onclick="location.href='${pageContext.request.contextPath}/guide/searchGuide.do?travelPlanId=${travelPlan.travelPlanId }' ">
-													see Guide</button>
+													onclick="location.href='${pageContext.request.contextPath}/engguide/searchGuide.do?travelPlanId=${travelPlan.travelPlanId }'">
+													See Guides</button>
 											</span> <br /> <br />
 									</div>
 								</div>

@@ -158,21 +158,7 @@ public class ArticleStoreLogic implements ArticleStore{
 	}
 
 	@Override
-	public boolean createReport(String classifyReport, String articleId) {
-		// 선빈
-		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
-		try {
-			ArticleMapper mapper = session.getMapper(ArticleMapper.class);
-			mapper.createReport(classifyReport, articleId);
-			session.commit();
-		}finally {
-			session.close();
-		}
-		return false;
-	}
-
-	@Override
-	public boolean deleteArticleReport(String articleId) {
+	public boolean deleteArticleReport(@RequestParam("classifyId")String articleId) {
 		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
 		try {
 			ArticleMapper mapper = session.getMapper(ArticleMapper.class);
@@ -197,5 +183,7 @@ public class ArticleStoreLogic implements ArticleStore{
 		}
 		return attachment;
 	}
+
+
 
 }

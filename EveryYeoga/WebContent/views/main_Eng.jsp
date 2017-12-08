@@ -35,7 +35,7 @@ $(function() {
 										<div class="row">
 											<div class="col-sm-12 col-lg-12">
 												<form
-													action="${ctx}/travel/searchTravelPlan.do"
+													action="${ctx}/engtravel/searchTravelPlan.do"
 													class="bs-example form-horizontal" method="POST" style="width: 1000px;">
 
 											<table style=" width: 400px;">

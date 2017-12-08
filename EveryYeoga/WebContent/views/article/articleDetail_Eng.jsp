@@ -28,16 +28,20 @@ function report_button(){
 }
 
 function comment_delete(){
+	var commentId = document.getElementById("commentId").value;
 	if(confirm("Do you want to delete this Comment?") == true){
-		location.href="${ctx }/engcomment/remove.do?articleId=${article.articleId}&commentId=${comment.commentId}"
+		location.href="${ctx }/engcomment/remove.do?articleId=${article.articleId}&commentId="+commentId
 	}else{
 		return;
 	}
 }
 
 function comment_report(){
+	var commentId = document.getElementById("commentId").value;
+	var writer = document.getElementById("writer").value;
+	alert(writer);
 	if(confirm("Do you want to report this Comment?") == true){
-		location.href="${ctx }/engreport/regist.do?classifyId=${comment.commentId}&classifyReport='comment'&userId=${comment.user.id}"
+		location.href="${ctx }/engreport/regist.do?classifyId="+commentId+"&classifyReport='comment'&userId="+writer
 	}else{
 		return;
 	}
@@ -85,7 +89,11 @@ function comment_report(){
 														style="padding: 10px">Modify</a> <br>
 														
 														<br>
-														File List &nbsp;
+														<c:choose>
+														<c:when test="${empty attachmentList }">
+														There's no attached files.
+														</c:when>
+														<c:otherwise>
 														<c:forEach items="${attachmentList }" var="attachment">
 															<table class="table"
 															style="font-size: 13px; padding: 20px;">
@@ -94,15 +102,17 @@ function comment_report(){
 														</tr>
 														</table>
 															</c:forEach>
-														
+														</c:otherwise>
+														</c:choose>
 														
 													<p style="padding: 20px">${article.content }</p>
 													<a onclick="report_button();"
 														class="glyphicon glyphicon-cog pull-right"
 														style="padding: 10px">Report</a>
 														
-													<c:forEach items="${article.comments }" var="comment">
-													<c:set var="commentUser" value="${comment.user}"/>
+													<c:forEach items="${comments }" var="comment">
+													<input type="hidden" id="commentId" value="${comment.commentId }">
+													<input type="hidden" id="writer" value="${comment.writer }">
 														<table class="table"
 															style="font-size: 13px; padding: 10px;">
 															<tr>
@@ -141,6 +151,7 @@ function comment_report(){
 
 															<input type="hidden" name="articleId" value="${article.articleId }">
 															<input type="hidden" name="groupId" value="${article.groupId }">
+														<input type="hidden" name="writer" value="${loginedUser.id }">
 														<table>
 														<tr>
 														<td>

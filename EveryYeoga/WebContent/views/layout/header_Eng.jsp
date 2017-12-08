@@ -47,7 +47,7 @@ text-shadow: 0px 1px 5px gray;
 <header>
 
  <div class="left col-xs-6">
-<h1 style="font-weight: bolder; margin-left: 200px; font-size: 40px; font-family: monospace; "> 
+<h1 style="font-weight: bolder; margin-left: 200px; font-size: 30px; font-family: monospace; "> 
 <img alt="모두의 여가" src='http://www.travelweekly.com/uploadedImages/All_TW_Art/2016/032816/T0328COVERILLO2_HR.jpg?n=3385&width=1540&height=866&mode=crop&Anchor=MiddleCenter' width="260px" height="102px">
 <span style="font-weight:bolder; font-family: fantasy; color: #edf1f0; text-shadow: 1px 1px 1px #000000; white-space: nowrap;">모두의 여가</span>
 </h1>
@@ -59,12 +59,12 @@ text-shadow: 0px 1px 5px gray;
 					<c:when test="${loginedUser eq null}">
 					<li id="top-header">
 					<a href="${pageContext.request.contextPath}/views/user/login_Eng.jsp">sign in</a> &nbsp;&nbsp;
-							<a href="${pageContext.request.contextPath}/views/user/registUser_Eng.jsp">register</a></li>
+							<a href="${pageContext.request.contextPath}/enguser/regist.do">register</a></li>
 					</c:when>
 					<c:otherwise>
 					<li id="top-header">
 						<a href="${pageContext.request.contextPath}/enguser/detail.do"> <span>Hi! [ ${loginedUser.name } ]</span></a> &nbsp;&nbsp;
-							<a href="${pageContext.request.contextPath}/views/user/login_Eng.jsp">sign out</a></li>
+							<a href="${pageContext.request.contextPath}/enguser/logout.do">sign out</a></li>
 					</c:otherwise>
 				</c:choose>
 		
@@ -75,7 +75,7 @@ text-shadow: 0px 1px 5px gray;
 			<a href="${pageContext.request.contextPath}/views/main_Eng.jsp">English</a>
 				&nbsp; &nbsp; &nbsp; 
 				<img src='https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Flag_of_South_Korea.svg/2000px-Flag_of_South_Korea.svg.png' width="28px" height="12px" >
-				<a href="${pageContext.request.contextPath}/views/main.jsp">Korean</a>
+				<a href="${pageContext.request.contextPath}/views/main.jsp">한국어</a>
 			</li>
 		</ul>
 		
@@ -94,7 +94,7 @@ text-shadow: 0px 1px 5px gray;
 		<a href="${pageContext.request.contextPath}/views/main_Eng.jsp">HOME</a>&nbsp; &nbsp; &nbsp; 
 		<a href="${pageContext.request.contextPath}/views/travel/travelPlanList_Eng.jsp">Search Travel</a> &nbsp; &nbsp; &nbsp; 
 		<a href="${pageContext.request.contextPath}/enggroup/groupList.do">Manage Group</a> &nbsp; &nbsp; &nbsp; 
-					<a href="${pageContext.request.contextPath}/enguser/searchAll.do">Admin Page</a></li>
+					<a href="${pageContext.request.contextPath}/engreport/searchAll.do">Admin Page</a></li>
 			</c:when>
 			<c:otherwise>
 			

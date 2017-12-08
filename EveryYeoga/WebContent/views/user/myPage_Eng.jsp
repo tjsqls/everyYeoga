@@ -21,7 +21,7 @@ input[type=text]:disabled {
 <script type="text/javascript">
 function button_modify(){
 if (confirm("Do you want to modify information?") == true){    //확인
-    location.href="${pageContext.request.contextPath}/user/modify.do?userId=${user.id}";
+    location.href="${pageContext.request.contextPath}/enguser/modify.do?userId=${user.id}";
     
 }else{   //취소
     return;
@@ -30,7 +30,7 @@ if (confirm("Do you want to modify information?") == true){    //확인
 
 function button_delete(){
 	if (confirm("Do you want to leave our service?") == true){    //확인
-	    location.href="${pageContext.request.contextPath}/user/remove.do?userId=${user.id}";
+	    location.href="${pageContext.request.contextPath}/enguser/remove.do?userId=${user.id}";
 	    
 	}else{   //취소
 	    return;
@@ -92,8 +92,8 @@ function button_delete(){
 										</table>
 										<table style="margin-left: 100px;">
 										<tr>
-										<td><input style="background-color: pink; height: 35px; width:70px; font-size: 15px; text-align: center;" type="button" onclick="button_modify();" value="modify"></td>
-											<td><input style="background-color: #408080; height: 35px; width:70px; font-size: 15px; text-align: center;" type="button" onclick="button_delete();" value="withdraw"></td>
+										<td><input style="background-color: pink; height: 35px; width:90px; font-size: 14px; text-align: center;" type="button" onclick="button_modify();" value="modify"></td>
+											<td><input style="background-color: #408080; height: 35px; width:90px; font-size: 14px; text-align: center;" type="button" onclick="button_delete();" value="withdraw"></td>
 										</tr>
 
 

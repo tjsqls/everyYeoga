@@ -16,17 +16,17 @@
 	
 
 		<!-- Header -->
-		<%@ include file="/views/layout/header.jsp" %>
+		<%@ include file="/views/layout/header_Eng.jsp" %>
 			<div id="main-wrapper">
 			<div class="container">
 				<div class="row 70%">
-		<%@ include file="/views/layout/sidebar.jsp" %>
+		<%@ include file="/views/layout/sidebar_Eng.jsp" %>
 
 					<div class="8u 12u$(medium) important(medium)">
 						<div id="content">
 							<div class="col-sm-9 col-lg-9">
 								<div>
-									<h3>여행 내역</h3>
+									<h3>Travel History</h3>
 									<hr>
 								</div>
 
@@ -39,9 +39,9 @@
 													
 													
 														<th class="text-center" style="width: 10%; font-weight: bold">No.</th>
-														<th class="text-center" style="width: 10%; font-weight: bold">Travel Area</th>
-														<th class="text-center" style="width: 20%; font-weight: bold">Theme</th>
-														<th class="text-center" style="width: 30%; font-weight: bold">Joined Guides</th>
+														<th class="text-center" style="width: 15%; font-weight: bold">Travel Area</th>
+														<th class="text-center" style="width: 17%; font-weight: bold">Theme</th>
+														<th class="text-center" style="width: 28%; font-weight: bold">Joined Guides</th>
 														<th class="text-center" style="width: 15%; font-weight: bold">Depart Date</th>
 														<th class="text-center" style="width: 15%; font-weight: bold">Return Date</th>
 													</tr>
@@ -62,7 +62,7 @@
 																<td class="text-center">${travelerHistory.startDate}</td>
 																<td class="text-center">${travelerHistory.endDate}</td>
 																		<td><a
-														href="${ctx }/history/remove.do?travelerHistoryId=${travelerHistory.travelerHistoryId}"
+														href="${ctx }/enghistory/remove.do?travelerHistoryId=${travelerHistory.travelerHistoryId}"
 														>delete</a></td>
 															</tr>
 														</c:forEach>
@@ -80,7 +80,7 @@
 		</div>
 
 		<!-- Footer -->
-	<%@ include file="/views/layout/footer.jsp" %>
+	<%@ include file="/views/layout/footer_Eng.jsp" %>
 
 
 	<!-- Scripts -->

@@ -8,15 +8,6 @@
 <%@ include file="/views/layout/common.jsp" %>
 <head>
 
-<script type="text/javascript">
-	function button_event() {
-		if (confirm("정말 삭제하시겠습니까??") == true) { //확인
-			document.form.submit();
-		} else { //취소
-			return;
-		}
-	}
-</script>
 
 </head>
 <body class="left-sidebar">

@@ -19,6 +19,5 @@ public interface ArticleMapper {
 	public void deleteArticleBygroupId(String groupId);
 	public Article retreiveArticleByArticleId (String articleId); 
 	public List<Article> retreiveAll(String groupId); 
-	public boolean createReport(@Param("classifyReport")String classifyReport, @Param("articleId")String articleId);
 	public Attachment retrieveAttachmentByFileName(@Param("fileName")String fileName, @Param("filePath")String filePath);//2017.12.05 메소드 추가 선빈
 }

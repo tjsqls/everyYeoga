@@ -39,6 +39,10 @@ function comment_delete(){
 function comment_report(){
 	var commentId = document.getElementById("commentId").value;
 	var writer = document.getElementById("writer").value;
+<<<<<<< HEAD
+	alert(writer);
+=======
+>>>>>>> branch 'master' of https://github.com/tjsqls/everyYeoga.git
 	if(confirm("댓글을 신고하시겠습니까?") == true){
 		location.href="${ctx }/report/regist.do?classifyId="+commentId+"&classifyReport='comment'&userId="+writer
 	}else{

@@ -23,7 +23,7 @@
 
 
 					<div class="8u 12u$(medium) important(medium)">
-						<div id="content" style="margin-left: 200px; width: 1000px;">
+						<div id="content" style="margin-left: 100px; width: 1000px;">
 							<div class="col-sm-9 col-lg-9">
 								<div>
 									<h3>가이드 선택</h3>

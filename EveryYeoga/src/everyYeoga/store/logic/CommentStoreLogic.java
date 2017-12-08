@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import everyYeoga.domain.Article;
 import everyYeoga.domain.Comment;
@@ -99,19 +100,6 @@ public class CommentStoreLogic implements CommentStore {
 		return list;
 	}
 
-	@Override
-	public boolean createReport(String classifyReport, String commentId) {
-		// 인애
-		SqlSession session = EveryYeogaSqlSessionFactory.getInstance().getSession();
-		try {
-			CommentMapper mapper = session.getMapper(CommentMapper.class);
-			mapper.createReport(classifyReport, commentId);
-			session.commit();
-		} finally {
-			session.close();
-		}
-		return false;
-	}
 	
 	public Comment retreiveCommentByCommentId(String commentId) { 
 		// 2017.11.27 인애 추가 for 신고된 특정 comment 확인

@@ -22,7 +22,7 @@ input[type=text]:disabled {
 
 function button_cancel(){
 	if (confirm("Do you want to cancel Modify?") == true){    //확인
-	    location.href="${pageContext.request.contextPath}/user/detail.do?userId=${user.id}";
+	    location.href="${pageContext.request.contextPath}/enguser/detail.do?userId=${user.id}";
 	    
 	}else{   //취소
 	    return;
@@ -49,7 +49,7 @@ function button_cancel(){
 									<hr>
 								</div>
 
-								<form action="${pageContext.request.contextPath}/user/modify.do" method="post">
+								<form action="${pageContext.request.contextPath}/enguser/modify.do" method="post">
 										<input type="hidden" name="pw" value="${user.pw}">
 										<input type="hidden" name="id" value="${user.id}">
 									<table>
@@ -82,8 +82,8 @@ function button_cancel(){
 										</table>
 										<table style="margin-left: 100px;">
 										<tr>
-										<td><button type="submit" style="background-color: tomato; height: 35px; width:80px; font-size: 15px; text-align: center;">save</button></td>
-											<td><button type="submit" style="background-color: orange; height: 35px; width:80px; font-size: 15px; text-align: center;" onclick="button_cancel();">cancel</button></td>
+										<td><button type="submit" style="background-color: tomato; height: 35px; width:90px; font-size: 14px; text-align: center;">save</button></td>
+											<td><button type="submit" style="background-color: orange; height: 35px; width:90px; font-size: 14px; text-align: center;" onclick="button_cancel();">cancel</button></td>
 										</tr>
 										
 									</table>

@@ -49,7 +49,7 @@
 
 								<div class="table-responsive">
 								
-										<form action="${ctx}/travel/regist.do" class="bs-example form-horizontal" method="post" style="width: 800px;">
+										<form action="${ctx}/engtravel/regist.do" class="bs-example form-horizontal" method="post" style="width: 800px;">
 											<fieldset>
 											
 											<table class="form-group">
@@ -86,7 +86,7 @@
 												<div class="form-group">
 													<div class="col-lg-10 col-lg-offset-2">
 														<button type="submit" class="btn btn-pr" style="background-color: #007171;">create a Plan</button> 
-														<button type="reset" class="btn btn-default" onClick="location.href='history.back();''">cancel</button>
+														<button type="reset" class="btn btn-default" onClick="history.back();">cancel</button>
 													</div>
 												</div>
 											</fieldset>

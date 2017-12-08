@@ -28,4 +28,5 @@ public interface GroupService {
 	public List<String> searchJoiningUserId(String groupId); //2017.12.04 메소드 추가 선빈
 	public List<Attachment> searchAttachmentByArticleId(String articleId);//2017.12.05 메소드 추가 선빈
 	public Group searchGroup(String travelPlanId);//2017.12.08 메소드 추가 선빈
+
 }

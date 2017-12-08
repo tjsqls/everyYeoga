@@ -60,7 +60,7 @@
 								<table>
 						<tr align="center"><td>
 							<button type="submit" class="btn btn-primary" style="background-color: tomato;">확인</button></td>
-							<td><button type="reset" class="btn btn-default" style="background-color: gray;">취소</button></td>
+							<td><button type="reset" class="btn btn-default" style="background-color: gray;" onclick="history.back();">취소</button></td>
 							</tr>
 							</table>
 							</div>
