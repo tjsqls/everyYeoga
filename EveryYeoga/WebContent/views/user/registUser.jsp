@@ -21,11 +21,12 @@
 		<tr><th>이름 </th><td><input style="margin-top:20px; width: 300px; height: 40px;" id="name"  name="name"  type="text" value="" placeholder="이름를 입력해주세요.">  </td>  </tr>
 		<tr><th>생년월일 </th><td><input style="margin-top:20px; width: 300px; height: 40px;" id="birthDate"  name="birthDate"  type="text" value="" placeholder="생년월일를 입력해주세요.">  </td> </tr>
 		<tr><th>핸드폰번호</th><td><input style="margin-top:20px; width: 300px; height: 40px;" id="phoneNumber"  name="phoneNumber" type="text" value="" placeholder="휴대폰 번호를 입력해주세요."></td> </tr>
+
 		<tr><th>이메일 </th><td><input style="margin-top:20px; width: 300px; height: 40px;" id="email" name="email" type="text" value=""></td><td>@</td><td><select name="selectMail">
-					<option value="">naver.com</option>
-					<option value="">gmail.com</option>
-					<option value="">hanmail.net</option> </select></td>
-				<td><button>인증하기</button></td></tr>
+					<option value="naver.com">naver.com</option>
+					<option value="gmail.com">gmail.com</option>
+					<option value="hanmail.net">hanmail.net</option> </select></td>
+				<td><button >인증하기</button></td></tr>
 				</table>
 				<br/>
 				<table>

@@ -85,7 +85,6 @@ public class GroupServiceLogic implements GroupService {
 				travelerHistory.setTraveler(userStore.retrieveByUserId(userId));
 	
 				for (int i = 0; i < userIds.size(); i++) {
-					
 					GuideHistory guideHistory = new GuideHistory();
 					guideHistory.setEndDate(travelPlan.getEndDate());
 					guideHistory.setGuide(userStore.retrieveByUserId(userIds.get(i)));
