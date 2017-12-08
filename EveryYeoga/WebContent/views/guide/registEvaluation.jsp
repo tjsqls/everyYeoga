@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
 
@@ -35,15 +35,13 @@
 
 											<c:forEach items="${guideIds}" var="guideIds">
 												<h2>가이드아이디:${guideIds}</h2>
-												<input type="hidden" name="groupId" value="${groupId }">
+												<input type="hidden" name="guideId" value="${guideIds }">
 												<br>
 												<br>
 												<div class="form-group">
-
-
-													<h3>좋았던점</h3>
-													</label> <input type="text" name="pros" value="">
-
+													<label class="col-lg-2 control-label"><h3>좋았던
+															점</h3></label> <input type="text" name="pros" value="">
+													<div class="col-lg-10"></div>
 												</div>
 
 												<div class="form-group">
@@ -51,26 +49,25 @@
 													<h3>나빴던점</h3>
 													</label> <input type="text" name="cons" value="">
 												</div>
+												<label class="col-lg-2 control-label"><h3>별점</h3></label>
+												
+														<select name="stars">
+															<option value="1"><label
+														for="p5">1</label></option>
+															<option value="2"><label
+														for="p5">2</label></option>
+															<option value="3"><label
+														for="p5">3</label></option>
+															<option value="4"><label
+														for="p5">4</label></option>
+															<option value="5"><label
+														for="p5">5</label></option> 
+															</select>
+												
+													</c:forEach>
 
 												<div class="form-group">
 
-													<h3>별점</h3>
-													<span class="input"> <input type="radio"
-														name="stars" value="1" id="p1"> <label for="p1">1</label>
-														<input type="radio" name="stars" value="2" id="p2">
-														<label for="p2">2</label> <input type="radio" name="stars"
-														value="3" id="p3"> <label for="p3">3</label> <input
-														type="radio" name="stars" value="4" id="p4"> <label
-														for="p4">4</label> <input type="radio" name="stars"
-														value="5" id="p5"> <label for="p5">5</label>
-													</span>
-												</div>
-
-												<br />
-												<br />
-
-
-											</c:forEach>
 											<div class="form-group">
 												<div class="col-lg-10 col-lg-offset-2">
 													<span style="float: center"><button type="submit"

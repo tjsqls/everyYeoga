@@ -92,23 +92,24 @@ public class GuideController {
 	}
 
 	@RequestMapping(value = "registEvaluation.do", method = RequestMethod.POST)
-	public String registEvaluation(HttpServletRequest req, EvaluationList list, String groupId) {
-		// 진휘
+	public String registEvaluation(HttpServletRequest req) {
+		//진휘
 		HttpSession session = req.getSession();
 		User user = (User) session.getAttribute("loginedUser");
-		List<String> userIds = groupService.searchJoiningUserId(groupId);
 		
-		for(int i=0; i < userIds.size(); i++) {
-			if(userIds.get(i).equals(user.getId())) {
-				userIds.remove(i);
-			}
-		}
-		
-		
-		
-		for (int i = 0; i < userIds.size(); i++) {
-			list.getList().get(i).setTravelerId(user.getId());
-			travelService.registEvaluation(list.getList().get(i));
+		String [] guideIds = req.getParameterValues("guideId");
+		String [] cons = req.getParameterValues("cons");
+		String [] pros = req.getParameterValues("pros");
+		String [] stars = req.getParameterValues("stars");
+
+		for(int i=0; i<guideIds.length; i++) {
+		Evaluation evaluation = new Evaluation();
+		evaluation.setCons(cons[i]);
+		evaluation.setGuideId(guideIds[i]);
+		evaluation.setPros(pros[i]);
+		evaluation.setStars(Integer.parseInt(stars[i]));
+		evaluation.setTravelerId(user.getId());
+		travelService.registEvaluation(evaluation);
 		}
 		return "travel/travelPlanList";
 	}

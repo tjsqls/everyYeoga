@@ -31,7 +31,12 @@ function capsLock(e){
 		<label>Password <span>*</span></label> <input id="pw"  name="pw" class="form-control" type="password" value="" onkeypress="javascript:capsLock(this);" placeholder="please input password">
 		<div class="help">대문자 입력에 유의하시기 바랍니다.</div>
 		<button type="submit">sign in</button>
-
+	<br>
 	</form>
+	<form action="${pageContext.request.contextPath}/connect/" method="post" id="facebook-form"> 
+	<input type="hidden" name="scope" value="public_profile, email"/> 
+	<button type="submit">Sign In with Facebook</button> 
+	</form>
+
 </body>
 </html>

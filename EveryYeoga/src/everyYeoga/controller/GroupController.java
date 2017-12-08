@@ -49,7 +49,7 @@ public class GroupController {
 			travelService.removeJoin(guideId, travelPlanId);
 		}
 
-		if(groupService.retreiveJoiningGroup(user.getId(), travelPlanId)==null) {
+		if(groupService.searchGroup(travelPlanId)==null) {
 		groupService.registGroup(travelPlanId);
 		userIds.add(user.getId());
 		groupService.registUserInGroup(travelPlanId, userIds);

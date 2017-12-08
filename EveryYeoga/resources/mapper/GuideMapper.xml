@@ -44,8 +44,8 @@
 	</select>
 
 	<insert id="createEvaluation" parameterType="Evaluation">
-		INSERT INTO evaluation_tb(evaluationId, pros, cons, stars,guideId, travelerId)
-		VALUES(evaluation_seq.NEXTVAL, #{pros}, #{cons}, #{stars}, #{guideId}, #{travlerId})
+		INSERT INTO evaluation_tb(evaluationId, pros, cons, travelerId, stars,guideId)
+		VALUES(evaluation_seq.NEXTVAL, #{pros}, #{cons},#{travelerId}, #{stars}, #{guideId})
 	</insert>
 
 	<select id="retrieveEvaluation" parameterType="String"
