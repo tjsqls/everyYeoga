@@ -126,9 +126,9 @@ public class TravelServiceLogic implements TravelService {
 		for (int i=0; i<js.size(); i++ ) {
 			Join j = new Join();
 			j=js.get(i);
-			List<GuideHistory> cGs = historyStore.retrieveCheckedGuideHistory(j.getGuideId(), "확인");
-			if(historyStore.retrieveUncheckedGuideHistory(j.getGuideId(), "미확인")!=null) {
-			cGs.addAll(historyStore.retrieveUncheckedGuideHistory(j.getGuideId(), "미확인"));
+			List<GuideHistory> cGs = historyStore.retrieveCheckedGuideHistory(j.getGuideId(), "confirm");
+			if(historyStore.retrieveUncheckedGuideHistory(j.getGuideId(), "unconfirm")!=null) {
+			cGs.addAll(historyStore.retrieveUncheckedGuideHistory(j.getGuideId(), "unconfirm"));
 			}
 			j.setGuideHistories(cGs);
 			j.setReports(reportStore.retrieveReport(j.getGuideId()));
@@ -145,8 +145,8 @@ public class TravelServiceLogic implements TravelService {
 		Join join = new Join();
 		Join j = guideStore.retrieveJoinDetail(joinId);
 
-		List<GuideHistory> cGs = historyStore.retrieveCheckedGuideHistory(j.getGuideId(), "확인");
-		cGs.addAll(historyStore.retrieveCheckedGuideHistory(j.getGuideId(), "미확인"));
+		List<GuideHistory> cGs = historyStore.retrieveCheckedGuideHistory(j.getGuideId(), "confirm");
+		cGs.addAll(historyStore.retrieveCheckedGuideHistory(j.getGuideId(), "unconfirm"));
 		j.setGuideHistories(cGs);
 		j.setReports(reportStore.retrieveReport(j.getGuideId()));
 		j.setEvaluations(guideStore.retrieveEvaluation(j.getGuideId()));

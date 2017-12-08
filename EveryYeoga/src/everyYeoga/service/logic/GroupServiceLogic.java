@@ -85,11 +85,8 @@ public class GroupServiceLogic implements GroupService {
 				travelerHistory.setTraveler(userStore.retrieveByUserId(userId));
 	
 				for (int i = 0; i < userIds.size(); i++) {
-					if(groupStore.retrieveJoiningUserId(groupId).get(i).equals("unconfirm")) {
-						historyStore.updateGuideHistory(travelPlan.getTravelerId(), userIds.get(i), "confirm");
-					}
+					
 					GuideHistory guideHistory = new GuideHistory();
-					groupStore.groupOut(groupId, userIds.get(i));
 					guideHistory.setEndDate(travelPlan.getEndDate());
 					guideHistory.setGuide(userStore.retrieveByUserId(userIds.get(i)));
 					guideHistory.setStartDate(travelPlan.getStartDate());
@@ -116,7 +113,7 @@ public class GroupServiceLogic implements GroupService {
 		}//end else
 		return false;
 	}
-
+	
 	@Override
 	public Group retreiveJoiningGroup(String travelerId, String travelPlanId) {
 		// 선빈
@@ -135,7 +132,9 @@ public class GroupServiceLogic implements GroupService {
 				guides.add(guide);
 			}
 		}
+		if(guides != null) {
 		group.setGuides(guides);
+		}
 		group.setTraveler(traveler);
 		List<Article> articles = articleStore.retreiveAll(travelPlanId);
 		group.setArticles(articles);
@@ -255,6 +254,12 @@ public class GroupServiceLogic implements GroupService {
 	public List<Attachment> searchAttachmentByArticleId(String articleId) {
 		// 선빈
 		return articleStore.retreiveAttachmentByArticleId(articleId);
+	}
+
+	@Override
+	public Group searchGroup(String travelPlanId) {
+		// 선빈
+		return groupStore.retreiveJoiningGroup(travelPlanId);
 	}
 	
 }
