@@ -66,7 +66,7 @@
                 <fieldset>
                 <div class="form-group">                  
 
-                    	<c:set var="report" value="${articleReport }"/>
+                    	<c:set var="report" value="${commentReport }"/>
                     	                    <input type="hidden" name="classifyReport" value="${report.classifyReport }"/>
 											<input type="hidden" name="reportedUserId" value="${report.reportedUser.id  }"/>
 											<input type="hidden" name="reportUserId" value="${report.reportUser.id  }"/>
@@ -76,7 +76,7 @@
                     <tr><td><span style="font-weight:bold">신고일 </span>&nbsp; &nbsp; &nbsp;<fmt:formatDate value="${report.regDate }" pattern="yyyy-MM-dd" /></td></tr>                  
                     <tr> <td><span style="font-weight:bold">신고한 회원</span> &nbsp; &nbsp;${report.reportUser.id}</td></tr>
                     <tr> <td><span style="font-weight:bold">신고할 회원</span> &nbsp; &nbsp;${report.reportedUser.id }</td></tr>
-                         <tr><td><span style="font-weight:bold">신고 구분 </span>&nbsp; &nbsp;게시물</td></tr>
+                         <tr><td><span style="font-weight:bold">신고 구분 </span>&nbsp; &nbsp;댓글</td></tr>
            			<tr> <td><span style="font-weight:bold">신고 분류</span> &nbsp; &nbsp;${report.reportType}</td></tr>
            				   <tr><td><span style="font-weight:bold">신고사유</span></td></tr>
 					<tr><td><textarea  rows="3" disabled="disabled">${report.reportReason }</textarea></td></tr>

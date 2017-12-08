@@ -1,13 +1,10 @@
 package everyYeoga.service.logic;
 
 import java.util.List;
-
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import everyYeoga.domain.Article;
 import everyYeoga.domain.Report;
 import everyYeoga.domain.User;
 import everyYeoga.service.ReportService;
@@ -22,22 +19,13 @@ public class ReportServiceLogic implements ReportService {
 	@Autowired
 	private ReportStore reportStore;
 	@Autowired
-	private CommentStore commentStore;
-	@Autowired
-	private ArticleStore articleStore;
-	@Autowired
 	private UserStore userStore;
 
-	@Override
-	public Report searchArticleReport(String reportedArticleId) {
-		// 인애
-		return reportStore.retrieveArticleReport(reportedArticleId);
-	}
 
 	@Override
-	public Report searchCommentReport(String reportedCommentId) {
+	public Report searchReportDetail(String reportId) {
 		// 인애
-		return reportStore.retrieveCommentReport(reportedCommentId);
+		return reportStore.retrieveReportDetail(reportId);
 	}
 
 	@Override
@@ -77,7 +65,7 @@ public class ReportServiceLogic implements ReportService {
 					userStore.deleteUser(userId); // 회원 탈퇴
 				}
 			}
-			return commentStore.createReport(report.getClassifyReport(), classifyId); // 중간테이블에 값 등록
+			return true; // 중간테이블에 값 등록
 
 		} else if (report.getClassifyReport().equals("article")) {
 			userStore.updateReportedNumber(userId);
@@ -89,7 +77,7 @@ public class ReportServiceLogic implements ReportService {
 					userStore.deleteUser(userId);
 				}
 			}
-			return articleStore.createReport(report.getClassifyReport(), classifyId);
+			return true;
 		} else {
 			return false;
 		}

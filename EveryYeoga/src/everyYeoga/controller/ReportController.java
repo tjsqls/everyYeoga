@@ -49,22 +49,21 @@ public class ReportController {
 
 		return "report/report"; /* 신고 작성 페이지로 이동 */
 	}
-
 	@RequestMapping(value = "regist.do", method = RequestMethod.POST)
 	public String registReport(Report report, String reportedUserId, String reportUserId) {
 		Date today = new Date(Calendar.getInstance().getTimeInMillis());
 		report.setRegDate(today);
 	
-		reportService.registReport(report, reportedUserId, reportUserId);
-
-		return "redirect:/report/searchAll.do"; 
+		reportService.registReport(report, reportedUserId, reportUserId);	
+			 
+		return "redirect:/group/groupList.do"; 
 	}
 
 
 	@RequestMapping("searchArticle.do") /* 인애 - 2017.11.25 article search 파라미터 String groupId 뺌 */
-	public ModelAndView searchArticleReport(@RequestParam("articleId") String reportedArticleId, String reportedUserId, String reportUserId) { // jsp에서 넘어오는 값의이름이 articleId 면 두고 아니면 빼기																						
+	public ModelAndView searchArticleReport(String reportId, @RequestParam("articleId") String reportedArticleId, String reportedUserId, String reportUserId, String classifyReport) { // jsp에서 넘어오는 값의이름이 articleId 면 두고 아니면 빼기																						
 
-		Report articleReportDetail = reportService.searchArticleReport(reportedArticleId);
+		Report articleReportDetail = reportService.searchReportDetail(reportId);
 		articleReportDetail.setReportUser(userService.searchByUserId(reportUserId));
 		articleReportDetail.setReportedUser(userService.searchByUserId(reportedUserId));
 
@@ -77,11 +76,14 @@ public class ReportController {
 	/* ↑ 신고 상세내역 보는 곳 ↓ */
 
 	@RequestMapping("searchComment.do")
-	public ModelAndView searchCommentReport(@RequestParam("commentId") String reportedCommentId) { // jsp에서 넘어오는 값의이름이 commentId 면 두고 아니면 빼기
+	public ModelAndView searchCommentReport(String reportId, @RequestParam("commentId") String reportedCommentId, String reportedUserId, String reportUserId, String classifyReport) { // jsp에서 넘어오는 값의이름이 commentId 면 두고 아니면 빼기
 
-		Report commentReportDetail = reportService.searchCommentReport(reportedCommentId);
+		Report commentReportDetail = reportService.searchReportDetail(reportId);
+		
+		commentReportDetail.setReportUser(userService.searchByUserId(reportUserId));
+		commentReportDetail.setReportedUser(userService.searchByUserId(reportedUserId));
 
-		ModelAndView modelAndView = new ModelAndView("/report/reportDetail"); // report detail (상세 신고내역)
+		ModelAndView modelAndView = new ModelAndView("/report/commentReportDetail"); // report detail (상세 신고내역)
 		modelAndView.addObject("commentReport", commentReportDetail);
 
 		return modelAndView;
@@ -100,7 +102,6 @@ public class ReportController {
 	@RequestMapping("searchAll.do")
 	public ModelAndView searchReportList() {
 
-		
 		List<Report> list = reportService.searchAllReport();
 		ModelAndView modelAndView = new ModelAndView("/user/adminPage"); // 모든 신고내역 보는곳 : 관리자페이지
 		modelAndView.addObject("reportList", list);
@@ -116,7 +117,6 @@ public class ReportController {
 		}else if(report.getClassifyReport().equals("comment")){
 			reportService.acceptReport(report, report.getClassifyId(), reportedUserId);
 		groupService.removeComment(report.getClassifyId());
-		
 		}
 		return "redirect:/report/searchAll.do";
 	}

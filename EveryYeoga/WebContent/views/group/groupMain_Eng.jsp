@@ -67,8 +67,8 @@ function button_more(){
 				<li><label style="color: #bb6333;">Joining Guide</label></li>
 				<c:forEach items="${guides }" var="guide">
 				<li class="group"><a href="#">${guide.id }</a></li>
-				<br/>
 				</c:forEach>
+				<br/>
 				<li><input type="button" onclick="button_post();" value="post an article" 
 				style="background-color: tomato; height: 30px; width: 100px; font-size: 10px; color: black;"></li>
 				<br/>

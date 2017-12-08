@@ -95,7 +95,7 @@ text-shadow: 0px 1px 5px gray;
 		<a href="${pageContext.request.contextPath}/views/main.jsp">HOME</a>&nbsp; &nbsp; &nbsp; 
 		<a href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp">여행검색</a> &nbsp; &nbsp; &nbsp; 
 		<a href="${pageContext.request.contextPath}/group/groupList.do">모임관리</a> &nbsp; &nbsp; &nbsp; 
-					<a href="${pageContext.request.contextPath}/user/searchAll.do">관리자 페이지</a></li>
+					<a href="${pageContext.request.contextPath}/report/searchAll.do">관리자 페이지</a></li>
 			</c:when>
 			<c:otherwise>
 			

@@ -94,7 +94,7 @@ text-shadow: 0px 1px 5px gray;
 		<a href="${pageContext.request.contextPath}/views/main_Eng.jsp">HOME</a>&nbsp; &nbsp; &nbsp; 
 		<a href="${pageContext.request.contextPath}/views/travel/travelPlanList_Eng.jsp">Search Travel</a> &nbsp; &nbsp; &nbsp; 
 		<a href="${pageContext.request.contextPath}/enggroup/groupList.do">Manage Group</a> &nbsp; &nbsp; &nbsp; 
-					<a href="${pageContext.request.contextPath}/enguser/searchAll.do">Admin Page</a></li>
+					<a href="${pageContext.request.contextPath}/engreport/searchAll.do">Admin Page</a></li>
 			</c:when>
 			<c:otherwise>
 			

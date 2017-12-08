@@ -83,9 +83,9 @@ public class GroupServiceLogic implements GroupService {
 				travelerHistory.setTheme(travelPlan.getTheme());
 				travelerHistory.setTravelArea(travelPlan.getTravelArea());
 				travelerHistory.setTraveler(userStore.retrieveByUserId(userId));
-	
+
 				for (int i = 0; i < userIds.size(); i++) {
-					if(groupStore.retrieveJoiningUserId(groupId).get(i).equals("unconfirm")) {
+					if (groupStore.retrieveJoiningUserId(groupId).get(i).equals("unconfirm")) {
 						historyStore.updateGuideHistory(travelPlan.getTravelerId(), userIds.get(i), "confirm");
 					}
 					GuideHistory guideHistory = new GuideHistory();
@@ -98,11 +98,11 @@ public class GroupServiceLogic implements GroupService {
 					guideHistory.setTravelEndStatus("confirm");
 					guideHistory.setTravelerName(userId);
 					historyStore.createGuideHistory(guideHistory);
-				}//end for
+				} // end for
 				historyStore.createTravelerHistory(travelerHistory);
 				return true;
-			}//end if
-		}else {
+			} // end if
+		} else {
 			GuideHistory guideHistory = new GuideHistory();
 			guideHistory.setEndDate(travelPlan.getEndDate());
 			guideHistory.setGuide(userStore.retrieveByUserId(userId));
@@ -113,7 +113,7 @@ public class GroupServiceLogic implements GroupService {
 			guideHistory.setTravelerName(userId);
 			historyStore.createGuideHistory(guideHistory);
 			return true;
-		}//end else
+		} // end else
 		return false;
 	}
 
@@ -150,10 +150,10 @@ public class GroupServiceLogic implements GroupService {
 			article.setRegDate(today);
 			articleStore.createArticle(article);
 			String articleId = article.getArticleId();
-			if(attachments != null) {
-			for (int i = 0; i < attachments.size(); i++) {
-				articleStore.createAttachment(groupId, articleId, attachments.get(i));
-			}
+			if (attachments != null) {
+				for (int i = 0; i < attachments.size(); i++) {
+					articleStore.createAttachment(groupId, articleId, attachments.get(i));
+				}
 			}
 			return true;
 		}
@@ -256,5 +256,6 @@ public class GroupServiceLogic implements GroupService {
 		// 선빈
 		return articleStore.retreiveAttachmentByArticleId(articleId);
 	}
-	
+
+
 }
