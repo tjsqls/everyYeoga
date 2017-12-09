@@ -33,7 +33,6 @@
 <%@ include file="/views/layout/header.jsp" %>
 
 		<!-- Main -->
-		
 		<div id="main-wrapper">
 			<div class="container">
 				<div class="row 50%">
