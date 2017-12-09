@@ -122,7 +122,6 @@ public class GroupController {
 		User user = (User) session.getAttribute("loginedUser");
 		if (travelService.searchTravelPlan(groupId).getTravelerId().equals(user.getId())) {
 			groupService.removeGroup(user.getId(), groupId);
-
 			return "redirect:/guide/registEvaluation.do?groupId=" + groupId;
 		} else {
 			groupService.removeGroup(user.getId(), groupId);

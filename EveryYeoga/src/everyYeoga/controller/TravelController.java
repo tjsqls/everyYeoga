@@ -36,17 +36,18 @@ public class TravelController {
 		// 진휘
 		HttpSession session = req.getSession();
 		User user = (User) session.getAttribute("loginedUser");
+//		travelService.searchTravelPlanByUserId(user.getId()) != null
 		if (travelService.searchTravelPlanByUserId(user.getId()) != null) {
-			
-			 model.addAttribute("message", "종료하지 않은 모임이 있습니다. 모임종료를 눌러주세요.");
-			 model.addAttribute("returnUrl", "http://localhost:8080/EveryYeoga/group/groupList.do");
+
+			model.addAttribute("message", "종료하지 않은 모임이 있습니다. 모임종료를 눌러주세요.");
+			model.addAttribute("returnUrl", "http://localhost:8080/EveryYeoga/group/groupList.do");
 			return "travel/teeemp";
-			}
-		
+		}
+
 		else {
 			return "travel/createTravelPlan";
 		}
-		
+
 	}
 
 	@RequestMapping(value = "regist.do", method = RequestMethod.POST) // createTravelPlan.jsp
@@ -55,7 +56,7 @@ public class TravelController {
 		HttpSession session = req.getSession();
 		User user = (User) session.getAttribute("loginedUser");
 		travelPlan.setTravelerId(user.getId());
-		
+
 		travelService.registTravelPlan(travelPlan);
 		return "redirect:/travel/myTravelPlan.do";
 	}

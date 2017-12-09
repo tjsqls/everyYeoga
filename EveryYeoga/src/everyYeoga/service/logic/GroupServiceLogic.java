@@ -72,9 +72,11 @@ public class GroupServiceLogic implements GroupService {
 		TravelPlan travelPlan = travelStore.retrieveTravelPlan(groupId);
 		if (travelPlan.getTravelerId().equals(userId)) {
 			if (groupStore.retreiveJoiningGroup(groupId) != null) {
+				travelStore.deleteTravelPlan(userId);
 				groupStore.deleteGroup(groupId);
 				articleStore.deleteArticleBygroupId(groupId);
 				commentStore.deleteCommentByGroupId(groupId);
+				
 				List<String> userIds = groupStore.retrieveJoiningUserId(groupId);
 				TravelerHistory travelerHistory = new TravelerHistory();
 				travelerHistory.setEndDate(travelPlan.getEndDate());
