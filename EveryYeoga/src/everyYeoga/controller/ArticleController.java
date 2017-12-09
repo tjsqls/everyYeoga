@@ -106,9 +106,7 @@ public class ArticleController {
 		model.addAttribute("user", article.getUser());
 		model.addAttribute("attachmentList", attachmentList);
 		model.addAttribute("comments", article.getComments());
-		for(int i=0; i<article.getComments().size(); i++) {
-			System.out.println(article.getComments().get(i).getCommentId());
-		}
+		
 		return "article/articleDetail";
 	}
 

@@ -13,7 +13,7 @@
 
 <script>
 $(function() {
-	$("#satartDate").datepicker({
+	$("#startDate").datepicker({
 		dateFormat : 'yy/mm/dd'
 	});
 });
@@ -42,7 +42,7 @@ $(function() {
 													<tr><td><span style="color: red; font-weight: bold; size: 8px; margin-bottom: 10px;">* Travel area must be filled to search</span></td></tr>				
 													<tr><td><input type="text" name="travelArea" placeholder="Travel Area" value="" style="width: 400px;" /></td></tr>
 													
-													<tr><td style="margin-top: 5px;"> <input style="width: 300px;" id="satartDate" name="satartDate" type="text"
+													<tr><td style="margin-top: 5px;"> <input style="width: 300px;" id="startDate" name="startDate" type="text"
 														placeholder="Travel Starts (yy/mm/dd)" value="" /></td>
 					<td style="margin-top: 10px;"> <input type="text" name="speakingAbility" placeholder="languages" style="width: 300px;" value="" /></td></tr>
 					   									</table><table>

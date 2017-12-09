@@ -72,12 +72,12 @@ public class GroupServiceLogic implements GroupService {
 		TravelPlan travelPlan = travelStore.retrieveTravelPlan(groupId);
 		if (travelPlan.getTravelerId().equals(userId)) {
 			if (groupStore.retreiveJoiningGroup(groupId) != null) {
-				travelStore.deleteTravelPlan(userId);
 				groupStore.deleteGroup(groupId);
 				articleStore.deleteArticleBygroupId(groupId);
 				commentStore.deleteCommentByGroupId(groupId);
 				
 				List<String> userIds = groupStore.retrieveJoiningUserId(groupId);
+				userIds.remove(userId);
 				TravelerHistory travelerHistory = new TravelerHistory();
 				travelerHistory.setEndDate(travelPlan.getEndDate());
 				travelerHistory.setGuideName(userIds.get(0));
@@ -85,16 +85,16 @@ public class GroupServiceLogic implements GroupService {
 				travelerHistory.setTheme(travelPlan.getTheme());
 				travelerHistory.setTravelArea(travelPlan.getTravelArea());
 				travelerHistory.setTraveler(userStore.retrieveByUserId(userId));
-
+				
 				for (int i = 0; i < userIds.size(); i++) {
-
+	
 					GuideHistory guideHistory = new GuideHistory();
 					guideHistory.setEndDate(travelPlan.getEndDate());
 					guideHistory.setGuide(userStore.retrieveByUserId(userIds.get(i)));
 					guideHistory.setStartDate(travelPlan.getStartDate());
 					guideHistory.setTheme(travelPlan.getTheme());
 					guideHistory.setTravelArea(travelPlan.getTravelArea());
-					guideHistory.setTravelEndStatus("확인");
+					guideHistory.setTravelEndStatus("confirm");
 					guideHistory.setTravelerName(userId);
 					historyStore.createGuideHistory(guideHistory);
 				} // end for
@@ -108,7 +108,7 @@ public class GroupServiceLogic implements GroupService {
 			guideHistory.setStartDate(travelPlan.getStartDate());
 			guideHistory.setTheme(travelPlan.getTheme());
 			guideHistory.setTravelArea(travelPlan.getTravelArea());
-			guideHistory.setTravelEndStatus("미확인");
+			guideHistory.setTravelEndStatus("unconfirm");
 			guideHistory.setTravelerName(userId);
 			historyStore.createGuideHistory(guideHistory);
 			return true;

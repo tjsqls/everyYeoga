@@ -37,11 +37,12 @@
 												<thead>
 													<tr>
 														<th class="text-center" style="width: 10%; font-weight: bold">번호</th>
-														<th class="text-center" style="width: 10%; font-weight: bold">여행지역</th>
-														<th class="text-center" style="width: 20%; font-weight: bold">테마</th>
-														<th class="text-center" style="width: 30%; font-weight: bold">가이드</th>
+														<th class="text-center" style="width: 20%; font-weight: bold">여행지역</th>
+														<th class="text-center" style="width: 10%; font-weight: bold">테마</th>
+														<th class="text-center" style="width: 20%; font-weight: bold">가이드</th>
 														<th class="text-center" style="width: 15%; font-weight: bold">출발날짜</th>
 														<th class="text-center" style="width: 15%; font-weight: bold">도착날짜</th>
+														<th class="text-center" style="width: 10%; font-weight: bold">삭제</th>
 													</tr>
 												</thead>
 												<c:choose>
@@ -60,7 +61,7 @@
 																<td class="text-center">${travelerHistory.guideName}</td>
 																<td class="text-center">${travelerHistory.startDate}</td>
 																<td class="text-center">${travelerHistory.endDate}</td>
-																		<td><a
+																		<td class="text-center"><a
 														href="${ctx }/history/remove.do?travelerHistoryId=${travelerHistory.travelerHistoryId}"
 														>삭제</a></td>
 															</tr>

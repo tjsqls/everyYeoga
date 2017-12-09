@@ -75,11 +75,12 @@
 											<table class="table table-striped table-bordered table-hover">
 												<thead>
 													<tr>
-														<th class="text-center" style="font-weight: bold; width: 10%">No.</th>
-														<th class="text-center" style="font-weight: bold; width: 30%">Travel Area</th>
-														<th class="text-center" style="font-weight: bold; width: 20%">Travel Theme</th>
-														<th class="text-center" style="font-weight: bold; width: 20%">Gathering Status</th>
+													<th class="text-center" style="font-weight: bold; width: 10%">No.</th>
+														<th class="text-center" style="font-weight: bold; width: 20%">Travel Area</th>
+														<th class="text-center" style="font-weight: bold; width: 15%">Travel Theme</th>
+														<th class="text-center" style="font-weight: bold; width: 15%">Gathering Status</th>
 														<th class="text-center" style="font-weight: bold; width: 20%">Traveler's ID</th>
+														<th class="text-center" style="font-weight: bold; width: 25%">joining travelPlan</th>
 													</tr>
 												</thead>
 												<tbody>
@@ -99,7 +100,7 @@
 																		<td class="text-center">${travelPlan.theme}</td>
 																		<td class="text-center">${travelPlan.gatheringStatus}</td>
 																		<td class="text-center">${travelPlan.travelerId}</td>
-																		<td class="text-center"><a href="${ctx}/engguide/registJoin.do?travelPlanId=${travelPlan.travelPlanId}">참여 신청하기</a> </td>
+																		<td class="text-center"><a href="${ctx}/engguide/registJoin.do?travelPlanId=${travelPlan.travelPlanId}">Request</a> </td>
 																	</tr>
 														
 																</c:forEach>

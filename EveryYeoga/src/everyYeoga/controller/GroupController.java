@@ -35,7 +35,6 @@ public class GroupController {
 	TravelService travelService;
 
 	@RequestMapping(value = "regist.do", method = RequestMethod.POST)
-
 	public String registGroup(HttpServletRequest req) {
 		HttpSession session = req.getSession();
 		String travelPlanId = req.getParameter("travelPlanId");

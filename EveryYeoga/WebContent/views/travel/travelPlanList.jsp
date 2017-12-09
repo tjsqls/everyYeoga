@@ -76,10 +76,11 @@
 												<thead>
 													<tr>
 														<th class="text-center" style="font-weight: bold; width: 10%">번호</th>
-														<th class="text-center" style="font-weight: bold; width: 30%">여행지역</th>
-														<th class="text-center" style="font-weight: bold; width: 25%">테마</th>
+														<th class="text-center" style="font-weight: bold; width: 20%">여행지역</th>
+														<th class="text-center" style="font-weight: bold; width: 15%">테마</th>
 														<th class="text-center" style="font-weight: bold; width: 15%">모집상태</th>
 														<th class="text-center" style="font-weight: bold; width: 20%">여행자ID</th>
+														<th class="text-center" style="font-weight: bold; width: 25%">참여신청</th>
 													</tr>
 												</thead>
 												<tbody>
