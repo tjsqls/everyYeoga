@@ -46,7 +46,7 @@
 			<div class="container">
 				<div class="row 70%">
 					<ul id="navii">
-			<legend> 관리자 페이지 </legend>
+			<legend style="font-weight: bold;"> 관리자 페이지 </legend>
 
 				<li class="group" style=""><a href="${pageContext.request.contextPath}/report/searchAll.do">신고내역 관리</a></li>
 			</ul>

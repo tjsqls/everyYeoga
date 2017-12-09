@@ -46,9 +46,9 @@
 			<div class="container">
 				<div class="row 70%">
 					<ul id="navii">
-			<legend> Admin Page </legend>
+			<legend style="font-weight: bold;"> Admin Page </legend>
 
-				<li class="group"><a href="${pageContext.request.contextPath}/report/searchAll.do">Manage Reports</a></li>
+				<li class="group"><a href="${pageContext.request.contextPath}/engreport/searchAll.do">Manage Reports</a></li>
 		
 			</ul>
 
@@ -62,7 +62,7 @@
 
     <div class="table-responsive">
     
-            <form action="${pageContext.request.contextPath}/report/remove.do"
+            <form action="${pageContext.request.contextPath}/engreport/remove.do"
                   class="bs-example form-horizontal" method="POST">
                 <fieldset>
                 <div class="form-group">                  
@@ -91,7 +91,7 @@
                             <span style="float:center; margin-left: 100px;"><button type="submit" class="btn btn-pr">confirm</button></span>
                              
                             <span style="float:center; margin-left: 50px;"><button type="reset" class="btn btn-default" 
-                            onclick="location.href='${pageContext.request.contextPath}/report/searchAll.do'">previous page</button></span>
+                            onclick="location.href='${pageContext.request.contextPath}/engreport/searchAll.do'">previous page</button></span>
                         </div>
                     </div>
 

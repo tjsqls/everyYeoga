@@ -21,37 +21,14 @@
 			javaType="User" jdbcType="VARCHAR"/> 
 	</resultMap>
 		
-
-
- 	<select id="retrieveArticleReport" parameterType="String" resultMap="reportMap">
-		SELECT reportId, classifyReport, reportType, reportReason, reportDate, reportUserId, reportedUserId, classifyId
-		FROM REPORT_TB
-		WHERE classifyReport = (SELECT classifyReport
-								FROM ARTICLE_REPORT_TB
-								WHERE articleId = #{reportedArticleId})
-		AND classifyId = (SELECT articleId
-								FROM Article_REPORT_TB
-								WHERE articleId = #{reportedArticleId})
-		AND reportedUserId = (SELECT writer
-								FROM ARTICLE_TB
-								WHERE articleId = #{reportedArticleId})
-	</select>
 	
-	<select id="retrieveCommentReport" parameterType="String" resultMap="reportMap">
+	<select id="retrieveReportDetail" parameterType="String" resultMap="reportMap">
 		SELECT reportId, classifyReport, reportType, reportReason, reportDate, reportUserId, reportedUserId, classifyId
 		FROM REPORT_TB
-		WHERE classifyReport = (SELECT classifyReport
-								FROM COMMENT_REPORT_TB
-								WHERE commentId = #{reportedCommentId})
-		AND classifyId = (SELECT commentId
-								FROM COMMENT_REPORT_TB
-								WHERE commentId = #{reportedCommentId})
-		AND reportedUserId = (SELECT writer
-								FROM COMMENT_TB
-								WHERE commentId = #{reportedCommentId})
+		WHERE reportId = #{reportId}
 	</select> 
 	
-	<select id="retrieveReport" resultMap="reportMap">
+	<select id="retrieveReport" resultMap="reportMap"> 
 		SELECT classifyReport, reportType, reportReason, reportDate, reportUserId, reportedUserId, classifyId
 		FROM report_tb
 		where reportedUserId = #{reportedUserId}
@@ -66,5 +43,12 @@
   		INSERT INTO report_tb(reportId, classifyReport, reportType, reportReason, reportDate, reportUserId, reportedUserId, classifyId)
 		VALUES(report_seq.NEXTVAL, #{classifyReport}, #{reportType}, #{reportReason}, #{regDate}, #{reportUser.id}, #{reportedUser.id}, #{classifyId})
   	</insert>
+  	
+  	<select id="retrieveForOneReport" resultType="String" parameterType="map">
+  	SELECT *
+		FROM report_tb
+		WHERE classifyId = #{classifyId}
+		AND classifyReport = #{classifyReport}
+  	</select>
 
 </mapper>

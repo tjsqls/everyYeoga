@@ -5,7 +5,6 @@
 <%@ include file="/views/layout/common.jsp" %>
 <head>
 
-
 <link rel="stylesheet" href="../../css/style.css">
 
 </head>
@@ -18,7 +17,8 @@
 		<div class="help"></div>
 		<label>Password <span>*</span></label> <input id="pw"  name="pw" class="form-control" type="password" value="" placeholder="please input password">
 		<div class="help">beware of UPPER CASE letters</div>
-		<button type="submit">sign in</button>
+		<button type="submit">sign in</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<button type="button" style="background-color: red;" onclick="location.href='${pageContext.request.contextPath}/views/user/registUser_Eng.jsp'">register</button>
 
 	</form>
 </body>

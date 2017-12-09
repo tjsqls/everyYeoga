@@ -13,6 +13,7 @@
 function report(){
 	if(confirm("신고 하시겠습니까? 해당 신고물은 관리자 확인 후 삭제됩니다.") == true){		
 		document.form.submit;
+		alert("신고하였습니다.");
 	}else{
 document.form.reset;
 }
@@ -79,7 +80,7 @@ document.form.reset;
 																class="btn btn-pr" value="신고" onclick="report();"></span></td>
 																<td><span style="float: center">
 																<input type="button"
-																class="btn btn-pr" value="취소" style="background-color: gray;" onclick="location.href='#'"></span></td></tr>
+																class="btn btn-pr" value="취소" style="background-color: gray;" onclick="history.back();"></span></td></tr>
 																	</table>
 											</fieldset>
 										</form>

@@ -13,11 +13,11 @@
 	
 
 		<!-- Header -->
-		<%@ include file="/views/layout/header.jsp" %>
+		<%@ include file="/views/layout/header_Eng.jsp" %>
 			<div id="main-wrapper">
 			<div class="container">
 				<div class="row 70%">
-		<%@ include file="/views/layout/sidebar.jsp" %>
+		<%@ include file="/views/layout/sidebar_Eng.jsp" %>
 
 					<div class="8u 12u$(medium) important(medium)">
 						<div id="content" style="margin-left: 70px; width: 1050px;">
@@ -63,7 +63,7 @@
 																	<td class="text-center"><fmt:formatDate
 																			value="${group.regDate }" pattern="dd/MM/yyyy" /></td>
 																	<td class="text-center">${group.travelPlanId }</td>
-																	<td class="text-center"><a href="${ctx }/group/list.do?groupId=${group.groupId}">Group Detail</a></td>	
+																	<td class="text-center"><a href="${ctx }/enggroup/list.do?groupId=${group.groupId}">Group Detail</a></td>	
 																</tr>
 															</c:forEach>
 														</c:otherwise>
@@ -83,7 +83,7 @@
 			</div>
 		</div>
 		<!-- Footer -->
-		<%@ include file="/views/layout/footer.jsp" %>
+		<%@ include file="/views/layout/footer_Eng.jsp" %>
 
 
 	<!-- Scripts -->

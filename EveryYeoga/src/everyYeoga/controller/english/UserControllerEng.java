@@ -36,7 +36,7 @@ public class UserControllerEng {         // 인애
 
 		boolean registed = userService.registUser(user);
 		if (!registed) {
-			return "redirect:enguser/login.do";
+			return "redirect:login.do";
 		}
 		return "main_Eng";
 	}
@@ -77,15 +77,15 @@ public class UserControllerEng {         // 인애
 	@RequestMapping("remove.do")
 	public String removeUser(String userId) {
 		userService.removeUser(userId);
-		return "redirect:enguser/login.do";
+		return "main_Eng";
 	}
 
-	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/login.do")
 	public String showLogin(User user) {
 		return "user/login_Eng";
 	}
 
-	@RequestMapping(value = "login.do", method = RequestMethod.POST)
+	@RequestMapping(value = "login.do", method=RequestMethod.POST)
 	public String login(User user, HttpServletRequest req, HttpServletResponse response) {		
 		
 		String loginId = req.getParameter("id");
@@ -98,7 +98,7 @@ public class UserControllerEng {         // 인애
 		   
 			try {
 				out = response.getWriter();
-	            out.println("<script>alert('Inputted ID doesn't exist.'); history.go(-1);</script>");
+	            out.println("<script>alert('아이디가 존재하지 않습니다.'); history.go(-1);</script>");
 	            out.flush();
 
 			} catch (IOException e) {
@@ -109,7 +109,7 @@ public class UserControllerEng {         // 인애
 			if (!password.equals(userService.searchByUserId(loginId).getPw())) {
 				try {
 					out = response.getWriter();
-		            out.println("<script>alert('Please check your password.'); history.go(-1);</script>");
+		            out.println("<script>alert('비밀번호를 확인 해주세요.'); history.go(-1);</script>");
 		            out.flush();
 
 				} catch (IOException e) {
@@ -138,6 +138,6 @@ public class UserControllerEng {         // 인애
 
 		HttpSession session = req.getSession();
 		session.invalidate();
-		return "user/login_Eng";
+		return "main_Eng";
 	}
 }

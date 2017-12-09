@@ -13,7 +13,7 @@
 	<div id="page-wrapper">
 
 		<!-- Header -->
-<%@ include file="/views/layout/header.jsp" %>
+<%@ include file="/views/layout/header_Eng.jsp" %>
 
 		<!-- Main -->
 		
@@ -23,7 +23,7 @@
 
 
 					<div class="8u 12u$(medium) important(medium)">
-						<div id="content" style="margin-left: 200px; width: 1000px;">
+						<div id="content" style="margin-left: 100px; width: 1000px;">
 							<div class="col-sm-9 col-lg-9">
 								<div>
 									<h3>Choose Guides</h3>
@@ -32,7 +32,7 @@
 
 								<div class="table-responsive" style="width: 900px;">
 								
-												<form action="${ctx}/group/regist.do" class="bs-example form-horizontal" method="POST">
+												<form action="${ctx}/enggroup/regist.do" class="bs-example form-horizontal" method="POST">
 
 										<div class="table-responsive">
 											<table class="table table-striped table-bordered table-hover">
@@ -74,7 +74,7 @@
 																		<td class="text-center">${list.guideExperience}</td>
 																		<td class="text-center">${list.speakingAbility}</td>
 						
-																		<td><a href="${ctx}/guide/searchJoinDetail.do?joinId=${list.joinId }">Detail</a></td>
+																		<td><a href="${ctx}/engguide/searchJoinDetail.do?joinId=${list.joinId }">Detail</a></td>
 																	</tr>
 																</c:forEach> 
 														</c:otherwise>
@@ -98,7 +98,7 @@
 		</div>
 
 			<!-- Footer -->
-		<%@ include file="/views/layout/footer.jsp" %>
+		<%@ include file="/views/layout/footer_Eng.jsp" %>
 
 
 

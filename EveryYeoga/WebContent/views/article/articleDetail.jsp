@@ -12,8 +12,7 @@
 <script type="text/javascript">
 function button_event(){
 if (confirm("정말 삭제하시겠습니까??") == true){    //확인
-    location.href="${ctx }/article/remove.do?articleId=${article.articleId}";
-    
+    location.href="${ctx }/article/remove.do?articleId=${article.articleId}"; 
 }else{   //취소
     return;
 }
@@ -40,7 +39,7 @@ function comment_report(){
 	var commentId = document.getElementById("commentId").value;
 	var writer = document.getElementById("writer").value;
 	if(confirm("댓글을 신고하시겠습니까?") == true){
-		location.href="${ctx }/report/regist.do?classifyId="+commentId+"&classifyReport='comment'&userId="+writer
+		location.href="${ctx }/report/regist.do?classifyId="+commentId+"&classifyReport=comment&userId="+writer
 	}else{
 		return;
 	}
@@ -88,7 +87,12 @@ function comment_report(){
 														style="padding: 10px">수정</a> <br>
 														
 														<br>
-														파일리스트 &nbsp;
+														<c:choose>
+														<c:when test="${empty attachmentList }">
+														첨부된 파일이 없습니다.
+														</c:when>
+														<c:otherwise>
+														파일리스트 :&nbsp;
 														<c:forEach items="${attachmentList }" var="attachment">
 															<table class="table"
 															style="font-size: 13px; padding: 20px;">
@@ -97,7 +101,8 @@ function comment_report(){
 														</tr>
 														</table>
 															</c:forEach>
-														
+															</c:otherwise>
+														</c:choose>
 														
 													<p style="padding: 20px">${article.content }</p>
 													<a onclick="report_button();"

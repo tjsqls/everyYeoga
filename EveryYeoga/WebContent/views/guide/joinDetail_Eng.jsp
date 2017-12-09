@@ -13,7 +13,7 @@
 	
 
 		<!-- Header -->
-		<%@ include file="/views/layout/header.jsp" %>
+		<%@ include file="/views/layout/header_Eng.jsp" %>
 			<div id="main-wrapper">
 			<div class="container">
 				<div class="row 70%">
@@ -36,7 +36,7 @@
 														<td class="text-left" >${join.speakingAbility}</td></tr>
 														<tr><td class="text-left" style="font-weight: bold; width:25%;">Travel Area</td>
 														<td class="text-left">${join.travelArea}</td></tr>
-														<tr><td class="text-left" style="font-weight: bold; width:25%;">Experiences as a Guide</td>
+														<tr><td class="text-left" style="font-weight: bold; width:28%;">Experiences as a Guide</td>
 														<td class="text-left">${join.guideExperience}</td></tr>
 														<tr><td class="text-left" style="font-weight: bold; width:25%;"></td>
 														<td class="text-left" style="padding-bottom:20px"><a
@@ -116,7 +116,7 @@
 			</div>
 
 			<!-- Footer -->
-		<%@ include file="/views/layout/footer.jsp" %>
+		<%@ include file="/views/layout/footer_Eng.jsp" %>
 
 	<!-- Scripts -->
 

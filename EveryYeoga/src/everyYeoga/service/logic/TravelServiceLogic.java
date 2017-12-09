@@ -15,12 +15,6 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.objenesis.instantiator.sun.MagicInstantiator;
 import org.springframework.stereotype.Service;
-//import org.springframework.test.context.ContextConfiguration;
-//import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-//import org.springframework.test.context.web.WebAppConfiguration;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
 
 import everyYeoga.domain.Evaluation;
 import everyYeoga.domain.GuideHistory;
@@ -37,9 +31,6 @@ import everyYeoga.store.TravelStore;
 import everyYeoga.store.UserStore;
 import everyYeoga.store.logic.TravelStoreLogic;
 
-//@RunWith(SpringJUnit4ClassRunner.class)
-//@WebAppConfiguration
-//@ContextConfiguration(locations = {"file:WebContent/WEB-INF/dispatcher-servlet.xml"})
 
 @Service
 public class TravelServiceLogic implements TravelService {

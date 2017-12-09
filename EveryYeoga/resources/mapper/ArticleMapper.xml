@@ -86,8 +86,5 @@
   	WHERE groupId = #{groupId}
   </select>
   
-  <insert id="createReport" parameterType="map">
-  	INSERT INTO article_report_tb(classifyReport, articleId)
-  	VALUES(#{classifyReport}, #{articleId})
-  </insert>
+
   </mapper>

@@ -49,7 +49,7 @@
 					<ul id="navii">
 			<legend> Admin Page </legend>
 
-				<li class="group" style=""><a href="${pageContext.request.contextPath}/report/searchAll.do">Manage Reports</a></li>
+				<li class="group" style=""><a href="${pageContext.request.contextPath}/engreport/searchAll.do">Manage Reports</a></li>
 			</ul>
 
 					
@@ -99,12 +99,12 @@
 																<c:choose>
 																
 																<c:when test="${list.classifyReport == 'article'}">
-																	<td><a href="${pageContext.request.contextPath}/report/searchArticle.do?articleId=${list.classifyId}
+																	<td><a href="${pageContext.request.contextPath}/engreport/searchArticle.do?articleId=${list.classifyId}
 																	&reportedUserId=${reportedUser.id}&reportUserId=${reportUser.id}">Article</a></td>
 																</c:when>
 																
 																<c:otherwise>
-																	<td><a href="${pageContext.request.contextPath}/report/searchComment.do?commentId=${list.classifyId}">Comment</a></td>
+																	<td><a href="${pageContext.request.contextPath}/engreport/searchComment.do?commentId=${list.classifyId}">Comment</a></td>
 																</c:otherwise>															
 																
 																</c:choose> 

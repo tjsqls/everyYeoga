@@ -46,7 +46,7 @@ text-shadow: 0px 1px 5px gray;
 <header>
 
  <div class="left col-xs-6">
-<h1 style="font-weight: bolder; margin-left: 200px; font-size: 40px; font-family: monospace; "> 
+<h1 style="font-weight: bolder; margin-left: 200px; font-size: 30px; font-family: monospace; "> 
 <img alt="모두의 여가" src='http://www.travelweekly.com/uploadedImages/All_TW_Art/2016/032816/T0328COVERILLO2_HR.jpg?n=3385&width=1540&height=866&mode=crop&Anchor=MiddleCenter' width="260px" height="102px">
 <span style="font-weight:bolder; font-family: fantasy; color: #edf1f0; text-shadow: 1px 1px 1px #000000; ">모두의 여가</span>
 </h1>
@@ -58,14 +58,14 @@ text-shadow: 0px 1px 5px gray;
 					<c:when test="${loginedUser eq null}">
 					<li id="top-header">
 
-					<a href="${pageContext.request.contextPath}/user/login.do">로그인</a> &nbsp;&nbsp;
+					<a href="${pageContext.request.contextPath}/views/user/login.jsp">로그인</a> &nbsp;&nbsp;
 							<a href="${pageContext.request.contextPath}/user/regist.do">회원가입</a></li>
 
 					</c:when>
 					<c:otherwise>
 					<li id="top-header">
 						<a href="${pageContext.request.contextPath}/user/detail.do"> <span>[ ${loginedUser.name } ]</span> 님의 마이페이지</a> &nbsp;&nbsp;
-							<a href="${pageContext.request.contextPath}/views/user/login.jsp">로그아웃</a></li>
+							<a href="${pageContext.request.contextPath}/user/logout.do">로그아웃</a></li>
 					</c:otherwise>
 				</c:choose>
 		
@@ -95,7 +95,7 @@ text-shadow: 0px 1px 5px gray;
 		<a href="${pageContext.request.contextPath}/views/main.jsp">HOME</a>&nbsp; &nbsp; &nbsp; 
 		<a href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp">여행검색</a> &nbsp; &nbsp; &nbsp; 
 		<a href="${pageContext.request.contextPath}/group/groupList.do">모임관리</a> &nbsp; &nbsp; &nbsp; 
-					<a href="${pageContext.request.contextPath}/user/searchAll.do">관리자 페이지</a></li>
+					<a href="${pageContext.request.contextPath}/report/searchAll.do">관리자 페이지</a></li>
 			</c:when>
 			<c:otherwise>
 			

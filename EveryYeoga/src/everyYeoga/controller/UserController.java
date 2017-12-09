@@ -9,8 +9,10 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import everyYeoga.domain.User;
@@ -32,11 +34,20 @@ public class UserController {         // 인애
 	}
 
 	@RequestMapping(value="regist.do", method = RequestMethod.POST)
-	public String registUser(User user) {
+	public String registUser(User user, HttpServletResponse response) {
+		
+		response.setContentType("text/html; charset=UTF-8");
+        PrintWriter out;
 
-		boolean registed = userService.registUser(user);
-		if (!registed) {
-			return "redirect:login.do";
+		userService.registUser(user);
+		
+		try {
+			out = response.getWriter();
+            out.println("<script>alert('회원이 되신것을 환영 합니다!');</script>");
+            out.flush();
+
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 		return "main";
 	}
@@ -77,15 +88,15 @@ public class UserController {         // 인애
 	@RequestMapping("remove.do")
 	public String removeUser(String userId) {
 		userService.removeUser(userId);
-		return "redirect:/user/login.do";
+		return "main";
 	}
 
-	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/login.do")
 	public String showLogin(User user) {
 		return "user/login";
 	}
 
-	@RequestMapping(value = "login.do", method = RequestMethod.POST)
+	@RequestMapping(value = "login.do", method=RequestMethod.POST)
 	public String login(User user, HttpServletRequest req, HttpServletResponse response) {		
 		
 		String loginId = req.getParameter("id");
@@ -138,6 +149,18 @@ public class UserController {         // 인애
 
 		HttpSession session = req.getSession();
 		session.invalidate();
-		return "user/login";
+		return "main";
+	}
+	
+	@RequestMapping(value="check.do")
+	public @ResponseBody int idCheck(String inputId, Model model) {
+		
+		User user1 = userService.searchByUserId(inputId);
+		
+			if(user1 == null) {
+				return 0;				
+			}else {
+				return 1;	
+			}		
 	}
 }

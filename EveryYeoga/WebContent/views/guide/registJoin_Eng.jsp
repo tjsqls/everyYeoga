@@ -13,7 +13,7 @@
 	<div id="page-wrapper">
 
 		<!-- Header -->
-<%@ include file="/views/layout/header.jsp" %>
+<%@ include file="/views/layout/header_Eng.jsp" %>
 
 		<!-- Main -->
 		
@@ -33,8 +33,8 @@
 
 								<div class="table-responsive">
 								
-										<form action="${ctx}/guide/registJoin.do"
-											class="bs-example form-horizontal" method="POST" style="background-color: #e3e3e3; width: 800px;">
+										<form action="${ctx}/engguide/registJoin.do"
+											class="bs-example form-horizontal" method="POST" style="background-color: #e3e3e3; width: 850px;">
 											<fieldset>
 												<input type="hidden" name="travelPlanId"
 													value="${travelPlanId }">
@@ -43,7 +43,7 @@
 												<td><input placeholder="how much you know about this Area" type="text" name="travelArea" value=""style="width: 550px; height:40px;"></td></tr>
 										
 												<tr><td><label class="text-right"  style="font-size: 18px;">Languages&nbsp;</label> </td>
-												<td><input placeholder="what kind of languages you can use" type="text" name="speakingAbility" value="" style="width: 550px; height:40px; "></td></tr>
+												<td><input placeholder="what kind of languages can you use" type="text" name="speakingAbility" value="" style="width: 550px; height:40px; "></td></tr>
 												
 												<tr><td><label class="text-right" style="font-size: 18px;" >Experiences as a Guide&nbsp;</label> </td>
 												<td><input placeholder="do you have a experience as a Guide?" type="text" name="guideExperience" value="" style="width: 550px; height:40px;"></td></tr>
@@ -74,7 +74,7 @@
 		</div>
 
 			<!-- Footer -->
-		<%@ include file="/views/layout/footer.jsp" %>
+		<%@ include file="/views/layout/footer_Eng.jsp" %>
 
 
 
