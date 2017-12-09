@@ -114,9 +114,9 @@ function signupCheck() {
 		<tr><th>생년월일 </th><td><input oninput="signupCheck()" style="margin-top:20px; width: 300px; height: 40px;" id="birthDate"  name="birthDate"  type="text" value="" placeholder="yyyy/mm/dd ('/' 포함)" maxlength="10">  </td> </tr>
 		<tr><th>핸드폰번호</th><td><input oninput="signupCheck()" style="margin-top:20px; width: 300px; height: 40px;" id="phoneNumber"  name="phoneNumber" type="text" value="" placeholder="휴대폰 번호를 입력해주세요. ('-'제외)"></td> </tr>
 		<tr><th>이메일 </th><td><input oninput="signupCheck()" style="margin-top:20px; width: 300px; height: 40px;" id="email" name="email" type="text" value=""></td><td>@</td><td><select name="selectMail" style="width: 100px;">
-					<option value="">naver.com</option>
-					<option value="">gmail.com</option>
-					<option value="">hanmail.net</option> </select></td>
+					<option value="naver.com">naver.com</option>
+					<option value="gmail.com">gmail.com</option>
+					<option value="hanmail.net">hanmail.net</option> </select></td>
 				<td><button type="button" onclick="" style="font-size: 12px; background-color: teal;">인증하기</button></td></tr>
 				</table>
 				<br/>

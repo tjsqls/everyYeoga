@@ -39,7 +39,6 @@ public class GroupController {
 	public String registGroup(HttpServletRequest req) {
 		HttpSession session = req.getSession();
 		String travelPlanId = req.getParameter("travelPlanId");
-		System.out.println(travelPlanId);
 		User user = (User) session.getAttribute("loginedUser");
 		String[] guideIds = req.getParameterValues("check"); 
 		List<String> userIds = new ArrayList<>();
