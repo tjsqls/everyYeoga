@@ -17,7 +17,7 @@
 
 <script>
 	$(function() {
-		$("#satartDate").datepicker({
+		$("#startDate").datepicker({
 			dateFormat : 'yy/mm/dd'
 		});
 	});

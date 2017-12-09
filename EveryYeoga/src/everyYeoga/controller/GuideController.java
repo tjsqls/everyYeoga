@@ -32,27 +32,27 @@ public class GuideController {
 	@Autowired
 	private GroupService groupService;
 
-	@RequestMapping(value="registJoin.do", method=RequestMethod.GET) // registJoin.jsp
+	@RequestMapping(value = "registJoin.do", method = RequestMethod.GET) // registJoin.jsp
 	public String registJoin(String travelPlanId, Model model) {
-		//진휘
+		// 진휘
 		model.addAttribute("travelPlanId", travelPlanId);
 		return "guide/registJoin";
 	}
-	@RequestMapping(value="registJoin.do", method=RequestMethod.POST) // registJoin.jsp
+
+	@RequestMapping(value = "registJoin.do", method = RequestMethod.POST) // registJoin.jsp
 	public String registJoin(HttpServletRequest req, Join join) {
-		//진휘
+		// 진휘
 		HttpSession session = req.getSession();
 		User user = (User) session.getAttribute("loginedUser");
 		join.setGuideId(user.getId());
 		travelService.registJoin(join);
-		
 
 		return "redirect:/travel/searchTravelPlan.do";
 	}
 
-	@RequestMapping(value="searchJoinDetail.do", method=RequestMethod.GET) // joinDetail.jsp
+	@RequestMapping(value = "searchJoinDetail.do", method = RequestMethod.GET) // joinDetail.jsp
 	public ModelAndView searchjoinDetail(HttpServletRequest req, String joinId) {
-		//진휘
+		// 진휘
 		HttpSession session = req.getSession();
 		User user = (User) session.getAttribute("loginedUser");
 		Join join = travelService.searchJoinDetail(joinId);
@@ -62,9 +62,9 @@ public class GuideController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value="searchGuide.do", method = RequestMethod.GET) // chooseGuide.jsp
+	@RequestMapping(value = "searchGuide.do", method = RequestMethod.GET) // chooseGuide.jsp
 	public ModelAndView searchGuide(HttpServletRequest req, int travelPlanId) {
-		//진휘
+		// 진휘
 		int a = travelPlanId;
 		String b = Integer.toString(a);
 		HttpSession session = req.getSession();
@@ -77,17 +77,17 @@ public class GuideController {
 	}
 
 	@RequestMapping(value = "registEvaluation.do", method = RequestMethod.GET)
-	public String registEvaluation(HttpServletRequest req, String groupId, Model model) {
-		//진휘
+	public String registEvaluation(HttpServletRequest req, String groupId, Model model, String guideId) {
+		// 진휘
 		List<String> userIds = groupService.searchJoiningUserId(groupId);
 		List<String> guideIds = new ArrayList<>();
-		for(int i=0; i<userIds.size(); i++) {
-			if(!travelService.searchTravelPlan(groupId).getTravelerId().equals(userIds.get(i))) {
-			String guideId = userIds.get(i);
-			guideIds.add(guideId);
+		for (int i = 0; i < userIds.size(); i++) {
+			if (!travelService.searchTravelPlan(groupId).getTravelerId().equals(userIds.get(i))) {
+				guideId = userIds.get(i);
+				guideIds.add(guideId);
 			}
 		}
-		model.addAttribute("guideIds", guideIds);
+		model.addAttribute("guideIds", guideId);
 		return "guide/registEvaluation";
 	}
 
@@ -116,7 +116,7 @@ public class GuideController {
 
 	@RequestMapping("searchEvaluation.do") // joinDetail.jsp
 	public ModelAndView searchEvaluation(HttpServletRequest req, String guideId) {
-		//진휘
+		// 진휘
 		HttpSession session = req.getSession();
 		User user = (User) session.getAttribute("loginedUser");
 		List<Evaluation> evaluation = travelService.searchEvaluation(guideId);

@@ -17,6 +17,6 @@
         <li><a href="#">도움말</a></li>
         <li><a href="${ctx }/user/detail.do">회원탈퇴</a></li>
     </ul>
-    <center><p>© Mid four Niun 2017.</p></center>
+    <center><p>© Mid four Nieun 2017.</p></center>
      
 </footer>
