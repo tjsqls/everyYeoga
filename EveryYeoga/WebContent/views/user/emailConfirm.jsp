@@ -20,7 +20,7 @@
 		}
 		if(form.authnum.value==authNum){
 			alert("인증완료");
-			opener.document.userinput.mailCheck.value="인증완료";
+			opener.document.getElementById('confirm').value="인증완료";
 			self.close();
 		}
 	}
