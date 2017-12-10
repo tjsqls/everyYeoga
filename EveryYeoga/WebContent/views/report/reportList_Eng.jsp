@@ -91,11 +91,14 @@
 												</tbody>
 											</table>
 										</div>
-										<div class="text-center">
-                <a href=" 특정 가이드의 참여신청 정보 페이지로 이동">
-                 <center><button type="button" class="btn btn-default" style="height:45px; width:78px; font-size:12px;">previous page</button></center>
-                </a>
-            </div>
+											<span style="float: right">
+												<ul>
+													<li style="text-align: center;">
+													<input type=button value="확인" onClick="history.back();" style="font-size: 16px; background-color: gray; text-align: center;">											
+													</li>
+													</ul>
+										
+											</span>
 									</div>
 								</div>
 							</div>
