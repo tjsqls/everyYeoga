@@ -125,6 +125,15 @@ public class ReportController {
 
 		return modelAndView;
 	}
+	@RequestMapping("searchUserReportDetail.do")
+	public ModelAndView searchReportDetail(String reportedUserId) { // 2017.11.29 컨트롤러 빠져잇어서 추가 인애
+		List<Report> list = reportService.searchReport(reportedUserId);
+
+		ModelAndView modelAndView = new ModelAndView("/report/userReportListDetail");
+		modelAndView.addObject("userReport", list);
+
+		return modelAndView;
+	}
 
 	@RequestMapping("searchAll.do")
 	public ModelAndView searchReportList() {

@@ -40,7 +40,7 @@
 														<td class="text-left">${join.guideExperience}</td></tr>
 														<tr><td class="text-left" style="font-weight: bold; width:25%;">가이드횟수</td>
 														<td class="text-left" style="padding-bottom:20px"><a
-													href="teamPlayerList.do?id=${baseballTeam.teamId }">${join.numberOfGuideHistories }</a>&nbsp;&nbsp;<b>회</b></td></tr>
+													href="${ctx }/history/searchGuideHistoryByUserId.do?guideId=${join.guideId }">${join.numberOfGuideHistories }</a>&nbsp;&nbsp;<b>회</b></td></tr>
 														<tr><td class="text-left" style="font-weight: bold; width:25%;">자기소개</td>
 														<td class="text-left">${join.selfIntroduction}</td></tr>
 														<tr><td class="text-left" style="font-weight: bold; width:25%;">신청사유</td>
@@ -50,7 +50,7 @@
 														<tr><td  class="text-center" colspan="2" style="font-weight: bold; background-color: #b2b2b2;">신고</td></tr>
 														<tr><td class="text-left" style="font-weight: bold; width:25%;">신고횟수</td>
 														<td class="text-left" style="padding-bottom:20px"><a
-													href="teamPlayerList.do?id=${baseballTeam.teamId }">${join.numberOfReports }</a>&nbsp;<b>회</b></td><tr>												
+													href="${ctx }/report/searchUserReportDetail.do?reportedUserId=${join.guideId }">${join.numberOfReports }</a>&nbsp;<b>회</b></td><tr>												
 											
 													</tbody>
 													</table>

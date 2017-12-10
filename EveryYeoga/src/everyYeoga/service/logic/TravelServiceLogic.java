@@ -54,7 +54,7 @@ public class TravelServiceLogic implements TravelService {
    @Override//test완료
    public boolean registTravelPlan(TravelPlan travelPlan) {
       // 진휘
-	   travelPlan.setGatheringStatus("모집중");
+	   travelPlan.setGatheringStatus("gathering");
 	   
       return travelStore.createTravelPlan(travelPlan);
       
@@ -147,7 +147,7 @@ public class TravelServiceLogic implements TravelService {
    @Override
    public TravelPlan searchTravelPlanByUserId(String userId) {
       // TODO Auto-generated method stub
-      return travelStore.retrieveTravelPlanByUserId(userId, "모집중");
+      return travelStore.retrieveTravelPlanByUserId(userId, "gathering");
    }
 
 	@Override//test 완료

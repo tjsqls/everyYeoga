@@ -51,10 +51,10 @@ public class GroupController {
 		groupService.registGroup(travelPlanId);
 		userIds.add(user.getId());
 		groupService.registUserInGroup(travelPlanId, userIds);
-		groupService.modifyGroupStatus(travelPlanId, "모집완료");
+		groupService.modifyGroupStatus(travelPlanId, "complete");
 		}else {
 		groupService.registUserInGroup(travelPlanId, userIds);
-		groupService.modifyGroupStatus(travelPlanId, "모집완료");
+		groupService.modifyGroupStatus(travelPlanId, "complete");
 		}
 		return "redirect:/group/list.do?groupId=" + travelPlanId;
 	}
@@ -81,7 +81,7 @@ public class GroupController {
 	@RequestMapping(value = "groupModifyStatus.do")
 	public String modifyGroupStatus(String travelPlanId, HttpServletRequest req, Model model) {
 
-		groupService.modifyGroupStatus(travelPlanId, "모집중");
+		groupService.modifyGroupStatus(travelPlanId, "gathering");
 
 		HttpSession session = req.getSession();
 		User user = (User) session.getAttribute("loginedUser");

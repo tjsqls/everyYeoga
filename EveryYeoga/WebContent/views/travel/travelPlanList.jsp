@@ -96,7 +96,7 @@
 
 																	<tr>
 																		<td class="text-center">${sts.count}</td>
-																		<td class="text-center">${travelPlan.travelArea}</td>
+																		<td class="text-center"><a href="${ctx}/travel/travelPlanDetail.do?travelPlanId=${travelPlan.travelPlanId}">${travelPlan.travelArea}</a></td>
 																		<td class="text-center">${travelPlan.theme}</td>
 																		<td class="text-center">${travelPlan.gatheringStatus}</td>
 																		<td class="text-center">${travelPlan.travelerId}</td>

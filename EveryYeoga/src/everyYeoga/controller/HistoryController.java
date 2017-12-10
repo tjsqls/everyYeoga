@@ -51,4 +51,14 @@ public class HistoryController {
 		model.addAttribute("flist", flist);
 		return "history/myGuideHistory";
 	}
+	
+	@RequestMapping(value = "searchGuideHistoryByUserId.do", method = RequestMethod.GET)
+	public String searchGuideHistoryByUserId(String guideId, Model model) {
+		
+		List<GuideHistory> tlist = historyService.searchGuideHistory(guideId, "confirm");
+		List<GuideHistory> flist = historyService.searchGuideHistory(guideId, "unconfirm");
+		model.addAttribute("tlist", tlist);
+		model.addAttribute("flist", flist);
+		return "history/seachGuideHistory";
+	}
 }

@@ -32,7 +32,7 @@
 		selfIntroduction, gatheringStatus, startDate,endDate 
 		FROM travelPlan_tb 
 		WHERE LOWER(travelArea) LIKE LOWER(CONCAT(CONCAT('%', #{travelArea}),'%'))
-		AND gatheringStatus ='모집중'  
+		AND gatheringStatus ='gathering'  
 		</select>
 
 	<select id="retrieveTravelPlanByTravelAreaAndStartDate"
@@ -43,7 +43,7 @@
 		travelPlan_tb 
 		WHERE LOWER(travelArea) LIKE LOWER(CONCAT(CONCAT('%', #{travelArea}),'%'))
 		AND startDate =#{startDate} 
-		AND gatheringStatus ='모집중'
+		AND gatheringStatus ='gathering'
 	 </select>
 
 	<select id="retrieveTravelPlanByTravelAreaAndSpeakingAbility"
@@ -55,7 +55,7 @@
 		travelPlan_tb 
 		WHERE LOWER(travelArea) LIKE LOWER(CONCAT(CONCAT('%', #{travelArea}),'%'))
 		AND LOWER(speakingAbility) LIKE LOWER(CONCAT(CONCAT('%', #{speakingAbility}),'%'))
-		AND gatheringStatus ='모집중'
+		AND gatheringStatus ='gathering'
 		 </select>
 
 	<select id="retrieveTravelPlanByTravelAreaAndSpeakingAbilityAndStartDate"

@@ -62,9 +62,12 @@
 									
 									</table>
 									<span style="float: right">
-										<button type="button" onclick="history.back();">목록으로</button>
-										<button type="button" onclick="location.href='${ctx}/guide/registJoin.do?travelPlanId=${travelPlan.travelPlanId}'" 
-											style="background-color: red;">참여신청</button>
+												<ul>
+													<li style="text-align: center;">
+													<input type=button value="확인" onClick="history.back();" style="font-size: 16px; background-color: gray; text-align: center;">											
+													</li>
+													</ul>
+										
 											</span> <br /> <br />
 									</div>
 								</div>

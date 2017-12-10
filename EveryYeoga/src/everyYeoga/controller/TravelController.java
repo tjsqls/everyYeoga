@@ -134,5 +134,11 @@ public class TravelController {
 		return modelAndView;
 
 	}
+	@RequestMapping(value = "travelPlanDetail.do", method=RequestMethod.GET)
+	public String travelPlanDetail(String travelPlanId, Model model) {
+		TravelPlan travelPlan = travelService.searchTravelPlan(travelPlanId);
+		model.addAttribute("travelPlan", travelPlan);
+		return "travel/travelPlanDetailForGuide";
+	}
 
 }

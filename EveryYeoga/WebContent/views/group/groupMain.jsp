@@ -75,7 +75,7 @@ function button_more(){
 				</c:forEach>
 				<br/>
 				<li>	<c:choose>
-								<c:when test="${gatheringStatus == '모집완료' && travelUserId == loginedUser.id  }">
+								<c:when test="${gatheringStatus == 'complete' && travelUserId == loginedUser.id  }">
 								<input type="button" onclick="button_more();" value="가이드 추가 모집" 
 				style="background-color: #ff8040; height: 30px; width: 100px; font-size: 10px; margin-bottom: 20px;">
 				</c:when><c:otherwise></c:otherwise></c:choose></li>
