@@ -34,10 +34,6 @@ function capsLock(e){
 		<button type="button" style="background-color: red;" onclick="location.href='${pageContext.request.contextPath}/views/user/registUser.jsp'">회원가입</button>
 
 	</form>
-	<form action="${pageContext.request.contextPath}/connect/" method="post" id="facebook-form"> 
-	<input type="hidden" name="scope" value="public_profile, email"/> 
-	<button type="submit">Sign In with Facebook</button> 
-	</form>
 
 </body>
 </html>
