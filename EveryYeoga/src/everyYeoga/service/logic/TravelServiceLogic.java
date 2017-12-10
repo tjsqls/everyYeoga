@@ -71,23 +71,22 @@ public class TravelServiceLogic implements TravelService {
 	@Override//test 완료
 	public List<TravelPlan> searchTravelPlansByTravelPlan(String travelArea, String speakingAbility, String startDate) {
 		// 진휘
-//		if(speakingAbility ==null && startDate ==null) {
-//
-//			return travelStore.retrieveTravelPlanByTravelArea(travelArea);
-//		}
-//		else if(startDate.equals("")) {
-//
-//			
-//
-//			return travelStore.retrieveTravelPlanByTravelAreaAndSpeakingAbility(travelArea, speakingAbility);
-//		}else if(speakingAbility.equals("")){
-//
-//			return travelStore.retrieveTravelPlanByTravelAreaAndStartDate(travelArea, startDate);
-//		}else {
-//
-//			return travelStore.retrieveTravelPlanByTravelAreaAndSpeakingAbilityAndStartDate(travelArea, speakingAbility, startDate);
-//		}
-		return travelStore.retrieveTravelPlanByTravelArea(travelArea);
+
+		if(speakingAbility.equals("") && startDate.equals("")) {
+			return travelStore.retrieveTravelPlanByTravelArea(travelArea);
+		}
+		else if(startDate.equals("")) {
+
+			return travelStore.retrieveTravelPlanByTravelAreaAndSpeakingAbility(travelArea, speakingAbility);
+			
+		}else if(speakingAbility.equals("")){
+
+			return travelStore.retrieveTravelPlanByTravelAreaAndStartDate(travelArea, startDate);
+		}else {
+
+			return travelStore.retrieveTravelPlanByTravelAreaAndSpeakingAbilityAndStartDate(travelArea, speakingAbility, startDate);
+		}
+
 	}
 
 	@Override// test 완료
@@ -165,7 +164,7 @@ public class TravelServiceLogic implements TravelService {
 
 	@Override
 	public List<TravelPlan> searchAllTravelPlans() {
-		// TODO Auto-generated method stub
+		//진휘
 		return travelStore.retrieveAllTravelPlans();
 	}
 

@@ -10,13 +10,13 @@
 </head>
 <body class="left-sidebar">
 	<div id="page-wrapper">
-	
+
 		<!-- Header -->
-		<%@ include file="/views/layout/header.jsp" %>
-			<div id="main-wrapper">
+		<%@ include file="/views/layout/header.jsp"%>
+		<div id="main-wrapper">
 			<div class="container">
 				<div class="row 70%">
-		<%@ include file="/views/layout/sidebar.jsp" %>
+					<%@ include file="/views/layout/sidebar.jsp"%>
 
 					<div class="8u 12u$(medium) important(medium)">
 						<div id="content">
@@ -27,29 +27,28 @@
 								</div>
 
 								<div class="table-responsive" style="width: 800px;">
-								
-										<form
-											action="${pageContext.request.contextPath}/guide/registEvaluation.do"
-											class="bs-example form-horizontal" method="POST">
-											<fieldset>
-											<c:forEach items="${guideIds}" var="guideId">
-												<label class="col-lg-2 control-label"><h3>가이드:${guideId }</h3></label>
-												<input type="hidden" name="guideId" value="${guideId }">
+									<form
+										action="${pageContext.request.contextPath}/guide/registEvaluation.do"
+										class="bs-example form-horizontal" method="POST">
 
+										<fieldset>
+
+											<c:forEach items="${guideIds}" var="guideIds">
+												<h2>가이드아이디:${guideIds}</h2>
+												<input type="hidden" name="guideId" value="${guideIds }">
+												<br>
+												<br>
 												<div class="form-group">
 													<label class="col-lg-2 control-label"><h3>좋았던
 															점</h3></label> <input type="text" name="pros" value="">
 													<div class="col-lg-10"></div>
 												</div>
 
-
 												<div class="form-group">
-													<label class="col-lg-2 control-label"><h3>나빴던
-															점</h3></label> <input type="text" name="cons"
-														value="">
-													<div class="col-lg-10"></div>
-												</div>
 
+													<h3>나빴던점</h3>
+													</label> <input type="text" name="cons" value="">
+												</div>
 												<label class="col-lg-2 control-label"><h3>별점</h3></label>
 												
 														<select name="stars">
@@ -68,16 +67,19 @@
 													</c:forEach>
 
 												<div class="form-group">
-													<div class="col-lg-10 col-lg-offset-2">
-														<span style="float: center"><button type="submit"
-																class="btn btn-pr">평가 완료</button> <span
-															style="float: center"><button type="reset"
-																	class="btn btn-default">취소</button>
-													</div>
+
+											<div class="form-group">
+												<div class="col-lg-10 col-lg-offset-2">
+													<span style="float: center"><button type="submit"
+															class="btn btn-pr">평가완료</button> <span
+														style="float: center"><button type="reset"
+																class="btn btn-default">취소</button>
 												</div>
-											</fieldset>
-										</form>
-									</div>
+											</div>
+									</form>
+
+									</fieldset>
+
 								</div>
 							</div>
 						</div>
@@ -85,9 +87,10 @@
 				</div>
 			</div>
 		</div>
+	</div>
 
-		<!-- Footer -->
-		<%@ include file="/views/layout/footer.jsp" %>
+	<!-- Footer -->
+	<%@ include file="/views/layout/footer.jsp"%>
 
 	<!-- Scripts -->
 

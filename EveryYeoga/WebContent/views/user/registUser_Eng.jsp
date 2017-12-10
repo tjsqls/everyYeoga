@@ -95,6 +95,10 @@ function signupCheck() {
     }  
 }
 
+function emailConfirm(){
+	var gsWin = window.open("${pageContext.request.contextPath}/views/user/beforeEmailConfirm_Eng.jsp",'payviewer','width=500,height=200,top=200,left=430');
+}
+
 </script>
 
 <%@ include file="/views/layout/header_Eng.jsp" %>
@@ -117,11 +121,13 @@ function signupCheck() {
 					<option value="naver.com">naver.com</option>
 					<option value="gmail.com">gmail.com</option>
 					<option value="hanmail.net">hanmail.net</option> </select></td>
-				<td><button type="button" onclick="" style="font-size: 12px; background-color: teal;">validate</button></td></tr>
+				<td><button type="button" onclick="emailConfirm();" style="font-size: 12px; background-color: teal;">validate</button></td>
+				</tr>
+				<tr><td><input id="confirm" type="text" style="font-size: 12px;" value=""/></td></tr>
 				</table>
 				<br/>
 				<table>
-				<tr><td><input style="margin-left: 200px; background-color: gray;" type="reset" value="cancel" onclick="history.back();">&nbsp; &nbsp; <input type="submit" class="signUpBtn" value="Register" disabled="disabled"></td></tr>		
+				<tr><td><input style="margin-left: 200px; background-color: gray;" type="reset" value="cancel" onclick="history.back();">&nbsp; &nbsp; <input type="submit" class="signUpBtn" value="register" disabled="disabled"></td></tr>		
 		</table>
 <br/><br/>
 		

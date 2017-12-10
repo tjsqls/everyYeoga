@@ -72,9 +72,11 @@ public class GroupServiceLogic implements GroupService {
 		TravelPlan travelPlan = travelStore.retrieveTravelPlan(groupId);
 		if (travelPlan.getTravelerId().equals(userId)) {
 			if (groupStore.retreiveJoiningGroup(groupId) != null) {
+				travelStore.deleteTravelPlan(userId);
 				groupStore.deleteGroup(groupId);
 				articleStore.deleteArticleBygroupId(groupId);
 				commentStore.deleteCommentByGroupId(groupId);
+				
 				List<String> userIds = groupStore.retrieveJoiningUserId(groupId);
 				TravelerHistory travelerHistory = new TravelerHistory();
 				travelerHistory.setEndDate(travelPlan.getEndDate());
@@ -86,14 +88,13 @@ public class GroupServiceLogic implements GroupService {
 
 				for (int i = 0; i < userIds.size(); i++) {
 
-
 					GuideHistory guideHistory = new GuideHistory();
 					guideHistory.setEndDate(travelPlan.getEndDate());
 					guideHistory.setGuide(userStore.retrieveByUserId(userIds.get(i)));
 					guideHistory.setStartDate(travelPlan.getStartDate());
 					guideHistory.setTheme(travelPlan.getTheme());
 					guideHistory.setTravelArea(travelPlan.getTravelArea());
-					guideHistory.setTravelEndStatus("confirm");
+					guideHistory.setTravelEndStatus("확인");
 					guideHistory.setTravelerName(userId);
 					historyStore.createGuideHistory(guideHistory);
 				} // end for
@@ -107,7 +108,7 @@ public class GroupServiceLogic implements GroupService {
 			guideHistory.setStartDate(travelPlan.getStartDate());
 			guideHistory.setTheme(travelPlan.getTheme());
 			guideHistory.setTravelArea(travelPlan.getTravelArea());
-			guideHistory.setTravelEndStatus("unconfirm");
+			guideHistory.setTravelEndStatus("미확인");
 			guideHistory.setTravelerName(userId);
 			historyStore.createGuideHistory(guideHistory);
 			return true;
