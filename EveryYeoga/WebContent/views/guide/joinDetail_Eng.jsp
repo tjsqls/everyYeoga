@@ -38,7 +38,7 @@
 														<td class="text-left">${join.travelArea}</td></tr>
 														<tr><td class="text-left" style="font-weight: bold; width:28%;">Experiences as a Guide</td>
 														<td class="text-left">${join.guideExperience}</td></tr>
-														<tr><td class="text-left" style="font-weight: bold; width:25%;"></td>
+														<tr><td class="text-left" style="font-weight: bold; width:25%;">Number of Guide Times</td>
 														<td class="text-left" style="padding-bottom:20px"><a
 													href="teamPlayerList.do?id=${baseballTeam.teamId }">${join.numberOfGuideHistories }</a>&nbsp;&nbsp;<b>Times</b></td></tr>
 														<tr><td class="text-left" style="font-weight: bold; width:25%;">Introduce Me</td>

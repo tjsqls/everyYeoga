@@ -36,6 +36,10 @@ public class TravelController {
 		// 진휘
 		HttpSession session = req.getSession();
 		User user = (User) session.getAttribute("loginedUser");
+		if(user == null) {
+			return "user/login";
+		}
+		else {
 //		travelService.searchTravelPlanByUserId(user.getId()) != null
 		if (travelService.searchTravelPlanByUserId(user.getId()) != null) {
 
@@ -47,7 +51,7 @@ public class TravelController {
 		else {
 			return "travel/createTravelPlan";
 		}
-
+		}
 	}
 
 	@RequestMapping(value = "regist.do", method = RequestMethod.POST) // createTravelPlan.jsp

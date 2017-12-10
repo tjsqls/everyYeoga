@@ -14,12 +14,10 @@
 
 <script>
             $(function() {
-              $.datepicker.setDefaults($.datepicker.regional['ko']); //datepicker 한국어로 사용하기 위한 언어설정
-              $('#startDate').datepicker({dateFormat: 'y/mm/dd'});
+              $("#startDate").datepicker();
             });
             $(function() {
-                $.datepicker.setDefaults($.datepicker.regional['ko']); //datepicker 한국어로 사용하기 위한 언어설정
-                $('#endDate').datepicker({dateFormat: 'y/mm/dd'});
+                $("#endDate").datepicker();
               });
         </script>
 
@@ -63,10 +61,10 @@
 												<td><input placeholder="how many times have you visited this area" type="text" name="numberOfVisits" value=""style="width: 550px; height:40px; background-color: #fff8ec;"></td></tr>
 												
 													<tr><td><label  class="text-right" style="font-size: 18px; padding-top: 10px;">Travel Starts&nbsp;</label> </td>
-												<td><input placeholder="yyyy/mm/dd" type="text" name="startDate" value=""style="width: 550px; height:40px;"></td></tr>
+												<td><input placeholder="yyyy/mm/dd" type="text" id="startDate" name="startDate" value=""style="width: 550px; height:40px;"></td></tr>
 												
 												<tr><td><label  class="text-right" style="font-size: 18px; padding-top: 10px;">Travel Ends&nbsp;</label> </td>
-												<td><input placeholder="yyyy/mm/dd" type="text" name="endDate" value=""style="width: 550px; height:40px; background-color: #fff8ec;"></td></tr>
+												<td><input placeholder="yyyy/mm/dd" type="text" id="endDate" name="endDate" value=""style="width: 550px; height:40px; background-color: #fff8ec;"></td></tr>
 												
 												<tr><td><label  class="text-right" style="font-size: 18px; padding-top: 10px;">Travel Theme&nbsp;</label> </td>
 												<td><input placeholder="what kind of travel you wish to have." type="text" name="theme" value=""style="width: 550px; height:40px;"></td></tr>

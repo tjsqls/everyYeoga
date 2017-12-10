@@ -105,7 +105,8 @@ public class ArticleControllerEng {
 		model.addAttribute("article", article);
 		model.addAttribute("user", article.getUser());
 		model.addAttribute("attachmentList", attachmentList);
-
+		model.addAttribute("comments", article.getComments());
+		
 		return "article/articleDetail_Eng";
 	}
 

@@ -34,7 +34,7 @@ function checkId() {
                 $("#idaa").css("background-color", "#FFCECE");
                 $(".using").prop("disabled", false);
                 $(".notUsing").prop("disabled", true);
-                $(".uuu").text('please input ID');
+                $(".uuu").text('Please input Id.');
                 $("#label").css("color", "red");
                 idCheck = 0;
             } else if (data == '0') {
@@ -43,7 +43,7 @@ function checkId() {
                 if(idCheck==1) {
                     $(".using").prop("disabled", false);
                     $(".notUsing").prop("disabled", true);
-                    $(".uuu").text('It is usable.');
+                    $(".uuu").text('This ID can be used.');
                     $("#label").css("color", "green");
 					idCheck==1;
                 } 
@@ -51,7 +51,7 @@ function checkId() {
                 $("#idaa").css("background-color", "#FFCECE");
                 $(".using").prop("disabled", false);
                 $(".notUsing").prop("disabled", true);
-                $(".uuu").text('It is already in use.');
+                $(".uuu").text('This ID can not be used.');
                 $("#label").css("color", "red");
                 idCheck = 0;
             } 
@@ -70,14 +70,14 @@ function checkPw() {
         $("#pw2").css("background-color", "#B0F6AC");
         pwCheck = 1;
         if(pwCheck == 1) {
-            $(".qqq").text('password checked.');
+            $(".qqq").text('password matches.');
             $("#label2").css("color", "green");
             signupCheck();
         }
     } else if (inputed != reinputed) {
         pwCheck = 0;
         $("#pw2").css("background-color", "#FFCECE");
-        $(".qqq").text('please check your password.');
+        $(".qqq").text('please check you password.');
         $("#label2").css("color", "red");
         
     }
@@ -94,30 +94,30 @@ function signupCheck() {
     } else {
     }  
 }
-
 function emailConfirm(){
 	var gsWin = window.open("${pageContext.request.contextPath}/views/user/beforeEmailConfirm_Eng.jsp",'payviewer','width=500,height=200,top=200,left=430');
 }
-
 </script>
 
-<%@ include file="/views/layout/header_Eng.jsp" %>
+<%@ include file="/views/layout/header.jsp" %>
 	<form action="${pageContext.request.contextPath}/enguser/regist.do" method="post" id="f" name="f">
 
 		<fieldset style="width: 50%; margin-left: 400px; margin-top: 50px;" >
-		<legend style="font-weight: bold"> Register <span style="color: red; font-weight: bold; font-size: 11px;">* All the blanks must be filled.</span></legend>
+		<legend style="font-weight: bold">register<span style="color: red; font-weight: bold; font-size: 11px;">* all the blanks must be filled.</span></legend>
 		<br/>
 		<table>
+
+
 		<tr><th>ID</th><td> <input required class="id" oninput="checkId()" style="width: 300px; height: 40px;" id="idaa"  name="id"  type="text" value="" placeholder="please input ID" size="10"></td> 
 		<td><p class="uuu" id="label" style="font-size: 10px; font-weight: bold;"></p></td></tr>	
 		
-		<tr><th>Password</th><td><input style="margin-top:20px; width: 300px; height: 40px;" id="pw"  name="pw" required class="pass" oninput="checkPw()" type="password" value="" placeholder="please input pW"> </td>  </tr>
-		<tr><th>Confirm password</th><td><input style="margin-top:20px; width: 300px; height: 40px;" id="pw2"  name="pw2"  required class="pass" oninput="checkPw()" type="password" value="" placeholder="please confirm pw"> </td>  
+		<tr><th>password</th><td><input style="margin-top:20px; width: 300px; height: 40px;" id="pw"  name="pw" required class="pass" oninput="checkPw()" type="password" value="" placeholder="please input password"> </td>  </tr>
+		<tr><th>confirm password</th><td><input style="margin-top:20px; width: 300px; height: 40px;" id="pw2"  name="pw2"  required class="pass" oninput="checkPw()" type="password" value="" placeholder="please check password"> </td>  
 		<td><p class="qqq" id="label2" style="font-size: 10px; font-weight: bold;"></p></td></tr>
 		<tr><th>Name</th><td><input required class="id" oninput="signupCheck()"  style="margin-top:20px; width: 300px; height: 40px;" id="name"  name="name"  type="text" value="" placeholder="please input name">  </td>  </tr>
 		<tr><th>Date of Birth</th><td><input oninput="signupCheck()" style="margin-top:20px; width: 300px; height: 40px;" id="birthDate"  name="birthDate"  type="text" value="" placeholder="yyyy/mm/dd (include '/')" maxlength="10">  </td> </tr>
-		<tr><th>Phone Number</th><td><input oninput="signupCheck()" style="margin-top:20px; width: 300px; height: 40px;" id="phoneNumber"  name="phoneNumber" type="text" value="" placeholder="please input phone Number. (except '-')"></td> </tr>
-		<tr><th>Email</th><td><input oninput="signupCheck()" style="margin-top:20px; width: 300px; height: 40px;" id="email" name="email" type="text" value=""></td><td>@</td><td><select name="selectMail" style="width: 100px;">
+		<tr><th>Phone Number</th><td><input oninput="signupCheck()" style="margin-top:20px; width: 300px; height: 40px;" id="phoneNumber"  name="phoneNumber" type="text" value="" placeholder="plase input phone number (exclude '-')"></td> </tr>
+		<tr><th>Email</th><td><input oninput="signupCheck()" style="margin-top:20px; width: 300px; height: 40px;" id="email" name="email" type="text" value=""></td><td>@</td><td><select id="selectMail" name="selectMail" style="width: 100px;">
 					<option value="naver.com">naver.com</option>
 					<option value="gmail.com">gmail.com</option>
 					<option value="hanmail.net">hanmail.net</option> </select></td>
@@ -140,7 +140,7 @@ function emailConfirm(){
 	<script src="assets/js/util.js"></script>
 	<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 	<script src="assets/js/main.js"></script>
-	<%@ include file="/views/layout/footer_Eng.jsp" %>
+	<%@ include file="/views/layout/footer.jsp" %>
 </body>
 
 

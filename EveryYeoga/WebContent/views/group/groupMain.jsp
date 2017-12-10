@@ -19,7 +19,7 @@ if (confirm("게시물을 올리시겠습니까?") == true){    //확인
 
 function button_finish(){
 	if (confirm("모임을 종료 하시겠습니까? (여행이 종료된 후 눌러주시기 바랍니다.)") == true){    //확인
-	    location.href="${ctx }/group/removeGroup.do?groupId=${group.groupId}"; 
+	    location.href="${ctx }/group/removeGroup.do?groupId="+${group.groupId}; 
 	}else{   //취소
 	    return;
 	}
@@ -27,7 +27,7 @@ function button_finish(){
 	
 function button_out(){
 	if (confirm("모임에서 나가시겠습니까?") == true){    //확인
-	    location.href="${ctx }/group/groupOut.do?groupId=${group.groupId}"; 
+	    location.href="${ctx }/group/groupOut.do?groupId="+${group.groupId}; 
 	}else{   //취소
 	    return;
 	}
@@ -35,7 +35,7 @@ function button_out(){
 	
 function button_more(){
 	if (confirm("모임에 가이드를 더 추가하시겠습니까?") == true){    //확인
-	    location.href="${ctx }/group/groupModifyStatus.do?travelPlanId=${group.travelPlanId}"; 
+	    location.href="${ctx }/group/groupModifyStatus.do?travelPlanId="+${group.travelPlanId}; 
 	}else{   //취소
 	    return;
 	}

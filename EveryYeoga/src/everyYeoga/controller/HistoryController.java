@@ -45,8 +45,8 @@ public class HistoryController {
 	public String searchGuideHistoryList(HttpServletRequest req, Model model) {
 		HttpSession session = req.getSession();
 		User user = (User) session.getAttribute("loginedUser");
-		List<GuideHistory> tlist = historyService.searchGuideHistory(user.getId(), "확인");
-		List<GuideHistory> flist = historyService.searchGuideHistory(user.getId(), "미확인");
+		List<GuideHistory> tlist = historyService.searchGuideHistory(user.getId(), "confirm");
+		List<GuideHistory> flist = historyService.searchGuideHistory(user.getId(), "unconfirm");
 		model.addAttribute("tlist", tlist);
 		model.addAttribute("flist", flist);
 		return "history/myGuideHistory";

@@ -38,7 +38,6 @@ public class GuideController {
 		model.addAttribute("travelPlanId", travelPlanId);
 		return "guide/registJoin";
 	}
-
 	@RequestMapping(value = "registJoin.do", method = RequestMethod.POST) // registJoin.jsp
 	public String registJoin(HttpServletRequest req, Join join) {
 		// 진휘
@@ -77,17 +76,17 @@ public class GuideController {
 	}
 
 	@RequestMapping(value = "registEvaluation.do", method = RequestMethod.GET)
-	public String registEvaluation(HttpServletRequest req, String groupId, Model model, String guideId) {
+	public String registEvaluation(HttpServletRequest req, String groupId, Model model) {
 		// 진휘
 		List<String> userIds = groupService.searchJoiningUserId(groupId);
 		List<String> guideIds = new ArrayList<>();
 		for (int i = 0; i < userIds.size(); i++) {
 			if (!travelService.searchTravelPlan(groupId).getTravelerId().equals(userIds.get(i))) {
-				guideId = userIds.get(i);
+				String guideId = userIds.get(i);
 				guideIds.add(guideId);
 			}
 		}
-		model.addAttribute("guideIds", guideId);
+		model.addAttribute("guideIds", guideIds);
 		return "guide/registEvaluation";
 	}
 

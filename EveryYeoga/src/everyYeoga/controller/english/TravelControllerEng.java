@@ -35,17 +35,22 @@ public class TravelControllerEng {
 		// 진휘
 		HttpSession session = req.getSession();
 		User user = (User) session.getAttribute("loginedUser");
+		if(user == null) {
+			return "user/login";
+		}
+		else {
+//		travelService.searchTravelPlanByUserId(user.getId()) != null
 		if (travelService.searchTravelPlanByUserId(user.getId()) != null) {
-			
-			 model.addAttribute("message", "종료하지 않은 모임이 있습니다. 모임종료를 눌러주세요.");
-			 model.addAttribute("returnUrl", "http://localhost:8080/EveryYeoga/enggroup/groupList.do");
+
+			model.addAttribute("message", "종료하지 않은 모임이 있습니다. 모임종료를 눌러주세요.");
+			model.addAttribute("returnUrl", "http://localhost:8080/EveryYeoga/enggroup/groupList.do");
 			return "travel/teeemp";
-			}
-		
+		}
+
 		else {
 			return "travel/createTravelPlan_Eng";
 		}
-		
+		}
 	}
 
 	@RequestMapping(value = "regist.do", method = RequestMethod.POST) // createTravelPlan.jsp
