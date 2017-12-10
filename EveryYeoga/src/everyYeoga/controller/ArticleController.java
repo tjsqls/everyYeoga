@@ -44,7 +44,7 @@ public class ArticleController {
 
 	@RequestMapping(value = "regist.do", method = RequestMethod.POST)
 	public String registArticle(Article article, HttpServletRequest req, MultipartHttpServletRequest multipartRequest) {
-
+		if(multipartRequest.getFileNames()!=null) {
 		List<Attachment> attachments = new ArrayList<>();
 		String filePath = "C:/tempFiles"; // 파일 저장 경로, 설정파일로 따로 관리한다.
 		Iterator<String> itr = multipartRequest.getFileNames(); // 파일들을 Iterator 에 넣는다.
@@ -65,8 +65,9 @@ public class ArticleController {
 				e.printStackTrace();
 			}
 		}
+		
 		groupService.registArticle(article, article.getGroupId(), attachments);
-
+		}
 		return "redirect:/group/list.do?groupId="+article.getGroupId();
 	}
 

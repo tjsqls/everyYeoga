@@ -118,7 +118,7 @@ public class TravelController {
 		// 진휘
 		HttpSession session = req.getSession();
 		User user = (User) session.getAttribute("loginedUser");
-
+		System.out.println(startDate.toString());
 		List<TravelPlan> list = travelService.searchTravelPlansByTravelPlan(travelArea, speakingAbility, startDate);
 		ModelAndView modelAndView = new ModelAndView("travel/travelPlanList");
 		modelAndView.addObject("list", list);
