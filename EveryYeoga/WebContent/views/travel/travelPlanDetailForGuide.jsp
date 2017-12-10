@@ -18,12 +18,11 @@
 			<div id="main-wrapper">
 			<div class="container">
 				<div class="row 70%">
-		<%@ include file="/views/layout/sidebar.jsp" %>
 					<div class="8u 12u$(medium) important(medium)">
-						<div id="content" style="width: 1000px;">
+						<div id="content" style="width: 1000px; margin-left: 200px;">
 							<div class="col-sm-9 col-lg-9">
 								<div>
-									<h3>내가 올린 여행 계획</h3>
+									<h3>여행 계획 상세</h3>
 									<hr>
 								</div>
 
@@ -63,9 +62,9 @@
 									
 									</table>
 									<span style="float: right">
-												<button type="button"
-													onclick="location.href='${pageContext.request.contextPath}/guide/searchGuide.do?travelPlanId=${travelPlan.travelPlanId }' ">가이드
-													보기</button>
+										<button type="button" onclick="history.back();">목록으로</button>
+										<button type="button" onclick="location.href='${ctx}/guide/registJoin.do?travelPlanId=${travelPlan.travelPlanId}'" 
+											style="background-color: red;">참여신청</button>
 											</span> <br /> <br />
 									</div>
 								</div>
@@ -90,5 +89,4 @@
 	<script src="assets/js/main.js"></script>
 
 </body>
-
 </html>
