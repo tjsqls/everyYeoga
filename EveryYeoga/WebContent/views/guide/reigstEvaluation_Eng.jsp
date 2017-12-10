@@ -12,40 +12,40 @@
 	<div id="page-wrapper">
 
 		<!-- Header -->
-		<%@ include file="/views/layout/header.jsp"%>
+		<%@ include file="/views/layout/header_Eng.jsp"%>
 		<div id="main-wrapper">
 			<div class="container">
 				<div class="row 70%">
-					<%@ include file="/views/layout/sidebar.jsp"%>
+					<%@ include file="/views/layout/sidebar_Eng.jsp"%>
 
 					<div class="8u 12u$(medium) important(medium)">
 						<div id="content">
 							<div class="col-sm-9 col-lg-9">
 								<div>
-									<h2>가이드 평가</h2>
+									<h2>Evaluate Guide</h2>
 									<hr>
 								</div>
 
 								<div class="table-responsive" style="width: 700px;">
 									<form
-										action="${pageContext.request.contextPath}/guide/registEvaluation.do"
+										action="${pageContext.request.contextPath}/engguide/registEvaluation.do"
 										class="bs-example form-horizontal" method="POST">
 
 										<fieldset>
 
 											<c:forEach items="${guideIds}" var="guideIds">
 											<table>
-											<tr><td>	<b style="font-size: 20px;">가이드아이디 : [ ${guideIds} ]</b></td></tr>
+											<tr><td>	<b style="font-size: 20px;">ID of a Guide: [ ${guideIds} ]</b></td></tr>
 										<tr><td>	<input type="hidden" name="guideId" value="${guideIds }"></td></tr>
 										<tr><td> <p>  </p></td></tr> 
 											
-									<tr><td><b style="font-size: 20px; color: #0000d0; text-shadow: 1px 1px 1px #c0c0c0;">좋았던점</b></td></tr>
+									<tr><td><b style="font-size: 20px; color: #0000d0; text-shadow: 1px 1px 1px #c0c0c0;">pros</b></td></tr>
 									<tr><td> <input type="text" name="pros" value=""></td></tr>
 												
-								<tr><td><b style="font-size: 20px; color: red; text-shadow: 1px 1px 1px #c0c0c0;">나빴던점</b></td></tr>
+								<tr><td><b style="font-size: 20px; color: red; text-shadow: 1px 1px 1px #c0c0c0;">cons</b></td></tr>
 													<tr><td><input type="text" name="cons" value=""></td></tr>
 										
-												<tr><td><b style="font-size: 20px; color:gray; text-shadow: 1px 1px 1px #c0c0c0;">별점</b></td></tr>
+												<tr><td><b style="font-size: 20px; color:gray; text-shadow: 1px 1px 1px #c0c0c0;">rating</b></td></tr>
 												
 														<tr><td><select name="stars">
 															<option value="1"><label
@@ -68,9 +68,9 @@
 											<div class="form-group">
 												<div class="col-lg-10 col-lg-offset-2">
 													<span style="float: center"><button type="submit"
-															class="btn btn-pr">평가완료</button></span> <span
+															class="btn btn-pr">done</button></span> <span
 														style="float: center"><button type="reset"
-																class="btn btn-default">취소</button></span>
+																class="btn btn-default">cancel</button></span>
 												</div>
 											</div>
 									</fieldset>

@@ -88,6 +88,13 @@ text-shadow: 0px 1px 5px gray;
 	<ul class="top1" style="width: 1250px;'">
 	
 				<c:choose>
+				
+				<c:when test="${loginedUser eq null}">
+			
+		<li>
+		<a href="${pageContext.request.contextPath}/views/main.jsp">HOME</a>&nbsp; &nbsp; &nbsp; 
+		<a href="${pageContext.request.contextPath}/views/travel/travelPlanList.jsp">여행검색</a> &nbsp; &nbsp; &nbsp; 
+			</c:when>
 			<c:when test="${loginedUser.id == 'admin'}">
 			
 		<li>
