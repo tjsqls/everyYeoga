@@ -95,7 +95,7 @@ function signupCheck() {
     }  
 }
 function emailConfirm(){
-	var gsWin = window.open("${pageContext.request.contextPath}/views/user/beforeEmailConfirm.jsp",'payviewer','width=500,height=500');
+	var gsWin = window.open("${pageContext.request.contextPath}/views/user/beforeEmailConfirm.jsp",'payviewer','width=500,height=200,top=200,left=430');
 }
 </script>
 
@@ -124,7 +124,6 @@ function emailConfirm(){
 				<td><button type="button" onclick="emailConfirm();" style="font-size: 12px; background-color: teal;">인증하기</button></td>
 				</tr>
 				<tr><td><input id="confirm" type="text" style="font-size: 12px;" value=""/></td></tr>
-				
 				</table>
 				<br/>
 				<table>

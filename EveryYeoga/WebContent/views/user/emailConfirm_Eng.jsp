@@ -3,24 +3,24 @@
 <html>
 <head>
 <%@ include file="/views/layout/common.jsp"%>
-<title>이메일 인증</title>
+<title>confirm Email</title>
 <script type="text/javascript">
 	function check(){
 		var form = document.authenform;
 		var authNum = ${authNum};
 		
 		if(!form.authnum.value){
-			alert("인증번호를 입력하세요");
+			alert("Please input validation number");
 			return false;
 		}
 		if(form.authnum.value!=authNum){
-			alert("틀린 인증번호입니다. 인증번호를 다시 입력해주세요.");
+			alert("It is incorrect please try again.");
 			form.authnum.value="";
 			return false;
 		}
 		if(form.authnum.value==authNum){
-			alert("인증완료");
-			opener.document.getElementById('confirm').value="인증완료";
+			alert("validation completed");
+			opener.document.getElementById('confirm').value="validated";
 			self.close();
 		}
 	}

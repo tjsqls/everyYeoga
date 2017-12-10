@@ -9,8 +9,10 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import everyYeoga.domain.User;
@@ -139,5 +141,17 @@ public class UserControllerEng {         // 인애
 		HttpSession session = req.getSession();
 		session.invalidate();
 		return "main_Eng";
+	}
+	
+	@RequestMapping(value="check.do")
+	public @ResponseBody int idCheck(String inputId, Model model) {
+		
+		User user1 = userService.searchByUserId(inputId);
+		
+			if(user1 == null) {
+				return 0;				
+			}else {
+				return 1;	
+			}		
 	}
 }

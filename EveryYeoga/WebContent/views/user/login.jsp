@@ -30,9 +30,11 @@ function capsLock(e){
 		<div class="help"></div>
 		<label>Password <span>*</span></label> <input id="pw"  name="pw" class="form-control" type="password" value="" onkeypress="javascript:capsLock(this);" placeholder="please input password">
 		<div class="help">대문자 입력에 유의하시기 바랍니다.</div>
-		<button type="submit">로그인</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<div class="left col-xs-9">
+		<button type="button" style="background-color: silver;" onclick="location.href='${pageContext.request.contextPath}/views/main.jsp'">홈</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<button type="submit">로그인</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<button type="button" style="background-color: red;" onclick="location.href='${pageContext.request.contextPath}/views/user/registUser.jsp'">회원가입</button>
-
+</div>
 	</form>
 
 </body>

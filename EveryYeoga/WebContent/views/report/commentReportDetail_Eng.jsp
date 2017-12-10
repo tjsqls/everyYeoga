@@ -48,8 +48,7 @@
 					<ul id="navii">
 			<legend style="font-weight: bold;"> Admin Page </legend>
 
-				<li class="group"><a href="${pageContext.request.contextPath}/engreport/searchAll.do">Manage Reports</a></li>
-		
+				<li class="group" style=""><a href="${pageContext.request.contextPath}/engreport/searchAll.do">manage report</a></li>
 			</ul>
 
 					
@@ -67,20 +66,20 @@
                 <fieldset>
                 <div class="form-group">                  
 
-                    	<c:set var="report" value="${articleReport }"/>
+                    	<c:set var="report" value="${commentReport }"/>
                     	                    <input type="hidden" name="classifyReport" value="${report.classifyReport }"/>
 											<input type="hidden" name="reportedUserId" value="${report.reportedUser.id  }"/>
 											<input type="hidden" name="reportUserId" value="${report.reportUser.id  }"/>
 											<input type="hidden" name="classifyId" value="${report.classifyId}"/>
                     <table class="table table-striped table-bordered table-hover" style="border: 2; cellpadding:20; cellspacing:0; "> 
               
-                    <tr><td><span style="font-weight:bold">reported date </span>&nbsp; &nbsp; &nbsp;<fmt:formatDate value="${report.regDate }" pattern="yyyy-MM-dd" /></td></tr>                  
+                    <tr><td><span style="font-weight:bold">report date </span>&nbsp; &nbsp; &nbsp;<fmt:formatDate value="${report.regDate }" pattern="yyyy-MM-dd" /></td></tr>                  
                     <tr> <td><span style="font-weight:bold">user who reports</span> &nbsp; &nbsp;${report.reportUser.id}</td></tr>
                     <tr> <td><span style="font-weight:bold">user who got reported</span> &nbsp; &nbsp;${report.reportedUser.id }</td></tr>
-                         <tr><td><span style="font-weight:bold">report type</span>&nbsp; &nbsp;Article</td></tr>
+                         <tr><td><span style="font-weight:bold">report type </span>&nbsp; &nbsp;댓글</td></tr>
            			<tr> <td><span style="font-weight:bold">classify report</span> &nbsp; &nbsp;${report.reportType}</td></tr>
            				   <tr><td><span style="font-weight:bold">report reason</span></td></tr>
-					<tr><td><textarea  rows="3">${report.reportReason }</textarea></td></tr>
+					<tr><td><textarea  rows="3" disabled="disabled">${report.reportReason }</textarea></td></tr>
                     </table>                  
                       <br />
                     <br />
@@ -88,10 +87,10 @@
  					  
                   <div class="form-group">
                         <div class="col-lg-10 col-lg-offset-2">
-                            <span style="float:center; margin-left: 100px;"><button type="submit" class="btn btn-pr">confirm</button></span>
+                            <span style="float:center; margin-left: 100px;"><button type="submit" class="btn btn-pr">승인</button></span>
                              
                             <span style="float:center; margin-left: 50px;"><button type="reset" class="btn btn-default" 
-                            onclick="location.href='${pageContext.request.contextPath}/engreport/searchAll.do'">previous page</button></span>
+                            onclick="location.href='${pageContext.request.contextPath}/engreport/searchAll.do'">목록으로</button></span>
                         </div>
                     </div>
 
